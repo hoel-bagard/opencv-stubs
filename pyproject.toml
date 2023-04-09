@@ -1,0 +1,112 @@
+[build-system]
+requires = ["hatchling>=1.10.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "opencv-stubs"
+authors = [{name="Bagard Hoel"}]
+description = "Unofficial stubs for the opencv-python package."
+keywords = ["OpenCV", "stubs"]
+readme = "README.md"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+]
+license = {text = "MIT"}
+dynamic = ["version"]
+dependencies = ["numpy>=1.21"]
+requires-python = ">=3.8"
+packages = [
+    { "include" = "rpycocotools-stubs"}
+]
+
+[project.urls]
+"Homepage" = "https://github.com/hoel-bagard/opencv-stubs"
+"Bug Tracker" = "https://github.com/hoel-bagard/opencv-stubs/issues"
+
+[project.optional-dependencies]
+dev = ["pre-commit", "pip-tools", "ruff", "pyright"]
+build = ["hatch"]
+
+[tool.hatch.version]
+path = "src/rpycocotools-stubs/__init__.pyi"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.github",
+  "/.pytest_cache",
+  "/build",
+  "/dist",
+  "/docs",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/rpycocotools-stubs"]
+
+[tool.hatch.envs.pypi.scripts]
+# hatch run pypi:publish_test
+publish_test = "hatch build --clean && hatch publish -r test"
+publish = "hatch build --clean && hatch publish"
+
+[tool.ruff]
+select = ["A", "B", "C4", "D", "E", "F", "N", "I", "Q", "UP", "ANN", "S", "BLE", "COM", "DTZ", "PIE", "PT", "RSE", "SIM","PTH", "PL", "TRY", "NPY", "RUF"]
+ignore = ["D1", "D401", "D204", "D203", "D213", "S101", "PLR2004", "A002", "A003"]
+line-length = 120
+
+[tool.ruff.isort]
+order-by-type = false
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.pylint]
+max-args = 10
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.pyright]
+include = ["src/rpycocotools-stubs"]
+
+strictListInference = true
+strictDictionaryInference = true
+strictSetInference = true
+
+reportMissingModuleSource = false
+reportMissingImports = true
+reportMissingTypeStubs = false
+reportUnusedImport = true
+reportUnusedClass = "warning"
+reportUnusedFunction = "warning"
+reportUnusedVariable = "warning"
+reportDuplicateImport = "warning"
+reportUntypedNamedTuple = "warning"
+reportUntypedFunctionDecorator = "warning"
+reportUntypedClassDecorator = "warning"
+reportMissingSuperCall = false
+reportUnknownArgumentType = "warning"
+reportUnknownLambdaType = "warning"
+reportUnknownVariableType = "warning"
+reportUnknownMemberType = false
+reportMissingParameterType = "warning"
+reportMissingTypeArgument = "warning"
+reportCallInDefaultInitializer = false
+reportUnnecessaryIsInstance = "warning"
+reportUnnecessaryCast = "warning"
+reportUnnecessaryComparison = "warning"
+reportImplicitStringConcatenation = false
+reportUnusedCallResult = false
+reportUnusedExpression = "warning"
+reportUnnecessaryTypeIgnoreComment = "warning"
+reportMatchNotExhaustive = "warning"
+
+pythonVersion = "3.10"
+pythonPlatform = "Linux"
