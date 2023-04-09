@@ -82,7 +82,7 @@ INTER_LINEAR_EXACT: int  # Bit exact bilinear interpolation.
 INTER_NEAREST_EXACT: int  # Bit exact nearest neighbor interpolation. This will produce same results as the nearest neighbor method in PIL, scikit-image or Matlab.
 INTER_MAX: int  # Mask for interpolation codes.
 WARP_FILL_OUTLIERS: int  # Flag, fills all of the destination image pixels. If some of them correspond to outliers in the source image, they are set to zero.
-WARP_INVERSE_MAP: int  # Flag, inverse transformation. For example, linearPolar or logPolar transforms: flag is not set: dst(ρ,ϕ)=src(x,y) and flag is set: dst(x,y)=src(ρ,ϕ).
+WARP_INVERSE_MAP: int  # Flag, inverse transformation. For example, linearPolar or logPolar transforms: flag is not set: dst(ρ,ϕ)=src(x,y) and flag is set: dst(x,y)=src(ρ,ϕ).  # noqa: RUF003
 
 # Line types
 FILLED: int
