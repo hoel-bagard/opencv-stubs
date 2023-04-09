@@ -1,3 +1,5 @@
+__version__ = "0.0.1"
+
 from collections.abc import Sequence
 from typing import TypeVar
 

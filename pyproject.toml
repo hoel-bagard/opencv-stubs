@@ -22,10 +22,10 @@ classifiers = [
 ]
 license = {text = "MIT"}
 dynamic = ["version"]
-dependencies = ["numpy>=1.21"]
+dependencies = ["numpy>=1.21", "opencv-python>=4.7.0.0"]
 requires-python = ">=3.8"
 packages = [
-    { "include" = "rpycocotools-stubs"}
+    { "include" = "cv2-stubs"}
 ]
 
 [project.urls]
@@ -37,7 +37,7 @@ dev = ["pre-commit", "pip-tools", "ruff", "pyright"]
 build = ["hatch"]
 
 [tool.hatch.version]
-path = "src/rpycocotools-stubs/__init__.pyi"
+path = "src/cv2-stubs/__init__.pyi"
 
 [tool.hatch.build.targets.sdist]
 exclude = [
@@ -49,7 +49,7 @@ exclude = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/rpycocotools-stubs"]
+packages = ["src/cv2-stubs"]
 
 [tool.hatch.envs.pypi.scripts]
 # hatch run pypi:publish_test
@@ -74,7 +74,7 @@ max-args = 10
 "__init__.py" = ["F401"]
 
 [tool.pyright]
-include = ["src/rpycocotools-stubs"]
+include = ["src/cv2-stubs"]
 
 strictListInference = true
 strictDictionaryInference = true
