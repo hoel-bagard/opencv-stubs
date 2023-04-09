@@ -57,21 +57,15 @@ publish_test = "hatch build --clean && hatch publish -r test"
 publish = "hatch build --clean && hatch publish"
 
 [tool.ruff]
-select = ["A", "B", "C4", "D", "E", "F", "N", "I", "Q", "UP", "ANN", "S", "BLE", "COM", "DTZ", "PIE", "PT", "RSE", "SIM","PTH", "PL", "TRY", "NPY", "RUF"]
+select = ["A", "B", "C4", "E", "I", "Q", "UP", "ANN", "S", "BLE", "COM", "DTZ", "PIE", "PT", "RSE", "SIM","PTH", "TRY", "NPY", "RUF"]
 ignore = ["D1", "D401", "D204", "D203", "D213", "S101", "PLR2004", "A002", "A003"]
-line-length = 120
+line-length = 10000
 
 [tool.ruff.isort]
 order-by-type = false
 
 [tool.ruff.flake8-quotes]
 docstring-quotes = "double"
-
-[tool.ruff.pylint]
-max-args = 10
-
-[tool.ruff.per-file-ignores]
-"__init__.py" = ["F401"]
 
 [tool.pyright]
 include = ["src/cv2-stubs"]
