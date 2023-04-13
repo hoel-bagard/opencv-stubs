@@ -9,6 +9,12 @@ BORDER_REFLECT101: int
 BORDER_DEFAULT: int
 BORDER_ISOLATED: int
 
+# ContourApproximationModes
+CHAIN_APPROX_NONE: int
+CHAIN_APPROX_SIMPLE: int
+CHAIN_APPROX_TC89_L1: int
+CHAIN_APPROX_TC89_KCOS: int
+
 # Color conversion codes
 COLOR_BGR2BGRA: int  # Add alpha channel to RGB or BGR image
 COLOR_RGB2RGBA: int
@@ -264,6 +270,23 @@ FONT_HERSHEY_SIMPLEX: int
 FONT_HERSHEY_TRIPLEX: int
 FONT_ITALIC: int
 
+# MorphShapes
+# https://docs.opencv.org/3.4/d4/d86/group__imgproc__filter.html#gac2db39b56866583a95a5680313c314ad
+MORPH_RECT: int
+MORPH_CROSS: int
+MORPH_ELLIPSE: int
+
+# MorphTypes
+# https://docs.opencv.org/3.4/d4/d86/group__imgproc__filter.html#ga7be549266bad7b2e6a04db49827f9f32
+MORPH_ERODE: int
+MORPH_DILATE: int
+MORPH_OPEN: int
+MORPH_CLOSE: int
+MORPH_GRADIENT: int
+MORPH_TOPHAT: int
+MORPH_BLACKHAT: int
+MORPH_HITMISS: int
+
 # ImreadModes
 IMREAD_UNCHANGED: int  # If set, return the loaded image as is (with alpha channel, otherwise it gets cropped). Ignore EXIF orientation.
 IMREAD_GRAYSCALE: int  # If set, always convert image to the single channel grayscale image (codec internal conversion).
@@ -325,6 +348,14 @@ FILLED: int
 LINE_4: int  # 4-connected line
 LINE_8: int  # 8-connected line
 LINE_AA: int  # Antialiased line
+
+# RetrievalModes
+# https://docs.opencv.org/3.4/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71
+RETR_EXTERNAL: int
+RETR_LIST: int
+RETR_CCOMP: int
+RETR_TREE: int
+RETR_FLOODFILL: int
 
 # ThresholdTypes
 THRESH_BINARY: int
