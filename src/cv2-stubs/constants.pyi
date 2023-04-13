@@ -10,12 +10,248 @@ BORDER_DEFAULT: int
 BORDER_ISOLATED: int
 
 # Color conversion codes
-COLOR_BGR2GRAY: int
+COLOR_BGR2BGRA: int  # Add alpha channel to RGB or BGR image
+COLOR_RGB2RGBA: int
+COLOR_BGRA2BGR: int  # Remove alpha channel from RGB or BGR image
+COLOR_RGBA2RGB: int
+COLOR_BGR2RGBA: int  # Convert between RGB and BGR color spaces (with or without alpha channel)
+COLOR_RGB2BGRA: int
+COLOR_RGBA2BGR: int
+COLOR_BGRA2RGB: int
 COLOR_BGR2RGB: int
+COLOR_RGB2BGR: int
+COLOR_BGRA2RGBA: int
+COLOR_RGBA2BGRA: int
+COLOR_BGR2GRAY: int  # Convert between RGB/BGR and grayscale, color conversions
+COLOR_RGB2GRAY: int
 COLOR_GRAY2BGR: int
 COLOR_GRAY2RGB: int
-COLOR_RGB2BGR: int
-COLOR_RGB2GRAY: int
+COLOR_GRAY2BGRA: int
+COLOR_GRAY2RGBA: int
+COLOR_BGRA2GRAY: int
+COLOR_RGBA2GRAY: int
+COLOR_BGR2BGR565: int  # Convert between RGB/BGR and BGR565 (16-bit images)
+COLOR_RGB2BGR565: int
+COLOR_BGR5652BGR: int
+COLOR_BGR5652RGB: int
+COLOR_BGRA2BGR565: int
+COLOR_RGBA2BGR565: int
+COLOR_BGR5652BGRA: int
+COLOR_BGR5652RGBA: int
+COLOR_GRAY2BGR565: int  # Convert between grayscale to BGR565 (16-bit images)
+COLOR_BGR5652GRAY: int
+COLOR_BGR2BGR555: int  # Convert between RGB/BGR and BGR555 (16-bit images)
+COLOR_RGB2BGR555: int
+COLOR_BGR5552BGR: int
+COLOR_BGR5552RGB: int
+COLOR_BGRA2BGR555: int
+COLOR_RGBA2BGR555: int
+COLOR_BGR5552BGRA: int
+COLOR_BGR5552RGBA: int
+COLOR_GRAY2BGR555: int  # Convert between grayscale and BGR555 (16-bit images)
+COLOR_BGR5552GRAY: int
+COLOR_BGR2XYZ: int  # Convert RGB/BGR to CIE XYZ, color conversions
+COLOR_RGB2XYZ: int
+COLOR_XYZ2BGR: int
+COLOR_XYZ2RGB: int
+COLOR_BGR2YCrCb: int  # Convert RGB/BGR to luma-chroma (aka YCC), color conversions
+COLOR_RGB2YCrCb: int
+COLOR_YCrCb2BGR: int
+COLOR_YCrCb2RGB: int
+COLOR_BGR2HSV: int  # Convert RGB/BGR to HSV (hue saturation value) with H range 0..180 if 8 bit image, color conversions
+COLOR_RGB2HSV: int
+COLOR_BGR2Lab: int  # Convert RGB/BGR to CIE Lab, color conversions
+COLOR_RGB2Lab: int
+COLOR_BGR2Luv: int  # Convert RGB/BGR to CIE Luv, color conversions
+COLOR_RGB2Luv: int
+COLOR_BGR2HLS: int  # Convert RGB/BGR to HLS (hue lightness saturation) with H range 0..180 if 8 bit image, color conversions
+COLOR_RGB2HLS: int
+COLOR_HSV2BGR: int  # backward conversions HSV to RGB/BGR with H range 0..180 if 8 bit image
+COLOR_HSV2RGB: int
+COLOR_Lab2BGR: int
+COLOR_Lab2RGB: int
+COLOR_Luv2BGR: int
+COLOR_Luv2RGB: int
+COLOR_HLS2BGR: int  # backward conversions HLS to RGB/BGR with H range 0..180 if 8 bit image
+COLOR_HLS2RGB: int
+COLOR_BGR2HSV_FULL: int  # Convert RGB/BGR to HSV (hue saturation value) with H range 0..255 if 8 bit image, color conversions
+COLOR_RGB2HSV_FULL: int
+COLOR_BGR2HLS_FULL: int  # Convert RGB/BGR to HLS (hue lightness saturation) with H range 0..255 if 8 bit image, color conversions
+COLOR_RGB2HLS_FULL: int
+COLOR_HSV2BGR_FULL: int  # Backward conversions HSV to RGB/BGR with H range 0..255 if 8 bit image
+COLOR_HSV2RGB_FULL: int
+COLOR_HLS2BGR_FULL: int  # Backward conversions HLS to RGB/BGR with H range 0..255 if 8 bit image
+COLOR_HLS2RGB_FULL: int
+COLOR_LBGR2Lab: int
+COLOR_LRGB2Lab: int
+COLOR_LBGR2Luv: int
+COLOR_LRGB2Luv: int
+COLOR_Lab2LBGR: int
+COLOR_Lab2LRGB: int
+COLOR_Luv2LBGR: int
+COLOR_Luv2LRGB: int
+COLOR_BGR2YUV: int  # Convert between RGB/BGR and YUV
+COLOR_RGB2YUV: int
+COLOR_YUV2BGR: int
+COLOR_YUV2RGB: int
+COLOR_YUV2RGB_NV12: int  # YUV 4:2:0 family to RGB.
+COLOR_YUV2BGR_NV12: int
+COLOR_YUV2RGB_NV21: int
+COLOR_YUV2BGR_NV21: int
+COLOR_YUV420sp2RGB: int
+COLOR_YUV420sp2BGR: int
+COLOR_YUV2RGBA_NV12: int
+COLOR_YUV2BGRA_NV12: int
+COLOR_YUV2RGBA_NV21: int
+COLOR_YUV2BGRA_NV21: int
+COLOR_YUV420sp2RGBA: int
+COLOR_YUV420sp2BGRA: int
+COLOR_YUV2RGB_YV12: int
+COLOR_YUV2BGR_YV12: int
+COLOR_YUV2RGB_IYUV: int
+COLOR_YUV2BGR_IYUV: int
+COLOR_YUV2RGB_I420: int
+COLOR_YUV2BGR_I420: int
+COLOR_YUV420p2RGB: int
+COLOR_YUV420p2BGR: int
+COLOR_YUV2RGBA_YV12: int
+COLOR_YUV2BGRA_YV12: int
+COLOR_YUV2RGBA_IYUV: int
+COLOR_YUV2BGRA_IYUV: int
+COLOR_YUV2RGBA_I420: int
+COLOR_YUV2BGRA_I420: int
+COLOR_YUV420p2RGBA: int
+COLOR_YUV420p2BGRA: int
+COLOR_YUV2GRAY_420: int
+COLOR_YUV2GRAY_NV21: int
+COLOR_YUV2GRAY_NV12: int
+COLOR_YUV2GRAY_YV12: int
+COLOR_YUV2GRAY_IYUV: int
+COLOR_YUV2GRAY_I420: int
+COLOR_YUV420sp2GRAY: int
+COLOR_YUV420p2GRAY: int
+COLOR_YUV2RGB_UYVY: int  #  YUV 4:2:2 family to RGB.
+COLOR_YUV2BGR_UYVY: int
+COLOR_YUV2RGB_Y422: int
+COLOR_YUV2BGR_Y422: int
+COLOR_YUV2RGB_UYNV: int
+COLOR_YUV2BGR_UYNV: int
+COLOR_YUV2RGBA_UYVY: int
+COLOR_YUV2BGRA_UYVY: int
+COLOR_YUV2RGBA_Y422: int
+COLOR_YUV2BGRA_Y422: int
+COLOR_YUV2RGBA_UYNV: int
+COLOR_YUV2BGRA_UYNV: int
+COLOR_YUV2RGB_YUY2: int
+COLOR_YUV2BGR_YUY2: int
+COLOR_YUV2RGB_YVYU: int
+COLOR_YUV2BGR_YVYU: int
+COLOR_YUV2RGB_YUYV: int
+COLOR_YUV2BGR_YUYV: int
+COLOR_YUV2RGB_YUNV: int
+COLOR_YUV2BGR_YUNV: int
+COLOR_YUV2RGBA_YUY2: int
+COLOR_YUV2BGRA_YUY2: int
+COLOR_YUV2RGBA_YVYU: int
+COLOR_YUV2BGRA_YVYU: int
+COLOR_YUV2RGBA_YUYV: int
+COLOR_YUV2BGRA_YUYV: int
+COLOR_YUV2RGBA_YUNV: int
+COLOR_YUV2BGRA_YUNV: int
+COLOR_YUV2GRAY_UYVY: int
+COLOR_YUV2GRAY_YUY2: int
+COLOR_YUV2GRAY_Y422: int
+COLOR_YUV2GRAY_UYNV: int
+COLOR_YUV2GRAY_YVYU: int
+COLOR_YUV2GRAY_YUYV: int
+COLOR_YUV2GRAY_YUNV: int
+COLOR_RGBA2mRGBA: int  # Ulpha premultiplication
+COLOR_mRGBA2RGBA: int
+COLOR_RGB2YUV_I420: int  # RGB to YUV 4:2:0 family.
+COLOR_BGR2YUV_I420: int
+COLOR_RGB2YUV_IYUV: int
+COLOR_BGR2YUV_IYUV: int
+COLOR_RGBA2YUV_I420: int
+COLOR_BGRA2YUV_I420: int
+COLOR_RGBA2YUV_IYUV: int
+COLOR_BGRA2YUV_IYUV: int
+COLOR_RGB2YUV_YV12: int
+COLOR_BGR2YUV_YV12: int
+COLOR_RGBA2YUV_YV12: int
+COLOR_BGRA2YUV_YV12: int
+COLOR_BayerBG2BGR: int  # Demosaicing, see color conversions (https://docs.opencv.org/4.x/de/d25/imgproc_color_conversions.html#color_convert_bayer) for additional information. Equivalent to RGGB Bayer pattern.
+COLOR_BayerGB2BGR: int  # Equivalent to GRBG Bayer pattern
+COLOR_BayerRG2BGR: int  # Equivalent to BGGR Bayer pattern
+COLOR_BayerGR2BGR: int  # Equivalent to GBRG Bayer pattern
+COLOR_BayerRGGB2BGR: int
+COLOR_BayerGRBG2BGR: int
+COLOR_BayerBGGR2BGR: int
+COLOR_BayerGBRG2BGR: int
+COLOR_BayerRGGB2RGB: int
+COLOR_BayerGRBG2RGB: int
+COLOR_BayerBGGR2RGB: int
+COLOR_BayerGBRG2RGB: int
+COLOR_BayerBG2RGB: int  # Equivalent to RGGB Bayer pattern
+COLOR_BayerGB2RGB: int  # Equivalent to GRBG Bayer pattern
+COLOR_BayerRG2RGB: int  # Equivalent to BGGR Bayer pattern
+COLOR_BayerGR2RGB: int  # Equivalent to GBRG Bayer pattern
+COLOR_BayerBG2GRAY: int  # Equivalent to RGGB Bayer pattern
+COLOR_BayerGB2GRAY: int  # Equivalent to GRBG Bayer pattern
+COLOR_BayerRG2GRAY: int  # Equivalent to BGGR Bayer pattern
+COLOR_BayerGR2GRAY: int  # Equivalent to GBRG Bayer pattern
+COLOR_BayerRGGB2GRAY: int
+COLOR_BayerGRBG2GRAY: int
+COLOR_BayerBGGR2GRAY: int
+COLOR_BayerGBRG2GRAY: int
+COLOR_BayerBG2BGR_VNG: int  # Demosaicing using Variable Number of Gradients. equivalent to RGGB Bayer pattern
+COLOR_BayerGB2BGR_VNG: int  # Equivalent to GRBG Bayer pattern
+COLOR_BayerRG2BGR_VNG: int  # Equivalent to BGGR Bayer pattern
+COLOR_BayerGR2BGR_VNG: int  # Equivalent to GBRG Bayer pattern
+COLOR_BayerRGGB2BGR_VNG: int
+COLOR_BayerGRBG2BGR_VNG: int
+COLOR_BayerBGGR2BGR_VNG: int
+COLOR_BayerGBRG2BGR_VNG: int
+COLOR_BayerRGGB2RGB_VNG: int
+COLOR_BayerGRBG2RGB_VNG: int
+COLOR_BayerBGGR2RGB_VNG: int
+COLOR_BayerGBRG2RGB_VNG: int
+COLOR_BayerBG2RGB_VNG: int  # Equivalent to RGGB Bayer pattern
+COLOR_BayerGB2RGB_VNG: int  # Equivalent to GRBG Bayer pattern
+COLOR_BayerRG2RGB_VNG: int  # Equivalent to BGGR Bayer pattern
+COLOR_BayerGR2RGB_VNG: int  # Equivalent to GBRG Bayer pattern
+COLOR_BayerBG2BGR_EA: int  # Edge-Aware Demosaicing. equivalent to RGGB Bayer pattern
+COLOR_BayerGB2BGR_EA: int  # Equivalent to GRBG Bayer pattern
+COLOR_BayerRG2BGR_EA: int  # Equivalent to BGGR Bayer pattern
+COLOR_BayerGR2BGR_EA: int  # Equivalent to GBRG Bayer pattern
+COLOR_BayerRGGB2BGR_EA: int
+COLOR_BayerGRBG2BGR_EA: int
+COLOR_BayerBGGR2BGR_EA: int
+COLOR_BayerGBRG2BGR_EA: int
+COLOR_BayerRGGB2RGB_EA: int
+COLOR_BayerGRBG2RGB_EA: int
+COLOR_BayerBGGR2RGB_EA: int
+COLOR_BayerGBRG2RGB_EA: int
+COLOR_BayerBG2RGB_EA: int  # Equivalent to RGGB Bayer pattern
+COLOR_BayerGB2RGB_EA: int  # Equivalent to GRBG Bayer pattern
+COLOR_BayerRG2RGB_EA: int  # Equivalent to BGGR Bayer pattern
+COLOR_BayerGR2RGB_EA: int  # Equivalent to GBRG Bayer pattern
+COLOR_BayerBG2BGRA: int  # Demosaicing with alpha channel. equivalent to RGGB Bayer pattern
+COLOR_BayerGB2BGRA: int  # Equivalent to GRBG Bayer pattern
+COLOR_BayerRG2BGRA: int  # Equivalent to BGGR Bayer pattern
+COLOR_BayerGR2BGRA: int  # Equivalent to GBRG Bayer pattern
+COLOR_BayerRGGB2BGRA: int
+COLOR_BayerGRBG2BGRA: int
+COLOR_BayerBGGR2BGRA: int
+COLOR_BayerGBRG2BGRA: int
+COLOR_BayerRGGB2RGBA: int
+COLOR_BayerGRBG2RGBA: int
+COLOR_BayerBGGR2RGBA: int
+COLOR_BayerGBRG2RGBA: int
+COLOR_BayerBG2RGBA: int  # Equivalent to RGGB Bayer pattern
+COLOR_BayerGB2RGBA: int  # Equivalent to GRBG Bayer pattern
+COLOR_BayerRG2RGBA: int  # Equivalent to BGGR Bayer pattern
+COLOR_BayerGR2RGBA: int  # Equivalent to GBRG Bayer pattern
+COLOR_COLORCVT_MAX: int
 
 # Fonts
 FONT_HERSHEY_COMPLEX: int
