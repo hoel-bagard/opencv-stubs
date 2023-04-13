@@ -259,6 +259,14 @@ COLOR_BayerRG2RGBA: int  # Equivalent to BGGR Bayer pattern
 COLOR_BayerGR2RGBA: int  # Equivalent to GBRG Bayer pattern
 COLOR_COLORCVT_MAX: int
 
+# ConnectedComponentsTypes
+# https://docs.opencv.org/3.4/d3/dc0/group__imgproc__shape.html#gac7099124c0390051c6970a987e7dc5c5
+CC_STAT_LEFT: int  # The leftmost (x) coordinate which is the inclusive start of the bounding box in the horizontal direction.
+CC_STAT_TOP: int  # The topmost (y) coordinate which is the inclusive start of the bounding box in the vertical direction.
+CC_STAT_WIDTH: int  # The horizontal size of the bounding box.
+CC_STAT_HEIGHT: int  # The vertical size of the bounding box.
+CC_STAT_AREA: int  # The total area (in pixels) of the connected component.
+
 # Fonts
 FONT_HERSHEY_COMPLEX: int
 FONT_HERSHEY_COMPLEX_SMALL: int
@@ -286,6 +294,43 @@ MORPH_GRADIENT: int
 MORPH_TOPHAT: int
 MORPH_BLACKHAT: int
 MORPH_HITMISS: int
+
+# Number Types
+CV_16S: int
+CV_16SC1: int
+CV_16SC2: int
+CV_16SC3: int
+CV_16SC4: int
+CV_16U: int
+CV_16UC1: int
+CV_16UC2: int
+CV_16UC3: int
+CV_16UC4: int
+CV_32F: int
+CV_32FC1: int
+CV_32FC2: int
+CV_32FC3: int
+CV_32FC4: int
+CV_32S: int
+CV_32SC1: int
+CV_32SC2: int
+CV_32SC3: int
+CV_32SC4: int
+CV_64F: int
+CV_64FC1: int
+CV_64FC2: int
+CV_64FC3: int
+CV_64FC4: int
+CV_8S: int
+CV_8SC1: int
+CV_8SC2: int
+CV_8SC3: int
+CV_8SC4: int
+CV_8U: int
+CV_8UC1: int
+CV_8UC2: int
+CV_8UC3: int
+CV_8UC4: int
 
 # ImreadModes
 IMREAD_UNCHANGED: int  # If set, return the loaded image as is (with alpha channel, otherwise it gets cropped). Ignore EXIF orientation.
