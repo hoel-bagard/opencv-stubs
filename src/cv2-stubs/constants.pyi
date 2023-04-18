@@ -402,6 +402,12 @@ RETR_CCOMP: int
 RETR_TREE: int
 RETR_FLOODFILL: int
 
+# seamlessClone algorithm flags
+# https://docs.opencv.org/3.4/df/da0/group__photo__clone.html#ga19386064a1bd4e1153262844e6875bcc
+NORMAL_CLONE: int  # The power of the method is fully expressed when inserting objects with complex outlines into a new background
+MIXED_CLONE:int   # The classic method, color-based selection and alpha masking might be time consuming and often leaves an undesirable halo. Seamless cloning, even averaged with the original image, is not effective. Mixed seamless cloning based on a loose selection proves effective.
+MONOCHROME_TRANSFER: int  # Monochrome transfer allows the user to easily replace certain features of one object by alternative features.
+
 # ThresholdTypes
 THRESH_BINARY: int
 THRESH_BINARY_INV: int
