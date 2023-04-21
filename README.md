@@ -20,6 +20,10 @@ These stubs are a temporary help until official ones are made (see [this issue](
 
 ## Installation
 
+The package is available on pypi [here](https://pypi.org/project/opencv-stubs/), you can install it with:
+
 ```
 pip install opencv-stubs
 ```
+
+The dependency on opencv is optional, and be accessed with `pip install opencv-stubs[opencv]` or `pip install opencv-stubs[opencv-headless]`.
