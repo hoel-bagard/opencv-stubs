@@ -7,8 +7,11 @@ import numpy as np
 import numpy.typing as npt
 
 from .constants import *
+from .classes import *
 
 TImg = TypeVar("TImg", np.uint8, np.float64)
+TMapS = TypeVar("TImg", np.int16, np.float32)
+TMapU = TypeVar("TImg", np.uint16, np.float32)
 TMask = npt.NDArray[np.uint8]  # 8-bit single channel array
 TColor = TypeVar("TColor", tuple[int, int, int], int, tuple[float, float, float], float)
 TPoint = tuple[int, int]
@@ -46,7 +49,7 @@ def DISOpticalFlow_create(preset=...) -> typing.Any:
     "DISOpticalFlow_create([, preset]) -> retval\n.   @brief Creates an instance of DISOpticalFlow\n.   \n.       @param preset one of PRESET_ULTRAFAST, PRESET_FAST and PRESET_MEDIUM"
     ...
 
-def DescriptorMatcher_create(descriptorMatcherType) -> typing.Any:
+def DescriptorMatcher_create(descriptorMatcherType: int) -> DescriptorMatcher:
     "DescriptorMatcher_create(descriptorMatcherType) -> retval\n.   @brief Creates a descriptor matcher of a given type with the default parameters (using default\n.       constructor).\n.   \n.       @param descriptorMatcherType Descriptor matcher type. Now the following matcher types are\n.       supported:\n.       -   `BruteForce` (it uses L2 )\n.       -   `BruteForce-L1`\n.       -   `BruteForce-Hamming`\n.       -   `BruteForce-Hamming(2)`\n.       -   `FlannBased`\n\n\n\nDescriptorMatcher_create(matcherType) -> retval\n."
     ...
 
@@ -442,7 +445,7 @@ def convertFp16(src: npt.NDArray[TImg], dst: npt.NDArray[TImg] = ...) -> npt.NDA
     "convertFp16(src[, dst]) -> dst\n.   @brief Converts an array to half precision floating number.\n.   \n.   This function converts FP32 (single precision floating point) from/to FP16 (half precision floating point). CV_16S format is used to represent FP16 data.\n.   There are two use modes (src -> dst): CV_32F -> CV_16S and CV_16S -> CV_32F. The input array has to have type of CV_32F or\n.   CV_16S to represent the bit depth. If the input array is neither of them, the function will raise an error.\n.   The format of half precision floating point is defined in IEEE 754-2008.\n.   \n.   @param src input array.\n.   @param dst output array."
     ...
 
-def convertMaps(map1, map2, dstmap1type, dstmap1=..., dstmap2=..., nninterpolation=...) -> typing.Any:
+def convertMaps(map1: npt.NDArray[TMapS], map2: npt.NDArray[TMapU] | None, dstmap1type: int, dstmap1: npt.NDArray[TMap] = ..., dstmap2: npt.NDArray[TMapS] = ..., nninterpolation: bool = ...) -> tuple[npt.NDArray[TMapS], npt.NDArray[TMapS]]:
     "convertMaps(map1, map2, dstmap1type[, dstmap1[, dstmap2[, nninterpolation]]]) -> dstmap1, dstmap2\n.   @brief Converts image transformation maps from one representation to another.\n.   \n.   The function converts a pair of maps for remap from one representation to another. The following\n.   options ( (map1.type(), map2.type()) \\f$\\rightarrow\\f$ (dstmap1.type(), dstmap2.type()) ) are\n.   supported:\n.   \n.   - \\f$\\texttt{(CV_32FC1, CV_32FC1)} \\rightarrow \\texttt{(CV_16SC2, CV_16UC1)}\\f$. This is the\n.   most frequently used conversion operation, in which the original floating-point maps (see remap )\n.   are converted to a more compact and much faster fixed-point representation. The first output array\n.   contains the rounded coordinates and the second array (created only when nninterpolation=false )\n.   contains indices in the interpolation tables.\n.   \n.   - \\f$\\texttt{(CV_32FC2)} \\rightarrow \\texttt{(CV_16SC2, CV_16UC1)}\\f$. The same as above but\n.   the original maps are stored in one 2-channel matrix.\n.   \n.   - Reverse conversion. Obviously, the reconstructed floating-point maps will not be exactly the same\n.   as the originals.\n.   \n.   @param map1 The first input map of type CV_16SC2, CV_32FC1, or CV_32FC2 .\n.   @param map2 The second input map of type CV_16UC1, CV_32FC1, or none (empty matrix),\n.   respectively.\n.   @param dstmap1 The first output map that has the type dstmap1type and the same size as src .\n.   @param dstmap2 The second output map.\n.   @param dstmap1type Type of the first output map that should be CV_16SC2, CV_32FC1, or\n.   CV_32FC2 .\n.   @param nninterpolation Flag indicating whether the fixed-point maps are used for the\n.   nearest-neighbor or for a more complex interpolation.\n.   \n.   @sa  remap, undistort, initUndistortRectifyMap"
     ...
 
@@ -866,15 +869,15 @@ def getAffineTransform(src: npt.NDArray[TImg], dst: npt.NDArray[TImg]) -> npt.ND
     "getAffineTransform(src, dst) -> retval\n.   @overload"
     ...
 
-def getBuildInformation() -> typing.Any:
+def getBuildInformation() -> str:
     "getBuildInformation() -> retval\n.   @brief Returns full configuration time cmake output.\n.   \n.   Returned value is raw cmake output including version control system revision, compiler version,\n.   compiler flags, enabled modules and third party libraries, etc. Output format depends on target\n.   architecture."
     ...
 
-def getCPUFeaturesLine() -> typing.Any:
+def getCPUFeaturesLine() -> str:
     "getCPUFeaturesLine() -> retval\n.   @brief Returns list of CPU features enabled during compilation.\n.   \n.   Returned value is a string containing space separated list of CPU features with following markers:\n.   \n.   - no markers - baseline features\n.   - prefix `*` - features enabled in dispatcher\n.   - suffix `?` - features enabled but not available in HW\n.   \n.   Example: `SSE SSE2 SSE3 *SSE4.1 *SSE4.2 *FP16 *AVX *AVX2 *AVX512-SKX?`"
     ...
 
-def getCPUTickCount() -> typing.Any:
+def getCPUTickCount() -> int:
     "getCPUTickCount() -> retval\n.   @brief Returns the number of CPU ticks.\n.   \n.   The function returns the current number of CPU ticks on some architectures (such as x86, x64,\n.   PowerPC). On other platforms the function is equivalent to getTickCount. It can also be used for\n.   very accurate time measurements, as well as for RNG initialization. Note that in case of multi-CPU\n.   systems a thread, from which getCPUTickCount is called, can be suspended and resumed at another CPU\n.   with its own counter. So, theoretically (and practically) the subsequent calls to the function do\n.   not necessary return the monotonously increasing values. Also, since a modern CPU varies the CPU\n.   frequency depending on the load, the number of CPU clocks spent in some code cannot be directly\n.   converted to time units. Therefore, getTickCount is generally a preferable solution for measuring\n.   execution time."
     ...
 
@@ -902,11 +905,11 @@ def getHardwareFeatureName(feature) -> typing.Any:
     "getHardwareFeatureName(feature) -> retval\n.   @brief Returns feature name by ID\n.   \n.   Returns empty string if feature is not defined"
     ...
 
-def getNumThreads() -> typing.Any:
+def getNumThreads() -> int:
     "getNumThreads() -> retval\n.   @brief Returns the number of threads used by OpenCV for parallel regions.\n.   \n.   Always returns 1 if OpenCV is built without threading support.\n.   \n.   The exact meaning of return value depends on the threading framework used by OpenCV library:\n.   - `TBB` - The number of threads, that OpenCV will try to use for parallel regions. If there is\n.     any tbb::thread_scheduler_init in user code conflicting with OpenCV, then function returns\n.     default number of threads used by TBB library.\n.   - `OpenMP` - An upper bound on the number of threads that could be used to form a new team.\n.   - `Concurrency` - The number of threads, that OpenCV will try to use for parallel regions.\n.   - `GCD` - Unsupported; returns the GCD thread pool limit (512) for compatibility.\n.   - `C=` - The number of threads, that OpenCV will try to use for parallel regions, if before\n.     called setNumThreads with threads \\> 0, otherwise returns the number of logical CPUs,\n.     available for the process.\n.   @sa setNumThreads, getThreadNum"
     ...
 
-def getNumberOfCPUs() -> typing.Any:
+def getNumberOfCPUs() -> int:
     "getNumberOfCPUs() -> retval\n.   @brief Returns the number of logical CPUs available for the process."
     ...
 
@@ -938,15 +941,15 @@ def getTextSize(text: str, fontFace: int, fontScale: float, thickness: int) -> t
     'getTextSize(text, fontFace, fontScale, thickness) -> retval, baseLine\n.   @brief Calculates the width and height of a text string.\n.   \n.   The function cv::getTextSize calculates and returns the size of a box that contains the specified text.\n.   That is, the following code renders some text, the tight box surrounding it, and the baseline: :\n.   @code\n.       String text = "Funny text inside the box";\n.       int fontFace = FONT_HERSHEY_SCRIPT_SIMPLEX;\n.       double fontScale = 2;\n.       int thickness = 3;\n.   \n.       Mat img(600, 800, CV_8UC3, Scalar::all(0));\n.   \n.       int baseline=0;\n.       Size textSize = getTextSize(text, fontFace,\n.                                   fontScale, thickness, &baseline);\n.       baseline += thickness;\n.   \n.       // center the text\n.       Point textOrg((img.cols - textSize.width)/2,\n.                     (img.rows + textSize.height)/2);\n.   \n.       // draw the box\n.       rectangle(img, textOrg + Point(0, baseline),\n.                 textOrg + Point(textSize.width, -textSize.height),\n.                 Scalar(0,0,255));\n.       // ... and the baseline first\n.       line(img, textOrg + Point(0, thickness),\n.            textOrg + Point(textSize.width, thickness),\n.            Scalar(0, 0, 255));\n.   \n.       // then put the text itself\n.       putText(img, text, textOrg, fontFace, fontScale,\n.               Scalar::all(255), thickness, 8);\n.   @endcode\n.   \n.   @param text Input text string.\n.   @param fontFace Font to use, see #HersheyFonts.\n.   @param fontScale Font scale factor that is multiplied by the font-specific base size.\n.   @param thickness Thickness of lines used to render the text. See #putText for details.\n.   @param[out] baseLine y-coordinate of the baseline relative to the bottom-most text\n.   point.\n.   @return The size of a box that contains the specified text.\n.   \n.   @see putText.'
     ...
 
-def getThreadNum() -> typing.Any:
+def getThreadNum() -> int:
     "getThreadNum() -> retval\n.   @brief Returns the index of the currently executed thread within the current parallel region. Always\n.   returns 0 if called outside of parallel region.\n.   \n.   @deprecated Current implementation doesn't corresponding to this documentation.\n.   \n.   The exact meaning of the return value depends on the threading framework used by OpenCV library:\n.   - `TBB` - Unsupported with current 4.1 TBB release. Maybe will be supported in future.\n.   - `OpenMP` - The thread number, within the current team, of the calling thread.\n.   - `Concurrency` - An ID for the virtual processor that the current context is executing on (0\n.     for master thread and unique number for others, but not necessary 1,2,3,...).\n.   - `GCD` - System calling thread's ID. Never returns 0 inside parallel region.\n.   - `C=` - The index of the current parallel task.\n.   @sa setNumThreads, getNumThreads"
     ...
 
-def getTickCount() -> typing.Any:
+def getTickCount() -> int:
     "getTickCount() -> retval\n.   @brief Returns the number of ticks.\n.   \n.   The function returns the number of ticks after the certain event (for example, when the machine was\n.   turned on). It can be used to initialize RNG or to measure a function execution time by reading the\n.   tick count before and after the function call.\n.   @sa getTickFrequency, TickMeter"
     ...
 
-def getTickFrequency() -> typing.Any:
+def getTickFrequency() -> float:
     "getTickFrequency() -> retval\n.   @brief Returns the number of ticks per second.\n.   \n.   The function returns the number of ticks per second. That is, the following code computes the\n.   execution time in seconds:\n.   @code\n.       double t = (double)getTickCount();\n.       // do something ...\n.       t = ((double)getTickCount() - t)/getTickFrequency();\n.   @endcode\n.   @sa getTickCount, TickMeter"
     ...
 
@@ -958,19 +961,19 @@ def getValidDisparityROI(roi1, roi2, minDisparity, numberOfDisparities, blockSiz
     "getValidDisparityROI(roi1, roi2, minDisparity, numberOfDisparities, blockSize) -> retval\n."
     ...
 
-def getVersionMajor() -> typing.Any:
+def getVersionMajor() -> int:
     "getVersionMajor() -> retval\n.   @brief Returns major library version"
     ...
 
-def getVersionMinor() -> typing.Any:
+def getVersionMinor() -> int:
     "getVersionMinor() -> retval\n.   @brief Returns minor library version"
     ...
 
-def getVersionRevision() -> typing.Any:
+def getVersionRevision() -> int:
     "getVersionRevision() -> retval\n.   @brief Returns revision field of the library version"
     ...
 
-def getVersionString() -> typing.Any:
+def getVersionString() -> str:
     'getVersionString() -> retval\n.   @brief Returns library version string\n.   \n.   For example "3.4.1-dev".\n.   \n.   @sa getMajorVersion, getMinorVersion, getRevisionVersion'
     ...
 
@@ -1002,7 +1005,7 @@ def haveImageWriter(filename: str) -> typing.Any:
     "haveImageWriter(filename) -> retval\n.   @brief Returns true if an image with the specified filename can be encoded by OpenCV\n.   \n.    @param filename File name of the image"
     ...
 
-def haveOpenVX() -> typing.Any:
+def haveOpenVX() -> bool:
     "haveOpenVX() -> retval\n."
     ...
 
@@ -1470,7 +1473,7 @@ def sqrt(src: npt.NDArray[TImg], dst: npt.NDArray[TImg] = ...) -> npt.NDArray[TI
     "sqrt(src[, dst]) -> dst\n.   @brief Calculates a square root of array elements.\n.   \n.   The function cv::sqrt calculates a square root of each input array element.\n.   In case of multi-channel arrays, each channel is processed\n.   independently. The accuracy is approximately the same as of the built-in\n.   std::sqrt .\n.   @param src input floating-point array.\n.   @param dst output array of the same size and type as src."
     ...
 
-def startWindowThread() -> typing.Any:
+def startWindowThread() -> int:
     "startWindowThread() -> retval\n."
     ...
 
@@ -1538,11 +1541,11 @@ def undistortPointsIter(src: npt.NDArray[TImg], cameraMatrix, distCoeffs, R, P, 
     "undistortPointsIter(src, cameraMatrix, distCoeffs, R, P, criteria[, dst]) -> dst\n.   @overload\n.       @note Default version of #undistortPoints does 5 iterations to compute undistorted points."
     ...
 
-def useOpenVX() -> typing.Any:
+def useOpenVX() -> bool:
     "useOpenVX() -> retval\n."
     ...
 
-def useOptimized() -> typing.Any:
+def useOptimized() -> bool:
     "useOptimized() -> retval\n.   @brief Returns the status of optimized code usage.\n.   \n.   The function returns true if the optimized code is enabled. Otherwise, it returns false."
     ...
 
