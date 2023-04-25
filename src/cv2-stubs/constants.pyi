@@ -388,6 +388,12 @@ INTER_MAX: int  # Mask for interpolation codes.
 WARP_FILL_OUTLIERS: int  # Flag, fills all of the destination image pixels. If some of them correspond to outliers in the source image, they are set to zero.
 WARP_INVERSE_MAP: int  # Flag, inverse transformation. For example, linearPolar or logPolar transforms: flag is not set: dst(ρ,ϕ)=src(x,y) and flag is set: dst(x,y)=src(ρ,ϕ).  # noqa: RUF003
 
+# InterpolationMasks
+INTER_BITS: int
+INTER_BITS2: int
+INTER_TAB_SIZE: int
+INTER_TAB_SIZE2: int
+
 # Line types
 FILLED: int
 LINE_4: int  # 4-connected line
@@ -417,6 +423,10 @@ THRESH_TOZERO_INV: int
 THRESH_MASK: int
 THRESH_OTSU: int
 THRESH_TRIANGLE: int
+
+# WarpPolarMode
+WARP_POLAR_LINEAR: int
+WARP_POLAR_LOG: int
 
 # WindowFlags
 WINDOW_NORMAL: int # The user can resize the window (no constraint) / also use to switch a fullscreen window to a normal size.
