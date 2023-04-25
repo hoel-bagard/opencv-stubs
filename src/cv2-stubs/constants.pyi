@@ -267,6 +267,25 @@ CC_STAT_WIDTH: int  # The horizontal size of the bounding box.
 CC_STAT_HEIGHT: int  # The vertical size of the bounding box.
 CC_STAT_AREA: int  # The total area (in pixels) of the connected component.
 
+# File storage mode
+READ: int  # value, open the file for reading
+WRITE: int  # value, open the file for writing
+APPEND: int  # value, open the file for appending
+MEMORY: int  # flag, read data from source or write data to the internal buffer (which is returned by FileStorage::release)
+FORMAT_MASK: int  # mask for format flags
+FORMAT_AUTO: int  # flag, auto format
+FORMAT_XML: int  # flag, XML format
+FORMAT_YAML: int  # flag, YAML format
+FORMAT_JSON: int  # flag, JSON format
+BASE64: int  # flag, write rawdata in Base64 by default. (consider using WRITE_BASE64)
+WRITE_BASE64: int  # flag, enable both WRITE and BASE64
+
+# File storage State
+UNDEFINED: int
+VALUE_EXPECTED: int
+NAME_EXPECTED: int
+INSIDE_MAP: int
+
 # Fonts
 FONT_HERSHEY_COMPLEX: int
 FONT_HERSHEY_COMPLEX_SMALL: int
@@ -399,6 +418,14 @@ FILLED: int
 LINE_4: int  # 4-connected line
 LINE_8: int  # 8-connected line
 LINE_AA: int  # Antialiased line
+
+# MatcherType
+FLANNBASED: int
+BRUTEFORCE: int
+BRUTEFORCE_L1: int
+BRUTEFORCE_HAMMING: int
+BRUTEFORCE_HAMMINGLUT: int
+BRUTEFORCE_SL2: int
 
 # RetrievalModes
 # https://docs.opencv.org/3.4/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71
