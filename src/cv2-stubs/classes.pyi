@@ -89,6 +89,14 @@ class AffineFeature(Feature2D):
         """
 
 
+class AffineTransformer(ShapeTransformer):
+    def getFullAffine(self) -> retval:
+        """"""
+
+    def setFullAffine(self, fullAffine) -> None:
+        """"""
+
+
 class AgastFeatureDetector(Feature2D):
     def getDefaultName(self) -> retval:
         """"""
@@ -115,46 +123,41 @@ class AgastFeatureDetector(Feature2D):
         """"""
 
 
-class Algorithm(builtins.object, ABC):
-    @abstractmethod
+class Algorithm(builtins.object):
     def clear(self) -> None:
         """
         @brief Clears the algorithm state
         """
 
-    @abstractmethod
     def empty(self) -> retval:
         """
         @brief Returns true if the Algorithm is empty (e.g. in the very beginning or after unsuccessful read
         """
 
-    @abstractmethod
-    def getDefaultName(self) -> str:
+    def getDefaultName(self) -> retval:
         """
         Returns the algorithm string identifier.
         This string is used as top level xml/yml node tag when the object is saved to a file or string.
         """
 
-    def read(self, fn: FileNode) -> None:
+    def read(self, fn) -> None:
         """
         @brief Reads algorithm parameters from a file storage
         """
 
-    @abstractmethod
-    def save(self, filename: str) -> None:
+    def save(self, filename) -> None:
         """
         Saves the algorithm to a file.
         In order to make this method work, the derived class must implement Algorithm::write(FileStorage& fs).
         """
 
-    @overload
-    def write(self, fs: FileStorage) -> None:
+    def write(self, fs) -> None:
         """
         @brief Stores algorithm parameters in a file storage
         """
 
     @overload
-    def write(self, fs: FileStorage, name: str) -> None:
+    def write(self, fs, name) -> None:
         """
         """
 
@@ -833,6 +836,10 @@ class CascadeClassifier(builtins.object):
         """"""
 
 
+class ChiHistogramCostExtractor(HistogramCostExtractor):
+    ...
+
+
 class CirclesGridFinderParameters(builtins.object):
     ...
 
@@ -988,8 +995,8 @@ class DenseOpticalFlow(Algorithm):
         """
 
 
-class DescriptorMatcher(Algorithm, AB):
-    def add(self, descriptors: InputArrayOfArrays) -> None:
+class DescriptorMatcher(Algorithm):
+    def add(self, descriptors) -> None:
         """
         @brief Adds descriptors to train a CPU(trainDescCollectionis) or GPU(utrainDescCollectionis) descriptor
         collection.
@@ -1123,6 +1130,18 @@ class DescriptorMatcher(Algorithm, AB):
 
     def create(self, matcherType) -> retval:
         """"""
+
+
+class EMDHistogramCostExtractor(HistogramCostExtractor):
+    def getNormFlag(self) -> retval:
+        """"""
+
+    def setNormFlag(self, flag) -> None:
+        """"""
+
+
+class EMDL1HistogramCostExtractor(HistogramCostExtractor):
+    ...
 
 
 class FaceDetectorYN(builtins.object):
@@ -1302,7 +1321,7 @@ class FastFeatureDetector(Feature2D):
         """"""
 
 
-class Feature2D(builtins.object, ABC):
+class Feature2D(builtins.object):
     def compute(self, image, keypoints, descriptors = ...) -> tuple[keypoints, descriptors]:
         """
         @brief Computes the descriptors for a set of keypoints detected in an image (first variant) or image set
@@ -1453,25 +1472,25 @@ class FileStorage(builtins.object):
         @brief Finishes writing nested structure (should pair startWriteStruct())
         """
 
-    def getFirstTopLevelNode(self) -> FileNode:
+    def getFirstTopLevelNode(self) -> retval:
         """
         @brief Returns the first element of the top-level mapping.
         @returns The first element of the top-level mapping.
         """
 
-    def getFormat(self) -> int:
+    def getFormat(self) -> retval:
         """
         @brief Returns the current format.
         * @returns The current format, see FileStorage::Mode
         """
 
     @overload
-    def getNode(self, nodename) -> Any:
+    def getNode(self, nodename) -> retval:
         """
         @overload
         """
 
-    def isOpened(self) -> bool:
+    def isOpened(self) -> retval:
         """
         @brief Checks whether the file is opened.
 
@@ -1479,7 +1498,7 @@ class FileStorage(builtins.object):
         good practice to call this method after you tried to open a file.
         """
 
-    def open(self, filename: str, flags: int, encoding: str = ...) -> bool:
+    def open(self, filename, flags, encoding = ...) -> retval:
         """
         @brief Opens a file.
 
@@ -1505,13 +1524,13 @@ class FileStorage(builtins.object):
         opened for writing data and FileStorage::WRITE was specified
         """
 
-    def root(self, streamidx: int = ...) -> FileNode:
+    def root(self, streamidx = ...) -> retval:
         """
         @brief Returns the top-level mapping
         @param streamidx Zero-based index of the stream. In most cases there is only one stream in the file. However, YAML supports multiple streams and so there can be several. @returns The top-level mapping.
         """
 
-    def startWriteStruct(self, name: str, flags: int, typeName: str = ...) -> None:
+    def startWriteStruct(self, name, flags, typeName = ...) -> None:
         """
         @brief Starts to write a nested structure (sequence or a mapping).
         @param name name of the structure. When writing to sequences (a.k.a. "arrays"), pass an empty string.
@@ -1519,14 +1538,14 @@ class FileStorage(builtins.object):
         @param typeName optional name of the type you store. The effect of setting this depends on the storage format. I.e. if the format has a specification for storing type information, this parameter is used.
         """
 
-    def write(self, name: str, val: float) -> None:
+    def write(self, name, val) -> None:
         """
         * @brief Simplified writing API to use with bindings.
         * @param name Name of the written object. When writing to sequences (a.k.a. "arrays"), pass an empty string.
         * @param val Value of the written object.
         """
 
-    def writeComment(self, comment: str, append: bool = ...) -> None:
+    def writeComment(self, comment, append = ...) -> None:
         """
         @brief Writes a comment.
 
@@ -2079,6 +2098,47 @@ class HOGDescriptor(builtins.object):
         """
 
 
+class HausdorffDistanceExtractor(ShapeDistanceExtractor):
+    def getDistanceFlag(self) -> retval:
+        """"""
+
+    def getRankProportion(self) -> retval:
+        """"""
+
+    def setDistanceFlag(self, distanceFlag) -> None:
+        """
+        @brief Set the norm used to compute the Hausdorff value between two shapes. It can be L1 or L2 norm.
+
+        @param distanceFlag Flag indicating which norm is used to compute the Hausdorff distance (NORM_L1, NORM_L2).
+        """
+
+    def setRankProportion(self, rankProportion) -> None:
+        """
+        @brief This method sets the rank proportion (or fractional value) that establish the Kth ranked value of
+        the partial Hausdorff distance. Experimentally had been shown that 0.6 is a good value to compare
+        shapes.
+
+        @param rankProportion fractional value (between 0 and 1).
+        """
+
+
+class HistogramCostExtractor(Algorithm):
+    def buildCostMatrix(self, descriptors1, descriptors2, costMatrix = ...) -> costMatrix:
+        """"""
+
+    def getDefaultCost(self) -> retval:
+        """"""
+
+    def getNDummies(self) -> retval:
+        """"""
+
+    def setDefaultCost(self, defaultCost) -> None:
+        """"""
+
+    def setNDummies(self, nDummies) -> None:
+        """"""
+
+
 class KAZE(Feature2D):
     def getDefaultName(self) -> retval:
         """"""
@@ -2367,6 +2427,14 @@ class MergeRobertson(MergeExposures):
         """"""
 
 
+class NormHistogramCostExtractor(HistogramCostExtractor):
+    def getNormFlag(self) -> retval:
+        """"""
+
+    def setNormFlag(self, flag) -> None:
+        """"""
+
+
 class ORB(Feature2D):
     def getDefaultName(self) -> retval:
         """"""
@@ -2623,8 +2691,7 @@ class QRCodeEncoder(builtins.object):
         """
 
 
-class Params(builtins.object):
-    ...
+QRCodeEncoder_Params = Params
 
 
 class SIFT(Feature2D):
@@ -2682,6 +2749,185 @@ class SIFT(Feature2D):
         """
 
 
+class ShapeContextDistanceExtractor(ShapeDistanceExtractor):
+    def getAngularBins(self) -> retval:
+        """"""
+
+    def getBendingEnergyWeight(self) -> retval:
+        """"""
+
+    def getCostExtractor(self) -> retval:
+        """"""
+
+    def getImageAppearanceWeight(self) -> retval:
+        """"""
+
+    def getImages(self, image1 = ..., image2 = ...) -> tuple[image1, image2]:
+        """"""
+
+    def getInnerRadius(self) -> retval:
+        """"""
+
+    def getIterations(self) -> retval:
+        """"""
+
+    def getOuterRadius(self) -> retval:
+        """"""
+
+    def getRadialBins(self) -> retval:
+        """"""
+
+    def getRotationInvariant(self) -> retval:
+        """"""
+
+    def getShapeContextWeight(self) -> retval:
+        """"""
+
+    def getStdDev(self) -> retval:
+        """"""
+
+    def getTransformAlgorithm(self) -> retval:
+        """"""
+
+    def setAngularBins(self, nAngularBins) -> None:
+        """
+        @brief Establish the number of angular bins for the Shape Context Descriptor used in the shape matching
+        pipeline.
+
+        @param nAngularBins The number of angular bins in the shape context descriptor.
+        """
+
+    def setBendingEnergyWeight(self, bendingEnergyWeight) -> None:
+        """
+        @brief Set the weight of the Bending Energy in the final value of the shape distance. The bending energy
+        definition depends on what transformation is being used to align the shapes. The final value of the
+        shape distance is a user-defined linear combination of the shape context distance, an image
+        appearance distance, and a bending energy.
+
+        @param bendingEnergyWeight The weight of the Bending Energy in the final distance value.
+        """
+
+    def setCostExtractor(self, comparer) -> None:
+        """
+        @brief Set the algorithm used for building the shape context descriptor cost matrix.
+
+        @param comparer Smart pointer to a HistogramCostExtractor, an algorithm that defines the cost matrix between descriptors.
+        """
+
+    def setImageAppearanceWeight(self, imageAppearanceWeight) -> None:
+        """
+        @brief Set the weight of the Image Appearance cost in the final value of the shape distance. The image
+        appearance cost is defined as the sum of squared brightness differences in Gaussian windows around
+        corresponding image points. The final value of the shape distance is a user-defined linear
+        combination of the shape context distance, an image appearance distance, and a bending energy. If
+        this value is set to a number different from 0, is mandatory to set the images that correspond to
+        each shape.
+
+        @param imageAppearanceWeight The weight of the appearance cost in the final distance value.
+        """
+
+    def setImages(self, image1, image2) -> None:
+        """
+        @brief Set the images that correspond to each shape. This images are used in the calculation of the Image
+        Appearance cost.
+
+        @param image1 Image corresponding to the shape defined by contours1.
+        @param image2 Image corresponding to the shape defined by contours2.
+        """
+
+    def setInnerRadius(self, innerRadius) -> None:
+        """
+        @brief Set the inner radius of the shape context descriptor.
+
+        @param innerRadius The value of the inner radius.
+        """
+
+    def setIterations(self, iterations) -> None:
+        """"""
+
+    def setOuterRadius(self, outerRadius) -> None:
+        """
+        @brief Set the outer radius of the shape context descriptor.
+
+        @param outerRadius The value of the outer radius.
+        """
+
+    def setRadialBins(self, nRadialBins) -> None:
+        """
+        @brief Establish the number of radial bins for the Shape Context Descriptor used in the shape matching
+        pipeline.
+
+        @param nRadialBins The number of radial bins in the shape context descriptor.
+        """
+
+    def setRotationInvariant(self, rotationInvariant) -> None:
+        """"""
+
+    def setShapeContextWeight(self, shapeContextWeight) -> None:
+        """
+        @brief Set the weight of the shape context distance in the final value of the shape distance. The shape
+        context distance between two shapes is defined as the symmetric sum of shape context matching costs
+        over best matching points. The final value of the shape distance is a user-defined linear
+        combination of the shape context distance, an image appearance distance, and a bending energy.
+
+        @param shapeContextWeight The weight of the shape context distance in the final distance value.
+        """
+
+    def setStdDev(self, sigma) -> None:
+        """
+        @brief Set the value of the standard deviation for the Gaussian window for the image appearance cost.
+
+        @param sigma Standard Deviation.
+        """
+
+    def setTransformAlgorithm(self, transformer) -> None:
+        """
+        @brief Set the algorithm used for aligning the shapes.
+
+        @param transformer Smart pointer to a ShapeTransformer, an algorithm that defines the aligning transformation.
+        """
+
+
+class ShapeDistanceExtractor(Algorithm):
+    def computeDistance(self, contour1, contour2) -> retval:
+        """
+        @brief Compute the shape distance between two shapes defined by its contours.
+
+        @param contour1 Contour defining first shape.
+        @param contour2 Contour defining second shape.
+        """
+
+
+class ShapeTransformer(Algorithm):
+    def applyTransformation(self, input, output = ...) -> tuple[retval, output]:
+        """
+        @brief Apply a transformation, given a pre-estimated transformation parameters.
+
+        @param input Contour (set of points) to apply the transformation.
+        @param output Output contour.
+        """
+
+    def estimateTransformation(self, transformingShape, targetShape, matches) -> None:
+        """
+        @brief Estimate the transformation parameters of the current transformer algorithm, based on point matches.
+
+        @param transformingShape Contour defining first shape.
+        @param targetShape Contour defining second shape (Target).
+        @param matches Standard vector of Matches between points.
+        """
+
+    def warpImage(self, transformingImage, output = ..., flags = ..., borderMode = ..., borderValue = ...) -> output:
+        """
+        @brief Apply a transformation, given a pre-estimated transformation parameters, to an Image.
+
+        @param transformingImage Input image.
+        @param output Output image.
+        @param flags Image interpolation method.
+        @param borderMode border style.
+        @param borderValue border value.
+        """
+
+
 class SimpleBlobDetector(Feature2D):
     def getBlobContours(self) -> retval:
         """"""
@@ -2699,8 +2945,7 @@ class SimpleBlobDetector(Feature2D):
         """"""
 
 
-class Params(builtins.object):
-    ...
+SimpleBlobDetector_Params = Params
 
 
 class SparseOpticalFlow(Algorithm):
@@ -3119,6 +3364,19 @@ class Subdiv2D(builtins.object):
         """"""
 
 
+class ThinPlateSplineShapeTransformer(ShapeTransformer):
+    def getRegularizationParameter(self) -> retval:
+        """"""
+
+    def setRegularizationParameter(self, beta) -> None:
+        """
+        @brief Set the regularization parameter for relaxing the exact interpolation requirements of the TPS
+        algorithm.
+
+        @param beta value of the regularization parameter.
+        """
+
+
 class TickMeter(builtins.object):
     def getAvgTimeMilli(self) -> retval:
         """"""
@@ -3234,6 +3492,20 @@ class Tracker(builtins.object):
         """
 
 
+class TrackerCSRT(Tracker):
+    def setInitialMask(self, mask) -> None:
+        """"""
+
+    def create(self, parameters = ...) -> retval:
+        """
+        @brief Create CSRT tracker instance
+        @param parameters CSRT parameters TrackerCSRT::Params
+        """
+
+
+TrackerCSRT_Params = Params
+
+
 class TrackerDaSiamRPN(Tracker):
     def getTrackingScore(self) -> retval:
         """
@@ -3247,8 +3519,7 @@ class TrackerDaSiamRPN(Tracker):
         """
 
 
-class Params(builtins.object):
-    ...
+TrackerDaSiamRPN_Params = Params
 
 
 class TrackerGOTURN(Tracker):
@@ -3259,8 +3530,18 @@ class TrackerGOTURN(Tracker):
         """
 
 
-class Params(builtins.object):
-    ...
+TrackerGOTURN_Params = Params
+
+
+class TrackerKCF(Tracker):
+    def create(self, parameters = ...) -> retval:
+        """
+        @brief Create KCF tracker instance
+        @param parameters KCF parameters TrackerKCF::Params
+        """
+
+
+TrackerKCF_Params = Params
 
 
 class TrackerMIL(Tracker):
@@ -3271,8 +3552,7 @@ class TrackerMIL(Tracker):
         """
 
 
-class Params(builtins.object):
-    ...
+TrackerMIL_Params = Params
 
 
 class TrackerNano(Tracker):
@@ -3288,8 +3568,7 @@ class TrackerNano(Tracker):
         """
 
 
-class Params(builtins.object):
-    ...
+TrackerNano_Params = Params
 
 
 class UMat(builtins.object):
@@ -3637,3489 +3916,926 @@ class WarperCreator(builtins.object):
     ...
 
 
-class ArucoDetector(cv2.Algorithm):
-    def detectMarkers(self, image, corners = ..., ids = ..., rejectedImgPoints = ...) -> tuple[corners, ids, rejectedImgPoints]:
-        """
-        @brief Basic marker detection
-        *
-        * @param image input image
-        * @param corners vector of detected marker corners. For each marker, its four corners * are provided, (e.g std::vector<std::vector<cv::Point2f> > ). For N detected markers, * the dimensions of this array is Nx4. The order of the corners is clockwise.
-        * @param ids vector of identifiers of the detected markers. The identifier is of type int * (e.g. std::vector<int>). For N detected markers, the size of ids is also N. * The identifiers have the same order than the markers in the imgPoints array.
-        * @param rejectedImgPoints contains the imgPoints of those squares whose inner code has not a * correct codification. Useful for debugging purposes. * * Performs marker detection in the input image. Only markers included in the specific dictionary * are searched. For each detected marker, it returns the 2D position of its corner in the image * and its corresponding identifier. * Note that this function does not perform pose estimation. * @note The function does not correct lens distortion or takes it into account. It's recommended to undistort * input image with corresponging camera model, if camera parameters are known * @sa undistort, estimatePoseSingleMarkers,  estimatePoseBoard
-        """
-
-    def getDetectorParameters(self) -> retval:
-        """"""
-
-    def getDictionary(self) -> retval:
-        """"""
-
-    def getRefineParameters(self) -> retval:
-        """"""
-
-    def read(self, fn) -> None:
-        """
-        @brief Reads algorithm parameters from a file storage
-        """
-
-    def refineDetectedMarkers(self, image, board, detectedCorners, detectedIds, rejectedCorners, cameraMatrix = ..., distCoeffs = ..., recoveredIdxs = ...) -> tuple[detectedCorners, detectedIds, rejectedCorners, recoveredIdxs]:
-        """
-        @brief Refind not detected markers based on the already detected and the board layout
-        *
-        * @param image input image
-        * @param board layout of markers in the board.
-        * @param detectedCorners vector of already detected marker corners.
-        * @param detectedIds vector of already detected marker identifiers.
-        * @param rejectedCorners vector of rejected candidates during the marker detection process.
-        * @param cameraMatrix optional input 3x3 floating-point camera matrix * \f$A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\f$
-        * @param distCoeffs optional vector of distortion coefficients * \f$(k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\f$ of 4, 5, 8 or 12 elements
-        * @param recoveredIdxs Optional array to returns the indexes of the recovered candidates in the * original rejectedCorners array. * * This function tries to find markers that were not detected in the basic detecMarkers function. * First, based on the current detected marker and the board layout, the function interpolates * the position of the missing markers. Then it tries to find correspondence between the reprojected * markers and the rejected candidates based on the minRepDistance and errorCorrectionRate parameters. * If camera parameters and distortion coefficients are provided, missing markers are reprojected * using projectPoint function. If not, missing marker projections are interpolated using global * homography, and all the marker corners in the board must have the same Z coordinate.
-        """
-
-    def setDetectorParameters(self, detectorParameters) -> None:
-        """"""
-
-    def setDictionary(self, dictionary) -> None:
-        """"""
-
-    def setRefineParameters(self, refineParameters) -> None:
-        """"""
-
-    def write(self, fs, name) -> None:
-        """
-        @brief simplified API for language bindings
-        """
-
-
-class Board(builtins.object):
-    def generateImage(self, outSize, img = ..., marginSize = ..., borderBits = ...) -> img:
-        """
-        @brief Draw a planar board
-        *
-        * @param outSize size of the output image in pixels.
-        * @param img output image with the board. The size of this image will be outSize * and the board will be on the center, keeping the board proportions.
-        * @param marginSize minimum margins (in pixels) of the board in the output image
-        * @param borderBits width of the marker borders. * * This function return the image of the board, ready to be printed.
-        """
-
-    def getDictionary(self) -> retval:
-        """
-        @brief return the Dictionary of markers employed for this board
-        """
-
-    def getIds(self) -> retval:
-        """
-        @brief vector of the identifiers of the markers in the board (should be the same size as objPoints)
-        * @return vector of the identifiers of the markers
-        """
-
-    def getObjPoints(self) -> retval:
-        """
-        @brief return array of object points of all the marker corners in the board.
-        *
-        * Each marker include its 4 corners in this order:
-        * -   objPoints[i][0] - left-top point of i-th marker
-        * -   objPoints[i][1] - right-top point of i-th marker
-        * -   objPoints[i][2] - right-bottom point of i-th marker
-        * -   objPoints[i][3] - left-bottom point of i-th marker
-        *
-        * Markers are placed in a certain order - row by row, left to right in every row. For M markers, the size is Mx4.
-        """
-
-    def getRightBottomCorner(self) -> retval:
-        """
-        @brief get coordinate of the bottom right corner of the board, is set when calling the function create()
-        """
-
-    def matchImagePoints(self, detectedCorners, detectedIds, objPoints = ..., imgPoints = ...) -> tuple[objPoints, imgPoints]:
-        """
-        @brief Given a board configuration and a set of detected markers, returns the corresponding
-        * image points and object points to call solvePnP()
-        *
-        * @param detectedCorners List of detected marker corners of the board. * For CharucoBoard class you can set list of charuco corners.
-        * @param detectedIds List of identifiers for each marker or list of charuco identifiers for each corner. * For CharucoBoard class you can set list of charuco identifiers for each corner.
-        * @param objPoints Vector of vectors of board marker points in the board coordinate space.
-        * @param imgPoints Vector of vectors of the projections of board marker corner points.
-        """
-
-
-class CharucoBoard(Board):
-    def checkCharucoCornersCollinear(self, charucoIds) -> retval:
-        """
-        @brief check whether the ChArUco markers are collinear
-        *
-        * @param charucoIds list of identifiers for each corner in charucoCorners per frame. * @return bool value, 1 (true) if detected corners form a line, 0 (false) if they do not. * solvePnP, calibration functions will fail if the corners are collinear (true). * * The number of ids in charucoIDs should be <= the number of chessboard corners in the board. * This functions checks whether the charuco corners are on a straight line (returns true, if so), or not (false). * Axis parallel, as well as diagonal and other straight lines detected.  Degenerate cases: * for number of charucoIDs <= 2,the function returns true.
-        """
-
-    def getChessboardCorners(self) -> retval:
-        """
-        @brief get CharucoBoard::chessboardCorners
-        """
-
-    def getChessboardSize(self) -> retval:
-        """"""
-
-    def getMarkerLength(self) -> retval:
-        """"""
-
-    def getSquareLength(self) -> retval:
-        """"""
-
-
-class CharucoDetector(cv2.Algorithm):
-    def detectBoard(self, image, charucoCorners = ..., charucoIds = ..., markerCorners = ..., markerIds = ...) -> tuple[charucoCorners, charucoIds, markerCorners, markerIds]:
-        """
-        * @brief detect aruco markers and interpolate position of ChArUco board corners
-        * @param image input image necesary for corner refinement. Note that markers are not detected and * should be sent in corners and ids parameters.
-        * @param charucoCorners interpolated chessboard corners.
-        * @param charucoIds interpolated chessboard corners identifiers.
-        * @param markerCorners vector of already detected markers corners. For each marker, its four * corners are provided, (e.g std::vector<std::vector<cv::Point2f> > ). For N detected markers, the * dimensions of this array should be Nx4. The order of the corners should be clockwise. * If markerCorners and markerCorners are empty, the function detect aruco markers and ids.
-        * @param markerIds list of identifiers for each marker in corners. *  If markerCorners and markerCorners are empty, the function detect aruco markers and ids. * * This function receives the detected markers and returns the 2D position of the chessboard corners * from a ChArUco board using the detected Aruco markers. * * If markerCorners and markerCorners are empty, the detectMarkers() will run and detect aruco markers and ids. * * If camera parameters are provided, the process is based in an approximated pose estimation, else it is based on local homography. * Only visible corners are returned. For each corner, its corresponding identifier is also returned in charucoIds. * @sa findChessboardCorners
-        """
-
-    def detectDiamonds(self, image, diamondCorners = ..., diamondIds = ..., markerCorners = ..., markerIds = ...) -> tuple[diamondCorners, diamondIds, markerCorners, markerIds]:
-        """
-        * @brief Detect ChArUco Diamond markers
-        *
-        * @param image input image necessary for corner subpixel.
-        * @param diamondCorners output list of detected diamond corners (4 corners per diamond). The order * is the same than in marker corners: top left, top right, bottom right and bottom left. Similar * format than the corners returned by detectMarkers (e.g std::vector<std::vector<cv::Point2f> > ).
-        * @param diamondIds ids of the diamonds in diamondCorners. The id of each diamond is in fact of * type Vec4i, so each diamond has 4 ids, which are the ids of the aruco markers composing the * diamond.
-        * @param markerCorners list of detected marker corners from detectMarkers function. * If markerCorners and markerCorners are empty, the function detect aruco markers and ids.
-        * @param markerIds list of marker ids in markerCorners. * If markerCorners and markerCorners are empty, the function detect aruco markers and ids. * * This function detects Diamond markers from the previous detected ArUco markers. The diamonds * are returned in the diamondCorners and diamondIds parameters. If camera calibration parameters * are provided, the diamond search is based on reprojection. If not, diamond search is based on * homography. Homography is faster than reprojection, but less accurate.
-        """
-
-    def getBoard(self) -> retval:
-        """"""
-
-    def getCharucoParameters(self) -> retval:
-        """"""
-
-    def getDetectorParameters(self) -> retval:
-        """"""
-
-    def getRefineParameters(self) -> retval:
-        """"""
-
-    def setBoard(self, board) -> None:
-        """"""
-
-    def setCharucoParameters(self, charucoParameters) -> None:
-        """"""
-
-    def setDetectorParameters(self, detectorParameters) -> None:
-        """"""
-
-    def setRefineParameters(self, refineParameters) -> None:
-        """"""
-
-
-class CharucoParameters(builtins.object):
-    ...
-
-
-class DetectorParameters(builtins.object):
-    def readDetectorParameters(self, fn) -> retval:
-        """
-        @brief Read a new set of DetectorParameters from FileNode (use FileStorage.root()).
-        """
-
-    def writeDetectorParameters(self, fs, name = ...) -> retval:
-        """
-        @brief Write a set of DetectorParameters to FileStorage
-        """
+aruco_ArucoDetector = ArucoDetector
 
 
-class Dictionary(builtins.object):
-    def generateImageMarker(self, id, sidePixels, _img = ..., borderBits = ...) -> _img:
-        """
-        @brief Generate a canonical marker image
-        """
+aruco_Board = Board
 
-    def getDistanceToId(self, bits, id, allRotations = ...) -> retval:
-        """
-        @brief Returns the distance of the input bits to the specific id.
-        *
-        * If allRotations is true, the four posible bits rotation are considered
-        """
 
-    def identify(self, onlyBits, maxCorrectionRate) -> tuple[retval, idx, rotation]:
-        """
-        @brief Given a matrix of bits. Returns whether if marker is identified or not.
-        *
-        * It returns by reference the correct id (if any) and the correct rotation
-        """
+aruco_CharucoBoard = CharucoBoard
 
-    def readDictionary(self, fn) -> retval:
-        """
-        @brief Read a new dictionary from FileNode.
-        *
-        * Dictionary format:\n
-        * nmarkers: 35\n
-        * markersize: 6\n
-        * maxCorrectionBits: 5\n
-        * marker_0: "101011111011111001001001101100000000"\n
-        * ...\n
-        * marker_34: "011111010000111011111110110101100101"
-        """
 
-    def writeDictionary(self, fs, name = ...) -> None:
-        """
-        @brief Write a dictionary to FileStorage, format is the same as in readDictionary().
-        """
+aruco_CharucoDetector = CharucoDetector
 
-    def getBitsFromByteList(self, byteList, markerSize) -> retval:
-        """
-        @brief Transform list of bytes to matrix of bits
-        """
 
-    def getByteListFromBits(self, bits) -> retval:
-        """
-        @brief Transform matrix of bits to list of bytes in the 4 rotations
-        """
+aruco_CharucoParameters = CharucoParameters
 
 
-class GridBoard(Board):
-    def getGridSize(self) -> retval:
-        """"""
+aruco_DetectorParameters = DetectorParameters
 
-    def getMarkerLength(self) -> retval:
-        """"""
 
-    def getMarkerSeparation(self) -> retval:
-        """"""
+aruco_Dictionary = Dictionary
 
 
-class RefineParameters(builtins.object):
-    def readRefineParameters(self, fn) -> retval:
-        """
-        @brief Read a new set of RefineParameters from FileNode (use FileStorage.root()).
-        """
+aruco_EstimateParameters = EstimateParameters
 
-    def writeRefineParameters(self, fs, name = ...) -> retval:
-        """
-        @brief Write a set of RefineParameters to FileStorage
-        """
 
+aruco_GridBoard = GridBoard
 
-class BufferPool(builtins.object):
-    def getAllocator(self) -> retval:
-        """"""
 
-    def getBuffer(self, rows, cols, type) -> retval:
-        """"""
+aruco_RefineParameters = RefineParameters
 
-    def getBuffer(self, size, type) -> retval:
-        """"""
 
+barcode_BarcodeDetector = BarcodeDetector
 
-class DeviceInfo(builtins.object):
-    def ECCEnabled(self) -> retval:
-        """
 
-        See help(type(self)) for accurate signature.
+bgsegm_BackgroundSubtractorCNT = BackgroundSubtractorCNT
 
-        """
 
-    def asyncEngineCount(self) -> retval:
-        """"""
+bgsegm_BackgroundSubtractorGMG = BackgroundSubtractorGMG
 
-    def canMapHostMemory(self) -> retval:
-        """"""
 
-    def clockRate(self) -> retval:
-        """"""
+bgsegm_BackgroundSubtractorGSOC = BackgroundSubtractorGSOC
 
-    def computeMode(self) -> retval:
-        """"""
 
-    def concurrentKernels(self) -> retval:
-        """"""
+bgsegm_BackgroundSubtractorLSBP = BackgroundSubtractorLSBP
 
-    def deviceID(self) -> retval:
-        """
-        @brief Returns system index of the CUDA device starting with 0.
-        """
 
-    def freeMemory(self) -> retval:
-        """"""
+bgsegm_BackgroundSubtractorLSBPDesc = BackgroundSubtractorLSBPDesc
 
-    def integrated(self) -> retval:
-        """"""
 
-    def isCompatible(self) -> retval:
-        """
-        @brief Checks the CUDA module and device compatibility.
+bgsegm_BackgroundSubtractorMOG = BackgroundSubtractorMOG
 
-        This function returns true if the CUDA module can be run on the specified device. Otherwise, it
-        returns false .
-        """
 
-    def kernelExecTimeoutEnabled(self) -> retval:
-        """"""
+bgsegm_SyntheticSequenceGenerator = SyntheticSequenceGenerator
 
-    def l2CacheSize(self) -> retval:
-        """"""
 
-    def majorVersion(self) -> retval:
-        """"""
+bioinspired_Retina = Retina
 
-    def maxGridSize(self) -> retval:
-        """"""
 
-    def maxSurface1D(self) -> retval:
-        """"""
+bioinspired_RetinaFastToneMapping = RetinaFastToneMapping
 
-    def maxSurface1DLayered(self) -> retval:
-        """"""
 
-    def maxSurface2D(self) -> retval:
-        """"""
+bioinspired_TransientAreasSegmentationModule = TransientAreasSegmentationModule
 
-    def maxSurface2DLayered(self) -> retval:
-        """"""
 
-    def maxSurface3D(self) -> retval:
-        """"""
+ccm_ColorCorrectionModel = ColorCorrectionModel
 
-    def maxSurfaceCubemap(self) -> retval:
-        """"""
 
-    def maxSurfaceCubemapLayered(self) -> retval:
-        """"""
+colored_kinfu_ColoredKinFu = ColoredKinFu
 
-    def maxTexture1D(self) -> retval:
-        """"""
 
-    def maxTexture1DLayered(self) -> retval:
-        """"""
+colored_kinfu_Params = Params
 
-    def maxTexture1DLinear(self) -> retval:
-        """"""
 
-    def maxTexture1DMipmap(self) -> retval:
-        """"""
+cuda_BufferPool = BufferPool
 
-    def maxTexture2D(self) -> retval:
-        """"""
 
-    def maxTexture2DGather(self) -> retval:
-        """"""
+cuda_DeviceInfo = DeviceInfo
 
-    def maxTexture2DLayered(self) -> retval:
-        """"""
 
-    def maxTexture2DLinear(self) -> retval:
-        """"""
+cuda_Event = Event
 
-    def maxTexture2DMipmap(self) -> retval:
-        """"""
 
-    def maxTexture3D(self) -> retval:
-        """"""
+cuda_GpuData = GpuData
 
-    def maxTextureCubemap(self) -> retval:
-        """"""
 
-    def maxTextureCubemapLayered(self) -> retval:
-        """"""
+cuda_GpuMat = GpuMat
 
-    def maxThreadsDim(self) -> retval:
-        """"""
 
-    def maxThreadsPerBlock(self) -> retval:
-        """"""
+cuda_GpuMatND = GpuMatND
 
-    def maxThreadsPerMultiProcessor(self) -> retval:
-        """"""
 
-    def memPitch(self) -> retval:
-        """"""
+cuda_GpuMat_Allocator = Allocator
 
-    def memoryBusWidth(self) -> retval:
-        """"""
 
-    def memoryClockRate(self) -> retval:
-        """"""
+cuda_HostMem = HostMem
 
-    def minorVersion(self) -> retval:
-        """"""
 
-    def multiProcessorCount(self) -> retval:
-        """"""
+cuda_SURF_CUDA = SURF_CUDA
 
-    def pciBusID(self) -> retval:
-        """"""
 
-    def pciDeviceID(self) -> retval:
-        """"""
+cuda_Stream = Stream
 
-    def pciDomainID(self) -> retval:
-        """"""
 
-    def queryMemory(self, totalMemory, freeMemory) -> None:
-        """"""
+cuda_TargetArchs = TargetArchs
 
-    def regsPerBlock(self) -> retval:
-        """"""
 
-    def sharedMemPerBlock(self) -> retval:
-        """"""
+detail_AffineBasedEstimator = AffineBasedEstimator
 
-    def surfaceAlignment(self) -> retval:
-        """"""
 
-    def tccDriver(self) -> retval:
-        """"""
+detail_AffineBestOf2NearestMatcher = AffineBestOf2NearestMatcher
 
-    def textureAlignment(self) -> retval:
-        """"""
 
-    def texturePitchAlignment(self) -> retval:
-        """"""
+detail_BestOf2NearestMatcher = BestOf2NearestMatcher
 
-    def totalConstMem(self) -> retval:
-        """"""
 
-    def totalGlobalMem(self) -> retval:
-        """"""
+detail_BestOf2NearestRangeMatcher = BestOf2NearestRangeMatcher
 
-    def totalMemory(self) -> retval:
-        """"""
 
-    def unifiedAddressing(self) -> retval:
-        """"""
+detail_Blender = Blender
 
-    def warpSize(self) -> retval:
-        """"""
 
+detail_BlocksChannelsCompensator = BlocksChannelsCompensator
 
-class Event(builtins.object):
-    def queryIfComplete(self) -> retval:
-        """"""
 
-    def record(self, stream = ...) -> None:
-        """"""
+detail_BlocksCompensator = BlocksCompensator
 
-    def waitForCompletion(self) -> None:
-        """"""
 
-    def elapsedTime(self, start, end) -> retval:
-        """"""
+detail_BlocksGainCompensator = BlocksGainCompensator
 
 
-class GpuData(builtins.object):
-    ...
+detail_BundleAdjusterAffine = BundleAdjusterAffine
 
 
-class GpuMat(builtins.object):
-    def adjustROI(self, dtop, dbottom, dleft, dright) -> retval:
-        """"""
+detail_BundleAdjusterAffinePartial = BundleAdjusterAffinePartial
 
-    def assignTo(self, m, type = ...) -> None:
-        """"""
 
-    def channels(self) -> retval:
-        """"""
+detail_BundleAdjusterBase = BundleAdjusterBase
 
-    def clone(self) -> retval:
-        """"""
 
-    def col(self, x) -> retval:
-        """"""
+detail_BundleAdjusterRay = BundleAdjusterRay
 
-    def colRange(self, startcol, endcol) -> retval:
-        """"""
 
-    def colRange(self, r) -> retval:
-        """"""
+detail_BundleAdjusterReproj = BundleAdjusterReproj
 
-    def convertTo(self, rtype, dst = ...) -> dst:
-        """"""
 
-    def convertTo(self, rtype, stream, dst = ...) -> dst:
-        """"""
+detail_CameraParams = CameraParams
 
-    def convertTo(self, rtype, alpha, dst = ..., beta = ...) -> dst:
-        """"""
 
-    def convertTo(self, rtype, alpha, stream, dst = ...) -> dst:
-        """"""
+detail_ChannelsCompensator = ChannelsCompensator
 
-    def convertTo(self, rtype, alpha, beta, stream, dst = ...) -> dst:
-        """"""
 
-    def copyTo(self, dst = ...) -> dst:
-        """"""
+detail_DpSeamFinder = DpSeamFinder
 
-    def copyTo(self, stream, dst = ...) -> dst:
-        """"""
 
-    def copyTo(self, mask, dst = ...) -> dst:
-        """"""
+detail_Estimator = Estimator
 
-    def copyTo(self, mask, stream, dst = ...) -> dst:
-        """"""
 
-    def create(self, rows, cols, type) -> None:
-        """"""
+detail_ExposureCompensator = ExposureCompensator
 
-    def create(self, size, type) -> None:
-        """"""
 
-    def cudaPtr(self) -> retval:
-        """"""
+detail_FeatherBlender = FeatherBlender
 
-    def depth(self) -> retval:
-        """"""
 
-    def download(self, dst = ...) -> dst:
-        """
-        @brief Performs data download from GpuMat (Blocking call)
+detail_FeaturesMatcher = FeaturesMatcher
 
-        This function copies data from device memory to host memory. As being a blocking call, it is
-        guaranteed that the copy operation is finished when this function returns.
-        """
 
-    def download(self, stream, dst = ...) -> dst:
-        """
-        @brief Performs data download from GpuMat (Non-Blocking call)
+detail_GainCompensator = GainCompensator
 
-        This function copies data from device memory to host memory. As being a non-blocking call, this
-        function may return even if the copy operation is not finished.
 
-        The copy operation may be overlapped with operations in other non-default streams if \p stream is
-        not the default stream and \p dst is HostMem allocated with HostMem::PAGE_LOCKED option.
-        """
+detail_GraphCutSeamFinder = GraphCutSeamFinder
 
-    def elemSize(self) -> retval:
-        """"""
 
-    def elemSize1(self) -> retval:
-        """"""
+detail_HomographyBasedEstimator = HomographyBasedEstimator
 
-    def empty(self) -> retval:
-        """"""
 
-    def isContinuous(self) -> retval:
-        """"""
+detail_ImageFeatures = ImageFeatures
 
-    def locateROI(self, wholeSize, ofs) -> None:
-        """"""
 
-    def release(self) -> None:
-        """"""
+detail_MatchesInfo = MatchesInfo
 
-    def reshape(self, cn, rows = ...) -> retval:
-        """"""
 
-    def row(self, y) -> retval:
-        """"""
+detail_MultiBandBlender = MultiBandBlender
 
-    def rowRange(self, startrow, endrow) -> retval:
-        """"""
 
-    def rowRange(self, r) -> retval:
-        """"""
+detail_NoBundleAdjuster = NoBundleAdjuster
 
-    def setTo(self, s) -> retval:
-        """"""
 
-    def setTo(self, s, stream) -> retval:
-        """"""
+detail_NoExposureCompensator = NoExposureCompensator
 
-    def setTo(self, s, mask) -> retval:
-        """"""
 
-    def setTo(self, s, mask, stream) -> retval:
-        """"""
+detail_NoSeamFinder = NoSeamFinder
 
-    def size(self) -> retval:
-        """"""
 
-    def step1(self) -> retval:
-        """"""
+detail_PairwiseSeamFinder = PairwiseSeamFinder
 
-    def swap(self, mat) -> None:
-        """"""
 
-    def type(self) -> retval:
-        """"""
+detail_ProjectorBase = ProjectorBase
 
-    def updateContinuityFlag(self) -> None:
-        """"""
 
-    def upload(self, arr) -> None:
-        """
-        @brief Performs data upload to GpuMat (Blocking call)
+detail_SeamFinder = SeamFinder
 
-        This function copies data from host memory to device memory. As being a blocking call, it is
-        guaranteed that the copy operation is finished when this function returns.
-        """
 
-    def upload(self, arr, stream) -> None:
-        """
-        @brief Performs data upload to GpuMat (Non-Blocking call)
+detail_SphericalProjector = SphericalProjector
 
-        This function copies data from host memory to device memory. As being a non-blocking call, this
-        function may return even if the copy operation is not finished.
 
-        The copy operation may be overlapped with operations in other non-default streams if \p stream is
-        not the default stream and \p dst is HostMem allocated with HostMem::PAGE_LOCKED option.
-        """
+detail_Timelapser = Timelapser
 
-    def defaultAllocator(self) -> retval:
-        """"""
 
-    def setDefaultAllocator(self, allocator) -> None:
-        """"""
+detail_TimelapserCrop = TimelapserCrop
 
 
-class GpuMatND(builtins.object):
-    ...
+detail_VoronoiSeamFinder = VoronoiSeamFinder
 
 
-class Allocator(builtins.object):
-    ...
+dnn_ClassificationModel = ClassificationModel
 
 
-class HostMem(builtins.object):
-    def channels(self) -> retval:
-        """"""
+dnn_DetectionModel = DetectionModel
 
-    def clone(self) -> retval:
-        """"""
 
-    def create(self, rows, cols, type) -> None:
-        """"""
+dnn_DictValue = DictValue
 
-    def createMatHeader(self) -> retval:
-        """"""
 
-    def depth(self) -> retval:
-        """"""
+dnn_KeypointsModel = KeypointsModel
 
-    def elemSize(self) -> retval:
-        """"""
 
-    def elemSize1(self) -> retval:
-        """"""
+dnn_Layer = Layer
 
-    def empty(self) -> retval:
-        """"""
 
-    def isContinuous(self) -> retval:
-        """
-        @brief Maps CPU memory to GPU address space and creates the cuda::GpuMat header without reference counting
-        for it.
+dnn_Model = Model
 
-        This can be done only if memory was allocated with the SHARED flag and if it is supported by the
-        hardware. Laptops often share video and CPU memory, so address spaces can be mapped, which
-        eliminates an extra copy.
-        """
 
-    def reshape(self, cn, rows = ...) -> retval:
-        """"""
+dnn_Net = Net
 
-    def size(self) -> retval:
-        """"""
 
-    def step1(self) -> retval:
-        """"""
+dnn_SegmentationModel = SegmentationModel
 
-    def swap(self, b) -> None:
-        """"""
 
-    def type(self) -> retval:
-        """"""
+dnn_TextDetectionModel = TextDetectionModel
 
 
-class Stream(builtins.object):
-    def cudaPtr(self) -> retval:
-        """"""
+dnn_TextDetectionModel_DB = TextDetectionModel_DB
 
-    def queryIfComplete(self) -> retval:
-        """
-        @brief Returns true if the current stream queue is finished. Otherwise, it returns false.
-        """
 
-    def waitEvent(self, event) -> None:
-        """
-        @brief Makes a compute stream wait on an event.
-        """
+dnn_TextDetectionModel_EAST = TextDetectionModel_EAST
 
-    def waitForCompletion(self) -> None:
-        """
-        @brief Blocks the current CPU thread until all operations in the stream are complete.
-        """
 
-    def Null(self) -> retval:
-        """
-        @brief Adds a callback to be called on the host after all currently enqueued items in the stream have
-        completed.
+dnn_TextRecognitionModel = TextRecognitionModel
 
-        @note Callbacks must not make any CUDA API calls. Callbacks must not perform any synchronization
-        that may depend on outstanding device work or other callbacks that are not mandated to run earlier.
-        Callbacks without a mandated order (in independent streams) execute in undefined order and may be
-        serialized.
-        type
-        See help(type) for accurate signature.
-        """
 
+dnn_superres_DnnSuperResImpl = DnnSuperResImpl
 
-class TargetArchs(builtins.object):
-    def has(self, major, minor) -> retval:
-        """
-        @brief There is a set of methods to check whether the module contains intermediate (PTX) or binary CUDA
-        code for the given architecture(s):
 
-        @param major Major compute capability version.
-        @param minor Minor compute capability version.
-        """
+dpm_DPMDetector = DPMDetector
 
-    def hasBin(self, major, minor) -> retval:
-        """"""
 
-    def hasEqualOrGreater(self, major, minor) -> retval:
-        """"""
+dpm_DPMDetector_ObjectDetection = ObjectDetection
 
-    def hasEqualOrGreaterBin(self, major, minor) -> retval:
-        """"""
 
-    def hasEqualOrGreaterPtx(self, major, minor) -> retval:
-        """"""
-
-    def hasEqualOrLessPtx(self, major, minor) -> retval:
-        """"""
-
-    def hasPtx(self, major, minor) -> retval:
-        """"""
-
-
-class AffineBasedEstimator(Estimator):
-    ...
-
-
-class AffineBestOf2NearestMatcher(BestOf2NearestMatcher):
-    ...
-
-
-class BestOf2NearestMatcher(FeaturesMatcher):
-    def collectGarbage(self) -> None:
-        """"""
-
-    def create(self, try_use_gpu = ..., match_conf = ..., num_matches_thresh1 = ..., num_matches_thresh2 = ..., matches_confindece_thresh = ...) -> retval:
-        """"""
-
-
-class BestOf2NearestRangeMatcher(BestOf2NearestMatcher):
-    ...
-
-
-class Blender(builtins.object):
-    def blend(self, dst, dst_mask) -> tuple[dst, dst_mask]:
-        """
-        @brief Blends and returns the final pano.
-
-        @param dst Final pano
-        @param dst_mask Final pano mask
-        """
-
-    def feed(self, img, mask, tl) -> None:
-        """
-        @brief Processes the image.
-
-        @param img Source image
-        @param mask Source image mask
-        @param tl Source image top-left corners
-        """
-
-    def prepare(self, corners, sizes) -> None:
-        """
-        @brief Prepares the blender for blending.
-
-        @param corners Source images top-left corners
-        @param sizes Source image sizes
-        """
-
-    @overload
-    def prepare(self, dst_roi) -> None:
-        """
-        @overload
-        """
-
-    def createDefault(self, type, try_gpu = ...) -> retval:
-        """"""
-
-
-class BlocksChannelsCompensator(BlocksCompensator):
-    ...
-
-
-class BlocksCompensator(ExposureCompensator):
-    def apply(self, index, corner, image, mask) -> image:
-        """"""
-
-    def getBlockSize(self) -> retval:
-        """"""
-
-    def getMatGains(self, umv = ...) -> umv:
-        """"""
-
-    def getNrFeeds(self) -> retval:
-        """"""
-
-    def getNrGainsFilteringIterations(self) -> retval:
-        """"""
-
-    def getSimilarityThreshold(self) -> retval:
-        """"""
-
-    def setBlockSize(self, width, height) -> None:
-        """"""
-
-    def setBlockSize(self, size) -> None:
-        """"""
-
-    def setMatGains(self, umv) -> None:
-        """"""
-
-    def setNrFeeds(self, nr_feeds) -> None:
-        """"""
-
-    def setNrGainsFilteringIterations(self, nr_iterations) -> None:
-        """"""
-
-    def setSimilarityThreshold(self, similarity_threshold) -> None:
-        """"""
-
-
-class BlocksGainCompensator(BlocksCompensator):
-    def apply(self, index, corner, image, mask) -> image:
-        """"""
-
-    def getMatGains(self, umv = ...) -> umv:
-        """"""
-
-    def setMatGains(self, umv) -> None:
-        """"""
-
-
-class BundleAdjusterAffine(BundleAdjusterBase):
-    ...
-
-
-class BundleAdjusterAffinePartial(BundleAdjusterBase):
-    ...
-
-
-class BundleAdjusterBase(Estimator):
-    def confThresh(self) -> retval:
-        """"""
-
-    def refinementMask(self) -> retval:
-        """"""
-
-    def setConfThresh(self, conf_thresh) -> None:
-        """"""
-
-    def setRefinementMask(self, mask) -> None:
-        """"""
-
-    def setTermCriteria(self, term_criteria) -> None:
-        """"""
-
-    def termCriteria(self) -> retval:
-        """"""
-
-
-class BundleAdjusterRay(BundleAdjusterBase):
-    ...
-
-
-class BundleAdjusterReproj(BundleAdjusterBase):
-    ...
-
-
-class CameraParams(builtins.object):
-    def K(self) -> retval:
-        """
-
-        
-        """
-
-
-class ChannelsCompensator(ExposureCompensator):
-    def apply(self, index, corner, image, mask) -> image:
-        """"""
-
-    def getMatGains(self, umv = ...) -> umv:
-        """"""
-
-    def getNrFeeds(self) -> retval:
-        """"""
-
-    def getSimilarityThreshold(self) -> retval:
-        """"""
-
-    def setMatGains(self, umv) -> None:
-        """"""
-
-    def setNrFeeds(self, nr_feeds) -> None:
-        """"""
-
-    def setSimilarityThreshold(self, similarity_threshold) -> None:
-        """"""
-
-
-class DpSeamFinder(SeamFinder):
-    def setCostFunction(self, val) -> None:
-        """"""
-
-
-class Estimator(builtins.object):
-    def apply(self, features, pairwise_matches, cameras) -> tuple[retval, cameras]:
-        """
-        @brief Estimates camera parameters.
-
-        @param features Features of images
-        @param pairwise_matches Pairwise matches of images
-        @param cameras Estimated camera parameters @return True in case of success, false otherwise
-        """
-
-
-class ExposureCompensator(builtins.object):
-    def apply(self, index, corner, image, mask) -> image:
-        """
-        @brief Compensate exposure in the specified image.
-
-        @param index Image index
-        @param corner Image top-left corner
-        @param image Image to process
-        @param mask Image mask
-        """
-
-    def feed(self, corners, images, masks) -> None:
-        """
-        @param corners Source image top-left corners
-        @param images Source images
-        @param masks Image masks to update (second value in pair specifies the value which should be used to detect where image is)
-        """
-
-    def getMatGains(self, arg1 = ...) -> arg1:
-        """"""
-
-    def getUpdateGain(self) -> retval:
-        """"""
-
-    def setMatGains(self, arg1) -> None:
-        """"""
-
-    def setUpdateGain(self, b) -> None:
-        """"""
-
-    def createDefault(self, type) -> retval:
-        """"""
-
-
-class FeatherBlender(Blender):
-    def blend(self, dst, dst_mask) -> tuple[dst, dst_mask]:
-        """"""
-
-    def createWeightMaps(self, masks, corners, weight_maps) -> tuple[retval, weight_maps]:
-        """"""
-
-    def feed(self, img, mask, tl) -> None:
-        """"""
-
-    def prepare(self, dst_roi) -> None:
-        """"""
-
-    def setSharpness(self, val) -> None:
-        """"""
-
-    def sharpness(self) -> retval:
-        """"""
-
-
-class GainCompensator(ExposureCompensator):
-    def apply(self, index, corner, image, mask) -> image:
-        """"""
-
-    def getMatGains(self, umv = ...) -> umv:
-        """"""
-
-    def getNrFeeds(self) -> retval:
-        """"""
-
-    def getSimilarityThreshold(self) -> retval:
-        """"""
-
-    def setMatGains(self, umv) -> None:
-        """"""
-
-    def setNrFeeds(self, nr_feeds) -> None:
-        """"""
-
-    def setSimilarityThreshold(self, similarity_threshold) -> None:
-        """"""
-
-
-class GraphCutSeamFinder(builtins.object):
-    def find(self, src, corners, masks) -> masks:
-        """"""
-
-
-class HomographyBasedEstimator(Estimator):
-    ...
-
-
-class ImageFeatures(builtins.object):
-    def getKeypoints(self) -> retval:
-        """"""
-
-
-class MatchesInfo(builtins.object):
-    def getInliers(self) -> retval:
-        """"""
-
-    def getMatches(self) -> retval:
-        """"""
-
-
-class MultiBandBlender(Blender):
-    def blend(self, dst, dst_mask) -> tuple[dst, dst_mask]:
-        """"""
-
-    def feed(self, img, mask, tl) -> None:
-        """"""
-
-    def numBands(self) -> retval:
-        """"""
-
-    def prepare(self, dst_roi) -> None:
-        """"""
-
-    def setNumBands(self, val) -> None:
-        """"""
-
-
-class NoBundleAdjuster(BundleAdjusterBase):
-    ...
-
-
-class NoExposureCompensator(ExposureCompensator):
-    def apply(self, arg1, arg2, arg3, arg4) -> arg3:
-        """"""
-
-    def getMatGains(self, umv = ...) -> umv:
-        """"""
-
-    def setMatGains(self, umv) -> None:
-        """"""
-
-
-class NoSeamFinder(SeamFinder):
-    def find(self, arg1, arg2, arg3) -> arg3:
-        """"""
-
-
-class PairwiseSeamFinder(SeamFinder):
-    def find(self, src, corners, masks) -> masks:
-        """"""
-
-
-class ProjectorBase(builtins.object):
-    ...
-
-
-class SeamFinder(builtins.object):
-    def find(self, src, corners, masks) -> masks:
-        """
-        @brief Estimates seams.
-
-        @param src Source images
-        @param corners Source image top-left corners
-        @param masks Source image masks to update
-        """
-
-    def createDefault(self, type) -> retval:
-        """"""
-
-
-class SphericalProjector(ProjectorBase):
-    def mapBackward(self, u, v, x, y) -> None:
-        """"""
-
-    def mapForward(self, x, y, u, v) -> None:
-        """"""
-
-
-class Timelapser(builtins.object):
-    def getDst(self) -> retval:
-        """"""
-
-    def initialize(self, corners, sizes) -> None:
-        """"""
-
-    def process(self, img, mask, tl) -> None:
-        """"""
-
-    def createDefault(self, type) -> retval:
-        """"""
-
-
-class TimelapserCrop(Timelapser):
-    ...
-
-
-class VoronoiSeamFinder(PairwiseSeamFinder):
-    def find(self, src, corners, masks) -> masks:
-        """"""
-
-
-class ClassificationModel(Model):
-    def classify(self, frame) -> tuple[int, float]:
-        """Given the input frame, create input blob, run net and return top-1 prediction.
-
-        Returns:
-            (classId, conf)
-        """
-
-    def getEnableSoftmaxPostProcessing(self) -> retval:
-        """
-        * @brief Get enable/disable softmax post processing option.
-        *
-        * This option defaults to false, softmax post processing is not applied within the classify() function.
-        """
-
-    def setEnableSoftmaxPostProcessing(self, enable) -> retval:
-        """
-        * @brief Set enable/disable softmax post processing option.
-        *
-        * If this option is true, softmax is applied after forward inference within the classify() function
-        * to convert the confidences range to [0.0-1.0].
-        * This function allows you to toggle this behavior.
-        * Please turn true when not contain softmax layer in model.
-        * @param[in] enable Set enable softmax post processing within the classify() function.
-        """
-
-
-class DetectionModel(Model):
-    def detect(self, frame, confThreshold = ..., nmsThreshold = ...) -> tuple[classIds, confidences, boxes]:
-        """
-        @brief Given the @p input frame, create input blob, run net and return result detections.
-        *  @param[in]  frame  The input image.
-        *  @param[out] classIds Class indexes in result detection.
-        *  @param[out] confidences A set of corresponding confidences.
-        *  @param[out] boxes A set of bounding boxes.
-        *  @param[in] confThreshold A threshold used to filter boxes by confidences.
-        *  @param[in] nmsThreshold A threshold used in non maximum suppression.
-        """
-
-    def getNmsAcrossClasses(self) -> retval:
-        """
-        * @brief Getter for nmsAcrossClasses. This variable defaults to false,
-        * such that when non max suppression is used during the detect() function, it will do so only per-class
-        """
-
-    def setNmsAcrossClasses(self, value) -> retval:
-        """
-        * @brief nmsAcrossClasses defaults to false,
-        * such that when non max suppression is used during the detect() function, it will do so per-class.
-        * This function allows you to toggle this behaviour.
-        * @param[in] value The new value for nmsAcrossClasses
-        """
-
-
-class DictValue(builtins.object):
-    def getIntValue(self, idx = ...) -> retval:
-        """"""
-
-    def getRealValue(self, idx = ...) -> retval:
-        """"""
-
-    def getStringValue(self, idx = ...) -> retval:
-        """"""
-
-    def isInt(self) -> retval:
-        """"""
-
-    def isReal(self) -> retval:
-        """"""
-
-    def isString(self) -> retval:
-        """"""
-
-
-class KeypointsModel(Model):
-    def estimate(self, frame, thresh = ...) -> retval:
-        """
-        @brief Given the @p input frame, create input blob, run net
-        *  @param[in]  frame  The input image.
-        *  @param thresh minimum confidence threshold to select a keypoint *  @returns a vector holding the x and y coordinates of each detected keypoint *
-        """
-
-
-class Layer(cv2.Algorithm):
-    def finalize(self, inputs, outputs = ...) -> outputs:
-        """
-        @brief Computes and sets internal parameters according to inputs, outputs and blobs.
-        *  @param[in]  inputs  vector of already allocated input blobs
-        *  @param[out] outputs vector of already allocated output blobs * * If this method is called after network has allocated all memory for input and output blobs * and before inferencing.
-        """
-
-    def outputNameToIndex(self, outputName) -> retval:
-        """
-        @brief Returns index of output blob in output array.
-        *  @see inputNameToIndex()
-        """
-
-    def run(self, inputs, internals, outputs = ...) -> tuple[outputs, internals]:
-        """
-        @brief Allocates layer and computes output.
-        *  @deprecated This method will be removed in the future release.
-        """
-
-
-class Model(builtins.object):
-    def predict(self, frame, outs = ...) -> outs:
-        """
-        @brief Given the @p input frame, create input blob, run net and return the output @p blobs.
-        *  @param[in]  frame  The input image.
-        *  @param[out] outs Allocated output blobs, which will store results of the computation.
-        """
-
-    def setInputCrop(self, crop) -> retval:
-        """
-        @brief Set flag crop for frame.
-        *  @param[in] crop Flag which indicates whether image will be cropped after resize or not.
-        """
-
-    def setInputMean(self, mean) -> retval:
-        """
-        @brief Set mean value for frame.
-        *  @param[in] mean Scalar with mean values which are subtracted from channels.
-        """
-
-    def setInputParams(self, scale = ..., size = ..., mean = ..., swapRB = ..., crop = ...) -> None:
-        """
-        @brief Set preprocessing parameters for frame.
-        *  @param[in] size New input size.
-        *  @param[in] mean Scalar with mean values which are subtracted from channels.
-        *  @param[in] scale Multiplier for frame values.
-        *  @param[in] swapRB Flag which indicates that swap first and last channels.
-        *  @param[in] crop Flag which indicates whether image will be cropped after resize or not. *  blob(n, c, y, x) = scale * resize( frame(y, x, c) ) - mean(c) )
-        """
-
-    def setInputScale(self, scale) -> retval:
-        """
-        @brief Set scalefactor value for frame.
-        *  @param[in] scale Multiplier for frame values.
-        """
-
-    @overload
-    def setInputSize(self, size) -> retval:
-        """
-        @brief Set input size for frame.
-        *  @param[in] size New input size. *  @note If shape of the new blob less than 0, then frame size not change.
-        """
-
-    @overload
-    def setInputSize(self, width, height) -> retval:
-        """
-        @overload
-        *  @param[in] width New input width.
-        *  @param[in] height New input height.
-        """
-
-    def setInputSwapRB(self, swapRB) -> retval:
-        """
-        @brief Set flag swapRB for frame.
-        *  @param[in] swapRB Flag which indicates that swap first and last channels.
-        """
-
-    def setPreferableBackend(self, backendId) -> retval:
-        """"""
-
-    def setPreferableTarget(self, targetId) -> retval:
-        """"""
-
-
-class Net(builtins.object):
-    def connect(self, outPin, inpPin) -> None:
-        """
-        @brief Connects output of the first layer to input of the second layer.
-        *  @param outPin descriptor of the first layer output.
-        *  @param inpPin descriptor of the second layer input. * * Descriptors have the following template <DFN>&lt;layer_name&gt;[.input_number]</DFN>: * - the first part of the template <DFN>layer_name</DFN> is string name of the added layer. *   If this part is empty then the network input pseudo layer will be used; * - the second optional part of the template <DFN>input_number</DFN> *   is either number of the layer input, either label one. *   If this part is omitted then the first layer input will be used. * *  @see setNetInputs(), Layer::inputNameToIndex(), Layer::outputNameToIndex()
-        """
-
-    def dump(self) -> retval:
-        """
-        @brief Dump net to String
-        *  @returns String with structure, hyperparameters, backend, target and fusion
-        *  Call method after setInput(). To see correct backend, target and fusion run after forward().
-        """
-
-    def dumpToFile(self, path) -> None:
-        """
-        @brief Dump net structure, hyperparameters, backend, target and fusion to dot file
-        *  @param path   path to output file with .dot extension *  @see dump()
-        """
-
-    def empty(self) -> retval:
-        """
-        Returns true if there are no layers in the network.
-        """
-
-    def enableFusion(self, fusion) -> None:
-        """
-        @brief Enables or disables layer fusion in the network.
-        * @param fusion true to enable the fusion, false to disable. The fusion is enabled by default.
-        """
-
-    def enableWinograd(self, useWinograd) -> None:
-        """
-        @brief Enables or disables the Winograd compute branch. The Winograd compute branch can speed up
-        * 3x3 Convolution at a small loss of accuracy.
-        * @param useWinograd true to enable the Winograd compute branch. The default is true.
-        """
-
-    @overload
-    def forward(self, outputName = ...) -> retval:
-        """
-        @brief Runs forward pass to compute output of layer with name @p outputName.
-        *  @param outputName name for layer which output is needed to get *  @return blob for first output of specified layer. *  @details By default runs forward pass for the whole network.
-        """
-
-    @overload
-    def forward(self, outputBlobs = ..., outputName = ...) -> outputBlobs:
-        """
-        @brief Runs forward pass to compute output of layer with name @p outputName.
-        *  @param outputBlobs contains all output blobs for specified layer.
-        *  @param outputName name for layer which output is needed to get *  @details If @p outputName is empty, runs forward pass for the whole network.
-        """
-
-    @overload
-    def forward(self, outBlobNames, outputBlobs = ...) -> outputBlobs:
-        """
-        @brief Runs forward pass to compute outputs of layers listed in @p outBlobNames.
-        *  @param outputBlobs contains blobs for first outputs of specified layers.
-        *  @param outBlobNames names for layers which outputs are needed to get
-        """
-
-    def forwardAndRetrieve(self, outBlobNames) -> outputBlobs:
-        """
-        @brief Runs forward pass to compute outputs of layers listed in @p outBlobNames.
-        *  @param outputBlobs contains all output blobs for each layer specified in @p outBlobNames.
-        *  @param outBlobNames names for layers which outputs are needed to get
-        """
-
-    def forwardAsync(self, outputName = ...) -> retval:
-        """
-        @brief Runs forward pass to compute output of layer with name @p outputName.
-        *  @param outputName name for layer which output is needed to get *  @details By default runs forward pass for the whole network. * *  This is an asynchronous version of forward(const String&). *  dnn::DNN_BACKEND_INFERENCE_ENGINE backend is required.
-        """
-
-    @overload
-    def getFLOPS(self, netInputShapes) -> retval:
-        """
-        @brief Computes FLOP for whole loaded model with specified input shapes.
-        * @param netInputShapes vector of shapes for all net inputs. * @returns computed FLOP.
-        """
-
-    @overload
-    def getFLOPS(self, netInputShape) -> retval:
-        """
-        @overload
-        """
-
-    @overload
-    def getFLOPS(self, layerId, netInputShapes) -> retval:
-        """
-        @overload
-        """
-
-    @overload
-    def getFLOPS(self, layerId, netInputShape) -> retval:
-        """
-        @overload
-        """
-
-    def getInputDetails(self) -> tuple[scales, zeropoints]:
-        """
-        @brief Returns input scale and zeropoint for a quantized Net.
-        *  @param scales output parameter for returning input scales.
-        *  @param zeropoints output parameter for returning input zeropoints.
-        """
-
-    @overload
-    def getLayer(self, layerId) -> retval:
-        """
-        @brief Returns pointer to layer with specified id or name which the network use.
-        """
-
-    @overload
-    def getLayer(self, layerName) -> retval:
-        """
-        @overload
-        *  @deprecated Use int getLayerId(const String &layer)
-        """
-
-    def getLayerId(self, layer) -> retval:
-        """
-        @brief Converts string name of the layer to the integer identifier.
-        *  @returns id of the layer, or -1 if the layer wasn't found.
-        """
-
-    def getLayerNames(self) -> retval:
-        """"""
-
-    def getLayerTypes(self) -> layersTypes:
-        """
-        @brief Returns list of types for layer used in model.
-        * @param layersTypes output parameter for returning types.
-        """
-
-    def getLayersCount(self, layerType) -> retval:
-        """
-        @brief Returns count of layers of specified type.
-        * @param layerType type. * @returns count of layers
-        """
-
-    @overload
-    def getLayersShapes(self, netInputShapes) -> tuple[layersIds, inLayersShapes, outLayersShapes]:
-        """
-        @brief Returns input and output shapes for all layers in loaded model;
-        *  preliminary inferencing isn't necessary.
-        *  @param netInputShapes shapes for all input blobs in net input layer.
-        *  @param layersIds output parameter for layer IDs.
-        *  @param inLayersShapes output parameter for input layers shapes; * order is the same as in layersIds
-        *  @param outLayersShapes output parameter for output layers shapes; * order is the same as in layersIds
-        """
-
-    @overload
-    def getLayersShapes(self, netInputShape) -> tuple[layersIds, inLayersShapes, outLayersShapes]:
-        """
-        @overload
-        """
-
-    @overload
-    def getMemoryConsumption(self, netInputShape) -> tuple[weights, blobs]:
-        """
-        @overload
-        """
-
-    @overload
-    def getMemoryConsumption(self, layerId, netInputShapes) -> tuple[weights, blobs]:
-        """
-        @overload
-        """
-
-    @overload
-    def getMemoryConsumption(self, layerId, netInputShape) -> tuple[weights, blobs]:
-        """
-        @overload
-        """
-
-    def getOutputDetails(self) -> tuple[scales, zeropoints]:
-        """
-        @brief Returns output scale and zeropoint for a quantized Net.
-        *  @param scales output parameter for returning output scales.
-        *  @param zeropoints output parameter for returning output zeropoints.
-        """
-
-    @overload
-    def getParam(self, layer, numParam = ...) -> retval:
-        """
-        @brief Returns parameter blob of the layer.
-        *  @param layer name or id of the layer.
-        *  @param numParam index of the layer parameter in the Layer::blobs array. *  @see Layer::blobs
-        """
-
-    @overload
-    def getParam(self, layerName, numParam = ...) -> retval:
-        """"""
-
-    def getPerfProfile(self) -> tuple[retval, timings]:
-        """
-        @brief Returns overall time for inference and timings (in ticks) for layers.
-        *
-        * Indexes in returned vector correspond to layers ids. Some layers can be fused with others,
-        * in this case zero ticks count will be return for that skipped layers. Supported by DNN_BACKEND_OPENCV on DNN_TARGET_CPU only.
-        *
-        * @param[out] timings vector for tick timings for all layers. * @return overall ticks for model inference.
-        """
-
-    def getUnconnectedOutLayers(self) -> retval:
-        """
-        @brief Returns indexes of layers with unconnected outputs.
-        *
-        * FIXIT: Rework API to registerOutput() approach, deprecate this call
-        """
-
-    def getUnconnectedOutLayersNames(self) -> retval:
-        """
-        @brief Returns names of layers with unconnected outputs.
-        *
-        * FIXIT: Rework API to registerOutput() approach, deprecate this call
-        """
-
-    def quantize(self, calibData, inputsDtype, outputsDtype, perChannel = ...) -> retval:
-        """
-        @brief Returns a quantized Net from a floating-point Net.
-        *  @param calibData Calibration data to compute the quantization parameters.
-        *  @param inputsDtype Datatype of quantized net's inputs. Can be CV_32F or CV_8S.
-        *  @param outputsDtype Datatype of quantized net's outputs. Can be CV_32F or CV_8S.
-        *  @param perChannel Quantization granularity of quantized Net. The default is true, that means quantize model *  in per-channel way (channel-wise). Set it false to quantize model in per-tensor way (or tensor-wise).
-        """
-
-    def setHalideScheduler(self, scheduler) -> None:
-        """
-        * @brief Compile Halide layers.
-        * @param[in] scheduler Path to YAML file with scheduling directives. * @see setPreferableBackend * * Schedule layers that support Halide backend. Then compile them for * specific target. For layers that not represented in scheduling file * or if no manual scheduling used at all, automatic scheduling will be applied.
-        """
-
-    def setInput(self, blob, name = ..., scalefactor = ..., mean = ...) -> None:
-        """
-        @brief Sets the new input value for the network
-        *  @param blob        A new blob. Should have CV_32F or CV_8U depth.
-        *  @param name        A name of input layer.
-        *  @param scalefactor An optional normalization scale.
-        *  @param mean        An optional mean subtraction values. *  @see connect(String, String) to know format of the descriptor. * *  If scale or mean values are specified, a final input blob is computed *  as: * \f[input(n,c,h,w) = scalefactor \times (blob(n,c,h,w) - mean_c)\f]
-        """
-
-    def setInputShape(self, inputName, shape) -> None:
-        """
-        @brief Specify shape of network input.
-        """
-
-    def setInputsNames(self, inputBlobNames) -> None:
-        """
-        @brief Sets outputs names of the network input pseudo layer.
-        *
-        * Each net always has special own the network input pseudo layer with id=0.
-        * This layer stores the user blobs only and don't make any computations.
-        * In fact, this layer provides the only way to pass user data into the network.
-        * As any other layer, this layer can label its outputs and this function provides an easy way to do this.
-        """
-
-    @overload
-    def setParam(self, layer, numParam, blob) -> None:
-        """
-        @brief Sets the new value for the learned param of the layer.
-        *  @param layer name or id of the layer.
-        *  @param numParam index of the layer parameter in the Layer::blobs array.
-        *  @param blob the new value. *  @see Layer::blobs *  @note If shape of the new blob differs from the previous shape, *  then the following forward pass may fail.
-        """
-
-    @overload
-    def setParam(self, layerName, numParam, blob) -> None:
-        """"""
-
-    def setPreferableBackend(self, backendId) -> None:
-        """
-        * @brief Ask network to use specific computation backend where it supported.
-        * @param[in] backendId backend identifier. * @see Backend * * If OpenCV is compiled with Intel's Inference Engine library, DNN_BACKEND_DEFAULT * means DNN_BACKEND_INFERENCE_ENGINE. Otherwise it equals to DNN_BACKEND_OPENCV.
-        """
-
-    def setPreferableTarget(self, targetId) -> None:
-        """
-        * @brief Ask network to make computations on specific target device.
-        * @param[in] targetId target identifier. * @see Target * * List of supported combinations backend / target: * |                        | DNN_BACKEND_OPENCV | DNN_BACKEND_INFERENCE_ENGINE | DNN_BACKEND_HALIDE |  DNN_BACKEND_CUDA | * |------------------------|--------------------|------------------------------|--------------------|-------------------| * | DNN_TARGET_CPU         |                  + |                            + |                  + |                   | * | DNN_TARGET_OPENCL      |                  + |                            + |                  + |                   | * | DNN_TARGET_OPENCL_FP16 |                  + |                            + |                    |                   | * | DNN_TARGET_MYRIAD      |                    |                            + |                    |                   | * | DNN_TARGET_FPGA        |                    |                            + |                    |                   | * | DNN_TARGET_CUDA        |                    |                              |                    |                 + | * | DNN_TARGET_CUDA_FP16   |                    |                              |                    |                 + | * | DNN_TARGET_HDDL        |                    |                            + |                    |                   |
-        """
-
-    @overload
-    def readFromModelOptimizer(self, xml, bin) -> retval:
-        """
-        @brief Create a network from Intel's Model Optimizer intermediate representation (IR).
-        *  @param[in] xml XML configuration file with network's topology.
-        *  @param[in] bin Binary file with trained weights. *  Networks imported from Intel's Model Optimizer are launched in Intel's Inference Engine *  backend.
-        """
-
-    @overload
-    def readFromModelOptimizer(self, bufferModelConfig, bufferWeights) -> retval:
-        """
-        @brief Create a network from Intel's Model Optimizer in-memory buffers with intermediate representation (IR).
-        *  @param[in] bufferModelConfig buffer with model's configuration.
-        *  @param[in] bufferWeights buffer with model's trained weights. *  @returns Net object.
-        """
-
-
-class SegmentationModel(Model):
-    def segment(self, frame, mask = ...) -> mask:
-        """
-        @brief Given the @p input frame, create input blob, run net
-        *  @param[in]  frame  The input image.
-        *  @param[out] mask Allocated class prediction for each pixel
-        """
-
-
-class TextDetectionModel(Model):
-    @overload
-    def detect(self, frame) -> tuple[detections, confidences]:
-        """
-        @brief Performs detection
-        *
-        * Given the input @p frame, prepare network input, run network inference, post-process network output and return result detections.
-        *
-        * Each result is quadrangle's 4 points in this order:
-        * - bottom-left
-        * - top-left
-        * - top-right
-        * - bottom-right
-        *
-        * Use cv::getPerspectiveTransform function to retrieve image region without perspective transformations.
-        *
-        * @note If DL model doesn't support that kind of output then result may be derived from detectTextRectangles() output.
-        *
-        * @param[in] frame The input image
-        * @param[out] detections array with detections' quadrangles (4 points per result)
-        * @param[out] confidences array with detection confidences
-        """
-
-    @overload
-    def detect(self, frame) -> detections:
-        """
-        @overload
-        """
-
-    @overload
-    def detectTextRectangles(self, frame) -> tuple[detections, confidences]:
-        """
-        @brief Performs detection
-        *
-        * Given the input @p frame, prepare network input, run network inference, post-process network output and return result detections.
-        *
-        * Each result is rotated rectangle.
-        *
-        * @note Result may be inaccurate in case of strong perspective transformations.
-        *
-        * @param[in] frame the input image
-        * @param[out] detections array with detections' RotationRect results
-        * @param[out] confidences array with detection confidences
-        """
-
-    @overload
-    def detectTextRectangles(self, frame) -> detections:
-        """
-        @overload
-        """
-
-
-class TextDetectionModel_DB(TextDetectionModel):
-    def getBinaryThreshold(self) -> retval:
-        """"""
-
-    def getMaxCandidates(self) -> retval:
-        """"""
-
-    def getPolygonThreshold(self) -> retval:
-        """"""
-
-    def getUnclipRatio(self) -> retval:
-        """"""
-
-    def setBinaryThreshold(self, binaryThreshold) -> retval:
-        """"""
-
-    def setMaxCandidates(self, maxCandidates) -> retval:
-        """"""
-
-    def setPolygonThreshold(self, polygonThreshold) -> retval:
-        """"""
-
-    def setUnclipRatio(self, unclipRatio) -> retval:
-        """"""
-
-
-class TextDetectionModel_EAST(TextDetectionModel):
-    def getConfidenceThreshold(self) -> retval:
-        """
-        * @brief Get the detection confidence threshold
-        """
-
-    def getNMSThreshold(self) -> retval:
-        """
-        * @brief Get the detection confidence threshold
-        """
-
-    def setConfidenceThreshold(self, confThreshold) -> retval:
-        """
-        * @brief Set the detection confidence threshold
-        * @param[in] confThreshold A threshold used to filter boxes by confidences
-        """
-
-    def setNMSThreshold(self, nmsThreshold) -> retval:
-        """
-        * @brief Set the detection NMS filter threshold
-        * @param[in] nmsThreshold A threshold used in non maximum suppression
-        """
-
-
-class TextRecognitionModel(Model):
-    def getDecodeType(self) -> retval:
-        """
-        * @brief Get the decoding method
-        * @return the decoding method
-        """
-
-    def getVocabulary(self) -> retval:
-        """
-        * @brief Get the vocabulary for recognition.
-        * @return vocabulary the associated vocabulary
-        """
-
-    @overload
-    def recognize(self, frame) -> retval:
-        """
-        * @brief Given the @p input frame, create input blob, run net and return recognition result
-        * @param[in] frame The input image * @return The text recognition result
-        """
-
-    @overload
-    def recognize(self, frame, roiRects) -> results:
-        """
-        * @brief Given the @p input frame, create input blob, run net and return recognition result
-        * @param[in] frame The input image
-        * @param[in] roiRects List of text detection regions of interest (cv::Rect, CV_32SC4). ROIs is be cropped as the network inputs
-        * @param[out] results A set of text recognition results.
-        """
-
-    def setDecodeOptsCTCPrefixBeamSearch(self, beamSize, vocPruneSize = ...) -> retval:
-        """
-        * @brief Set the decoding method options for `"CTC-prefix-beam-search"` decode usage
-        * @param[in] beamSize Beam size for search
-        * @param[in] vocPruneSize Parameter to optimize big vocabulary search, * only take top @p vocPruneSize tokens in each search step, @p vocPruneSize <= 0 stands for disable this prune.
-        """
-
-    def setDecodeType(self, decodeType) -> retval:
-        """
-        * @brief Set the decoding method of translating the network output into string
-        * @param[in] decodeType The decoding method of translating the network output into string, currently supported type: *    - `"CTC-greedy"` greedy decoding for the output of CTC-based methods *    - `"CTC-prefix-beam-search"` Prefix beam search decoding for the output of CTC-based methods
-        """
-
-    def setVocabulary(self, vocabulary) -> retval:
-        """
-        * @brief Set the vocabulary for recognition.
-        * @param[in] vocabulary the associated vocabulary of the network.
-        """
+dynafu_DynaFu = DynaFu
 
 
 class error(builtins.Exception):
     ...
 
 
-class Index(builtins.object):
-    def build(self, features, params, distType = ...) -> None:
-        """"""
+face_BIF = BIF
 
-    def getAlgorithm(self) -> retval:
-        """"""
 
-    def getDistance(self) -> retval:
-        """"""
+face_BasicFaceRecognizer = BasicFaceRecognizer
 
-    def knnSearch(self, query, knn, indices = ..., dists = ..., params = ...) -> tuple[indices, dists]:
-        """"""
 
-    def load(self, features, filename) -> retval:
-        """"""
+face_EigenFaceRecognizer = EigenFaceRecognizer
 
-    def radiusSearch(self, query, radius, maxResults, indices = ..., dists = ..., params = ...) -> tuple[retval, indices, dists]:
-        """"""
 
-    def release(self) -> None:
-        """"""
+face_FaceRecognizer = FaceRecognizer
 
-    def save(self, filename) -> None:
-        """"""
 
+face_Facemark = Facemark
 
-class GNetPackage(builtins.object):
-    ...
 
+face_FacemarkAAM = FacemarkAAM
 
-class GNetParam(builtins.object):
-    ...
 
+face_FacemarkKazemi = FacemarkKazemi
 
-class PyParams(builtins.object):
-    def cfgBatchSize(self, size) -> retval:
-        """"""
 
-    def cfgNumRequests(self, nireq) -> retval:
-        """"""
+face_FacemarkLBF = FacemarkLBF
 
-    def constInput(self, layer_name, data, hint = ...) -> retval:
-        """"""
 
+face_FacemarkTrain = FacemarkTrain
 
-class PyParams(builtins.object):
-    ...
 
+face_FisherFaceRecognizer = FisherFaceRecognizer
 
-class queue_capacity(builtins.object):
-    ...
 
+face_LBPHFaceRecognizer = LBPHFaceRecognizer
 
-class GOutputs(builtins.object):
-    def getGArray(self, type) -> retval:
-        """"""
 
-    def getGMat(self) -> retval:
-        """"""
+face_MACE = MACE
 
-    def getGOpaque(self, type) -> retval:
-        """"""
 
-    def getGScalar(self) -> retval:
-        """"""
+face_PredictCollector = PredictCollector
 
 
-class IStreamSource(builtins.object):
-    ...
+face_StandardCollector = StandardCollector
 
 
-class Circle(builtins.object):
-    ...
+flann_Index = Index
 
 
-class Image(builtins.object):
-    ...
+gapi_GNetPackage = GNetPackage
 
 
-class Line(builtins.object):
-    ...
+gapi_GNetParam = GNetParam
 
 
-class Mosaic(builtins.object):
-    ...
+gapi_ie_PyParams = PyParams
 
 
-class Poly(builtins.object):
-    ...
+gapi_onnx_PyParams = PyParams
 
 
-class Rect(builtins.object):
-    ...
+gapi_streaming_queue_capacity = queue_capacity
 
 
-class Text(builtins.object):
-    ...
+gapi_wip_GOutputs = GOutputs
 
 
-class GStreamerPipeline(builtins.object):
-    ...
-
-
-class ANN_MLP(StatModel):
-    def getAnnealCoolingRatio(self) -> retval:
-        """
-        @see setAnnealCoolingRatio
-        """
-
-    def getAnnealFinalT(self) -> retval:
-        """
-        @see setAnnealFinalT
-        """
-
-    def getAnnealInitialT(self) -> retval:
-        """
-        @see setAnnealInitialT
-        """
-
-    def getAnnealItePerStep(self) -> retval:
-        """
-        @see setAnnealItePerStep
-        """
-
-    def getBackpropMomentumScale(self) -> retval:
-        """
-        @see setBackpropMomentumScale
-        """
-
-    def getBackpropWeightScale(self) -> retval:
-        """
-        @see setBackpropWeightScale
-        """
-
-    def getLayerSizes(self) -> retval:
-        """
-        Integer vector specifying the number of neurons in each layer including the input and output layers.
-        The very first element specifies the number of elements in the input layer.
-        The last element - number of elements in the output layer.
-        @sa setLayerSizes
-        """
-
-    def getRpropDW0(self) -> retval:
-        """
-        @see setRpropDW0
-        """
-
-    def getRpropDWMax(self) -> retval:
-        """
-        @see setRpropDWMax
-        """
-
-    def getRpropDWMin(self) -> retval:
-        """
-        @see setRpropDWMin
-        """
-
-    def getRpropDWMinus(self) -> retval:
-        """
-        @see setRpropDWMinus
-        """
-
-    def getRpropDWPlus(self) -> retval:
-        """
-        @see setRpropDWPlus
-        """
-
-    def getTermCriteria(self) -> retval:
-        """
-        @see setTermCriteria
-        """
-
-    def getTrainMethod(self) -> retval:
-        """
-        Returns current training method
-        """
-
-    def getWeights(self, layerIdx) -> retval:
-        """"""
-
-    def setActivationFunction(self, type, param1 = ..., param2 = ...) -> None:
-        """
-        Initialize the activation function for each neuron.
-        Currently the default and the only fully supported activation function is ANN_MLP::SIGMOID_SYM.
-        @param type The type of activation function. See ANN_MLP::ActivationFunctions.
-        @param param1 The first parameter of the activation function, \f$\alpha\f$. Default value is 0.
-        @param param2 The second parameter of the activation function, \f$\beta\f$. Default value is 0.
-        """
-
-    def setAnnealCoolingRatio(self, val) -> None:
-        """
-        @copybrief getAnnealCoolingRatio @see getAnnealCoolingRatio
-        """
-
-    def setAnnealFinalT(self, val) -> None:
-        """
-        @copybrief getAnnealFinalT @see getAnnealFinalT
-        """
-
-    def setAnnealInitialT(self, val) -> None:
-        """
-        @copybrief getAnnealInitialT @see getAnnealInitialT
-        """
-
-    def setAnnealItePerStep(self, val) -> None:
-        """
-        @copybrief getAnnealItePerStep @see getAnnealItePerStep
-        """
-
-    def setBackpropMomentumScale(self, val) -> None:
-        """
-        @copybrief getBackpropMomentumScale @see getBackpropMomentumScale
-        """
-
-    def setBackpropWeightScale(self, val) -> None:
-        """
-        @copybrief getBackpropWeightScale @see getBackpropWeightScale
-        """
-
-    def setLayerSizes(self, _layer_sizes) -> None:
-        """
-        Integer vector specifying the number of neurons in each layer including the input and output layers.
-        The very first element specifies the number of elements in the input layer.
-        The last element - number of elements in the output layer. Default value is empty Mat.
-        @sa getLayerSizes
-        """
-
-    def setRpropDW0(self, val) -> None:
-        """
-        @copybrief getRpropDW0 @see getRpropDW0
-        """
-
-    def setRpropDWMax(self, val) -> None:
-        """
-        @copybrief getRpropDWMax @see getRpropDWMax
-        """
-
-    def setRpropDWMin(self, val) -> None:
-        """
-        @copybrief getRpropDWMin @see getRpropDWMin
-        """
-
-    def setRpropDWMinus(self, val) -> None:
-        """
-        @copybrief getRpropDWMinus @see getRpropDWMinus
-        """
-
-    def setRpropDWPlus(self, val) -> None:
-        """
-        @copybrief getRpropDWPlus @see getRpropDWPlus
-        """
-
-    def setTermCriteria(self, val) -> None:
-        """
-        @copybrief getTermCriteria @see getTermCriteria
-        """
-
-    def setTrainMethod(self, method, param1 = ..., param2 = ...) -> None:
-        """
-        Sets training method and common parameters.
-        @param method Default value is ANN_MLP::RPROP. See ANN_MLP::TrainingMethods.
-        @param param1 passed to setRpropDW0 for ANN_MLP::RPROP and to setBackpropWeightScale for ANN_MLP::BACKPROP and to initialT for ANN_MLP::ANNEAL.
-        @param param2 passed to setRpropDWMin for ANN_MLP::RPROP and to setBackpropMomentumScale for ANN_MLP::BACKPROP and to finalT for ANN_MLP::ANNEAL.
-        """
-
-    def create(self) -> retval:
-        """
-        @brief Creates empty model
-
-        Use StatModel::train to train the model, Algorithm::load\<ANN_MLP\>(filename) to load the pre-trained model.
-        Note that the train method has optional flags: ANN_MLP::TrainFlags.
-        """
-
-    def load(self, filepath) -> retval:
-        """
-        @brief Loads and creates a serialized ANN from a file
-        *
-        * Use ANN::save to serialize and store an ANN to disk.
-        * Load the ANN from this file again, by calling this function with the path to the file.
-        *
-        * @param filepath path to serialized ANN
-        """
-
-
-class Boost(DTrees):
-    def getBoostType(self) -> retval:
-        """
-        @see setBoostType
-        """
-
-    def getWeakCount(self) -> retval:
-        """
-        @see setWeakCount
-        """
-
-    def getWeightTrimRate(self) -> retval:
-        """
-        @see setWeightTrimRate
-        """
-
-    def setBoostType(self, val) -> None:
-        """
-        @copybrief getBoostType @see getBoostType
-        """
-
-    def setWeakCount(self, val) -> None:
-        """
-        @copybrief getWeakCount @see getWeakCount
-        """
-
-    def setWeightTrimRate(self, val) -> None:
-        """
-        @copybrief getWeightTrimRate @see getWeightTrimRate
-        """
-
-    def create(self) -> retval:
-        """
-        Creates the empty model.
-        Use StatModel::train to train the model, Algorithm::load\<Boost\>(filename) to load the pre-trained model.
-        """
-
-    def load(self, filepath, nodeName = ...) -> retval:
-        """
-        @brief Loads and creates a serialized Boost from a file
-        *
-        * Use Boost::save to serialize and store an RTree to disk.
-        * Load the Boost from this file again, by calling this function with the path to the file.
-        * Optionally specify the node for the file containing the classifier
-        *
-        * @param filepath path to serialized Boost
-        * @param nodeName name of node containing the classifier
-        """
-
-
-class DTrees(StatModel):
-    def getCVFolds(self) -> retval:
-        """
-        @see setCVFolds
-        """
-
-    def getMaxCategories(self) -> retval:
-        """
-        @see setMaxCategories
-        """
-
-    def getMaxDepth(self) -> retval:
-        """
-        @see setMaxDepth
-        """
-
-    def getMinSampleCount(self) -> retval:
-        """
-        @see setMinSampleCount
-        """
-
-    def getPriors(self) -> retval:
-        """
-        @see setPriors
-        """
-
-    def getRegressionAccuracy(self) -> retval:
-        """
-        @see setRegressionAccuracy
-        """
-
-    def getTruncatePrunedTree(self) -> retval:
-        """
-        @see setTruncatePrunedTree
-        """
-
-    def getUse1SERule(self) -> retval:
-        """
-        @see setUse1SERule
-        """
-
-    def getUseSurrogates(self) -> retval:
-        """
-        @see setUseSurrogates
-        """
-
-    def setCVFolds(self, val) -> None:
-        """
-        @copybrief getCVFolds @see getCVFolds
-        """
-
-    def setMaxCategories(self, val) -> None:
-        """
-        @copybrief getMaxCategories @see getMaxCategories
-        """
-
-    def setMaxDepth(self, val) -> None:
-        """
-        @copybrief getMaxDepth @see getMaxDepth
-        """
-
-    def setMinSampleCount(self, val) -> None:
-        """
-        @copybrief getMinSampleCount @see getMinSampleCount
-        """
-
-    def setPriors(self, val) -> None:
-        """
-        @copybrief getPriors @see getPriors
-        """
-
-    def setRegressionAccuracy(self, val) -> None:
-        """
-        @copybrief getRegressionAccuracy @see getRegressionAccuracy
-        """
-
-    def setTruncatePrunedTree(self, val) -> None:
-        """
-        @copybrief getTruncatePrunedTree @see getTruncatePrunedTree
-        """
-
-    def setUse1SERule(self, val) -> None:
-        """
-        @copybrief getUse1SERule @see getUse1SERule
-        """
-
-    def setUseSurrogates(self, val) -> None:
-        """
-        @copybrief getUseSurrogates @see getUseSurrogates
-        """
-
-    def create(self) -> retval:
-        """
-        @brief Creates the empty model
-
-        The static method creates empty decision tree with the specified parameters. It should be then
-        trained using train method (see StatModel::train). Alternatively, you can load the model from
-        file using Algorithm::load\<DTrees\>(filename).
-        """
-
-    def load(self, filepath, nodeName = ...) -> retval:
-        """
-        @brief Loads and creates a serialized DTrees from a file
-        *
-        * Use DTree::save to serialize and store an DTree to disk.
-        * Load the DTree from this file again, by calling this function with the path to the file.
-        * Optionally specify the node for the file containing the classifier
-        *
-        * @param filepath path to serialized DTree
-        * @param nodeName name of node containing the classifier
-        """
-
-
-class EM(StatModel):
-    def getClustersNumber(self) -> retval:
-        """
-        @see setClustersNumber
-        """
-
-    def getCovarianceMatrixType(self) -> retval:
-        """
-        @see setCovarianceMatrixType
-        """
-
-    def getCovs(self, covs = ...) -> covs:
-        """
-        @brief Returns covariation matrices
-
-        Returns vector of covariation matrices. Number of matrices is the number of gaussian mixtures,
-        each matrix is a square floating-point matrix NxN, where N is the space dimensionality.
-        """
-
-    def getMeans(self) -> retval:
-        """
-        @brief Returns the cluster centers (means of the Gaussian mixture)
-
-        Returns matrix with the number of rows equal to the number of mixtures and number of columns
-        equal to the space dimensionality.
-        """
-
-    def getTermCriteria(self) -> retval:
-        """
-        @see setTermCriteria
-        """
-
-    def getWeights(self) -> retval:
-        """
-        @brief Returns weights of the mixtures
-
-        Returns vector with the number of elements equal to the number of mixtures.
-        """
-
-    def predict(self, samples, results = ..., flags = ...) -> tuple[retval, results]:
-        """
-        @brief Returns posterior probabilities for the provided samples
-
-        @param samples The input samples, floating-point matrix
-        @param results The optional output \f$ nSamples \times nClusters\f$ matrix of results. It contains posterior probabilities for each sample from the input
-        @param flags This parameter will be ignored
-        """
-
-    def predict2(self, sample, probs = ...) -> tuple[retval, probs]:
-        """
-        @brief Returns a likelihood logarithm value and an index of the most probable mixture component
-        for the given sample.
-
-        @param sample A sample for classification. It should be a one-channel matrix of \f$1 \times dims\f$ or \f$dims \times 1\f$ size.
-        @param probs Optional output matrix that contains posterior probabilities of each component given the sample. It has \f$1 \times nclusters\f$ size and CV_64FC1 type.  The method returns a two-element double vector. Zero element is a likelihood logarithm value for the sample. First element is an index of the most probable mixture component for the given sample.
-        """
-
-    def setClustersNumber(self, val) -> None:
-        """
-        @copybrief getClustersNumber @see getClustersNumber
-        """
-
-    def setCovarianceMatrixType(self, val) -> None:
-        """
-        @copybrief getCovarianceMatrixType @see getCovarianceMatrixType
-        """
-
-    def setTermCriteria(self, val) -> None:
-        """
-        @copybrief getTermCriteria @see getTermCriteria
-        """
-
-    def trainE(self, samples, means0, covs0 = ..., weights0 = ..., logLikelihoods = ..., labels = ..., probs = ...) -> tuple[retval, logLikelihoods, labels, probs]:
-        """
-        @brief Estimate the Gaussian mixture parameters from a samples set.
-
-        This variation starts with Expectation step. You need to provide initial means \f$a_k\f$ of
-        mixture components. Optionally you can pass initial weights \f$\pi_k\f$ and covariance matrices
-        \f$S_k\f$ of mixture components.
-
-        @param samples Samples from which the Gaussian mixture model will be estimated. It should be a one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type it will be converted to the inner matrix of such type for the further computing.
-        @param means0 Initial means \f$a_k\f$ of mixture components. It is a one-channel matrix of \f$nclusters \times dims\f$ size. If the matrix does not have CV_64F type it will be converted to the inner matrix of such type for the further computing.
-        @param covs0 The vector of initial covariance matrices \f$S_k\f$ of mixture components. Each of covariance matrices is a one-channel matrix of \f$dims \times dims\f$ size. If the matrices do not have CV_64F type they will be converted to the inner matrices of such type for the further computing.
-        @param weights0 Initial weights \f$\pi_k\f$ of mixture components. It should be a one-channel floating-point matrix with \f$1 \times nclusters\f$ or \f$nclusters \times 1\f$ size.
-        @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
-        @param labels The optional output "class label" for each sample: \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
-        @param probs The optional output matrix that contains posterior probabilities of each Gaussian mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and CV_64FC1 type.
-        """
-
-    def trainEM(self, samples, logLikelihoods = ..., labels = ..., probs = ...) -> tuple[retval, logLikelihoods, labels, probs]:
-        """
-        @brief Estimate the Gaussian mixture parameters from a samples set.
-
-        This variation starts with Expectation step. Initial values of the model parameters will be
-        estimated by the k-means algorithm.
-
-        Unlike many of the ML models, %EM is an unsupervised learning algorithm and it does not take
-        responses (class labels or function values) as input. Instead, it computes the *Maximum
-        Likelihood Estimate* of the Gaussian mixture parameters from an input sample set, stores all the
-        parameters inside the structure: \f$p_{i,k}\f$ in probs, \f$a_k\f$ in means , \f$S_k\f$ in
-        covs[k], \f$\pi_k\f$ in weights , and optionally computes the output "class label" for each
-        sample: \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most
-        probable mixture component for each sample).
-
-        The trained model can be used further for prediction, just like any other classifier. The
-        trained model is similar to the NormalBayesClassifier.
-
-        @param samples Samples from which the Gaussian mixture model will be estimated. It should be a one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type it will be converted to the inner matrix of such type for the further computing.
-        @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
-        @param labels The optional output "class label" for each sample: \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
-        @param probs The optional output matrix that contains posterior probabilities of each Gaussian mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and CV_64FC1 type.
-        """
-
-    def trainM(self, samples, probs0, logLikelihoods = ..., labels = ..., probs = ...) -> tuple[retval, logLikelihoods, labels, probs]:
-        """
-        @brief Estimate the Gaussian mixture parameters from a samples set.
-
-        This variation starts with Maximization step. You need to provide initial probabilities
-        \f$p_{i,k}\f$ to use this option.
-
-        @param samples Samples from which the Gaussian mixture model will be estimated. It should be a one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type it will be converted to the inner matrix of such type for the further computing.
-        @param probs0 the probabilities
-        @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
-        @param labels The optional output "class label" for each sample: \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
-        @param probs The optional output matrix that contains posterior probabilities of each Gaussian mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and CV_64FC1 type.
-        """
-
-    def create(self) -> retval:
-        """
-        Creates empty %EM model.
-        The model should be trained then using StatModel::train(traindata, flags) method. Alternatively, you
-        can use one of the EM::train\* methods or load it from file using Algorithm::load\<EM\>(filename).
-        """
-
-    def load(self, filepath, nodeName = ...) -> retval:
-        """
-        @brief Loads and creates a serialized EM from a file
-        *
-        * Use EM::save to serialize and store an EM to disk.
-        * Load the EM from this file again, by calling this function with the path to the file.
-        * Optionally specify the node for the file containing the classifier
-        *
-        * @param filepath path to serialized EM
-        * @param nodeName name of node containing the classifier
-        """
-
-
-class KNearest(StatModel):
-    def findNearest(self, samples, k, results = ..., neighborResponses = ..., dist = ...) -> tuple[retval, results, neighborResponses, dist]:
-        """
-        @brief Finds the neighbors and predicts responses for input vectors.
-
-        @param samples Input samples stored by rows. It is a single-precision floating-point matrix of `<number_of_samples> * k` size.
-        @param k Number of used nearest neighbors. Should be greater than 1.
-        @param results Vector with results of prediction (regression or classification) for each input sample. It is a single-precision floating-point vector with `<number_of_samples>` elements.
-        @param neighborResponses Optional output values for corresponding neighbors. It is a single- precision floating-point matrix of `<number_of_samples> * k` size.
-        @param dist Optional output distances from the input vectors to the corresponding neighbors. It is a single-precision floating-point matrix of `<number_of_samples> * k` size.  For each input vector (a row of the matrix samples), the method finds the k nearest neighbors. In case of regression, the predicted result is a mean value of the particular vector's neighbor responses. In case of classification, the class is determined by voting.  For each input vector, the neighbors are sorted by their distances to the vector.  In case of C++ interface you can use output pointers to empty matrices and the function will allocate memory itself.  If only a single input vector is passed, all output matrices are optional and the predicted value is returned by the method.  The function is parallelized with the TBB library.
-        """
-
-    def getAlgorithmType(self) -> retval:
-        """
-        @see setAlgorithmType
-        """
-
-    def getDefaultK(self) -> retval:
-        """
-        @see setDefaultK
-        """
-
-    def getEmax(self) -> retval:
-        """
-        @see setEmax
-        """
-
-    def getIsClassifier(self) -> retval:
-        """
-        @see setIsClassifier
-        """
-
-    def setAlgorithmType(self, val) -> None:
-        """
-        @copybrief getAlgorithmType @see getAlgorithmType
-        """
-
-    def setDefaultK(self, val) -> None:
-        """
-        @copybrief getDefaultK @see getDefaultK
-        """
-
-    def setEmax(self, val) -> None:
-        """
-        @copybrief getEmax @see getEmax
-        """
-
-    def setIsClassifier(self, val) -> None:
-        """
-        @copybrief getIsClassifier @see getIsClassifier
-        """
-
-    def create(self) -> retval:
-        """
-        @brief Creates the empty model
-
-        The static method creates empty %KNearest classifier. It should be then trained using StatModel::train method.
-        """
-
-    def load(self, filepath) -> retval:
-        """
-        @brief Loads and creates a serialized knearest from a file
-        *
-        * Use KNearest::save to serialize and store an KNearest to disk.
-        * Load the KNearest from this file again, by calling this function with the path to the file.
-        *
-        * @param filepath path to serialized KNearest
-        """
-
-
-class LogisticRegression(StatModel):
-    def getIterations(self) -> retval:
-        """
-        @see setIterations
-        """
-
-    def getLearningRate(self) -> retval:
-        """
-        @see setLearningRate
-        """
-
-    def getMiniBatchSize(self) -> retval:
-        """
-        @see setMiniBatchSize
-        """
-
-    def getRegularization(self) -> retval:
-        """
-        @see setRegularization
-        """
-
-    def getTermCriteria(self) -> retval:
-        """
-        @see setTermCriteria
-        """
-
-    def getTrainMethod(self) -> retval:
-        """
-        @see setTrainMethod
-        """
-
-    def get_learnt_thetas(self) -> retval:
-        """
-        @brief This function returns the trained parameters arranged across rows.
-
-        For a two class classification problem, it returns a row matrix. It returns learnt parameters of
-        the Logistic Regression as a matrix of type CV_32F.
-        """
-
-    def predict(self, samples, results = ..., flags = ...) -> tuple[retval, results]:
-        """
-        @brief Predicts responses for input samples and returns a float type.
-
-        @param samples The input data for the prediction algorithm. Matrix [m x n], where each row contains variables (features) of one object being classified. Should have data type CV_32F.
-        @param results Predicted labels as a column matrix of type CV_32S.
-        @param flags Not used.
-        """
-
-    def setIterations(self, val) -> None:
-        """
-        @copybrief getIterations @see getIterations
-        """
-
-    def setLearningRate(self, val) -> None:
-        """
-        @copybrief getLearningRate @see getLearningRate
-        """
-
-    def setMiniBatchSize(self, val) -> None:
-        """
-        @copybrief getMiniBatchSize @see getMiniBatchSize
-        """
-
-    def setRegularization(self, val) -> None:
-        """
-        @copybrief getRegularization @see getRegularization
-        """
-
-    def setTermCriteria(self, val) -> None:
-        """
-        @copybrief getTermCriteria @see getTermCriteria
-        """
-
-    def setTrainMethod(self, val) -> None:
-        """
-        @copybrief getTrainMethod @see getTrainMethod
-        """
-
-    def create(self) -> retval:
-        """
-        @brief Creates empty model.
-
-        Creates Logistic Regression model with parameters given.
-        """
-
-    def load(self, filepath, nodeName = ...) -> retval:
-        """
-        @brief Loads and creates a serialized LogisticRegression from a file
-        *
-        * Use LogisticRegression::save to serialize and store an LogisticRegression to disk.
-        * Load the LogisticRegression from this file again, by calling this function with the path to the file.
-        * Optionally specify the node for the file containing the classifier
-        *
-        * @param filepath path to serialized LogisticRegression
-        * @param nodeName name of node containing the classifier
-        """
-
-
-class NormalBayesClassifier(StatModel):
-    def predictProb(self, inputs, outputs = ..., outputProbs = ..., flags = ...) -> tuple[retval, outputs, outputProbs]:
-        """
-        @brief Predicts the response for sample(s).
-
-        The method estimates the most probable classes for input vectors. Input vectors (one or more)
-        are stored as rows of the matrix inputs. In case of multiple input vectors, there should be one
-        output vector outputs. The predicted class for a single input vector is returned by the method.
-        The vector outputProbs contains the output probabilities corresponding to each element of
-        result.
-        """
-
-    def create(self) -> retval:
-        """
-        Creates empty model
-        Use StatModel::train to train the model after creation.
-        """
-
-    def load(self, filepath, nodeName = ...) -> retval:
-        """
-        @brief Loads and creates a serialized NormalBayesClassifier from a file
-        *
-        * Use NormalBayesClassifier::save to serialize and store an NormalBayesClassifier to disk.
-        * Load the NormalBayesClassifier from this file again, by calling this function with the path to the file.
-        * Optionally specify the node for the file containing the classifier
-        *
-        * @param filepath path to serialized NormalBayesClassifier
-        * @param nodeName name of node containing the classifier
-        """
-
-
-class ParamGrid(builtins.object):
-    def create(self, minVal = ..., maxVal = ..., logstep = ...) -> retval:
-        """
-        @brief Creates a ParamGrid Ptr that can be given to the %SVM::trainAuto method
-
-        @param minVal minimum value of the parameter grid
-        @param maxVal maximum value of the parameter grid
-        @param logstep Logarithmic step for iterating the statmodel parameter
-        """
-
-
-class RTrees(DTrees):
-    def getActiveVarCount(self) -> retval:
-        """
-        @see setActiveVarCount
-        """
-
-    def getCalculateVarImportance(self) -> retval:
-        """
-        @see setCalculateVarImportance
-        """
-
-    def getOOBError(self) -> retval:
-        """
-        Returns the OOB error value, computed at the training stage when calcOOBError is set to true.
-        * If this flag was set to false, 0 is returned. The OOB error is also scaled by sample weighting.
-        """
-
-    def getTermCriteria(self) -> retval:
-        """
-        @see setTermCriteria
-        """
-
-    def getVarImportance(self) -> retval:
-        """
-        Returns the variable importance array.
-        The method returns the variable importance vector, computed at the training stage when
-        CalculateVarImportance is set to true. If this flag was set to false, the empty matrix is
-        returned.
-        """
-
-    def getVotes(self, samples, flags, results = ...) -> results:
-        """
-        Returns the result of each individual tree in the forest.
-        In case the model is a regression problem, the method will return each of the trees'
-        results for each of the sample cases. If the model is a classifier, it will return
-        a Mat with samples + 1 rows, where the first row gives the class number and the
-        following rows return the votes each class had for each sample.
-        @param samples Array containing the samples for which votes will be calculated.
-        @param results Array where the result of the calculation will be written.
-        @param flags Flags for defining the type of RTrees.
-        """
-
-    def setActiveVarCount(self, val) -> None:
-        """
-        @copybrief getActiveVarCount @see getActiveVarCount
-        """
-
-    def setCalculateVarImportance(self, val) -> None:
-        """
-        @copybrief getCalculateVarImportance @see getCalculateVarImportance
-        """
-
-    def setTermCriteria(self, val) -> None:
-        """
-        @copybrief getTermCriteria @see getTermCriteria
-        """
-
-    def create(self) -> retval:
-        """
-        Creates the empty model.
-        Use StatModel::train to train the model, StatModel::train to create and train the model,
-        Algorithm::load to load the pre-trained model.
-        """
-
-    def load(self, filepath, nodeName = ...) -> retval:
-        """
-        @brief Loads and creates a serialized RTree from a file
-        *
-        * Use RTree::save to serialize and store an RTree to disk.
-        * Load the RTree from this file again, by calling this function with the path to the file.
-        * Optionally specify the node for the file containing the classifier
-        *
-        * @param filepath path to serialized RTree
-        * @param nodeName name of node containing the classifier
-        """
-
-
-class SVM(StatModel):
-    def getC(self) -> retval:
-        """
-        @see setC
-        """
-
-    def getClassWeights(self) -> retval:
-        """
-        @see setClassWeights
-        """
-
-    def getCoef0(self) -> retval:
-        """
-        @see setCoef0
-        """
-
-    def getDecisionFunction(self, i, alpha = ..., svidx = ...) -> tuple[retval, alpha, svidx]:
-        """
-        @brief Retrieves the decision function
-
-        @param i the index of the decision function. If the problem solved is regression, 1-class or 2-class classification, then there will be just one decision function and the index should always be 0. Otherwise, in the case of N-class classification, there will be \f$N(N-1)/2\f$ decision functions.
-        @param alpha the optional output vector for weights, corresponding to different support vectors. In the case of linear %SVM all the alpha's will be 1's.
-        @param svidx the optional output vector of indices of support vectors within the matrix of support vectors (which can be retrieved by SVM::getSupportVectors). In the case of linear %SVM each decision function consists of a single "compressed" support vector.  The method returns rho parameter of the decision function, a scalar subtracted from the weighted sum of kernel responses.
-        """
-
-    def getDegree(self) -> retval:
-        """
-        @see setDegree
-        """
-
-    def getGamma(self) -> retval:
-        """
-        @see setGamma
-        """
-
-    def getKernelType(self) -> retval:
-        """
-        Type of a %SVM kernel.
-        See SVM::KernelTypes. Default value is SVM::RBF.
-        """
-
-    def getNu(self) -> retval:
-        """
-        @see setNu
-        """
-
-    def getP(self) -> retval:
-        """
-        @see setP
-        """
-
-    def getSupportVectors(self) -> retval:
-        """
-        @brief Retrieves all the support vectors
-
-        The method returns all the support vectors as a floating-point matrix, where support vectors are
-        stored as matrix rows.
-        """
-
-    def getTermCriteria(self) -> retval:
-        """
-        @see setTermCriteria
-        """
-
-    def getType(self) -> retval:
-        """
-        @see setType
-        """
-
-    def getUncompressedSupportVectors(self) -> retval:
-        """
-        @brief Retrieves all the uncompressed support vectors of a linear %SVM
-
-        The method returns all the uncompressed support vectors of a linear %SVM that the compressed
-        support vector, used for prediction, was derived from. They are returned in a floating-point
-        matrix, where the support vectors are stored as matrix rows.
-        """
-
-    def setC(self, val) -> None:
-        """
-        @copybrief getC @see getC
-        """
-
-    def setClassWeights(self, val) -> None:
-        """
-        @copybrief getClassWeights @see getClassWeights
-        """
-
-    def setCoef0(self, val) -> None:
-        """
-        @copybrief getCoef0 @see getCoef0
-        """
-
-    def setDegree(self, val) -> None:
-        """
-        @copybrief getDegree @see getDegree
-        """
-
-    def setGamma(self, val) -> None:
-        """
-        @copybrief getGamma @see getGamma
-        """
-
-    def setKernel(self, kernelType) -> None:
-        """
-        Initialize with one of predefined kernels.
-        See SVM::KernelTypes.
-        """
-
-    def setNu(self, val) -> None:
-        """
-        @copybrief getNu @see getNu
-        """
-
-    def setP(self, val) -> None:
-        """
-        @copybrief getP @see getP
-        """
-
-    def setTermCriteria(self, val) -> None:
-        """
-        @copybrief getTermCriteria @see getTermCriteria
-        """
-
-    def setType(self, val) -> None:
-        """
-        @copybrief getType @see getType
-        """
-
-    def trainAuto(self, samples, layout, responses, kFold = ..., Cgrid = ..., gammaGrid = ..., pGrid = ..., nuGrid = ..., coeffGrid = ..., degreeGrid = ..., balanced = ...) -> retval:
-        """
-        @brief Trains an %SVM with optimal parameters
-
-        @param samples training samples
-        @param layout See ml::SampleTypes.
-        @param responses vector of responses associated with the training samples.
-        @param kFold Cross-validation parameter. The training set is divided into kFold subsets. One subset is used to test the model, the others form the train set. So, the %SVM algorithm is
-        @param Cgrid grid for C
-        @param gammaGrid grid for gamma
-        @param pGrid grid for p
-        @param nuGrid grid for nu
-        @param coeffGrid grid for coeff
-        @param degreeGrid grid for degree
-        @param balanced If true and the problem is 2-class classification then the method creates more balanced cross-validation subsets that is proportions between classes in subsets are close to such proportion in the whole train dataset.  The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p, nu, coef0, degree. Parameters are considered optimal when the cross-validation estimate of the test set error is minimal.  This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only offers rudimentary parameter options.  This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and the usual %SVM with parameters specified in params is executed.
-        """
-
-    def create(self) -> retval:
-        """
-        Creates empty model.
-        Use StatModel::train to train the model. Since %SVM has several parameters, you may want to
-        find the best parameters for your problem, it can be done with SVM::trainAuto.
-        """
-
-    def getDefaultGridPtr(self, param_id) -> retval:
-        """
-        @brief Generates a grid for %SVM parameters.
-
-        @param param_id %SVM parameters IDs that must be one of the SVM::ParamTypes. The grid is generated for the parameter with this ID.  The function generates a grid pointer for the specified parameter of the %SVM algorithm. The grid may be passed to the function SVM::trainAuto.
-        """
-
-    def load(self, filepath) -> retval:
-        """
-        @brief Loads and creates a serialized svm from a file
-        *
-        * Use SVM::save to serialize and store an SVM to disk.
-        * Load the SVM from this file again, by calling this function with the path to the file.
-        *
-        * @param filepath path to serialized svm
-        """
-
-
-class SVMSGD(StatModel):
-    def getInitialStepSize(self) -> retval:
-        """
-        @see setInitialStepSize
-        """
-
-    def getMarginRegularization(self) -> retval:
-        """
-        @see setMarginRegularization
-        """
-
-    def getMarginType(self) -> retval:
-        """
-        @see setMarginType
-        """
-
-    def getShift(self) -> retval:
-        """
-        * @return the shift of the trained model (decision function f(x) = weights * x + shift).
-        """
-
-    def getStepDecreasingPower(self) -> retval:
-        """
-        @see setStepDecreasingPower
-        """
-
-    def getSvmsgdType(self) -> retval:
-        """
-        @see setSvmsgdType
-        """
-
-    def getTermCriteria(self) -> retval:
-        """
-        @see setTermCriteria
-        """
-
-    def getWeights(self) -> retval:
-        """
-        * @return the weights of the trained model (decision function f(x) = weights * x + shift).
-        """
-
-    def setInitialStepSize(self, InitialStepSize) -> None:
-        """
-        @copybrief getInitialStepSize @see getInitialStepSize
-        """
-
-    def setMarginRegularization(self, marginRegularization) -> None:
-        """
-        @copybrief getMarginRegularization @see getMarginRegularization
-        """
-
-    def setMarginType(self, marginType) -> None:
-        """
-        @copybrief getMarginType @see getMarginType
-        """
-
-    def setOptimalParameters(self, svmsgdType = ..., marginType = ...) -> None:
-        """
-        @brief Function sets optimal parameters values for chosen SVM SGD model.
-        * @param svmsgdType is the type of SVMSGD classifier.
-        * @param marginType is the type of margin constraint.
-        """
-
-    def setStepDecreasingPower(self, stepDecreasingPower) -> None:
-        """
-        @copybrief getStepDecreasingPower @see getStepDecreasingPower
-        """
-
-    def setSvmsgdType(self, svmsgdType) -> None:
-        """
-        @copybrief getSvmsgdType @see getSvmsgdType
-        """
-
-    def setTermCriteria(self, val) -> None:
-        """
-        @copybrief getTermCriteria @see getTermCriteria
-        """
-
-    def create(self) -> retval:
-        """
-        @brief Creates empty model.
-        * Use StatModel::train to train the model. Since %SVMSGD has several parameters, you may want to
-        * find the best parameters for your problem or use setOptimalParameters() to set some default parameters.
-        """
-
-    def load(self, filepath, nodeName = ...) -> retval:
-        """
-        @brief Loads and creates a serialized SVMSGD from a file
-        *
-        * Use SVMSGD::save to serialize and store an SVMSGD to disk.
-        * Load the SVMSGD from this file again, by calling this function with the path to the file.
-        * Optionally specify the node for the file containing the classifier
-        *
-        * @param filepath path to serialized SVMSGD
-        * @param nodeName name of node containing the classifier
-        """
-
-
-class StatModel(cv2.Algorithm):
-    def calcError(self, data, test, resp = ...) -> tuple[retval, resp]:
-        """
-        @brief Computes error on the training or test dataset
-
-        @param data the training data
-        @param test if true, the error is computed over the test subset of the data, otherwise it's computed over the training subset of the data. Please note that if you loaded a completely different dataset to evaluate already trained classifier, you will probably want not to set the test subset at all with TrainData::setTrainTestSplitRatio and specify test=false, so that the error is computed for the whole new set. Yes, this sounds a bit confusing.
-        @param resp the optional output responses.  The method uses StatModel::predict to compute the error. For regression models the error is computed as RMS, for classifiers - as a percent of missclassified samples (0%-100%).
-        """
-
-    def empty(self) -> retval:
-        """"""
-
-    def getVarCount(self) -> retval:
-        """
-        @brief Returns the number of variables in training samples
-        """
-
-    def isClassifier(self) -> retval:
-        """
-        @brief Returns true if the model is classifier
-        """
-
-    def isTrained(self) -> retval:
-        """
-        @brief Returns true if the model is trained
-        """
-
-    def predict(self, samples, results = ..., flags = ...) -> tuple[retval, results]:
-        """
-        @brief Predicts response(s) for the provided sample(s)
-
-        @param samples The input samples, floating-point matrix
-        @param results The optional output matrix of results.
-        @param flags The optional flags, model-dependent. See cv::ml::StatModel::Flags.
-        """
-
-    @overload
-    def train(self, trainData, flags = ...) -> retval:
-        """
-        @brief Trains the statistical model
-
-        @param trainData training data that can be loaded from file using TrainData::loadFromCSV or created with TrainData::create.
-        @param flags optional flags, depending on the model. Some of the models can be updated with the new training samples, not completely overwritten (such as NormalBayesClassifier or ANN_MLP).
-        """
-
-    @overload
-    def train(self, samples, layout, responses) -> retval:
-        """
-        @brief Trains the statistical model
-
-        @param samples training samples
-        @param layout See ml::SampleTypes.
-        @param responses vector of responses associated with the training samples.
-        """
-
-
-class TrainData(builtins.object):
-    def getCatCount(self, vi) -> retval:
-        """"""
-
-    def getCatMap(self) -> retval:
-        """"""
-
-    def getCatOfs(self) -> retval:
-        """"""
-
-    def getClassLabels(self) -> retval:
-        """
-        @brief Returns the vector of class labels
-
-        The function returns vector of unique labels occurred in the responses.
-        """
-
-    def getDefaultSubstValues(self) -> retval:
-        """"""
-
-    def getLayout(self) -> retval:
-        """"""
-
-    def getMissing(self) -> retval:
-        """"""
-
-    def getNAllVars(self) -> retval:
-        """"""
-
-    def getNSamples(self) -> retval:
-        """"""
-
-    def getNTestSamples(self) -> retval:
-        """"""
-
-    def getNTrainSamples(self) -> retval:
-        """"""
-
-    def getNVars(self) -> retval:
-        """"""
-
-    def getNames(self, names) -> None:
-        """
-        @brief Returns vector of symbolic names captured in loadFromCSV()
-        """
-
-    def getNormCatResponses(self) -> retval:
-        """"""
-
-    def getResponseType(self) -> retval:
-        """"""
-
-    def getResponses(self) -> retval:
-        """"""
-
-    def getSample(self, varIdx, sidx, buf) -> None:
-        """"""
-
-    def getSampleWeights(self) -> retval:
-        """"""
-
-    def getSamples(self) -> retval:
-        """"""
-
-    def getTestNormCatResponses(self) -> retval:
-        """"""
-
-    def getTestResponses(self) -> retval:
-        """"""
-
-    def getTestSampleIdx(self) -> retval:
-        """"""
-
-    def getTestSampleWeights(self) -> retval:
-        """"""
-
-    def getTestSamples(self) -> retval:
-        """
-        @brief Returns matrix of test samples
-        """
-
-    def getTrainNormCatResponses(self) -> retval:
-        """
-        @brief Returns the vector of normalized categorical responses
-
-        The function returns vector of responses. Each response is integer from `0` to `<number of
-        classes>-1`. The actual label value can be retrieved then from the class label vector, see
-        TrainData::getClassLabels.
-        """
-
-    def getTrainResponses(self) -> retval:
-        """
-        @brief Returns the vector of responses
-
-        The function returns ordered or the original categorical responses. Usually it's used in
-        regression algorithms.
-        """
-
-    def getTrainSampleIdx(self) -> retval:
-        """"""
-
-    def getTrainSampleWeights(self) -> retval:
-        """"""
-
-    def getTrainSamples(self, layout = ..., compressSamples = ..., compressVars = ...) -> retval:
-        """
-        @brief Returns matrix of train samples
-
-        @param layout The requested layout. If it's different from the initial one, the matrix is transposed. See ml::SampleTypes.
-        @param compressSamples if true, the function returns only the training samples (specified by sampleIdx)
-        @param compressVars if true, the function returns the shorter training samples, containing only the active variables.  In current implementation the function tries to avoid physical data copying and returns the matrix stored inside TrainData (unless the transposition or compression is needed).
-        """
-
-    def getValues(self, vi, sidx, values) -> None:
-        """"""
-
-    def getVarIdx(self) -> retval:
-        """"""
-
-    def getVarSymbolFlags(self) -> retval:
-        """"""
-
-    def getVarType(self) -> retval:
-        """"""
-
-    def setTrainTestSplit(self, count, shuffle = ...) -> None:
-        """
-        @brief Splits the training data into the training and test parts
-        @sa TrainData::setTrainTestSplitRatio
-        """
-
-    def setTrainTestSplitRatio(self, ratio, shuffle = ...) -> None:
-        """
-        @brief Splits the training data into the training and test parts
-
-        The function selects a subset of specified relative size and then returns it as the training
-        set. If the function is not called, all the data is used for training. Please, note that for
-        each of TrainData::getTrain\* there is corresponding TrainData::getTest\*, so that the test
-        subset can be retrieved and processed as well.
-        @sa TrainData::setTrainTestSplit
-        """
-
-    def shuffleTrainTest(self) -> None:
-        """"""
-
-    def create(self, samples, layout, responses, varIdx = ..., sampleIdx = ..., sampleWeights = ..., varType = ...) -> retval:
-        """
-        @brief Creates training data from in-memory arrays.
-
-        @param samples matrix of samples. It should have CV_32F type.
-        @param layout see ml::SampleTypes.
-        @param responses matrix of responses. If the responses are scalar, they should be stored as a single row or as a single column. The matrix should have type CV_32F or CV_32S (in the former case the responses are considered as ordered by default; in the latter case - as categorical)
-        @param varIdx vector specifying which variables to use for training. It can be an integer vector (CV_32S) containing 0-based variable indices or byte vector (CV_8U) containing a mask of active variables.
-        @param sampleIdx vector specifying which samples to use for training. It can be an integer vector (CV_32S) containing 0-based sample indices or byte vector (CV_8U) containing a mask of training samples.
-        @param sampleWeights optional vector with weights for each sample. It should have CV_32F type.
-        @param varType optional vector of type CV_8U and size `<number_of_variables_in_samples> + <number_of_variables_in_responses>`, containing types of each input and output variable. See ml::VariableTypes.
-        """
-
-    def getSubMatrix(self, matrix, idx, layout) -> retval:
-        """
-        @brief Extract from matrix rows/cols specified by passed indexes.
-        @param matrix input matrix (supported types: CV_32S, CV_32F, CV_64F)
-        @param idx 1D index vector
-        @param layout specifies to extract rows (cv::ml::ROW_SAMPLES) or to extract columns (cv::ml::COL_SAMPLES)
-        """
-
-    def getSubVector(self, vec, idx) -> retval:
-        """
-        @brief Extract from 1D vector elements specified by passed indexes.
-        @param vec input vector (supported types: CV_32S, CV_32F, CV_64F)
-        @param idx 1D index vector
-        """
-
-
-class Device(builtins.object):
-    def OpenCLVersion(self) -> retval:
-        """"""
-
-    def OpenCL_C_Version(self) -> retval:
-        """
-
-        See help(type(self)) for accurate signature.
-
-        """
-
-    def addressBits(self) -> retval:
-        """"""
-
-    def available(self) -> retval:
-        """"""
-
-    def compilerAvailable(self) -> retval:
-        """"""
-
-    def deviceVersionMajor(self) -> retval:
-        """"""
-
-    def deviceVersionMinor(self) -> retval:
-        """"""
-
-    def doubleFPConfig(self) -> retval:
-        """"""
-
-    def driverVersion(self) -> retval:
-        """"""
-
-    def endianLittle(self) -> retval:
-        """"""
-
-    def errorCorrectionSupport(self) -> retval:
-        """"""
-
-    def executionCapabilities(self) -> retval:
-        """"""
-
-    def extensions(self) -> retval:
-        """"""
-
-    def globalMemCacheLineSize(self) -> retval:
-        """"""
-
-    def globalMemCacheSize(self) -> retval:
-        """"""
-
-    def globalMemCacheType(self) -> retval:
-        """"""
-
-    def globalMemSize(self) -> retval:
-        """"""
-
-    def halfFPConfig(self) -> retval:
-        """"""
-
-    def hostUnifiedMemory(self) -> retval:
-        """"""
-
-    def image2DMaxHeight(self) -> retval:
-        """"""
-
-    def image2DMaxWidth(self) -> retval:
-        """"""
-
-    def image3DMaxDepth(self) -> retval:
-        """"""
-
-    def image3DMaxHeight(self) -> retval:
-        """"""
-
-    def image3DMaxWidth(self) -> retval:
-        """"""
-
-    def imageFromBufferSupport(self) -> retval:
-        """"""
-
-    def imageMaxArraySize(self) -> retval:
-        """"""
-
-    def imageMaxBufferSize(self) -> retval:
-        """"""
-
-    def imageSupport(self) -> retval:
-        """"""
-
-    def intelSubgroupsSupport(self) -> retval:
-        """"""
-
-    def isAMD(self) -> retval:
-        """"""
-
-    def isExtensionSupported(self, extensionName) -> retval:
-        """"""
-
-    def isIntel(self) -> retval:
-        """"""
-
-    def isNVidia(self) -> retval:
-        """"""
-
-    def linkerAvailable(self) -> retval:
-        """"""
-
-    def localMemSize(self) -> retval:
-        """"""
-
-    def localMemType(self) -> retval:
-        """"""
-
-    def maxClockFrequency(self) -> retval:
-        """"""
-
-    def maxComputeUnits(self) -> retval:
-        """"""
-
-    def maxConstantArgs(self) -> retval:
-        """"""
-
-    def maxConstantBufferSize(self) -> retval:
-        """"""
-
-    def maxMemAllocSize(self) -> retval:
-        """"""
-
-    def maxParameterSize(self) -> retval:
-        """"""
-
-    def maxReadImageArgs(self) -> retval:
-        """"""
-
-    def maxSamplers(self) -> retval:
-        """"""
-
-    def maxWorkGroupSize(self) -> retval:
-        """"""
-
-    def maxWorkItemDims(self) -> retval:
-        """"""
-
-    def maxWriteImageArgs(self) -> retval:
-        """"""
-
-    def memBaseAddrAlign(self) -> retval:
-        """"""
-
-    def name(self) -> retval:
-        """"""
-
-    def nativeVectorWidthChar(self) -> retval:
-        """"""
-
-    def nativeVectorWidthDouble(self) -> retval:
-        """"""
-
-    def nativeVectorWidthFloat(self) -> retval:
-        """"""
-
-    def nativeVectorWidthHalf(self) -> retval:
-        """"""
-
-    def nativeVectorWidthInt(self) -> retval:
-        """"""
-
-    def nativeVectorWidthLong(self) -> retval:
-        """"""
-
-    def nativeVectorWidthShort(self) -> retval:
-        """"""
-
-    def preferredVectorWidthChar(self) -> retval:
-        """"""
-
-    def preferredVectorWidthDouble(self) -> retval:
-        """"""
-
-    def preferredVectorWidthFloat(self) -> retval:
-        """"""
-
-    def preferredVectorWidthHalf(self) -> retval:
-        """"""
-
-    def preferredVectorWidthInt(self) -> retval:
-        """"""
-
-    def preferredVectorWidthLong(self) -> retval:
-        """"""
-
-    def preferredVectorWidthShort(self) -> retval:
-        """"""
-
-    def printfBufferSize(self) -> retval:
-        """"""
-
-    def profilingTimerResolution(self) -> retval:
-        """"""
-
-    def singleFPConfig(self) -> retval:
-        """"""
-
-    def type(self) -> retval:
-        """"""
-
-    def vendorID(self) -> retval:
-        """"""
-
-    def vendorName(self) -> retval:
-        """"""
-
-    def version(self) -> retval:
-        """"""
-
-    def getDefault(self) -> retval:
-        """"""
-
-
-class OpenCLExecutionContext(builtins.object):
-    ...
-
-
-class IntelligentScissorsMB(builtins.object):
-    def applyImage(self, image) -> retval:
-        """
-        @brief Specify input image and extract image features
-        *
-        * @param image input image. Type is #CV_8UC1 / #CV_8UC3
-        """
-
-    def applyImageFeatures(self, non_edge, gradient_direction, gradient_magnitude, image = ...) -> retval:
-        """
-        @brief Specify custom features of input image
-        *
-        * Customized advanced variant of applyImage() call.
-        *
-        * @param non_edge Specify cost of non-edge pixels. Type is CV_8UC1. Expected values are `{0, 1}`.
-        * @param gradient_direction Specify gradient direction feature. Type is CV_32FC2. Values are expected to be normalized: `x^2 + y^2 == 1`
-        * @param gradient_magnitude Specify cost of gradient magnitude function: Type is CV_32FC1. Values should be in range `[0, 1]`.
-        * @param image **Optional parameter**. Must be specified if subset of features is specified (non-specified features are calculated internally)
-        """
-
-    def buildMap(self, sourcePt) -> None:
-        """
-        @brief Prepares a map of optimal paths for the given source point on the image
-        *
-        * @note applyImage() / applyImageFeatures() must be called before this call
-        *
-        * @param sourcePt The source point used to find the paths
-        """
-
-    def getContour(self, targetPt, contour = ..., backward = ...) -> contour:
-        """
-        @brief Extracts optimal contour for the given target point on the image
-        *
-        * @note buildMap() must be called before this call
-        *
-        * @param targetPt The target point
-        * @param[out] contour The list of pixels which contains optimal path between the source and the target points of the image. Type is CV_32SC2 (compatible with `std::vector<Point>`)
-        * @param backward Flag to indicate reverse order of retrived pixels (use "true" value to fetch points from the target to the source point)
-        """
-
-    def setEdgeFeatureCannyParameters(self, threshold1, threshold2, apertureSize = ..., L2gradient = ...) -> retval:
-        """
-        @brief Switch edge feature extractor to use Canny edge detector
-        *
-        * @note "Laplacian Zero-Crossing" feature extractor is used by default (following to original article)
-        *
-        * @sa Canny
-        """
-
-    def setEdgeFeatureZeroCrossingParameters(self, gradient_magnitude_min_value = ...) -> retval:
-        """
-        @brief Switch to "Laplacian Zero-Crossing" edge feature extractor and specify its parameters
-        *
-        * This feature extractor is used by default according to article.
-        *
-        * Implementation has additional filtering for regions with low-amplitude noise.
-        * This filtering is enabled through parameter of minimal gradient amplitude (use some small value 4, 8, 16).
-        *
-        * @note Current implementation of this feature extractor is based on processing of grayscale images (color image is converted to grayscale image first).
-        *
-        * @note Canny edge detector is a bit slower, but provides better results (especially on color images): use setEdgeFeatureCannyParameters().
-        *
-        * @param gradient_magnitude_min_value Minimal gradient magnitude value for edge pixels (default: 0, check is disabled)
-        """
-
-    def setGradientMagnitudeMaxLimit(self, gradient_magnitude_threshold_max = ...) -> retval:
-        """
-        @brief Specify gradient magnitude max value threshold
-        *
-        * Zero limit value is used to disable gradient magnitude thresholding (default behavior, as described in original article).
-        * Otherwize pixels with `gradient magnitude >= threshold` have zero cost.
-        *
-        * @note Thresholding should be used for images with irregular regions (to avoid stuck on parameters from high-contract areas, like embedded logos).
-        *
-        * @param gradient_magnitude_threshold_max Specify gradient magnitude max value threshold (default: 0, disabled)
-        """
-
-    def setWeights(self, weight_non_edge, weight_gradient_direction, weight_gradient_magnitude) -> retval:
-        """
-        @brief Specify weights of feature functions
-        *
-        * Consider keeping weights normalized (sum of weights equals to 1.0)
-        * Discrete dynamic programming (DP) goal is minimization of costs between pixels.
-        *
-        * @param weight_non_edge Specify cost of non-edge pixels (default: 0.43f)
-        * @param weight_gradient_direction Specify cost of gradient direction function (default: 0.43f)
-        * @param weight_gradient_magnitude Specify cost of gradient magnitude function (default: 0.14f)
-        """
-
-
-class ClassWithKeywordProperties(builtins.object):
-    ...
-
-
-class ExportClassName(builtins.object):
-    def getFloatParam(self) -> retval:
-        """"""
-
-    def getIntParam(self) -> retval:
-        """"""
-
-    def create(self, params = ...) -> retval:
-        """"""
-
-    def originalName(self) -> retval:
-        """"""
-
-
-class Params(builtins.object):
-    ...
+gapi_wip_IStreamSource = IStreamSource
+
+
+gapi_wip_draw_Circle = Circle
+
+
+gapi_wip_draw_Image = Image
+
+
+gapi_wip_draw_Line = Line
+
+
+gapi_wip_draw_Mosaic = Mosaic
+
+
+gapi_wip_draw_Poly = Poly
+
+
+gapi_wip_draw_Rect = Rect
+
+
+gapi_wip_draw_Text = Text
+
+
+gapi_wip_gst_GStreamerPipeline = GStreamerPipeline
+
+
+hfs_HfsSegment = HfsSegment
+
+
+img_hash_AverageHash = AverageHash
+
+
+img_hash_BlockMeanHash = BlockMeanHash
+
+
+img_hash_ColorMomentHash = ColorMomentHash
+
+
+img_hash_ImgHashBase = ImgHashBase
+
+
+img_hash_MarrHildrethHash = MarrHildrethHash
+
+
+img_hash_PHash = PHash
+
+
+img_hash_RadialVarianceHash = RadialVarianceHash
+
+
+kinfu_KinFu = KinFu
+
+
+kinfu_Params = Params
+
+
+kinfu_Volume = Volume
+
+
+kinfu_VolumeParams = VolumeParams
+
+
+kinfu_detail_PoseGraph = PoseGraph
+
+
+large_kinfu_LargeKinfu = LargeKinfu
+
+
+large_kinfu_Params = Params
+
+
+legacy_MultiTracker = MultiTracker
+
+
+legacy_Tracker = Tracker
+
+
+legacy_TrackerBoosting = TrackerBoosting
+
+
+legacy_TrackerCSRT = TrackerCSRT
+
+
+legacy_TrackerKCF = TrackerKCF
+
+
+legacy_TrackerMIL = TrackerMIL
+
+
+legacy_TrackerMOSSE = TrackerMOSSE
+
+
+legacy_TrackerMedianFlow = TrackerMedianFlow
+
+
+legacy_TrackerTLD = TrackerTLD
+
+
+line_descriptor_BinaryDescriptor = BinaryDescriptor
+
+
+line_descriptor_BinaryDescriptorMatcher = BinaryDescriptorMatcher
+
+
+line_descriptor_DrawLinesMatchesFlags = DrawLinesMatchesFlags
+
+
+line_descriptor_KeyLine = KeyLine
+
+
+line_descriptor_LSDDetector = LSDDetector
+
+
+line_descriptor_LSDParam = LSDParam
+
+
+linemod_ColorGradient = ColorGradient
+
+
+linemod_DepthNormal = DepthNormal
+
+
+linemod_Detector = Detector
+
+
+linemod_Feature = Feature
+
+
+linemod_Match = Match
+
+
+linemod_Modality = Modality
+
+
+linemod_QuantizedPyramid = QuantizedPyramid
+
+
+linemod_Template = Template
+
+
+mcc_CChecker = CChecker
+
+
+mcc_CCheckerDetector = CCheckerDetector
+
+
+mcc_CCheckerDraw = CCheckerDraw
+
+
+mcc_DetectorParameters = DetectorParameters
+
+
+ml_ANN_MLP = ANN_MLP
+
+
+ml_Boost = Boost
+
+
+ml_DTrees = DTrees
+
+
+ml_EM = EM
+
+
+ml_KNearest = KNearest
+
+
+ml_LogisticRegression = LogisticRegression
+
+
+ml_NormalBayesClassifier = NormalBayesClassifier
+
+
+ml_ParamGrid = ParamGrid
+
+
+ml_RTrees = RTrees
+
+
+ml_SVM = SVM
+
+
+ml_SVMSGD = SVMSGD
+
+
+ml_StatModel = StatModel
+
+
+ml_TrainData = TrainData
+
+
+ocl_Device = Device
+
+
+ocl_OpenCLExecutionContext = OpenCLExecutionContext
+
+
+optflow_DenseRLOFOpticalFlow = DenseRLOFOpticalFlow
+
+
+optflow_DualTVL1OpticalFlow = DualTVL1OpticalFlow
+
+
+optflow_GPCDetails = GPCDetails
+
+
+optflow_GPCPatchDescriptor = GPCPatchDescriptor
+
+
+optflow_GPCPatchSample = GPCPatchSample
+
+
+optflow_GPCTrainingSamples = GPCTrainingSamples
+
+
+optflow_GPCTree = GPCTree
+
+
+optflow_OpticalFlowPCAFlow = OpticalFlowPCAFlow
+
+
+optflow_PCAPrior = PCAPrior
+
+
+optflow_RLOFOpticalFlowParameter = RLOFOpticalFlowParameter
+
+
+optflow_SparseRLOFOpticalFlow = SparseRLOFOpticalFlow
+
+
+phase_unwrapping_HistogramPhaseUnwrapping = HistogramPhaseUnwrapping
+
+
+phase_unwrapping_HistogramPhaseUnwrapping_Params = Params
+
+
+phase_unwrapping_PhaseUnwrapping = PhaseUnwrapping
+
+
+plot_Plot2d = Plot2d
+
+
+ppf_match_3d_ICP = ICP
+
+
+ppf_match_3d_PPF3DDetector = PPF3DDetector
+
+
+ppf_match_3d_Pose3D = Pose3D
+
+
+ppf_match_3d_PoseCluster3D = PoseCluster3D
+
+
+quality_QualityBRISQUE = QualityBRISQUE
+
+
+quality_QualityBase = QualityBase
+
+
+quality_QualityGMSD = QualityGMSD
+
+
+quality_QualityMSE = QualityMSE
+
+
+quality_QualityPSNR = QualityPSNR
+
+
+quality_QualitySSIM = QualitySSIM
+
+
+rapid_GOSTracker = GOSTracker
+
+
+rapid_OLSTracker = OLSTracker
+
+
+rapid_Rapid = Rapid
+
+
+rapid_Tracker = Tracker
+
+
+reg_Map = Map
+
+
+reg_MapAffine = MapAffine
+
+
+reg_MapProjec = MapProjec
+
+
+reg_MapShift = MapShift
+
+
+reg_MapTypeCaster = MapTypeCaster
+
+
+reg_Mapper = Mapper
+
+
+reg_MapperGradAffine = MapperGradAffine
+
+
+reg_MapperGradEuclid = MapperGradEuclid
+
+
+reg_MapperGradProj = MapperGradProj
+
+
+reg_MapperGradShift = MapperGradShift
+
+
+reg_MapperGradSimilar = MapperGradSimilar
+
+
+reg_MapperPyramid = MapperPyramid
+
+
+rgbd_DepthCleaner = DepthCleaner
+
+
+rgbd_FastICPOdometry = FastICPOdometry
+
+
+rgbd_ICPOdometry = ICPOdometry
+
+
+rgbd_Odometry = Odometry
+
+
+rgbd_OdometryFrame = OdometryFrame
+
+
+rgbd_RgbdFrame = RgbdFrame
+
+
+rgbd_RgbdICPOdometry = RgbdICPOdometry
+
+
+rgbd_RgbdNormals = RgbdNormals
+
+
+rgbd_RgbdOdometry = RgbdOdometry
+
+
+rgbd_RgbdPlane = RgbdPlane
+
+
+saliency_MotionSaliency = MotionSaliency
+
+
+saliency_MotionSaliencyBinWangApr2014 = MotionSaliencyBinWangApr2014
+
+
+saliency_Objectness = Objectness
+
+
+saliency_ObjectnessBING = ObjectnessBING
+
+
+saliency_Saliency = Saliency
+
+
+saliency_StaticSaliency = StaticSaliency
+
+
+saliency_StaticSaliencyFineGrained = StaticSaliencyFineGrained
+
+
+saliency_StaticSaliencySpectralResidual = StaticSaliencySpectralResidual
+
+
+segmentation_IntelligentScissorsMB = IntelligentScissorsMB
+
+
+stereo_MatchQuasiDense = MatchQuasiDense
+
+
+stereo_PropagationParameters = PropagationParameters
+
+
+stereo_QuasiDenseStereo = QuasiDenseStereo
+
+
+structured_light_GrayCodePattern = GrayCodePattern
+
+
+structured_light_SinusoidalPattern = SinusoidalPattern
+
+
+structured_light_SinusoidalPattern_Params = Params
+
+
+structured_light_StructuredLightPattern = StructuredLightPattern
+
+
+text_BaseOCR = BaseOCR
+
+
+text_ERFilter = ERFilter
+
+
+text_ERFilter_Callback = Callback
+
+
+text_OCRBeamSearchDecoder = OCRBeamSearchDecoder
+
+
+text_OCRBeamSearchDecoder_ClassifierCallback = ClassifierCallback
+
+
+text_OCRHMMDecoder = OCRHMMDecoder
+
+
+text_OCRHMMDecoder_ClassifierCallback = ClassifierCallback
+
+
+text_OCRTesseract = OCRTesseract
+
+
+text_TextDetector = TextDetector
+
+
+text_TextDetectorCNN = TextDetectorCNN
+
+
+utils_ClassWithKeywordProperties = ClassWithKeywordProperties
+
+
+utils_nested_ExportClassName = ExportClassName
+
+
+utils_nested_ExportClassName_Params = Params
+
+
+wechat_qrcode_WeChatQRCode = WeChatQRCode
+
+
+xfeatures2d_AffineFeature2D = AffineFeature2D
+
+
+xfeatures2d_BEBLID = BEBLID
+
+
+xfeatures2d_BoostDesc = BoostDesc
+
+
+xfeatures2d_BriefDescriptorExtractor = BriefDescriptorExtractor
+
+
+xfeatures2d_DAISY = DAISY
+
+
+xfeatures2d_FREAK = FREAK
+
+
+xfeatures2d_HarrisLaplaceFeatureDetector = HarrisLaplaceFeatureDetector
+
+
+xfeatures2d_LATCH = LATCH
+
+
+xfeatures2d_LUCID = LUCID
+
+
+xfeatures2d_MSDDetector = MSDDetector
+
+
+xfeatures2d_PCTSignatures = PCTSignatures
+
+
+xfeatures2d_PCTSignaturesSQFD = PCTSignaturesSQFD
+
+
+xfeatures2d_SURF = SURF
+
+
+xfeatures2d_StarDetector = StarDetector
+
+
+xfeatures2d_TBMR = TBMR
+
+
+xfeatures2d_TEBLID = TEBLID
+
+
+xfeatures2d_VGG = VGG
+
+
+ximgproc_AdaptiveManifoldFilter = AdaptiveManifoldFilter
+
+
+ximgproc_ContourFitting = ContourFitting
+
+
+ximgproc_DTFilter = DTFilter
+
+
+ximgproc_DisparityFilter = DisparityFilter
+
+
+ximgproc_DisparityWLSFilter = DisparityWLSFilter
+
+
+ximgproc_EdgeAwareInterpolator = EdgeAwareInterpolator
+
+
+ximgproc_EdgeBoxes = EdgeBoxes
+
+
+ximgproc_EdgeDrawing = EdgeDrawing
+
+
+ximgproc_EdgeDrawing_Params = Params
+
+
+ximgproc_FastBilateralSolverFilter = FastBilateralSolverFilter
+
+
+ximgproc_FastGlobalSmootherFilter = FastGlobalSmootherFilter
+
+
+ximgproc_FastLineDetector = FastLineDetector
+
+
+ximgproc_GuidedFilter = GuidedFilter
+
+
+ximgproc_RFFeatureGetter = RFFeatureGetter
+
+
+ximgproc_RICInterpolator = RICInterpolator
+
+
+ximgproc_RidgeDetectionFilter = RidgeDetectionFilter
+
+
+ximgproc_ScanSegment = ScanSegment
+
+
+ximgproc_SparseMatchInterpolator = SparseMatchInterpolator
+
+
+ximgproc_StructuredEdgeDetection = StructuredEdgeDetection
+
+
+ximgproc_SuperpixelLSC = SuperpixelLSC
+
+
+ximgproc_SuperpixelSEEDS = SuperpixelSEEDS
+
+
+ximgproc_SuperpixelSLIC = SuperpixelSLIC
+
+
+ximgproc_segmentation_GraphSegmentation = GraphSegmentation
+
+
+ximgproc_segmentation_SelectiveSearchSegmentation = SelectiveSearchSegmentation
+
+
+ximgproc_segmentation_SelectiveSearchSegmentationStrategy = SelectiveSearchSegmentationStrategy
+
+
+ximgproc_segmentation_SelectiveSearchSegmentationStrategyColor = SelectiveSearchSegmentationStrategyColor
+
+
+ximgproc_segmentation_SelectiveSearchSegmentationStrategyFill = SelectiveSearchSegmentationStrategyFill
+
+
+ximgproc_segmentation_SelectiveSearchSegmentationStrategyMultiple = SelectiveSearchSegmentationStrategyMultiple
+
+
+ximgproc_segmentation_SelectiveSearchSegmentationStrategySize = SelectiveSearchSegmentationStrategySize
+
+
+ximgproc_segmentation_SelectiveSearchSegmentationStrategyTexture = SelectiveSearchSegmentationStrategyTexture
+
+
+xphoto_GrayworldWB = GrayworldWB
+
+
+xphoto_LearningBasedWB = LearningBasedWB
+
+
+xphoto_SimpleWB = SimpleWB
+
+
+xphoto_TonemapDurand = TonemapDurand
+
+
+xphoto_WhiteBalancer = WhiteBalancer

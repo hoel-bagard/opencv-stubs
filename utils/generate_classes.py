@@ -95,8 +95,17 @@ def main() -> None:
             # print(help_text)
             help_text_lines = help_text.splitlines()
 
+            class_path, class_signature = help_text_lines[0].split(" = ")
+
+            # Not in root module
+            if len(class_path[4:].split("_")) != 1:
+                stubs.append("")
+                stubs.append(f"{class_path[4:]} = {class_signature.split(' ')[1].split('(')[0]}")
+                stubs.append("")
+                continue
+
             stubs.append("")  # New line
-            stubs.append(help_text_lines[0].split(" = ")[1] + ":")  # class definition
+            stubs.append(class_signature + ":")  # class definition
 
             line_idx = 1
             found_at_least_one_method = False
