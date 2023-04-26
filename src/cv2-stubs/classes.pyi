@@ -124,42 +124,46 @@ class AgastFeatureDetector(Feature2D):
 
 
 class Algorithm(builtins.object):
-    def clear(self) -> None:
+     @abstractmethod
+     def clear(self) -> None:
         """
         @brief Clears the algorithm state
         """
 
-    def empty(self) -> retval:
+    @abstractmethod
+    def empty(self) -> bool:
         """
         @brief Returns true if the Algorithm is empty (e.g. in the very beginning or after unsuccessful read
         """
 
-    def getDefaultName(self) -> retval:
+    @abstractmethod
+    def getDefaultName(self) -> str:
         """
         Returns the algorithm string identifier.
         This string is used as top level xml/yml node tag when the object is saved to a file or string.
         """
 
-    def read(self, fn) -> None:
+    def read(self, fn: FileNode) -> None:
         """
         @brief Reads algorithm parameters from a file storage
         """
 
-    def save(self, filename) -> None:
+    @abstractmethod
+    def save(self, filename: str) -> None:
         """
         Saves the algorithm to a file.
         In order to make this method work, the derived class must implement Algorithm::write(FileStorage& fs).
         """
 
-    def write(self, fs) -> None:
+    @overload
+    def write(self, fs: FileStorage) -> None:
         """
         @brief Stores algorithm parameters in a file storage
         """
 
     @overload
-    def write(self, fs, name) -> None:
-        """
-        """
+    def write(self, fs: FileStorage, name: str) -> None:
+        """"""
 
 
 class AlignExposures(Algorithm):
@@ -202,9 +206,11 @@ class AlignMTB(AlignExposures):
     def getMaxBits(self) -> retval:
         """"""
 
+    @overload
     def process(self, src, dst, times, response) -> None:
         """"""
 
+    @overload
     def process(self, src, dst) -> None:
         """
         @brief Short version of process, that doesn't take extra arguments.
@@ -233,12 +239,14 @@ class AlignMTB(AlignExposures):
 
 
 class AsyncArray(builtins.object):
+    @overload
     def get(self, dst = ...) -> dst:
         """
         Fetch the result.
         @param[out] dst destination array  Waits for result until container has valid result. Throws exception if exception was stored as a result.  Throws exception on invalid container state.  @note Result or stored exception can be fetched only once.
         """
 
+    @overload
     def get(self, timeoutNs, dst = ...) -> tuple[retval, dst]:
         """
         Retrieving the result with timeout
@@ -266,7 +274,6 @@ class BFMatcher(DescriptorMatcher):
 
 
 class BOWImgDescriptorExtractor(builtins.object):
-    @overload
     def compute(self, image, keypoints, imgDescriptor = ...) -> imgDescriptor:
         """
         @overload
@@ -299,9 +306,11 @@ class BOWImgDescriptorExtractor(builtins.object):
 
 
 class BOWKMeansTrainer(BOWTrainer):
+    @overload
     def cluster(self) -> retval:
         """"""
 
+    @overload
     def cluster(self, descriptors) -> retval:
         """"""
 
@@ -323,6 +332,7 @@ class BOWTrainer(builtins.object):
         @overload
         """
 
+    @overload
     def cluster(self, descriptors) -> retval:
         """
         @brief Clusters train descriptors.
@@ -372,6 +382,7 @@ class BRISK(Feature2D):
         @param threshold AGAST detection threshold score.
         """
 
+    @overload
     def create(self, thresh = ..., octaves = ..., patternScale = ...) -> retval:
         """
         @brief The BRISK constructor
@@ -381,6 +392,7 @@ class BRISK(Feature2D):
         @param patternScale apply this scale to the pattern used for sampling the neighbourhood of a keypoint.
         """
 
+    @overload
     def create(self, radiusList, numberList, dMax = ..., dMin = ..., indexChange = ...) -> retval:
         """
         @brief The BRISK constructor for a custom pattern
@@ -392,6 +404,7 @@ class BRISK(Feature2D):
         @param indexChange index remapping of the bits.
         """
 
+    @overload
     def create(self, thresh, octaves, radiusList, numberList, dMax = ..., dMin = ..., indexChange = ...) -> retval:
         """
         @brief The BRISK constructor for a custom pattern, detection threshold and octaves
@@ -769,7 +782,6 @@ class CascadeClassifier(builtins.object):
         @param maxSize Maximum possible object size. Objects larger than that are ignored. If `maxSize == minSize` model is evaluated on single scale.
         """
 
-    @overload
     def detectMultiScale2(self, image, scaleFactor = ..., minNeighbors = ..., flags = ..., minSize = ..., maxSize = ...) -> tuple[objects, numDetections]:
         """
         @overload
@@ -783,7 +795,6 @@ class CascadeClassifier(builtins.object):
         @param maxSize Maximum possible object size. Objects larger than that are ignored. If `maxSize == minSize` model is evaluated on single scale.
         """
 
-    @overload
     def detectMultiScale3(self, image, scaleFactor = ..., minNeighbors = ..., flags = ..., minSize = ..., maxSize = ..., outputRejectLevels = ...) -> tuple[objects, rejectLevels, levelWeights]:
         """
         @overload
@@ -995,8 +1006,8 @@ class DenseOpticalFlow(Algorithm):
         """
 
 
-class DescriptorMatcher(Algorithm):
-    def add(self, descriptors) -> None:
+class DescriptorMatcher(Algorithm, ABC):
+    def add(self, descriptors: InputArrayOfArrays) -> None:
         """
         @brief Adds descriptors to train a CPU(trainDescCollectionis) or GPU(utrainDescCollectionis) descriptor
         collection.
@@ -1033,6 +1044,7 @@ class DescriptorMatcher(Algorithm):
         @brief Returns true if the descriptor matcher supports masking permissible matches.
         """
 
+    @overload
     def knnMatch(self, queryDescriptors, trainDescriptors, k, mask = ..., compactResult = ...) -> matches:
         """
         @brief Finds the k best matches for each descriptor from a query set.
@@ -1056,6 +1068,7 @@ class DescriptorMatcher(Algorithm):
         @param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is false, the matches vector has the same size as queryDescriptors rows. If compactResult is true, the matches vector does not contain matches for fully masked-out query descriptors.
         """
 
+    @overload
     def match(self, queryDescriptors, trainDescriptors, mask = ...) -> matches:
         """
         @brief Finds the best match for each descriptor from a query set.
@@ -1075,6 +1088,7 @@ class DescriptorMatcher(Algorithm):
         @param masks Set of masks. Each masks[i] specifies permissible matches between the input query descriptors and stored train descriptors from the i-th image trainDescCollection[i].
         """
 
+    @overload
     def radiusMatch(self, queryDescriptors, trainDescriptors, maxDistance, mask = ..., compactResult = ...) -> matches:
         """
         @brief For each query descriptor, finds the training descriptors not farther than the specified distance.
@@ -1098,9 +1112,11 @@ class DescriptorMatcher(Algorithm):
         @param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is false, the matches vector has the same size as queryDescriptors rows. If compactResult is true, the matches vector does not contain matches for fully masked-out query descriptors.
         """
 
+    @overload
     def read(self, fileName) -> None:
         """"""
 
+    @overload
     def read(self, arg1) -> None:
         """"""
 
@@ -1114,12 +1130,15 @@ class DescriptorMatcher(Algorithm):
         example, FlannBasedMatcher trains flann::Index ).
         """
 
+    @overload
     def write(self, fileName) -> None:
         """"""
 
+    @overload
     def write(self, fs, name) -> None:
         """"""
 
+    @overload
     def create(self, descriptorMatcherType) -> retval:
         """
         @brief Creates a descriptor matcher of a given type with the default parameters (using default
@@ -1128,6 +1147,7 @@ class DescriptorMatcher(Algorithm):
         @param descriptorMatcherType Descriptor matcher type. Now the following matcher types are supported: -   `BruteForce` (it uses L2 ) -   `BruteForce-L1` -   `BruteForce-Hamming` -   `BruteForce-Hamming(2)` -   `FlannBased`
         """
 
+    @overload
     def create(self, matcherType) -> retval:
         """"""
 
@@ -1321,7 +1341,8 @@ class FastFeatureDetector(Feature2D):
         """"""
 
 
-class Feature2D(builtins.object):
+class Feature2D(builtins.object, ABC):
+    @overload
     def compute(self, image, keypoints, descriptors = ...) -> tuple[keypoints, descriptors]:
         """
         @brief Computes the descriptors for a set of keypoints detected in an image (first variant) or image set
@@ -1351,6 +1372,7 @@ class Feature2D(builtins.object):
     def descriptorType(self) -> retval:
         """"""
 
+    @overload
     def detect(self, image, mask = ...) -> keypoints:
         """
         @brief Detects keypoints in an image (first variant) or image set (second variant).
@@ -1380,21 +1402,24 @@ class Feature2D(builtins.object):
     def getDefaultName(self) -> retval:
         """"""
 
+    @overload
     def read(self, fileName) -> None:
         """"""
 
+    @overload
     def read(self, arg1) -> None:
         """"""
 
+    @overload
     def write(self, fileName) -> None:
         """"""
 
+    @overload
     def write(self, fs, name) -> None:
         """"""
 
 
 class FileNode(builtins.object):
-    @overload
     def at(self, i) -> retval:
         """
         @overload
@@ -1404,7 +1429,6 @@ class FileNode(builtins.object):
     def empty(self) -> retval:
         """"""
 
-    @overload
     def getNode(self, nodename) -> retval:
         """
         @overload
@@ -1472,25 +1496,24 @@ class FileStorage(builtins.object):
         @brief Finishes writing nested structure (should pair startWriteStruct())
         """
 
-    def getFirstTopLevelNode(self) -> retval:
+    def getFirstTopLevelNode(self) -> FileNode:
         """
         @brief Returns the first element of the top-level mapping.
         @returns The first element of the top-level mapping.
         """
 
-    def getFormat(self) -> retval:
+    def getFormat(self) -> int:
         """
         @brief Returns the current format.
         * @returns The current format, see FileStorage::Mode
         """
 
-    @overload
     def getNode(self, nodename) -> retval:
         """
         @overload
         """
 
-    def isOpened(self) -> retval:
+    def isOpened(self) -> bool:
         """
         @brief Checks whether the file is opened.
 
@@ -1498,7 +1521,7 @@ class FileStorage(builtins.object):
         good practice to call this method after you tried to open a file.
         """
 
-    def open(self, filename, flags, encoding = ...) -> retval:
+    def open(self, filename: str, flags: int, encoding: str = ...) -> bool:
         """
         @brief Opens a file.
 
@@ -1524,13 +1547,14 @@ class FileStorage(builtins.object):
         opened for writing data and FileStorage::WRITE was specified
         """
 
-    def root(self, streamidx = ...) -> retval:
+    def root(self, streamidx: int = ...) -> FileNode:
         """
         @brief Returns the top-level mapping
         @param streamidx Zero-based index of the stream. In most cases there is only one stream in the file. However, YAML supports multiple streams and so there can be several. @returns The top-level mapping.
         """
 
-    def startWriteStruct(self, name, flags, typeName = ...) -> None:
+    @overload
+    def startWriteStruct(self, name: str, flags: int, typeName: str = ...) -> None:
         """
         @brief Starts to write a nested structure (sequence or a mapping).
         @param name name of the structure. When writing to sequences (a.k.a. "arrays"), pass an empty string.
@@ -1538,14 +1562,15 @@ class FileStorage(builtins.object):
         @param typeName optional name of the type you store. The effect of setting this depends on the storage format. I.e. if the format has a specification for storing type information, this parameter is used.
         """
 
-    def write(self, name, val) -> None:
+    @overload
+    def startWriteStruct(self, name, flags, typeName = ...) -> None:
         """
         * @brief Simplified writing API to use with bindings.
         * @param name Name of the written object. When writing to sequences (a.k.a. "arrays"), pass an empty string.
         * @param val Value of the written object.
         """
 
-    def writeComment(self, comment, append = ...) -> None:
+    def writeComment(self, comment: str, append: bool = ...) -> None:
         """
         @brief Writes a comment.
 
@@ -1607,6 +1632,7 @@ class GComputation(builtins.object):
         * @param args a list of compilation arguments to pass to the * underlying compilation process. Don't create GCompileArgs * object manually, use cv::compile_args() wrapper instead. * * @sa @ref gapi_data_objects, @ref gapi_compile_args
         """
 
+    @overload
     def compileStreaming(self, in_metas, args = ...) -> retval:
         """
         * @brief Compile the computation for streaming mode.
@@ -1621,6 +1647,7 @@ class GComputation(builtins.object):
         * @param args compilation arguments for this compilation * process. Compilation arguments directly affect what kind of * executable object would be produced, e.g. which kernels (and * thus, devices) would be used to execute computation. * * @return GStreamingCompiled, a streaming-oriented executable * computation compiled specifically for the given input * parameters. * * @sa @ref gapi_compile_args
         """
 
+    @overload
     def compileStreaming(self, args = ...) -> retval:
         """
         * @brief Compile the computation for streaming mode.
@@ -1634,6 +1661,7 @@ class GComputation(builtins.object):
         * @param args compilation arguments for this compilation * process. Compilation arguments directly affect what kind of * executable object would be produced, e.g. which kernels (and * thus, devices) would be used to execute computation. * * @return GStreamingCompiled, a streaming-oriented executable * computation compiled for any input image format. * * @sa @ref gapi_compile_args
         """
 
+    @overload
     def compileStreaming(self, callback, args = ...) -> retval:
         """"""
 
@@ -1684,9 +1712,11 @@ class GFTTDetector(Feature2D):
     def setQualityLevel(self, qlevel) -> None:
         """"""
 
+    @overload
     def create(self, maxCorners = ..., qualityLevel = ..., minDistance = ..., blockSize = ..., useHarrisDetector = ..., k = ...) -> retval:
         """"""
 
+    @overload
     def create(self, maxCorners, qualityLevel, minDistance, blockSize, gradiantSize, useHarrisDetector = ..., k = ...) -> retval:
         """"""
 
@@ -1727,9 +1757,11 @@ class GMatDesc(builtins.object):
     def asInterleaved(self) -> retval:
         """"""
 
+    @overload
     def asPlanar(self) -> retval:
         """"""
 
+    @overload
     def asPlanar(self, planes) -> retval:
         """"""
 
@@ -1739,9 +1771,11 @@ class GMatDesc(builtins.object):
     def withSize(self, sz) -> retval:
         """"""
 
+    @overload
     def withSizeDelta(self, delta) -> retval:
         """"""
 
+    @overload
     def withSizeDelta(self, dx, dy) -> retval:
         """"""
 
@@ -1873,9 +1907,11 @@ class GStreamingCompiled(builtins.object):
 
 
 class GeneralizedHough(Algorithm):
+    @overload
     def detect(self, image, positions = ..., votes = ...) -> tuple[positions, votes]:
         """"""
 
+    @overload
     def detect(self, edges, dx, dy, positions = ..., votes = ...) -> tuple[positions, votes]:
         """"""
 
@@ -1909,9 +1945,11 @@ class GeneralizedHough(Algorithm):
     def setMinDist(self, minDist) -> None:
         """"""
 
+    @overload
     def setTemplate(self, templ, templCenter = ...) -> None:
         """"""
 
+    @overload
     def setTemplate(self, edges, dx, dy, templCenter = ...) -> None:
         """"""
 
@@ -2209,6 +2247,7 @@ class KalmanFilter(builtins.object):
 
 
 class KeyPoint(builtins.object):
+    @overload
     def convert(self, keypoints, keypointIndexes = ...) -> points2f:
         """
         This method converts vector of keypoints to vector of points or the reverse, where each keypoint is
@@ -2369,9 +2408,11 @@ class Mat(numpy.ndarray):
 
 
 class MergeDebevec(MergeExposures):
+    @overload
     def process(self, src, times, response, dst = ...) -> dst:
         """"""
 
+    @overload
     def process(self, src, times, dst = ...) -> dst:
         """"""
 
@@ -2398,9 +2439,11 @@ class MergeMertens(MergeExposures):
     def getSaturationWeight(self) -> retval:
         """"""
 
+    @overload
     def process(self, src, times, response, dst = ...) -> dst:
         """"""
 
+    @overload
     def process(self, src, dst = ...) -> dst:
         """
         @brief Short version of process, that doesn't take extra arguments.
@@ -2420,9 +2463,11 @@ class MergeMertens(MergeExposures):
 
 
 class MergeRobertson(MergeExposures):
+    @overload
     def process(self, src, times, response, dst = ...) -> dst:
         """"""
 
+    @overload
     def process(self, src, times, dst = ...) -> dst:
         """"""
 
@@ -2728,23 +2773,25 @@ class SIFT(Feature2D):
     def setSigma(self, sigma) -> None:
         """"""
 
+    @overload
     def create(self, nfeatures = ..., nOctaveLayers = ..., contrastThreshold = ..., edgeThreshold = ..., sigma = ...) -> retval:
         """
-        @param nfeatures The number of best features to retain. The features are ranked by their scores (measured in SIFT algorithm as the local contrast) 
-        @param nOctaveLayers The number of layers in each octave. 3 is the value used in D. Lowe paper. The number of octaves is computed automatically from the image resolution. 
-        @param contrastThreshold The contrast threshold used to filter out weak features in semi-uniform (low-contrast) regions. The larger the threshold, the less features are produced by the detector.  @note The contrast threshold will be divided by nOctaveLayers when the filtering is applied. When nOctaveLayers is set to default and if you want to use the value used in D. Lowe paper, 0.03, set this argument to 0.09. 
-        @param edgeThreshold The threshold used to filter out edge-like features. Note that the its meaning is different from the contrastThreshold, i.e. the larger the edgeThreshold, the less features are filtered out (more features are retained). 
+        @param nfeatures The number of best features to retain. The features are ranked by their scores (measured in SIFT algorithm as the local contrast)
+        @param nOctaveLayers The number of layers in each octave. 3 is the value used in D. Lowe paper. The number of octaves is computed automatically from the image resolution.
+        @param contrastThreshold The contrast threshold used to filter out weak features in semi-uniform (low-contrast) regions. The larger the threshold, the less features are produced by the detector.  @note The contrast threshold will be divided by nOctaveLayers when the filtering is applied. When nOctaveLayers is set to default and if you want to use the value used in D. Lowe paper, 0.03, set this argument to 0.09.
+        @param edgeThreshold The threshold used to filter out edge-like features. Note that the its meaning is different from the contrastThreshold, i.e. the larger the edgeThreshold, the less features are filtered out (more features are retained).
         @param sigma The sigma of the Gaussian applied to the input image at the octave \#0. If your image is captured with a weak camera with soft lenses, you might want to reduce the number.
         """
 
+    @overload
     def create(self, nfeatures, nOctaveLayers, contrastThreshold, edgeThreshold, sigma, descriptorType) -> retval:
         """
         @brief Create SIFT with specified descriptorType.
-        @param nfeatures The number of best features to retain. The features are ranked by their scores (measured in SIFT algorithm as the local contrast) 
-        @param nOctaveLayers The number of layers in each octave. 3 is the value used in D. Lowe paper. The number of octaves is computed automatically from the image resolution. 
-        @param contrastThreshold The contrast threshold used to filter out weak features in semi-uniform (low-contrast) regions. The larger the threshold, the less features are produced by the detector.  @note The contrast threshold will be divided by nOctaveLayers when the filtering is applied. When nOctaveLayers is set to default and if you want to use the value used in D. Lowe paper, 0.03, set this argument to 0.09. 
-        @param edgeThreshold The threshold used to filter out edge-like features. Note that the its meaning is different from the contrastThreshold, i.e. the larger the edgeThreshold, the less features are filtered out (more features are retained). 
-        @param sigma The sigma of the Gaussian applied to the input image at the octave \#0. If your image is captured with a weak camera with soft lenses, you might want to reduce the number. 
+        @param nfeatures The number of best features to retain. The features are ranked by their scores (measured in SIFT algorithm as the local contrast)
+        @param nOctaveLayers The number of layers in each octave. 3 is the value used in D. Lowe paper. The number of octaves is computed automatically from the image resolution.
+        @param contrastThreshold The contrast threshold used to filter out weak features in semi-uniform (low-contrast) regions. The larger the threshold, the less features are produced by the detector.  @note The contrast threshold will be divided by nOctaveLayers when the filtering is applied. When nOctaveLayers is set to default and if you want to use the value used in D. Lowe paper, 0.03, set this argument to 0.09.
+        @param edgeThreshold The threshold used to filter out edge-like features. Note that the its meaning is different from the contrastThreshold, i.e. the larger the edgeThreshold, the less features are filtered out (more features are retained).
+        @param sigma The sigma of the Gaussian applied to the input image at the octave \#0. If your image is captured with a weak camera with soft lenses, you might want to reduce the number.
         @param descriptorType The type of descriptors. Only CV_32F and CV_8U are supported.
         """
 
@@ -3153,11 +3200,13 @@ class StereoSGBM(StereoMatcher):
 
 class Stitcher(builtins.object):
     @overload
+    @overload
     def composePanorama(self, pano = ...) -> tuple[retval, pano]:
         """
         @overload
         """
 
+    @overload
     def composePanorama(self, images, pano = ...) -> tuple[retval, pano]:
         """
         @brief These functions try to compose the given images (or images stored internally from the other function
@@ -3221,6 +3270,7 @@ class Stitcher(builtins.object):
         @overload
         """
 
+    @overload
     def stitch(self, images, masks, pano = ...) -> tuple[retval, pano]:
         """
         @brief These functions try to stitch the given images.
@@ -3322,6 +3372,7 @@ class Subdiv2D(builtins.object):
         @param rect Rectangle that includes all of the 2D points that are to be added to the subdivision.
         """
 
+    @overload
     def insert(self, pt) -> retval:
         """
         @brief Insert a single point into a Delaunay triangulation.
@@ -3329,6 +3380,7 @@ class Subdiv2D(builtins.object):
         @param pt Point to insert.  The function inserts a single point into a subdivision and modifies the subdivision topology appropriately. If a point with the same coordinates exists already, no new point is added. @returns the ID of the point.  @note If the point is outside of the triangulation specified rect a runtime error is raised.
         """
 
+    @overload
     def insert(self, ptvec) -> None:
         """
         @brief Insert multiple points into a Delaunay triangulation.
@@ -3723,9 +3775,9 @@ class VideoCapture(builtins.object):
         true.
         """
 
+    @overload
     def open(self, filename, apiPreference = ...) -> retval:
         """
-    @overload
         @brief  Opens a video file or a capturing device or an IP video stream for video capturing.
 
         @overload
@@ -3736,9 +3788,9 @@ class VideoCapture(builtins.object):
         The method first calls VideoCapture::release to close the already opened file or camera.
         """
 
+    @overload
     def open(self, filename, apiPreference, params) -> retval:
         """
-    @overload
         @brief  Opens a video file or a capturing device or an IP video stream for video capturing with API Preference and parameters
 
         @overload
@@ -3751,9 +3803,9 @@ class VideoCapture(builtins.object):
         The method first calls VideoCapture::release to close the already opened file or camera.
         """
 
+    @overload
     def open(self, index, apiPreference = ...) -> retval:
         """
-    @overload
         @brief  Opens a camera for video capturing
 
         @overload
@@ -3764,9 +3816,9 @@ class VideoCapture(builtins.object):
         The method first calls VideoCapture::release to close the already opened file or camera.
         """
 
+    @overload
     def open(self, index, apiPreference, params) -> retval:
         """
-    @overload
         @brief  Opens a camera for video capturing with API Preference and parameters
 
         @overload
@@ -3849,6 +3901,7 @@ class VideoWriter(builtins.object):
         @brief Returns true if video writer has been successfully initialized.
         """
 
+    @overload
     def open(self, filename, fourcc, fps, frameSize, isColor = ...) -> retval:
         """
         @brief Initializes or reinitializes video writer.
