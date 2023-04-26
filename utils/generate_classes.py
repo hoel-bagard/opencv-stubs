@@ -10,23 +10,8 @@ import cv2
 def process_function_signature(function_signature: str) -> str:
     function_signature = process_default_args(function_signature)
     function_signature = process_tuple_return(function_signature)
+    function_signature = add_self(function_signature)
     return function_signature
-
-
-def process_tuple_return(function_signature: str) -> str:
-    """Function to convert OpenCV's way of representing multiple return values to python synthax.
-
-    Examples:
-        >>>s = "computeBitmaps(img[, tb[, eb]]) -> tb, eb"
-        >>>process_tuple_return(s)
-        "computeBitmaps(img[, tb[, eb]]) -> tuple[tb, eb]"
-    """
-    parts = function_signature.split(" -> ")
-    return_values = parts[-1].split(", ")
-    if len(return_values) > 1:
-        parts[-1] = f"tuple[{parts[-1]}]"
-
-    return " -> ".join(parts)
 
 
 def process_default_args(function_signature: str) -> str:
@@ -56,6 +41,42 @@ def process_default_args(function_signature: str) -> str:
     return signature
 
 
+def process_tuple_return(function_signature: str) -> str:
+    """Function to convert OpenCV's way of representing multiple return values to python synthax.
+
+    Examples:
+        >>>s = "computeBitmaps(img[, tb[, eb]]) -> tb, eb"
+        >>>process_tuple_return(s)
+        "computeBitmaps(img[, tb[, eb]]) -> tuple[tb, eb]"
+    """
+    parts = function_signature.split(" -> ")
+    return_values = parts[-1].split(", ")
+    if len(return_values) > 1:
+        parts[-1] = f"tuple[{parts[-1]}]"
+
+    return " -> ".join(parts)
+
+
+def add_self(function_signature: str) -> str:
+    """Function to add self as the first argument of a method.
+
+    Examples:
+        >>>s = "writeComment(comment, append = ...) -> None:"
+        >>>add_self(s)
+        "writeComment(self, comment, append = ...) -> None:"
+
+        >>>s = "getIntParam() -> retval:"
+        >>>add_self(s)
+        "getIntParam(self) -> retval:"
+    """
+    parts = function_signature.split("(", maxsplit=1)
+    if parts[-1][0] != ")":
+        parts[-1] = "self, " + parts[-1]
+    else:
+        parts[-1] = "self" + parts[-1]
+    return "(".join(parts)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Script to generate the stubs for the opencv classes.",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -71,6 +92,7 @@ def main() -> None:
         if inspect.isclass(member):
             result = subprocess.run(["python", "-m", "pydoc", f"cv2.{name}"], stdout=subprocess.PIPE)
             help_text = result.stdout.split(b"\n\n", maxsplit=1)[1].decode()
+            # print(help_text)
             help_text_lines = help_text.splitlines()
 
             stubs.append("")  # New line
@@ -115,7 +137,7 @@ def main() -> None:
                     break
             if not found_at_least_one_method:
                 stubs.append("    ...")
-            break
+                stubs.append("")  # New line
 
     # Cleanup
     stubs_str = "\n".join(stubs)
