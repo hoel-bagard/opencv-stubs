@@ -1,3 +1,13 @@
+from abc import ABC, abstractmethod
+from typing import Any, TypeAlias, overload
+
+import numpy as np
+import numpy.typing as npt
+
+from typing_extensions import Self
+
+InputArrayOfArrays: TypeAlias = npt.NDArray[Any]
+
 
 class AKAZE(Feature2D):
     def getDefaultName(self) -> retval:
@@ -105,41 +115,46 @@ class AgastFeatureDetector(Feature2D):
         """"""
 
 
-class Algorithm(builtins.object):
+class Algorithm(builtins.object, ABC):
+    @abstractmethod
     def clear(self) -> None:
         """
         @brief Clears the algorithm state
         """
 
+    @abstractmethod
     def empty(self) -> retval:
         """
         @brief Returns true if the Algorithm is empty (e.g. in the very beginning or after unsuccessful read
         """
 
-    def getDefaultName(self) -> retval:
+    @abstractmethod
+    def getDefaultName(self) -> str:
         """
         Returns the algorithm string identifier.
         This string is used as top level xml/yml node tag when the object is saved to a file or string.
         """
 
-    def read(self, fn) -> None:
+    def read(self, fn: FileNode) -> None:
         """
         @brief Reads algorithm parameters from a file storage
         """
 
-    def save(self, filename) -> None:
+    @abstractmethod
+    def save(self, filename: str) -> None:
         """
         Saves the algorithm to a file.
         In order to make this method work, the derived class must implement Algorithm::write(FileStorage& fs).
         """
 
-    def write(self, fs) -> None:
+    @overload
+    def write(self, fs: FileStorage) -> None:
         """
         @brief Stores algorithm parameters in a file storage
         """
 
     @overload
-    def write(self, fs, name) -> None:
+    def write(self, fs: FileStorage, name: str) -> None:
         """
         """
 
@@ -973,8 +988,8 @@ class DenseOpticalFlow(Algorithm):
         """
 
 
-class DescriptorMatcher(Algorithm):
-    def add(self, descriptors) -> None:
+class DescriptorMatcher(Algorithm, AB):
+    def add(self, descriptors: InputArrayOfArrays) -> None:
         """
         @brief Adds descriptors to train a CPU(trainDescCollectionis) or GPU(utrainDescCollectionis) descriptor
         collection.
@@ -1287,7 +1302,7 @@ class FastFeatureDetector(Feature2D):
         """"""
 
 
-class Feature2D(builtins.object):
+class Feature2D(builtins.object, ABC):
     def compute(self, image, keypoints, descriptors = ...) -> tuple[keypoints, descriptors]:
         """
         @brief Computes the descriptors for a set of keypoints detected in an image (first variant) or image set
@@ -1438,25 +1453,25 @@ class FileStorage(builtins.object):
         @brief Finishes writing nested structure (should pair startWriteStruct())
         """
 
-    def getFirstTopLevelNode(self) -> retval:
+    def getFirstTopLevelNode(self) -> FileNode:
         """
         @brief Returns the first element of the top-level mapping.
         @returns The first element of the top-level mapping.
         """
 
-    def getFormat(self) -> retval:
+    def getFormat(self) -> int:
         """
         @brief Returns the current format.
         * @returns The current format, see FileStorage::Mode
         """
 
     @overload
-    def getNode(self, nodename) -> retval:
+    def getNode(self, nodename) -> Any:
         """
         @overload
         """
 
-    def isOpened(self) -> retval:
+    def isOpened(self) -> bool:
         """
         @brief Checks whether the file is opened.
 
@@ -1464,7 +1479,7 @@ class FileStorage(builtins.object):
         good practice to call this method after you tried to open a file.
         """
 
-    def open(self, filename, flags, encoding = ...) -> retval:
+    def open(self, filename: str, flags: int, encoding: str = ...) -> bool:
         """
         @brief Opens a file.
 
@@ -1490,13 +1505,13 @@ class FileStorage(builtins.object):
         opened for writing data and FileStorage::WRITE was specified
         """
 
-    def root(self, streamidx = ...) -> retval:
+    def root(self, streamidx: int = ...) -> FileNode:
         """
         @brief Returns the top-level mapping
         @param streamidx Zero-based index of the stream. In most cases there is only one stream in the file. However, YAML supports multiple streams and so there can be several. @returns The top-level mapping.
         """
 
-    def startWriteStruct(self, name, flags, typeName = ...) -> None:
+    def startWriteStruct(self, name: str, flags: int, typeName: str = ...) -> None:
         """
         @brief Starts to write a nested structure (sequence or a mapping).
         @param name name of the structure. When writing to sequences (a.k.a. "arrays"), pass an empty string.
@@ -1504,14 +1519,14 @@ class FileStorage(builtins.object):
         @param typeName optional name of the type you store. The effect of setting this depends on the storage format. I.e. if the format has a specification for storing type information, this parameter is used.
         """
 
-    def write(self, name, val) -> None:
+    def write(self, name: str, val: float) -> None:
         """
         * @brief Simplified writing API to use with bindings.
         * @param name Name of the written object. When writing to sequences (a.k.a. "arrays"), pass an empty string.
         * @param val Value of the written object.
         """
 
-    def writeComment(self, comment, append = ...) -> None:
+    def writeComment(self, comment: str, append: bool = ...) -> None:
         """
         @brief Writes a comment.
 
