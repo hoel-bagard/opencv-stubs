@@ -92,7 +92,7 @@ def process_class(name: str, stubs: list[str]) -> None:
     # Not in root module
     if len(class_path[4:].split("_")) != 1 and "." not in class_path[4:]:
         stubs.append("")
-        stubs.append(f"{class_path[4:]} = {class_signature.split(' ')[1].split('(')[0]}")
+        stubs.append(f"{class_path[4:]} = {class_path[4:].split('_')[0]}.{class_signature.split(' ')[1].split('(')[0]}")
         stubs.append("")
         return
 
@@ -146,21 +146,20 @@ def process_function(name: str, stubs: list[str]) -> None:
     result = subprocess.run(["python", "-m", "pydoc", f"cv2.{name}"], stdout=subprocess.PIPE)
     help_text_lines = result.stdout.decode().splitlines()
 
-    if not len(help_text_lines) > 4:
+    if not len(help_text_lines) >= 4:
         return
 
     stubs.append("")
-    stubs.append(f"def {process_function_signature(help_text_lines[4])}:")
+    stubs.append(f"def {process_function_signature(help_text_lines[3].lstrip())}:")
 
     # Pre-process all the lines to make it easier to handle newlines later.
-    for i in range(5, len(help_text_lines[5:])):
+    for i in range(4, len(help_text_lines)):
+        # if help_text_lines[i].startswith("    .    * "):
+        help_text_lines[i] = help_text_lines[i].replace("    .    * ", "")
+        help_text_lines[i] = help_text_lines[i].replace("    .    *", "")
         help_text_lines[i] = help_text_lines[i].replace("    .   ", "")
-    help_text_lines.append("")
 
-    stubs.append(help_text_lines[5])
-    for i in range(6, len(help_text_lines)-1):
-        line, next_line = help_text_lines[i], help_text_lines[i+1]
-        if next_line == "" or next_line[0] in ("-", "@"):
-            stubs.append(line)
-        else:
-            stubs[-1] = stubs[-1] + line
+    stubs.append('    """')
+    for line in help_text_lines[4:]:
+        stubs.append("    " + line)
+    stubs.append('    """')
