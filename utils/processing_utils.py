@@ -149,17 +149,28 @@ def process_function(name: str, stubs: list[str]) -> None:
     if not len(help_text_lines) >= 4:
         return
 
-    stubs.append("")
-    stubs.append(f"def {process_function_signature(help_text_lines[3].lstrip())}:")
+    function_stubs: list[str] = []
+    function_stubs.append("")
+    function_stubs.append(f"def {process_function_signature(help_text_lines[3].lstrip())}:")
+    function_stubs.append('    """')
 
     # Pre-process all the lines to make it easier to handle newlines later.
     for i in range(4, len(help_text_lines)):
-        # if help_text_lines[i].startswith("    .    * "):
         help_text_lines[i] = help_text_lines[i].replace("    .    * ", "")
         help_text_lines[i] = help_text_lines[i].replace("    .    *", "")
         help_text_lines[i] = help_text_lines[i].replace("    .   ", "")
 
-    stubs.append('    """')
     for line in help_text_lines[4:]:
-        stubs.append("    " + line)
-    stubs.append('    """')
+        if re.match(r"    [a-zA-Z].*", line):
+            function_stubs.append('    """')
+            function_stubs.append("")
+            function_stubs.append("@overload")
+            if function_stubs[1] != "@overload":
+                function_stubs.insert(1, "@overload")
+            function_stubs.append(f"def {process_function_signature(help_text_lines[3].lstrip())}:")
+            function_stubs.append('    """')
+        else:
+            function_stubs.append("    " + line)
+    function_stubs.append('    """')
+
+    stubs.extend(function_stubs)
