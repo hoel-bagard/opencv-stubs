@@ -173,7 +173,10 @@ def process_function(name: str, stubs: list[str]) -> None:
             function_stubs.append(f"def {process_function_signature(help_text_lines[3].lstrip())}:")
             function_stubs.append('    """')
         else:
-            function_stubs.append(("    " + line).strip())
+            if line == "":
+                function_stubs.append("")
+            else:
+                function_stubs.append("    " + line)
 
     # Remove any blank lines at the end of the docstring.
     while function_stubs[-1].strip() == "":
