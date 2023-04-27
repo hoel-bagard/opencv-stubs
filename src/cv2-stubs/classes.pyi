@@ -3943,7 +3943,7 @@ class VideoWriter(builtins.object):
         """
         @brief Sets a property in the VideoWriter.
 
-        @param propId Property identifier from cv::VideoWriterProperties (eg. cv::VIDEOWRITER_PROP_QUALITY) or one of @ref videoio_flags_others 
+        @param propId Property identifier from cv::VideoWriterProperties (eg. cv::VIDEOWRITER_PROP_QUALITY) or one of @ref videoio_flags_others
         @param value Value of the property. @return  `true` if the property is supported by the backend used by the VideoWriter instance.
         """
 

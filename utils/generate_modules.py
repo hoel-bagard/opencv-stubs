@@ -56,7 +56,7 @@ def main() -> None:
     modules = [(name, member)
                for (name, member) in inspect.getmembers(cv2)
                if inspect.ismodule(member) and name[0] != "_"
-               and name not in ("Error", "numpy", "os", "importlib", "sys")]
+               and name not in ("Error", "cv", "numpy", "np", "os", "importlib", "sys")]
 
     for (module_name, module) in modules:
         print(f"Processing module {module_name}")
@@ -64,7 +64,7 @@ def main() -> None:
         has_submodule = False
         for (name, member) in inspect.getmembers(module):
             if (inspect.ismodule(member)
-                and not name.startswith("_") and name not in ("os", "sys", "builtins")):
+                and not name.startswith("_") and name not in ("cv", "cv2", "numpy", "np", "os", "sys", "builtins")):
 
                 print(f"    Adding submodule: {name}")
                 has_submodule = True
