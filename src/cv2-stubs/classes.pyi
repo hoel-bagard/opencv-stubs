@@ -3968,927 +3968,310 @@ class VideoWriter(builtins.object):
 class WarperCreator(builtins.object):
     ...
 
-
-aruco_ArucoDetector = ArucoDetector
-
-
-aruco_Board = Board
-
-
-aruco_CharucoBoard = CharucoBoard
-
-
-aruco_CharucoDetector = CharucoDetector
-
-
-aruco_CharucoParameters = CharucoParameters
-
-
-aruco_DetectorParameters = DetectorParameters
-
-
-aruco_Dictionary = Dictionary
-
-
-aruco_EstimateParameters = EstimateParameters
-
-
-aruco_GridBoard = GridBoard
-
-
-aruco_RefineParameters = RefineParameters
-
-
-barcode_BarcodeDetector = BarcodeDetector
-
-
-bgsegm_BackgroundSubtractorCNT = BackgroundSubtractorCNT
-
-
-bgsegm_BackgroundSubtractorGMG = BackgroundSubtractorGMG
-
-
-bgsegm_BackgroundSubtractorGSOC = BackgroundSubtractorGSOC
-
-
-bgsegm_BackgroundSubtractorLSBP = BackgroundSubtractorLSBP
-
-
-bgsegm_BackgroundSubtractorLSBPDesc = BackgroundSubtractorLSBPDesc
-
-
-bgsegm_BackgroundSubtractorMOG = BackgroundSubtractorMOG
-
-
-bgsegm_SyntheticSequenceGenerator = SyntheticSequenceGenerator
-
-
-bioinspired_Retina = Retina
-
-
-bioinspired_RetinaFastToneMapping = RetinaFastToneMapping
-
-
-bioinspired_TransientAreasSegmentationModule = TransientAreasSegmentationModule
-
-
-ccm_ColorCorrectionModel = ColorCorrectionModel
-
-
-colored_kinfu_ColoredKinFu = ColoredKinFu
-
-
-colored_kinfu_Params = Params
-
-
-cuda_BufferPool = BufferPool
-
-
-cuda_DeviceInfo = DeviceInfo
-
-
-cuda_Event = Event
-
-
-cuda_GpuData = GpuData
-
-
-cuda_GpuMat = GpuMat
-
-
-cuda_GpuMatND = GpuMatND
-
-
-cuda_GpuMat_Allocator = Allocator
-
-
-cuda_HostMem = HostMem
-
-
-cuda_SURF_CUDA = SURF_CUDA
-
-
-cuda_Stream = Stream
-
-
-cuda_TargetArchs = TargetArchs
-
-
-detail_AffineBasedEstimator = AffineBasedEstimator
-
-
-detail_AffineBestOf2NearestMatcher = AffineBestOf2NearestMatcher
-
-
-detail_BestOf2NearestMatcher = BestOf2NearestMatcher
-
-
-detail_BestOf2NearestRangeMatcher = BestOf2NearestRangeMatcher
-
-
-detail_Blender = Blender
-
-
-detail_BlocksChannelsCompensator = BlocksChannelsCompensator
-
-
-detail_BlocksCompensator = BlocksCompensator
-
-
-detail_BlocksGainCompensator = BlocksGainCompensator
-
-
-detail_BundleAdjusterAffine = BundleAdjusterAffine
-
-
-detail_BundleAdjusterAffinePartial = BundleAdjusterAffinePartial
-
-
-detail_BundleAdjusterBase = BundleAdjusterBase
-
-
-detail_BundleAdjusterRay = BundleAdjusterRay
-
-
-detail_BundleAdjusterReproj = BundleAdjusterReproj
-
-
-detail_CameraParams = CameraParams
-
-
-detail_ChannelsCompensator = ChannelsCompensator
-
-
-detail_DpSeamFinder = DpSeamFinder
-
-
-detail_Estimator = Estimator
-
-
-detail_ExposureCompensator = ExposureCompensator
-
-
-detail_FeatherBlender = FeatherBlender
-
-
-detail_FeaturesMatcher = FeaturesMatcher
-
-
-detail_GainCompensator = GainCompensator
-
-
-detail_GraphCutSeamFinder = GraphCutSeamFinder
-
-
-detail_HomographyBasedEstimator = HomographyBasedEstimator
-
-
-detail_ImageFeatures = ImageFeatures
-
-
-detail_MatchesInfo = MatchesInfo
-
-
-detail_MultiBandBlender = MultiBandBlender
-
-
-detail_NoBundleAdjuster = NoBundleAdjuster
-
-
-detail_NoExposureCompensator = NoExposureCompensator
-
-
-detail_NoSeamFinder = NoSeamFinder
-
-
-detail_PairwiseSeamFinder = PairwiseSeamFinder
-
-
-detail_ProjectorBase = ProjectorBase
-
-
-detail_SeamFinder = SeamFinder
-
-
-detail_SphericalProjector = SphericalProjector
-
-
-detail_Timelapser = Timelapser
-
-
-detail_TimelapserCrop = TimelapserCrop
-
-
-detail_VoronoiSeamFinder = VoronoiSeamFinder
-
-
-dnn_ClassificationModel = ClassificationModel
-
-
-dnn_DetectionModel = DetectionModel
-
-
-dnn_DictValue = DictValue
-
-
-dnn_KeypointsModel = KeypointsModel
-
-
-dnn_Layer = Layer
-
-
-dnn_Model = Model
-
-
-dnn_Net = Net
-
-
-dnn_SegmentationModel = SegmentationModel
-
-
-dnn_TextDetectionModel = TextDetectionModel
-
-
-dnn_TextDetectionModel_DB = TextDetectionModel_DB
-
-
-dnn_TextDetectionModel_EAST = TextDetectionModel_EAST
-
-
-dnn_TextRecognitionModel = TextRecognitionModel
-
-
-dnn_superres_DnnSuperResImpl = DnnSuperResImpl
-
-
-dpm_DPMDetector = DPMDetector
-
-
-dpm_DPMDetector_ObjectDetection = ObjectDetection
-
-
-dynafu_DynaFu = DynaFu
-
-
-class error(builtins.Exception):
-    ...
-
-
-face_BIF = BIF
-
-
-face_BasicFaceRecognizer = BasicFaceRecognizer
-
-
-face_EigenFaceRecognizer = EigenFaceRecognizer
-
-
-face_FaceRecognizer = FaceRecognizer
-
-
-face_Facemark = Facemark
-
-
-face_FacemarkAAM = FacemarkAAM
-
-
-face_FacemarkKazemi = FacemarkKazemi
-
-
-face_FacemarkLBF = FacemarkLBF
-
-
-face_FacemarkTrain = FacemarkTrain
-
-
-face_FisherFaceRecognizer = FisherFaceRecognizer
-
-
-face_LBPHFaceRecognizer = LBPHFaceRecognizer
-
-
-face_MACE = MACE
-
-
-face_PredictCollector = PredictCollector
-
-
-face_StandardCollector = StandardCollector
-
-
-flann_Index = Index
-
-
-gapi_GNetPackage = GNetPackage
-
-
-gapi_GNetParam = GNetParam
-
-
-gapi_ie_PyParams = PyParams
-
-
-gapi_onnx_PyParams = PyParams
-
-
-gapi_streaming_queue_capacity = queue_capacity
-
-
-gapi_wip_GOutputs = GOutputs
-
-
-gapi_wip_IStreamSource = IStreamSource
-
-
-gapi_wip_draw_Circle = Circle
-
-
-gapi_wip_draw_Image = Image
-
-
-gapi_wip_draw_Line = Line
-
-
-gapi_wip_draw_Mosaic = Mosaic
-
-
-gapi_wip_draw_Poly = Poly
-
-
-gapi_wip_draw_Rect = Rect
-
-
-gapi_wip_draw_Text = Text
-
-
-gapi_wip_gst_GStreamerPipeline = GStreamerPipeline
-
-
-hfs_HfsSegment = HfsSegment
-
-
-img_hash_AverageHash = AverageHash
-
-
-img_hash_BlockMeanHash = BlockMeanHash
-
-
-img_hash_ColorMomentHash = ColorMomentHash
-
-
-img_hash_ImgHashBase = ImgHashBase
-
-
-img_hash_MarrHildrethHash = MarrHildrethHash
-
-
-img_hash_PHash = PHash
-
-
-img_hash_RadialVarianceHash = RadialVarianceHash
-
-
-kinfu_KinFu = KinFu
-
-
-kinfu_Params = Params
-
-
-kinfu_Volume = Volume
-
-
-kinfu_VolumeParams = VolumeParams
-
-
-kinfu_detail_PoseGraph = PoseGraph
-
-
-large_kinfu_LargeKinfu = LargeKinfu
-
-
-large_kinfu_Params = Params
-
-
-legacy_MultiTracker = MultiTracker
-
-
-legacy_Tracker = Tracker
-
-
-legacy_TrackerBoosting = TrackerBoosting
-
-
-legacy_TrackerCSRT = TrackerCSRT
-
-
-legacy_TrackerKCF = TrackerKCF
-
-
-legacy_TrackerMIL = TrackerMIL
-
-
-legacy_TrackerMOSSE = TrackerMOSSE
-
-
-legacy_TrackerMedianFlow = TrackerMedianFlow
-
-
-legacy_TrackerTLD = TrackerTLD
-
-
-line_descriptor_BinaryDescriptor = BinaryDescriptor
-
-
-line_descriptor_BinaryDescriptorMatcher = BinaryDescriptorMatcher
-
-
-line_descriptor_DrawLinesMatchesFlags = DrawLinesMatchesFlags
-
-
-line_descriptor_KeyLine = KeyLine
-
-
-line_descriptor_LSDDetector = LSDDetector
-
-
-line_descriptor_LSDParam = LSDParam
-
-
-linemod_ColorGradient = ColorGradient
-
-
-linemod_DepthNormal = DepthNormal
-
-
-linemod_Detector = Detector
-
-
-linemod_Feature = Feature
-
-
-linemod_Match = Match
-
-
-linemod_Modality = Modality
-
-
-linemod_QuantizedPyramid = QuantizedPyramid
-
-
-linemod_Template = Template
-
-
-mcc_CChecker = CChecker
-
-
-mcc_CCheckerDetector = CCheckerDetector
-
-
-mcc_CCheckerDraw = CCheckerDraw
-
-
-mcc_DetectorParameters = DetectorParameters
-
-
-ml_ANN_MLP = ANN_MLP
-
-
-ml_Boost = Boost
-
-
-ml_DTrees = DTrees
-
-
-ml_EM = EM
-
-
-ml_KNearest = KNearest
-
-
-ml_LogisticRegression = LogisticRegression
-
-
-ml_NormalBayesClassifier = NormalBayesClassifier
-
-
-ml_ParamGrid = ParamGrid
-
-
-ml_RTrees = RTrees
-
-
-ml_SVM = SVM
-
-
-ml_SVMSGD = SVMSGD
-
-
-ml_StatModel = StatModel
-
-
-ml_TrainData = TrainData
-
-
-ocl_Device = Device
-
-
-ocl_OpenCLExecutionContext = OpenCLExecutionContext
-
-
-optflow_DenseRLOFOpticalFlow = DenseRLOFOpticalFlow
-
-
-optflow_DualTVL1OpticalFlow = DualTVL1OpticalFlow
-
-
-optflow_GPCDetails = GPCDetails
-
-
-optflow_GPCPatchDescriptor = GPCPatchDescriptor
-
-
-optflow_GPCPatchSample = GPCPatchSample
-
-
-optflow_GPCTrainingSamples = GPCTrainingSamples
-
-
-optflow_GPCTree = GPCTree
-
-
-optflow_OpticalFlowPCAFlow = OpticalFlowPCAFlow
-
-
-optflow_PCAPrior = PCAPrior
-
-
-optflow_RLOFOpticalFlowParameter = RLOFOpticalFlowParameter
-
-
-optflow_SparseRLOFOpticalFlow = SparseRLOFOpticalFlow
-
-
-phase_unwrapping_HistogramPhaseUnwrapping = HistogramPhaseUnwrapping
-
-
-phase_unwrapping_HistogramPhaseUnwrapping_Params = Params
-
-
-phase_unwrapping_PhaseUnwrapping = PhaseUnwrapping
-
-
-plot_Plot2d = Plot2d
-
-
-ppf_match_3d_ICP = ICP
-
-
-ppf_match_3d_PPF3DDetector = PPF3DDetector
-
-
-ppf_match_3d_Pose3D = Pose3D
-
-
-ppf_match_3d_PoseCluster3D = PoseCluster3D
-
-
-quality_QualityBRISQUE = QualityBRISQUE
-
-
-quality_QualityBase = QualityBase
-
-
-quality_QualityGMSD = QualityGMSD
-
-
-quality_QualityMSE = QualityMSE
-
-
-quality_QualityPSNR = QualityPSNR
-
-
-quality_QualitySSIM = QualitySSIM
-
-
-rapid_GOSTracker = GOSTracker
-
-
-rapid_OLSTracker = OLSTracker
-
-
-rapid_Rapid = Rapid
-
-
-rapid_Tracker = Tracker
-
-
-reg_Map = Map
-
-
-reg_MapAffine = MapAffine
-
-
-reg_MapProjec = MapProjec
-
-
-reg_MapShift = MapShift
-
-
-reg_MapTypeCaster = MapTypeCaster
-
-
-reg_Mapper = Mapper
-
-
-reg_MapperGradAffine = MapperGradAffine
-
-
-reg_MapperGradEuclid = MapperGradEuclid
-
-
-reg_MapperGradProj = MapperGradProj
-
-
-reg_MapperGradShift = MapperGradShift
-
-
-reg_MapperGradSimilar = MapperGradSimilar
-
-
-reg_MapperPyramid = MapperPyramid
-
-
-rgbd_DepthCleaner = DepthCleaner
-
-
-rgbd_FastICPOdometry = FastICPOdometry
-
-
-rgbd_ICPOdometry = ICPOdometry
-
-
-rgbd_Odometry = Odometry
-
-
-rgbd_OdometryFrame = OdometryFrame
-
-
-rgbd_RgbdFrame = RgbdFrame
-
-
-rgbd_RgbdICPOdometry = RgbdICPOdometry
-
-
-rgbd_RgbdNormals = RgbdNormals
-
-
-rgbd_RgbdOdometry = RgbdOdometry
-
-
-rgbd_RgbdPlane = RgbdPlane
-
-
-saliency_MotionSaliency = MotionSaliency
-
-
-saliency_MotionSaliencyBinWangApr2014 = MotionSaliencyBinWangApr2014
-
-
-saliency_Objectness = Objectness
-
-
-saliency_ObjectnessBING = ObjectnessBING
-
-
-saliency_Saliency = Saliency
-
-
-saliency_StaticSaliency = StaticSaliency
-
-
-saliency_StaticSaliencyFineGrained = StaticSaliencyFineGrained
-
-
-saliency_StaticSaliencySpectralResidual = StaticSaliencySpectralResidual
-
-
-segmentation_IntelligentScissorsMB = IntelligentScissorsMB
-
-
-stereo_MatchQuasiDense = MatchQuasiDense
-
-
-stereo_PropagationParameters = PropagationParameters
-
-
-stereo_QuasiDenseStereo = QuasiDenseStereo
-
-
-structured_light_GrayCodePattern = GrayCodePattern
-
-
-structured_light_SinusoidalPattern = SinusoidalPattern
-
-
-structured_light_SinusoidalPattern_Params = Params
-
-
-structured_light_StructuredLightPattern = StructuredLightPattern
-
-
-text_BaseOCR = BaseOCR
-
-
-text_ERFilter = ERFilter
-
-
-text_ERFilter_Callback = Callback
-
-
-text_OCRBeamSearchDecoder = OCRBeamSearchDecoder
-
-
-text_OCRBeamSearchDecoder_ClassifierCallback = ClassifierCallback
-
-
-text_OCRHMMDecoder = OCRHMMDecoder
-
-
-text_OCRHMMDecoder_ClassifierCallback = ClassifierCallback
-
-
-text_OCRTesseract = OCRTesseract
-
-
-text_TextDetector = TextDetector
-
-
-text_TextDetectorCNN = TextDetectorCNN
-
-
-utils_ClassWithKeywordProperties = ClassWithKeywordProperties
-
-
-utils_nested_ExportClassName = ExportClassName
-
-
-utils_nested_ExportClassName_Params = Params
-
-
-wechat_qrcode_WeChatQRCode = WeChatQRCode
-
-
-xfeatures2d_AffineFeature2D = AffineFeature2D
-
-
-xfeatures2d_BEBLID = BEBLID
-
-
-xfeatures2d_BoostDesc = BoostDesc
-
-
-xfeatures2d_BriefDescriptorExtractor = BriefDescriptorExtractor
-
-
-xfeatures2d_DAISY = DAISY
-
-
-xfeatures2d_FREAK = FREAK
-
-
-xfeatures2d_HarrisLaplaceFeatureDetector = HarrisLaplaceFeatureDetector
-
-
-xfeatures2d_LATCH = LATCH
-
-
-xfeatures2d_LUCID = LUCID
-
-
-xfeatures2d_MSDDetector = MSDDetector
-
-
-xfeatures2d_PCTSignatures = PCTSignatures
-
-
-xfeatures2d_PCTSignaturesSQFD = PCTSignaturesSQFD
-
-
-xfeatures2d_SURF = SURF
-
-
-xfeatures2d_StarDetector = StarDetector
-
-
-xfeatures2d_TBMR = TBMR
-
-
-xfeatures2d_TEBLID = TEBLID
-
-
-xfeatures2d_VGG = VGG
-
-
-ximgproc_AdaptiveManifoldFilter = AdaptiveManifoldFilter
-
-
-ximgproc_ContourFitting = ContourFitting
-
-
-ximgproc_DTFilter = DTFilter
-
-
-ximgproc_DisparityFilter = DisparityFilter
-
-
-ximgproc_DisparityWLSFilter = DisparityWLSFilter
-
-
-ximgproc_EdgeAwareInterpolator = EdgeAwareInterpolator
-
-
-ximgproc_EdgeBoxes = EdgeBoxes
-
-
-ximgproc_EdgeDrawing = EdgeDrawing
-
-
-ximgproc_EdgeDrawing_Params = Params
-
-
-ximgproc_FastBilateralSolverFilter = FastBilateralSolverFilter
-
-
-ximgproc_FastGlobalSmootherFilter = FastGlobalSmootherFilter
-
-
-ximgproc_FastLineDetector = FastLineDetector
-
-
-ximgproc_GuidedFilter = GuidedFilter
-
-
-ximgproc_RFFeatureGetter = RFFeatureGetter
-
-
-ximgproc_RICInterpolator = RICInterpolator
-
-
-ximgproc_RidgeDetectionFilter = RidgeDetectionFilter
-
-
-ximgproc_ScanSegment = ScanSegment
-
-
-ximgproc_SparseMatchInterpolator = SparseMatchInterpolator
-
-
-ximgproc_StructuredEdgeDetection = StructuredEdgeDetection
-
-
-ximgproc_SuperpixelLSC = SuperpixelLSC
-
-
-ximgproc_SuperpixelSEEDS = SuperpixelSEEDS
-
-
-ximgproc_SuperpixelSLIC = SuperpixelSLIC
-
-
-ximgproc_segmentation_GraphSegmentation = GraphSegmentation
-
-
-ximgproc_segmentation_SelectiveSearchSegmentation = SelectiveSearchSegmentation
-
-
-ximgproc_segmentation_SelectiveSearchSegmentationStrategy = SelectiveSearchSegmentationStrategy
-
-
-ximgproc_segmentation_SelectiveSearchSegmentationStrategyColor = SelectiveSearchSegmentationStrategyColor
-
-
-ximgproc_segmentation_SelectiveSearchSegmentationStrategyFill = SelectiveSearchSegmentationStrategyFill
-
-
-ximgproc_segmentation_SelectiveSearchSegmentationStrategyMultiple = SelectiveSearchSegmentationStrategyMultiple
-
-
-ximgproc_segmentation_SelectiveSearchSegmentationStrategySize = SelectiveSearchSegmentationStrategySize
-
-
-ximgproc_segmentation_SelectiveSearchSegmentationStrategyTexture = SelectiveSearchSegmentationStrategyTexture
-
-
-xphoto_GrayworldWB = GrayworldWB
-
-
-xphoto_LearningBasedWB = LearningBasedWB
-
-
-xphoto_SimpleWB = SimpleWB
-
-
-xphoto_TonemapDurand = TonemapDurand
-
-
-xphoto_WhiteBalancer = WhiteBalancer
+aruco_ArucoDetector = aruco.ArucoDetector
+aruco_Board = aruco.Board
+aruco_CharucoBoard = aruco.CharucoBoard
+aruco_CharucoDetector = aruco.CharucoDetector
+aruco_CharucoParameters = aruco.CharucoParameters
+aruco_DetectorParameters = aruco.DetectorParameters
+aruco_Dictionary = aruco.Dictionary
+aruco_EstimateParameters = aruco.EstimateParameters
+aruco_GridBoard = aruco.GridBoard
+aruco_RefineParameters = aruco.RefineParameters
+barcode_BarcodeDetector = barcode.BarcodeDetector
+bgsegm_BackgroundSubtractorCNT = bgsegm.BackgroundSubtractorCNT
+bgsegm_BackgroundSubtractorGMG = bgsegm.BackgroundSubtractorGMG
+bgsegm_BackgroundSubtractorGSOC = bgsegm.BackgroundSubtractorGSOC
+bgsegm_BackgroundSubtractorLSBP = bgsegm.BackgroundSubtractorLSBP
+bgsegm_BackgroundSubtractorLSBPDesc = bgsegm.BackgroundSubtractorLSBPDesc
+bgsegm_BackgroundSubtractorMOG = bgsegm.BackgroundSubtractorMOG
+bgsegm_SyntheticSequenceGenerator = bgsegm.SyntheticSequenceGenerator
+bioinspired_Retina = bioinspired.Retina
+bioinspired_RetinaFastToneMapping = bioinspired.RetinaFastToneMapping
+bioinspired_TransientAreasSegmentationModule = bioinspired.TransientAreasSegmentationModule
+ccm_ColorCorrectionModel = ccm.ColorCorrectionModel
+colored_kinfu_ColoredKinFu = colored.ColoredKinFu
+colored_kinfu_Params = colored.Params
+cuda_BufferPool = cuda.BufferPool
+cuda_DeviceInfo = cuda.DeviceInfo
+cuda_Event = cuda.Event
+cuda_GpuData = cuda.GpuData
+cuda_GpuMat = cuda.GpuMat
+cuda_GpuMatND = cuda.GpuMatND
+cuda_GpuMat_Allocator = cuda.Allocator
+cuda_HostMem = cuda.HostMem
+cuda_SURF_CUDA = cuda.SURF_CUDA
+cuda_Stream = cuda.Stream
+cuda_TargetArchs = cuda.TargetArchs
+detail_AffineBasedEstimator = detail.AffineBasedEstimator
+detail_AffineBestOf2NearestMatcher = detail.AffineBestOf2NearestMatcher
+detail_BestOf2NearestMatcher = detail.BestOf2NearestMatcher
+detail_BestOf2NearestRangeMatcher = detail.BestOf2NearestRangeMatcher
+detail_Blender = detail.Blender
+detail_BlocksChannelsCompensator = detail.BlocksChannelsCompensator
+detail_BlocksCompensator = detail.BlocksCompensator
+detail_BlocksGainCompensator = detail.BlocksGainCompensator
+detail_BundleAdjusterAffine = detail.BundleAdjusterAffine
+detail_BundleAdjusterAffinePartial = detail.BundleAdjusterAffinePartial
+detail_BundleAdjusterBase = detail.BundleAdjusterBase
+detail_BundleAdjusterRay = detail.BundleAdjusterRay
+detail_BundleAdjusterReproj = detail.BundleAdjusterReproj
+detail_CameraParams = detail.CameraParams
+detail_ChannelsCompensator = detail.ChannelsCompensator
+detail_DpSeamFinder = detail.DpSeamFinder
+detail_Estimator = detail.Estimator
+detail_ExposureCompensator = detail.ExposureCompensator
+detail_FeatherBlender = detail.FeatherBlender
+detail_FeaturesMatcher = detail.FeaturesMatcher
+detail_GainCompensator = detail.GainCompensator
+detail_GraphCutSeamFinder = detail.GraphCutSeamFinder
+detail_HomographyBasedEstimator = detail.HomographyBasedEstimator
+detail_ImageFeatures = detail.ImageFeatures
+detail_MatchesInfo = detail.MatchesInfo
+detail_MultiBandBlender = detail.MultiBandBlender
+detail_NoBundleAdjuster = detail.NoBundleAdjuster
+detail_NoExposureCompensator = detail.NoExposureCompensator
+detail_NoSeamFinder = detail.NoSeamFinder
+detail_PairwiseSeamFinder = detail.PairwiseSeamFinder
+detail_ProjectorBase = detail.ProjectorBase
+detail_SeamFinder = detail.SeamFinder
+detail_SphericalProjector = detail.SphericalProjector
+detail_Timelapser = detail.Timelapser
+detail_TimelapserCrop = detail.TimelapserCrop
+detail_VoronoiSeamFinder = detail.VoronoiSeamFinder
+dnn_ClassificationModel = dnn.ClassificationModel
+dnn_DetectionModel = dnn.DetectionModel
+dnn_DictValue = dnn.DictValue
+dnn_KeypointsModel = dnn.KeypointsModel
+dnn_Layer = dnn.Layer
+dnn_Model = dnn.Model
+dnn_Net = dnn.Net
+dnn_SegmentationModel = dnn.SegmentationModel
+dnn_TextDetectionModel = dnn.TextDetectionModel
+dnn_TextDetectionModel_DB = dnn.TextDetectionModel_DB
+dnn_TextDetectionModel_EAST = dnn.TextDetectionModel_EAST
+dnn_TextRecognitionModel = dnn.TextRecognitionModel
+dnn_superres_DnnSuperResImpl = dnn.DnnSuperResImpl
+dpm_DPMDetector = dpm.DPMDetector
+dpm_DPMDetector_ObjectDetection = dpm.ObjectDetection
+dynafu_DynaFu = dynafu.DynaFu
+face_BIF = face.BIF
+face_BasicFaceRecognizer = face.BasicFaceRecognizer
+face_EigenFaceRecognizer = face.EigenFaceRecognizer
+face_FaceRecognizer = face.FaceRecognizer
+face_Facemark = face.Facemark
+face_FacemarkAAM = face.FacemarkAAM
+face_FacemarkKazemi = face.FacemarkKazemi
+face_FacemarkLBF = face.FacemarkLBF
+face_FacemarkTrain = face.FacemarkTrain
+face_FisherFaceRecognizer = face.FisherFaceRecognizer
+face_LBPHFaceRecognizer = face.LBPHFaceRecognizer
+face_MACE = face.MACE
+face_PredictCollector = face.PredictCollector
+face_StandardCollector = face.StandardCollector
+flann_Index = flann.Index
+gapi_GNetPackage = gapi.GNetPackage
+gapi_GNetParam = gapi.GNetParam
+gapi_ie_PyParams = gapi.PyParams
+gapi_onnx_PyParams = gapi.PyParams
+gapi_streaming_queue_capacity = gapi.queue_capacity
+gapi_wip_GOutputs = gapi.GOutputs
+gapi_wip_IStreamSource = gapi.IStreamSource
+gapi_wip_draw_Circle = gapi.Circle
+gapi_wip_draw_Image = gapi.Image
+gapi_wip_draw_Line = gapi.Line
+gapi_wip_draw_Mosaic = gapi.Mosaic
+gapi_wip_draw_Poly = gapi.Poly
+gapi_wip_draw_Rect = gapi.Rect
+gapi_wip_draw_Text = gapi.Text
+gapi_wip_gst_GStreamerPipeline = gapi.GStreamerPipeline
+hfs_HfsSegment = hfs.HfsSegment
+img_hash_AverageHash = img.AverageHash
+img_hash_BlockMeanHash = img.BlockMeanHash
+img_hash_ColorMomentHash = img.ColorMomentHash
+img_hash_ImgHashBase = img.ImgHashBase
+img_hash_MarrHildrethHash = img.MarrHildrethHash
+img_hash_PHash = img.PHash
+img_hash_RadialVarianceHash = img.RadialVarianceHash
+kinfu_KinFu = kinfu.KinFu
+kinfu_Params = kinfu.Params
+kinfu_Volume = kinfu.Volume
+kinfu_VolumeParams = kinfu.VolumeParams
+kinfu_detail_PoseGraph = kinfu.PoseGraph
+large_kinfu_LargeKinfu = large.LargeKinfu
+large_kinfu_Params = large.Params
+legacy_MultiTracker = legacy.MultiTracker
+legacy_Tracker = legacy.Tracker
+legacy_TrackerBoosting = legacy.TrackerBoosting
+legacy_TrackerCSRT = legacy.TrackerCSRT
+legacy_TrackerKCF = legacy.TrackerKCF
+legacy_TrackerMIL = legacy.TrackerMIL
+legacy_TrackerMOSSE = legacy.TrackerMOSSE
+legacy_TrackerMedianFlow = legacy.TrackerMedianFlow
+legacy_TrackerTLD = legacy.TrackerTLD
+line_descriptor_BinaryDescriptor = line.BinaryDescriptor
+line_descriptor_BinaryDescriptorMatcher = line.BinaryDescriptorMatcher
+line_descriptor_DrawLinesMatchesFlags = line.DrawLinesMatchesFlags
+line_descriptor_KeyLine = line.KeyLine
+line_descriptor_LSDDetector = line.LSDDetector
+line_descriptor_LSDParam = line.LSDParam
+linemod_ColorGradient = linemod.ColorGradient
+linemod_DepthNormal = linemod.DepthNormal
+linemod_Detector = linemod.Detector
+linemod_Feature = linemod.Feature
+linemod_Match = linemod.Match
+linemod_Modality = linemod.Modality
+linemod_QuantizedPyramid = linemod.QuantizedPyramid
+linemod_Template = linemod.Template
+mcc_CChecker = mcc.CChecker
+mcc_CCheckerDetector = mcc.CCheckerDetector
+mcc_CCheckerDraw = mcc.CCheckerDraw
+mcc_DetectorParameters = mcc.DetectorParameters
+ml_ANN_MLP = ml.ANN_MLP
+ml_Boost = ml.Boost
+ml_DTrees = ml.DTrees
+ml_EM = ml.EM
+ml_KNearest = ml.KNearest
+ml_LogisticRegression = ml.LogisticRegression
+ml_NormalBayesClassifier = ml.NormalBayesClassifier
+ml_ParamGrid = ml.ParamGrid
+ml_RTrees = ml.RTrees
+ml_SVM = ml.SVM
+ml_SVMSGD = ml.SVMSGD
+ml_StatModel = ml.StatModel
+ml_TrainData = ml.TrainData
+ocl_Device = ocl.Device
+ocl_OpenCLExecutionContext = ocl.OpenCLExecutionContext
+optflow_DenseRLOFOpticalFlow = optflow.DenseRLOFOpticalFlow
+optflow_DualTVL1OpticalFlow = optflow.DualTVL1OpticalFlow
+optflow_GPCDetails = optflow.GPCDetails
+optflow_GPCPatchDescriptor = optflow.GPCPatchDescriptor
+optflow_GPCPatchSample = optflow.GPCPatchSample
+optflow_GPCTrainingSamples = optflow.GPCTrainingSamples
+optflow_GPCTree = optflow.GPCTree
+optflow_OpticalFlowPCAFlow = optflow.OpticalFlowPCAFlow
+optflow_PCAPrior = optflow.PCAPrior
+optflow_RLOFOpticalFlowParameter = optflow.RLOFOpticalFlowParameter
+optflow_SparseRLOFOpticalFlow = optflow.SparseRLOFOpticalFlow
+phase_unwrapping_HistogramPhaseUnwrapping = phase.HistogramPhaseUnwrapping
+phase_unwrapping_HistogramPhaseUnwrapping_Params = phase.Params
+phase_unwrapping_PhaseUnwrapping = phase.PhaseUnwrapping
+plot_Plot2d = plot.Plot2d
+ppf_match_3d_ICP = ppf.ICP
+ppf_match_3d_PPF3DDetector = ppf.PPF3DDetector
+ppf_match_3d_Pose3D = ppf.Pose3D
+ppf_match_3d_PoseCluster3D = ppf.PoseCluster3D
+quality_QualityBRISQUE = quality.QualityBRISQUE
+quality_QualityBase = quality.QualityBase
+quality_QualityGMSD = quality.QualityGMSD
+quality_QualityMSE = quality.QualityMSE
+quality_QualityPSNR = quality.QualityPSNR
+quality_QualitySSIM = quality.QualitySSIM
+rapid_GOSTracker = rapid.GOSTracker
+rapid_OLSTracker = rapid.OLSTracker
+rapid_Rapid = rapid.Rapid
+rapid_Tracker = rapid.Tracker
+reg_Map = reg.Map
+reg_MapAffine = reg.MapAffine
+reg_MapProjec = reg.MapProjec
+reg_MapShift = reg.MapShift
+reg_MapTypeCaster = reg.MapTypeCaster
+reg_Mapper = reg.Mapper
+reg_MapperGradAffine = reg.MapperGradAffine
+reg_MapperGradEuclid = reg.MapperGradEuclid
+reg_MapperGradProj = reg.MapperGradProj
+reg_MapperGradShift = reg.MapperGradShift
+reg_MapperGradSimilar = reg.MapperGradSimilar
+reg_MapperPyramid = reg.MapperPyramid
+rgbd_DepthCleaner = rgbd.DepthCleaner
+rgbd_FastICPOdometry = rgbd.FastICPOdometry
+rgbd_ICPOdometry = rgbd.ICPOdometry
+rgbd_Odometry = rgbd.Odometry
+rgbd_OdometryFrame = rgbd.OdometryFrame
+rgbd_RgbdFrame = rgbd.RgbdFrame
+rgbd_RgbdICPOdometry = rgbd.RgbdICPOdometry
+rgbd_RgbdNormals = rgbd.RgbdNormals
+rgbd_RgbdOdometry = rgbd.RgbdOdometry
+rgbd_RgbdPlane = rgbd.RgbdPlane
+saliency_MotionSaliency = saliency.MotionSaliency
+saliency_MotionSaliencyBinWangApr2014 = saliency.MotionSaliencyBinWangApr2014
+saliency_Objectness = saliency.Objectness
+saliency_ObjectnessBING = saliency.ObjectnessBING
+saliency_Saliency = saliency.Saliency
+saliency_StaticSaliency = saliency.StaticSaliency
+saliency_StaticSaliencyFineGrained = saliency.StaticSaliencyFineGrained
+saliency_StaticSaliencySpectralResidual = saliency.StaticSaliencySpectralResidual
+segmentation_IntelligentScissorsMB = segmentation.IntelligentScissorsMB
+stereo_MatchQuasiDense = stereo.MatchQuasiDense
+stereo_PropagationParameters = stereo.PropagationParameters
+stereo_QuasiDenseStereo = stereo.QuasiDenseStereo
+structured_light_GrayCodePattern = structured.GrayCodePattern
+structured_light_SinusoidalPattern = structured.SinusoidalPattern
+structured_light_SinusoidalPattern_Params = structured.Params
+structured_light_StructuredLightPattern = structured.StructuredLightPattern
+text_BaseOCR = text.BaseOCR
+text_ERFilter = text.ERFilter
+text_ERFilter_Callback = text.Callback
+text_OCRBeamSearchDecoder = text.OCRBeamSearchDecoder
+text_OCRBeamSearchDecoder_ClassifierCallback = text.ClassifierCallback
+text_OCRHMMDecoder = text.OCRHMMDecoder
+text_OCRHMMDecoder_ClassifierCallback = text.ClassifierCallback
+text_OCRTesseract = text.OCRTesseract
+text_TextDetector = text.TextDetector
+text_TextDetectorCNN = text.TextDetectorCNN
+utils_ClassWithKeywordProperties = utils.ClassWithKeywordProperties
+utils_nested_ExportClassName = utils.ExportClassName
+utils_nested_ExportClassName_Params = utils.Params
+wechat_qrcode_WeChatQRCode = wechat.WeChatQRCode
+xfeatures2d_AffineFeature2D = xfeatures2d.AffineFeature2D
+xfeatures2d_BEBLID = xfeatures2d.BEBLID
+xfeatures2d_BoostDesc = xfeatures2d.BoostDesc
+xfeatures2d_BriefDescriptorExtractor = xfeatures2d.BriefDescriptorExtractor
+xfeatures2d_DAISY = xfeatures2d.DAISY
+xfeatures2d_FREAK = xfeatures2d.FREAK
+xfeatures2d_HarrisLaplaceFeatureDetector = xfeatures2d.HarrisLaplaceFeatureDetector
+xfeatures2d_LATCH = xfeatures2d.LATCH
+xfeatures2d_LUCID = xfeatures2d.LUCID
+xfeatures2d_MSDDetector = xfeatures2d.MSDDetector
+xfeatures2d_PCTSignatures = xfeatures2d.PCTSignatures
+xfeatures2d_PCTSignaturesSQFD = xfeatures2d.PCTSignaturesSQFD
+xfeatures2d_SURF = xfeatures2d.SURF
+xfeatures2d_StarDetector = xfeatures2d.StarDetector
+xfeatures2d_TBMR = xfeatures2d.TBMR
+xfeatures2d_TEBLID = xfeatures2d.TEBLID
+xfeatures2d_VGG = xfeatures2d.VGG
+ximgproc_AdaptiveManifoldFilter = ximgproc.AdaptiveManifoldFilter
+ximgproc_ContourFitting = ximgproc.ContourFitting
+ximgproc_DTFilter = ximgproc.DTFilter
+ximgproc_DisparityFilter = ximgproc.DisparityFilter
+ximgproc_DisparityWLSFilter = ximgproc.DisparityWLSFilter
+ximgproc_EdgeAwareInterpolator = ximgproc.EdgeAwareInterpolator
+ximgproc_EdgeBoxes = ximgproc.EdgeBoxes
+ximgproc_EdgeDrawing = ximgproc.EdgeDrawing
+ximgproc_EdgeDrawing_Params = ximgproc.Params
+ximgproc_FastBilateralSolverFilter = ximgproc.FastBilateralSolverFilter
+ximgproc_FastGlobalSmootherFilter = ximgproc.FastGlobalSmootherFilter
+ximgproc_FastLineDetector = ximgproc.FastLineDetector
+ximgproc_GuidedFilter = ximgproc.GuidedFilter
+ximgproc_RFFeatureGetter = ximgproc.RFFeatureGetter
+ximgproc_RICInterpolator = ximgproc.RICInterpolator
+ximgproc_RidgeDetectionFilter = ximgproc.RidgeDetectionFilter
+ximgproc_ScanSegment = ximgproc.ScanSegment
+ximgproc_SparseMatchInterpolator = ximgproc.SparseMatchInterpolator
+ximgproc_StructuredEdgeDetection = ximgproc.StructuredEdgeDetection
+ximgproc_SuperpixelLSC = ximgproc.SuperpixelLSC
+ximgproc_SuperpixelSEEDS = ximgproc.SuperpixelSEEDS
+ximgproc_SuperpixelSLIC = ximgproc.SuperpixelSLIC
+ximgproc_segmentation_GraphSegmentation = ximgproc.GraphSegmentation
+ximgproc_segmentation_SelectiveSearchSegmentation = ximgproc.SelectiveSearchSegmentation
+ximgproc_segmentation_SelectiveSearchSegmentationStrategy = ximgproc.SelectiveSearchSegmentationStrategy
+ximgproc_segmentation_SelectiveSearchSegmentationStrategyColor = ximgproc.SelectiveSearchSegmentationStrategyColor
+ximgproc_segmentation_SelectiveSearchSegmentationStrategyFill = ximgproc.SelectiveSearchSegmentationStrategyFill
+ximgproc_segmentation_SelectiveSearchSegmentationStrategyMultiple = ximgproc.SelectiveSearchSegmentationStrategyMultiple
+ximgproc_segmentation_SelectiveSearchSegmentationStrategySize = ximgproc.SelectiveSearchSegmentationStrategySize
+ximgproc_segmentation_SelectiveSearchSegmentationStrategyTexture = ximgproc.SelectiveSearchSegmentationStrategyTexture
+xphoto_GrayworldWB = xphoto.GrayworldWB
+xphoto_LearningBasedWB = xphoto.LearningBasedWB
+xphoto_SimpleWB = xphoto.SimpleWB
+xphoto_TonemapDurand = xphoto.TonemapDurand
+xphoto_WhiteBalancer = xphoto.WhiteBalancer
