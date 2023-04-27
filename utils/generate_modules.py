@@ -33,6 +33,7 @@ def add_module(module_name: str, module: ModuleType, output_path: Path) -> None:
             and not inspect.isbuiltin(member)
             and not inspect.ismodule(member)
             and not name.startswith("_")):
+            print(f"    Adding constant: {name}")
             stubs.append(f"{name}: int")
 
     # Cleanup
@@ -58,12 +59,14 @@ def main() -> None:
                and name not in ("Error", "numpy", "os", "importlib", "sys")]
 
     for (module_name, module) in modules:
-        print(f"Processing {module_name}")
+        print(f"Processing module {module_name}")
 
         has_submodule = False
         for (name, member) in inspect.getmembers(module):
             if (inspect.ismodule(member)
                 and not name.startswith("_") and name not in ("os", "sys", "builtins")):
+
+                print(f"    Adding submodule: {name}")
                 has_submodule = True
                 (output_path / "modules" / module_name).mkdir(parents=True, exist_ok=True)
                 full_module_name = f"{module_name}.{name}"

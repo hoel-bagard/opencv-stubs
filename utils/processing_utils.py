@@ -82,6 +82,7 @@ def add_self(method_signature: str) -> str:
 
 def process_class(name: str, stubs: list[str]) -> None:
     """Adds the methods of `name` to the stubs."""
+    print(f"    Adding class: {name}")
     result = subprocess.run(["python", "-m", "pydoc", f"cv2.{name}"], stdout=subprocess.PIPE)
     help_text = result.stdout.split(b"\n\n", maxsplit=1)[1].decode()
     help_text_lines = help_text.splitlines()
@@ -141,6 +142,7 @@ def process_class(name: str, stubs: list[str]) -> None:
 
 
 def process_function(name: str, stubs: list[str]) -> None:
+    print(f"    Adding function: {name}")
     result = subprocess.run(["python", "-m", "pydoc", f"cv2.{name}"], stdout=subprocess.PIPE)
     help_text_lines = result.stdout.decode().splitlines()
 
