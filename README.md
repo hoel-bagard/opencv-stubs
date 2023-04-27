@@ -38,4 +38,4 @@ A stub file with all the cv2 functions can be found on the [Microsoft stubs repo
 
 
 ## TODO:
-- [ ] Manually add `cv2.gapi`.
+- [ ] Do something about `cv2.gapi.cv`, `cv2.utils.cv2` and `cv2.mat_wrapper.cv` (do not duplicate everything if possible).
