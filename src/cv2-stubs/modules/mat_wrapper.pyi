@@ -1,0 +1,4 @@
+
+class Mat(numpy.ndarray):
+    ...
+

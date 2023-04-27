@@ -1,0 +1,4 @@
+
+class DPMDetector(builtins.object):
+    ...
+
