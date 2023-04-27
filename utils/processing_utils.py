@@ -2,6 +2,12 @@ import subprocess
 import re
 
 
+def process_function_signature(method_signature: str) -> str:
+    method_signature = process_default_args(method_signature)
+    method_signature = process_tuple_return(method_signature)
+    return method_signature
+
+
 def process_method_signature(method_signature: str) -> str:
     method_signature = process_default_args(method_signature)
     method_signature = process_tuple_return(method_signature)
@@ -64,6 +70,8 @@ def add_self(method_signature: str) -> str:
         >>>add_self(s)
         "getIntParam(self) -> retval:"
     """
+    if len(method_signature) == 0:
+        return "DELETE ME!"
     parts = method_signature.split("(", maxsplit=1)
     if parts[-1][0] != ")":
         parts[-1] = "self, " + parts[-1]
@@ -81,7 +89,7 @@ def process_class(name: str, stubs: list[str]) -> None:
     class_path, class_signature = help_text_lines[0].split(" = ")
 
     # Not in root module
-    if len(class_path[4:].split("_")) != 1:
+    if len(class_path[4:].split("_")) != 1 and "." not in class_path[4:]:
         stubs.append("")
         stubs.append(f"{class_path[4:]} = {class_signature.split(' ')[1].split('(')[0]}")
         stubs.append("")
@@ -133,5 +141,24 @@ def process_class(name: str, stubs: list[str]) -> None:
 
 
 def process_function(name: str, stubs: list[str]) -> None:
-    # TODO
-    pass
+    result = subprocess.run(["python", "-m", "pydoc", f"cv2.{name}"], stdout=subprocess.PIPE)
+    help_text_lines = result.stdout.decode().splitlines()
+
+    if not len(help_text_lines) > 4:
+        return
+
+    stubs.append("")
+    stubs.append(f"def {process_function_signature(help_text_lines[4])}:")
+
+    # Pre-process all the lines to make it easier to handle newlines later.
+    for i in range(5, len(help_text_lines[5:])):
+        help_text_lines[i] = help_text_lines[i].replace("    .   ", "")
+    help_text_lines.append("")
+
+    stubs.append(help_text_lines[5])
+    for i in range(6, len(help_text_lines)-1):
+        line, next_line = help_text_lines[i], help_text_lines[i+1]
+        if next_line == "" or next_line[0] in ("-", "@"):
+            stubs.append(line)
+        else:
+            stubs[-1] = stubs[-1] + line
