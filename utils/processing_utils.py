@@ -162,6 +162,9 @@ def process_function(name: str, stubs: list[str]) -> None:
 
     for line in help_text_lines[4:]:
         if re.match(r"    [a-zA-Z].*", line):
+            # Remove any blank lines at the end of the docstring.
+            while function_stubs[-1].strip() == "":
+                function_stubs.pop()
             function_stubs.append('    """')
             function_stubs.append("")
             function_stubs.append("@overload")
@@ -170,7 +173,12 @@ def process_function(name: str, stubs: list[str]) -> None:
             function_stubs.append(f"def {process_function_signature(help_text_lines[3].lstrip())}:")
             function_stubs.append('    """')
         else:
-            function_stubs.append("    " + line)
+            function_stubs.append(("    " + line).strip())
+
+    # Remove any blank lines at the end of the docstring.
+    while function_stubs[-1].strip() == "":
+        function_stubs.pop()
+
     function_stubs.append('    """')
 
     stubs.extend(function_stubs)
