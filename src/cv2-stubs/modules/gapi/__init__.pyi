@@ -1,16 +1,6 @@
 import builtins
 
-from . import wip
-from . import video
-from . import sys
-from . import streaming
-from . import render
-from . import own
-from . import onnx
-from . import oak
-from . import ie
-from . import cv
-from . import core
+from . import core, cv, ie, oak, onnx, own, render, streaming, sys, video, wip
 
 class GArray(builtins.object):
     ...

@@ -1,5 +1,5 @@
-import subprocess
 import re
+import subprocess
 
 
 def process_function_signature(method_signature: str) -> str:

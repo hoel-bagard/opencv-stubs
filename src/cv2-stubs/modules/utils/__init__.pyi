@@ -1,8 +1,7 @@
 import builtins
 from typing import overload
 
-from . import nested
-from . import fs
+from . import fs, nested
 
 class ClassWithKeywordProperties(builtins.object):
     ...

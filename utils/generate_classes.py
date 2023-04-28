@@ -1,12 +1,11 @@
 import argparse
 import inspect
-from pathlib import Path
 import re
+from pathlib import Path
 
 import cv2
 
 from .processing_utils import process_class
-
 
 
 def main() -> None:
