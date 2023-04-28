@@ -1,8 +1,8 @@
 from typing import Any, overload, TypeAlias
 
-retval: TypeAlias = Any
-
 from .. import functions as cv2
+
+retval: TypeAlias = Any
 
 class AffineFeature2D(cv2.Feature2D):
     ...

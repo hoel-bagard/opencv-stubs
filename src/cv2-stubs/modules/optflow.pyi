@@ -1,9 +1,9 @@
 import builtins
 from typing import Any, overload, TypeAlias
 
-retval: TypeAlias = Any
-
 from .. import functions as cv2
+
+retval: TypeAlias = Any
 
 class DenseRLOFOpticalFlow(cv2.DenseOpticalFlow):
     def getEPICK(self) -> retval:

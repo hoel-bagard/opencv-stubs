@@ -1,9 +1,9 @@
 import builtins
 from typing import Any, TypeAlias
 
-retval: TypeAlias = Any
-
 from .. import functions as cv2
+
+retval: TypeAlias = Any
 
 class CChecker(builtins.object):
     def getBox(self) -> retval:

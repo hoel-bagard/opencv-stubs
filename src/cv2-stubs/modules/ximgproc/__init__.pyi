@@ -3,11 +3,11 @@ from typing import Any, TypeAlias
 import numpy as _np
 import numpy.typing as _npt
 
+from ... import functions as cv2
 from . import segmentation
 
 dst: TypeAlias = Any
 retval: TypeAlias = Any
-from ... import functions as cv2
 
 class AdaptiveManifoldFilter(cv2.Algorithm):
     def collectGarbage(self) -> None:

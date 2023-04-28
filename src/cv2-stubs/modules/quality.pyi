@@ -1,8 +1,9 @@
 from typing import Any, overload, TypeAlias
 
+from .. import functions as cv2
+
 dst: TypeAlias = Any
 retval: TypeAlias = Any
-from .. import functions as cv2
 
 class QualityBRISQUE(QualityBase):
     @overload

@@ -1,8 +1,8 @@
 from typing import Any, TypeAlias
 
-retval: TypeAlias = Any
-
 from .. import functions as cv2
+
+retval: TypeAlias = Any
 
 class GOSTracker(Tracker):
     def create(self, pts3d, tris, histBins = ..., sobelThesh = ...) -> retval:

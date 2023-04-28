@@ -1,8 +1,8 @@
 from typing import Any, TypeAlias
 
-retval: TypeAlias = Any
-
 from .. import functions as cv2
+
+retval: TypeAlias = Any
 
 class HistogramPhaseUnwrapping(PhaseUnwrapping):
     def getInverseReliabilityMap(self, reliabilityMap = ...) -> reliabilityMap:

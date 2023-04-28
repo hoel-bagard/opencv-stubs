@@ -1,9 +1,9 @@
 import builtins
 from typing import Any, overload, TypeAlias
 
-retval: TypeAlias = Any
-
 from .. import functions as cv2
+
+retval: TypeAlias = Any
 
 class BinaryDescriptor(cv2.Algorithm):
     def compute(self, image, keylines, descriptors = ..., returnFloatDescr = ...) -> tuple[keylines, descriptors]:

@@ -1,9 +1,10 @@
 import builtins
 from typing import Any, overload, TypeAlias
 
+from .. import functions as cv2
+
 dst: TypeAlias = Any
 retval: TypeAlias = Any
-from .. import functions as cv2
 
 class ClassificationModel(Model):
     def classify(self, frame) -> tuple[classId, conf]:

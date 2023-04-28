@@ -1,8 +1,8 @@
 from typing import Any, overload, TypeAlias
 
-retval: TypeAlias = Any
-
 from .. import functions as cv2
+
+retval: TypeAlias = Any
 
 class Retina(cv2.Algorithm):
     def activateContoursProcessing(self, activate) -> None:

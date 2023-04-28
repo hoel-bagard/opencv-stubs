@@ -1,9 +1,9 @@
 import builtins
 from typing import Any, overload, TypeAlias
 
-retval: TypeAlias = Any
-
 from .. import functions as cv2
+
+retval: TypeAlias = Any
 
 class BIF(cv2.Algorithm):
     def compute(self, image, features = ...) -> features:
