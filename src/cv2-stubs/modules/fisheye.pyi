@@ -1,3 +1,5 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 
 @overload
 def calibrate(objectPoints, imagePoints, image_size, K, D, rvecs = ..., tvecs = ..., flags = ..., criteria = ...) -> tuple[retval, K, D, rvecs, tvecs]:

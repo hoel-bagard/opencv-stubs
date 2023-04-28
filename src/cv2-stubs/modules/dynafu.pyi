@@ -1,3 +1,5 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 
 class DynaFu(builtins.object):
     def getCloud(self, points = ..., normals = ...) -> tuple[points, normals]:

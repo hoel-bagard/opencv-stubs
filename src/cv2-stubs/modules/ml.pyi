@@ -1,4 +1,7 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 
+cv2 = cv2_stubs
 class ANN_MLP(StatModel):
     def getAnnealCoolingRatio(self) -> retval:
         """

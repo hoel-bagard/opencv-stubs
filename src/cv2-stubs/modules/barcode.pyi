@@ -1,3 +1,5 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 
 class BarcodeDetector(builtins.object):
     def decode(self, img, points) -> tuple[retval, decoded_info, decoded_type]:

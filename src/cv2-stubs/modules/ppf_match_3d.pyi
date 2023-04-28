@@ -1,3 +1,6 @@
+from typing import Any, TypeAlias
+dst: TypeAlias = Any
+retval: TypeAlias = Any
 
 class ICP(builtins.object):
     def registerModelToScene(self, srcPC, dstPC) -> tuple[retval, residual, pose]:

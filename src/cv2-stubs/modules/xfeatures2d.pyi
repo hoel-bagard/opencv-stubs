@@ -1,4 +1,7 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 
+cv2 = cv2_stubs
 class AffineFeature2D(cv2.Feature2D):
     ...
 

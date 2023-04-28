@@ -1,3 +1,6 @@
+from typing import Any, TypeAlias
+dst: TypeAlias = Any
+retval: TypeAlias = Any
 from abc import ABC, abstractmethod
 from typing import Any, overload, TypeAlias
 

@@ -1,3 +1,5 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 
 @overload
 def FT02D_FL_process(matrix, radius, output = ...) -> output:

@@ -1,3 +1,6 @@
+from typing import Any, TypeAlias
+dst: TypeAlias = Any
+retval: TypeAlias = Any
 
 class ColorGradient(Modality):
     def create(self, weak_threshold, num_features, strong_threshold) -> retval:

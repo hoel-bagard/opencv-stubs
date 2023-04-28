@@ -1,3 +1,5 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 
 class LargeKinfu(builtins.object):
     def getCloud(self, points = ..., normals = ...) -> tuple[points, normals]:

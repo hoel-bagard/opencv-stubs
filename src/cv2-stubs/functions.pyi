@@ -1,3 +1,6 @@
+from typing import Any, TypeAlias
+dst: TypeAlias = Any
+retval: TypeAlias = Any
 import typing
 from collections.abc import Iterable, Sequence
 from typing import Any, TypeVar

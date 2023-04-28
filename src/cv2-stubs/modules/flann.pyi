@@ -1,3 +1,5 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 
 class Index(builtins.object):
     def build(self, features, params, distType = ...) -> None:

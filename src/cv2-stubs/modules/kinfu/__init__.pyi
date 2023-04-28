@@ -1,3 +1,5 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 from . import detail
 
 class KinFu(builtins.object):

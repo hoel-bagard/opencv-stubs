@@ -1,3 +1,7 @@
+from typing import Any, TypeAlias
+dst: TypeAlias = Any
+retval: TypeAlias = Any
+cv2 = cv2_stubs
 
 class DepthCleaner(cv2.Algorithm):
     def apply(self, points, depth = ...) -> depth:

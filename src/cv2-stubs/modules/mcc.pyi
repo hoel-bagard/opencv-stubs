@@ -1,4 +1,7 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 
+cv2 = cv2_stubs
 class CChecker(builtins.object):
     def getBox(self) -> retval:
         """"""

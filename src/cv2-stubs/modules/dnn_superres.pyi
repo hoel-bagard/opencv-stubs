@@ -1,3 +1,5 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 
 class DnnSuperResImpl(builtins.object):
     def getAlgorithm(self) -> retval:

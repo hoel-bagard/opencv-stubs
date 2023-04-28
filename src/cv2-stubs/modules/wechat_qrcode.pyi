@@ -1,3 +1,5 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 
 class WeChatQRCode(builtins.object):
     def detectAndDecode(self, img, points = ...) -> tuple[retval, points]:

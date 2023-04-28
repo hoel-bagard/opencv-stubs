@@ -1,3 +1,5 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 
 class IntelligentScissorsMB(builtins.object):
     def applyImage(self, image) -> retval:

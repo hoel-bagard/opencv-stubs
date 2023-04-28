@@ -1,4 +1,7 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 
+cv2 = cv2_stubs
 class BackgroundSubtractorCNT(cv2.BackgroundSubtractor):
     def apply(self, image, fgmask = ..., learningRate = ...) -> fgmask:
         """"""

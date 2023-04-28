@@ -1,3 +1,6 @@
+from typing import Any, TypeAlias
+dst: TypeAlias = Any
+retval: TypeAlias = Any
 
 class BufferPool(builtins.object):
     def getAllocator(self) -> retval:

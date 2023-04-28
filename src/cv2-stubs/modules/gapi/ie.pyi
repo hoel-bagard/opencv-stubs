@@ -1,3 +1,5 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 
 class PyParams(builtins.object):
     def cfgBatchSize(self, size) -> retval:

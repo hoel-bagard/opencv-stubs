@@ -1,3 +1,5 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 
 class ColoredKinFu(builtins.object):
     def getCloud(self, points = ..., normals = ..., colors = ...) -> tuple[points, normals, colors]:

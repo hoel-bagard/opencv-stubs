@@ -1,3 +1,5 @@
+from typing import Any, TypeAlias
+retval: TypeAlias = Any
 
 class Device(builtins.object):
     def OpenCLVersion(self) -> retval:
