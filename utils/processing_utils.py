@@ -106,7 +106,7 @@ def process_class(name: str, stubs: list[str]) -> None:
             found_at_least_one_method = True
             # Add function signature.
             line_idx += 1
-            stubs.append(f"    def {process_method_signature(help_text_lines[line_idx].lstrip(' | '))}:")
+            stubs.append(f"    def {process_method_signature(help_text_lines[line_idx].replace(' | ', '', 1))}:")
             line_idx += 1
             # Add docstring.
             stubs.append('        """')

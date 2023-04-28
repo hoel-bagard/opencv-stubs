@@ -1,3 +1,6 @@
+import numpy as _np
+import numpy.typing as _npt
+
 from . import segmentation
 
 class AdaptiveManifoldFilter(cv2.Algorithm):
@@ -926,9 +929,17 @@ def HoughPoint2Line(houghPoint, srcImgInfo, angleRange = ..., makeSkew = ..., ru
     * The function calculates coordinates of line segment corresponded by point in Hough space.
     """
 
-def PeiLinNormalization(I, T = ...) -> T:
-    """
-    @overload
+def PeiLinNormalization(I: _npt.NDArray[_np.float64], T: _npt.NDArray[_np.float64] = ...) -> _npt.NDArray[_np.float64]:  # noqa: E741
+    """Calculates an affine transformation that normalize given image using Pei&Lin Normalization.
+
+    Assume given image I=T(I¯) where I¯ is a normalized image and T is an affine transformation distorting this image by translation, rotation, scaling and skew. The function returns an affine transformation matrix corresponding to the transformation T-1 described in [PeiLin95]. For more details about this implementation, please see [PeiLin95] Soo-Chang Pei and Chao-Nan Lin. Image normalization for pattern recognition. Image and Vision Computing, Vol. 13, N.10, pp. 711-723, 1995.
+
+    Args:
+        I: Given transformed image.
+
+    Returns
+        Transformation matrix corresponding to inversed image transformation
+
     """
 
 def RadonTransform(src, dst = ..., theta = ..., start_angle = ..., end_angle = ..., crop = ..., norm = ...) -> dst:

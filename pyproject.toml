@@ -61,9 +61,9 @@ publish_test = "hatch build --clean && hatch publish -r test"
 publish = "hatch build --clean && hatch publish"
 
 [tool.ruff]
-select = ["A", "B", "C4", "E", "I", "Q", "UP", "S", "BLE", "COM", "DTZ", "PIE", "PT", "RSE", "SIM","PTH", "TRY", "NPY", "RUF"]  # , "ANN"
-ignore = ["D1", "D401", "D204", "D203", "D213", "S101", "PLR2004", "A002", "A003"]
-line-length = 10000
+select = ["B", "C4", "E", "I", "Q", "UP", "S", "BLE", "COM", "DTZ", "PIE", "PT", "RSE", "SIM","PTH", "TRY", "NPY", "RUF"]  # , "ANN"
+ignore = ["D1", "D401", "D204", "D203", "D213", "S101", "PLR2004"]
+line-length = 20000
 
 [tool.ruff.isort]
 order-by-type = false
