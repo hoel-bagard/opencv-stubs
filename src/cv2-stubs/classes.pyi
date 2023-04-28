@@ -1,6 +1,3 @@
-from typing import Any, TypeAlias
-dst: TypeAlias = Any
-retval: TypeAlias = Any
 from abc import ABC, abstractmethod
 from typing import Any, overload, TypeAlias
 
@@ -8,6 +5,8 @@ import numpy as np
 import numpy.typing as npt
 from typing_extensions import Self
 
+dst: TypeAlias = Any
+retval: TypeAlias = Any
 InputArrayOfArrays: TypeAlias = npt.NDArray[Any]
 
 

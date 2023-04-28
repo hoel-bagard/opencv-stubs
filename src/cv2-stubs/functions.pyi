@@ -1,9 +1,5 @@
-from typing import Any, TypeAlias
-dst: TypeAlias = Any
-retval: TypeAlias = Any
-import typing
 from collections.abc import Iterable, Sequence
-from typing import Any, TypeVar
+from typing import Any, TypeAlias, TypeVar
 
 import numpy as np
 import numpy.typing as npt
@@ -11,6 +7,8 @@ import numpy.typing as npt
 from .classes import *
 from .constants import *
 
+dst: TypeAlias = Any
+retval: TypeAlias = Any
 _TImg = TypeVar("_TImg", np.uint8, np.float64)
 _TMapS = TypeVar("_TMapS", np.int16, np.float32)
 _TMapU = TypeVar("_TMapU", np.uint16, np.float32)

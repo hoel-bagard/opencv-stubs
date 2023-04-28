@@ -1,9 +1,9 @@
-from typing import Any, TypeAlias
-retval: TypeAlias = Any
 import builtins
-from typing import overload
+from typing import Any, overload, TypeAlias
 
 from . import fs, nested
+
+retval: TypeAlias = Any
 
 class ClassWithKeywordProperties(builtins.object):
     ...

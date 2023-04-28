@@ -1,4 +1,5 @@
 from typing import Any, TypeAlias
+
 retval: TypeAlias = Any
 
 cv2 = cv2_stubs

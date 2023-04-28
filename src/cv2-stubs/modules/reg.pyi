@@ -1,4 +1,5 @@
 from typing import Any, TypeAlias
+
 retval: TypeAlias = Any
 
 class Map(builtins.object):

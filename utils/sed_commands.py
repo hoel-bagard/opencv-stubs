@@ -11,7 +11,7 @@ def main():
 
     path: Path = args.path
 
-    for file_path in path.rglob("*.pyi"):
+    for _file_path in path.rglob("*.pyi"):
         pass
         # if "retval" in file_path.read_text():
         #     subprocess.run(["sed", "-i", f"1ifrom typing import Any, TypeAlias", str(file_path)])

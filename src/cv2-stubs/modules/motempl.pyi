@@ -1,4 +1,5 @@
 from typing import Any, TypeAlias
+
 retval: TypeAlias = Any
 
 def calcGlobalOrientation(orientation, mask, mhi, timestamp, duration) -> retval:

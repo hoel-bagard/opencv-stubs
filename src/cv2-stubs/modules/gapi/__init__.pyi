@@ -1,9 +1,10 @@
+import builtins
 from typing import Any, TypeAlias
+
+from . import core, cv, ie, oak, onnx, own, render, streaming, video, wip
+
 dst: TypeAlias = Any
 retval: TypeAlias = Any
-import builtins
-
-from . import core, cv, ie, oak, onnx, own, render, streaming, sys, video, wip
 
 class GArray(builtins.object):
     ...

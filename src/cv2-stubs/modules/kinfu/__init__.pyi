@@ -1,6 +1,9 @@
+import builtins
 from typing import Any, TypeAlias
-retval: TypeAlias = Any
+
 from . import detail
+
+retval: TypeAlias = Any
 
 class KinFu(builtins.object):
     def getCloud(self, points = ..., normals = ...) -> tuple[points, normals]:

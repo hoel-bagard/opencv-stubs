@@ -1,4 +1,5 @@
 from typing import Any, TypeAlias
+
 dst: TypeAlias = Any
 # BorderTypes
 BORDER_CONSTANT: int
