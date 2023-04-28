@@ -1,5 +1,5 @@
 import builtins
-from typing import Any, TypeAlias
+from typing import Any, TypeAlias, overload
 
 from . import detail
 

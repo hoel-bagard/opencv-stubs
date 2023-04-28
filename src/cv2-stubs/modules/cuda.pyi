@@ -1,4 +1,5 @@
-from typing import Any, TypeAlias
+import builtins
+from typing import Any, TypeAlias, overload
 
 dst: TypeAlias = Any
 retval: TypeAlias = Any

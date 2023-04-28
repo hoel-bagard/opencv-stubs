@@ -1,4 +1,5 @@
+import numpy as _np
 
-class Mat(numpy.ndarray):
+class Mat(_np.ndarray):
     ...
 

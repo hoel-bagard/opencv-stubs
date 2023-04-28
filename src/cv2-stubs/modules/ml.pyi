@@ -1,8 +1,10 @@
-from typing import Any, TypeAlias
+import builtins
+from typing import Any, TypeAlias, overload
 
 retval: TypeAlias = Any
 
-from ... import functions as cv2
+from .. import functions as cv2
+
 class ANN_MLP(StatModel):
     def getAnnealCoolingRatio(self) -> retval:
         """

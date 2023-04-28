@@ -1,8 +1,9 @@
-from typing import Any, TypeAlias
+from typing import Any, TypeAlias, overload
 
 dst: TypeAlias = Any
 retval: TypeAlias = Any
-from ... import functions as cv2
+from .. import functions as cv2
+
 
 class GrayworldWB(WhiteBalancer):
     def getSaturationThreshold(self) -> retval:

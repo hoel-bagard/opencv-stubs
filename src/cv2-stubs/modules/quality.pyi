@@ -1,16 +1,19 @@
-from typing import Any, TypeAlias
+from typing import Any, TypeAlias, overload
 
 dst: TypeAlias = Any
 retval: TypeAlias = Any
-from ... import functions as cv2
+from .. import functions as cv2
+
 
 class QualityBRISQUE(QualityBase):
+    @overload
     def compute(self, img) -> retval:
         """
         @brief Computes BRISQUE quality score for input image
         @param img Image for which to compute quality @returns cv::Scalar with the score in the first element.  The score ranges from 0 (best quality) to 100 (worst quality)
         """
 
+    @overload
     def compute(self, img, model_file_path, range_file_path) -> retval:
         """
         @brief static method for computing quality
@@ -26,6 +29,7 @@ class QualityBRISQUE(QualityBase):
         @param features output row vector of features to cv::Mat or cv::UMat
         """
 
+    @overload
     def create(self, model_file_path, range_file_path) -> retval:
         """
         @brief Create an object which calculates quality
@@ -33,6 +37,7 @@ class QualityBRISQUE(QualityBase):
         @param range_file_path cv::String which contains a path to the BRISQUE range data, eg. /path/to/brisque_range_live.yml
         """
 
+    @overload
     def create(self, model, range) -> retval:
         """
         @brief Create an object which calculates quality

@@ -1,4 +1,3 @@
-
 CIRCLE: int
 COMEHERE: int
 CROSS: int

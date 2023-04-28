@@ -1,8 +1,10 @@
+import builtins
 from typing import Any, TypeAlias
 
 retval: TypeAlias = Any
 
-from ... import functions as cv2
+from .. import functions as cv2
+
 class CChecker(builtins.object):
     def getBox(self) -> retval:
         """"""

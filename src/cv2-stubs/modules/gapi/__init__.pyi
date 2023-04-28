@@ -1,5 +1,5 @@
 import builtins
-from typing import Any, TypeAlias
+from typing import Any, TypeAlias, overload
 
 from . import core, cv, ie, oak, onnx, own, render, streaming, video, wip
 

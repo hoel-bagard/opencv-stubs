@@ -1,9 +1,11 @@
-from typing import Any, TypeAlias
+import builtins
+from typing import Any, TypeAlias, overload
 
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 
 class ICP(builtins.object):
+    @overload
     def registerModelToScene(self, srcPC, dstPC) -> tuple[retval, residual, pose]:
         """
         *  \brief Perform registration
@@ -14,6 +16,7 @@ class ICP(builtins.object):
         *  @param [out] pose Transformation between srcPC and dstPC. *  \return On successful termination, the function returns 0. * *  \details It is assumed that the model is registered on the scene. Scene remains static, while the model transforms. The output poses transform the models onto the scene. Because of the point to plane minimization, the scene is expected to have the normals available. Expected to have the normals (Nx6).
         """
 
+    @overload
     def registerModelToScene(self, srcPC, dstPC, poses) -> tuple[retval, poses]:
         """
         *  \brief Perform registration with multiple initial poses

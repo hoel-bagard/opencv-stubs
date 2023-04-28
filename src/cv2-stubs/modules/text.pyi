@@ -1,8 +1,10 @@
-from typing import Any, TypeAlias
+import builtins
+from typing import Any, TypeAlias, overload
 
 retval: TypeAlias = Any
 
-from ... import functions as cv2
+from .. import functions as cv2
+
 class BaseOCR(builtins.object):
     ...
 
@@ -12,6 +14,7 @@ class ERFilter(cv2.Algorithm):
 
 
 class OCRBeamSearchDecoder(BaseOCR):
+    @overload
     def run(self, image, min_confidence, component_level = ...) -> retval:
         """
         @brief Recognize text using Beam Search.
@@ -28,6 +31,7 @@ class OCRBeamSearchDecoder(BaseOCR):
         @param component_level Only OCR_LEVEL_WORD is supported.
         """
 
+    @overload
     def run(self, image, mask, min_confidence, component_level = ...) -> retval:
         """"""
 
@@ -45,6 +49,7 @@ class OCRBeamSearchDecoder(BaseOCR):
 
 
 class OCRHMMDecoder(BaseOCR):
+    @overload
     def run(self, image, min_confidence, component_level = ...) -> retval:
         """
         @brief Recognize text using HMM.
@@ -63,9 +68,11 @@ class OCRHMMDecoder(BaseOCR):
         @param component_level Only OCR_LEVEL_WORD is supported.
         """
 
+    @overload
     def run(self, image, mask, min_confidence, component_level = ...) -> retval:
         """"""
 
+    @overload
     def create(self, classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode = ...) -> retval:
         """
         @brief Creates an instance of the OCRHMMDecoder class. Initializes HMMDecoder.
@@ -77,6 +84,7 @@ class OCRHMMDecoder(BaseOCR):
         @param mode HMM Decoding algorithm. Only OCR_DECODER_VITERBI is available for the moment (<http://en.wikipedia.org/wiki/Viterbi_algorithm>).
         """
 
+    @overload
     def create(self, filename, vocabulary, transition_probabilities_table, emission_probabilities_table, mode = ..., classifier = ...) -> retval:
         """
     @overload
@@ -87,6 +95,7 @@ class OCRHMMDecoder(BaseOCR):
 
 
 class OCRTesseract(BaseOCR):
+    @overload
     def run(self, image, min_confidence, component_level = ...) -> retval:
         """
         @brief Recognize text using the tesseract-ocr API.
@@ -103,6 +112,7 @@ class OCRTesseract(BaseOCR):
         @param component_level OCR_LEVEL_WORD (by default), or OCR_LEVEL_TEXTLINE.
         """
 
+    @overload
     def run(self, image, mask, min_confidence, component_level = ...) -> retval:
         """"""
 
@@ -133,7 +143,6 @@ class TextDetector(builtins.object):
 
 
 class TextDetectorCNN(TextDetector):
-    @overload
     def detect(self, inputImage) -> tuple[Bbox, confidence]:
         """
         @overload
@@ -143,7 +152,6 @@ class TextDetectorCNN(TextDetector):
         @param confidence a vector of float that will be updated with the confidence the classifier has for the selected bounding box
         """
 
-    @overload
     def create(self, modelArchFilename, modelWeightsFilename) -> retval:
         """
         @overload

@@ -2,7 +2,8 @@ from typing import Any, TypeAlias
 
 retval: TypeAlias = Any
 
-from ... import functions as cv2
+from .. import functions as cv2
+
 class HfsSegment(cv2.Algorithm):
     def getMinRegionSizeI(self) -> retval:
         """"""

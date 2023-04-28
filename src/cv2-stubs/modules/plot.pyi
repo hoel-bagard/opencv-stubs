@@ -1,8 +1,9 @@
-from typing import Any, TypeAlias
+from typing import Any, TypeAlias, overload
 
 retval: TypeAlias = Any
 
-from ... import functions as cv2
+from .. import functions as cv2
+
 class Plot2d(cv2.Algorithm):
     def render(self, _plotResult = ...) -> _plotResult:
         """"""

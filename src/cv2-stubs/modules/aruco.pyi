@@ -1,8 +1,10 @@
+import builtins
 from typing import Any, TypeAlias
 
 retval: TypeAlias = Any
 
-from ... import functions as cv2
+from .. import functions as cv2
+
 class ArucoDetector(cv2.Algorithm):
     def detectMarkers(self, image, corners = ..., ids = ..., rejectedImgPoints = ...) -> tuple[corners, ids, rejectedImgPoints]:
         """

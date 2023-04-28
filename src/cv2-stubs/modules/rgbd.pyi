@@ -1,8 +1,10 @@
+import builtins
 from typing import Any, TypeAlias
 
 dst: TypeAlias = Any
 retval: TypeAlias = Any
-from ... import functions as cv2
+from .. import functions as cv2
+
 
 class DepthCleaner(cv2.Algorithm):
     def apply(self, points, depth = ...) -> depth:
