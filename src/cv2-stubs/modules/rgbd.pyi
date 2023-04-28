@@ -5,7 +5,6 @@ dst: TypeAlias = Any
 retval: TypeAlias = Any
 from .. import functions as cv2
 
-
 class DepthCleaner(cv2.Algorithm):
     def apply(self, points, depth = ...) -> depth:
         """

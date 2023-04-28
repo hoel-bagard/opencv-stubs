@@ -1,4 +1,4 @@
-from typing import Any, TypeAlias, overload
+from typing import Any, overload, TypeAlias
 
 dst: TypeAlias = Any
 retval: TypeAlias = Any
