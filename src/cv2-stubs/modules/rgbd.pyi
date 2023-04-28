@@ -198,7 +198,7 @@ class Odometry(cv2.Algorithm):
     def DEFAULT_MIN_DEPTH(self) -> retval:
         """
 
-        
+
         """
 
     def compute(self, srcImage, srcDepth, srcMask, dstImage, dstDepth, dstMask, Rt = ..., initRt = ...) -> tuple[retval, Rt]:

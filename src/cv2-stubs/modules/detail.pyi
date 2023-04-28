@@ -148,7 +148,7 @@ class CameraParams(builtins.object):
     def K(self) -> retval:
         """
 
-        
+
         """
 
 

@@ -8,8 +8,8 @@ class AdaptiveManifoldFilter(cv2.Algorithm):
         """
         @brief Apply high-dimensional filtering using adaptive manifolds.
 
-        @param src filtering image with any numbers of channels. 
-        @param dst output image. 
+        @param src filtering image with any numbers of channels.
+        @param dst output image.
         @param joint optional joint (also called as guided) image with any numbers of channels.
         """
 
@@ -59,8 +59,8 @@ class DTFilter(cv2.Algorithm):
         """
         @brief Produce domain transform filtering operation on source image.
 
-        @param src filtering image with unsigned 8-bit or floating-point 32-bit depth and up to 4 channels. 
-        @param dst destination image. 
+        @param src filtering image with unsigned 8-bit or floating-point 32-bit depth and up to 4 channels.
+        @param dst destination image.
         @param dDepth optional depth of the output image. dDepth can be set to -1, which will be equivalent to src.depth().
         """
 
@@ -70,11 +70,11 @@ class DisparityFilter(cv2.Algorithm):
         """
         @brief Apply filtering to the disparity map.
 
-        @param disparity_map_left disparity map of the left view, 1 channel, CV_16S type. Implicitly assumes that disparity values are scaled by 16 (one-pixel disparity corresponds to the value of 16 in the disparity map). Disparity map can have any resolution, it will be automatically resized to fit left_view resolution. 
-        @param left_view left view of the original stereo-pair to guide the filtering process, 8-bit single-channel or three-channel image. 
-        @param filtered_disparity_map output disparity map. 
-        @param disparity_map_right optional argument, some implementations might also use the disparity map of the right view to compute confidence maps, for instance. 
-        @param ROI region of the disparity map to filter. Optional, usually it should be set automatically. 
+        @param disparity_map_left disparity map of the left view, 1 channel, CV_16S type. Implicitly assumes that disparity values are scaled by 16 (one-pixel disparity corresponds to the value of 16 in the disparity map). Disparity map can have any resolution, it will be automatically resized to fit left_view resolution.
+        @param left_view left view of the original stereo-pair to guide the filtering process, 8-bit single-channel or three-channel image.
+        @param filtered_disparity_map output disparity map.
+        @param disparity_map_right optional argument, some implementations might also use the disparity map of the right view to compute confidence maps, for instance.
+        @param ROI region of the disparity map to filter. Optional, usually it should be set automatically.
         @param right_view optional argument, some implementations might also use the right view of the original stereo-pair.
         """
 
@@ -408,8 +408,8 @@ class FastBilateralSolverFilter(cv2.Algorithm):
         """
         @brief Apply smoothing operation to the source image.
 
-        @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 3 channels. 
-        @param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel. 
+        @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 3 channels.
+        @param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
         @param dst destination image.  @note Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
         """
 
@@ -419,7 +419,7 @@ class FastGlobalSmootherFilter(cv2.Algorithm):
         """
         @brief Apply smoothing operation to the source image.
 
-        @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels. 
+        @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
         @param dst destination image.
         """
 
@@ -453,8 +453,8 @@ class GuidedFilter(cv2.Algorithm):
         """
         @brief Apply Guided Filter to the filtering image.
 
-        @param src filtering image with any numbers of channels. 
-        @param dst output image. 
+        @param src filtering image with any numbers of channels.
+        @param dst output image.
         @param dDepth optional depth of the output image. dDepth can be set to -1, which will be equivalent to src.depth().
         """
 
@@ -695,10 +695,10 @@ class SparseMatchInterpolator(cv2.Algorithm):
         """
         @brief Interpolate input sparse matches.
 
-        @param from_image first of the two matched images, 8-bit single-channel or three-channel. 
-        @param from_points points of the from_image for which there are correspondences in the to_image (Point2f vector or Mat of depth CV_32F) 
-        @param to_image second of the two matched images, 8-bit single-channel or three-channel. 
-        @param to_points points in the to_image corresponding to from_points (Point2f vector or Mat of depth CV_32F) 
+        @param from_image first of the two matched images, 8-bit single-channel or three-channel.
+        @param from_points points of the from_image for which there are correspondences in the to_image (Point2f vector or Mat of depth CV_32F)
+        @param to_image second of the two matched images, 8-bit single-channel or three-channel.
+        @param to_points points in the to_image corresponding to from_points (Point2f vector or Mat of depth CV_32F)
         @param dense_flow output dense matching (two-channel CV_32F image)
         """
 
@@ -748,7 +748,7 @@ class SuperpixelLSC(cv2.Algorithm):
         """
         @brief Returns the mask of the superpixel segmentation stored in SuperpixelLSC object.
 
-        @param image Return: CV_8U1 image mask where -1 indicates that the pixel is a superpixel border, and 0 otherwise. 
+        @param image Return: CV_8U1 image mask where -1 indicates that the pixel is a superpixel border, and 0 otherwise.
         @param thick_line If false, the border is only one pixel wide, otherwise all pixels at the border are masked.  The function return the boundaries of the superpixel segmentation.
         """
 
@@ -785,7 +785,7 @@ class SuperpixelSEEDS(cv2.Algorithm):
         """
         @brief Returns the mask of the superpixel segmentation stored in SuperpixelSEEDS object.
 
-        @param image Return: CV_8UC1 image mask where -1 indicates that the pixel is a superpixel border, and 0 otherwise. 
+        @param image Return: CV_8UC1 image mask where -1 indicates that the pixel is a superpixel border, and 0 otherwise.
         @param thick_line If false, the border is only one pixel wide, otherwise all pixels at the border are masked.  The function return the boundaries of the superpixel segmentation.  @note -   (Python) A demo on how to generate superpixels in images from the webcam can be found at opencv_source_code/samples/python2/seeds.py -   (cpp) A demo on how to generate superpixels in images from the webcam can be found at opencv_source_code/modules/ximgproc/samples/seeds.cpp. By adding a file image as a command line argument, the static image will be used instead of the webcam. -   It will show a window with the video from the webcam with the superpixel boundaries marked in red (see below). Use Space to switch between different output modes. At the top of the window there are 4 sliders, from which the user can change on-the-fly the number of superpixels, the number of block levels, the strength of the boundary prior term to modify the shape, and the number of iterations at pixel level. This is useful to play with the parameters and set them to the user convenience. In the console the frame-rate of the algorithm is indicated.  ![image](pics/superpixels_demo.png)
         """
 
@@ -815,7 +815,7 @@ class SuperpixelSEEDS(cv2.Algorithm):
         algorithm with createSuperpixelSEEDS(). This save the computational cost of allocating memory
         for all the structures of the algorithm.
 
-        @param img Input image. Supported formats: CV_8U, CV_16U, CV_32F. Image size & number of channels must match with the initialized image size & channels with the function createSuperpixelSEEDS(). It should be in HSV or Lab color space. Lab is a bit better, but also slower. 
+        @param img Input image. Supported formats: CV_8U, CV_16U, CV_32F. Image size & number of channels must match with the initialized image size & channels with the function createSuperpixelSEEDS(). It should be in HSV or Lab color space. Lab is a bit better, but also slower.
         @param num_iterations Number of pixel level iterations. Higher number improves the result.  The function computes the superpixels segmentation of an image with the parameters initialized with the function createSuperpixelSEEDS(). The algorithms starts from a grid of superpixels and then refines the boundaries by proposing updates of blocks of pixels that lie at the boundaries from large to smaller size, finalizing with proposing pixel updates. An illustrative example can be seen below.  ![image](pics/superpixels_blocks2.png)
         """
 
@@ -832,7 +832,7 @@ class SuperpixelSLIC(cv2.Algorithm):
         """
         @brief Returns the mask of the superpixel segmentation stored in SuperpixelSLIC object.
 
-        @param image Return: CV_8U1 image mask where -1 indicates that the pixel is a superpixel border, and 0 otherwise. 
+        @param image Return: CV_8U1 image mask where -1 indicates that the pixel is a superpixel border, and 0 otherwise.
         @param thick_line If false, the border is only one pixel wide, otherwise all pixels at the border are masked.  The function return the boundaries of the superpixel segmentation.
         """
 

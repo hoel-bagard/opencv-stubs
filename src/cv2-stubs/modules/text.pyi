@@ -16,11 +16,11 @@ class OCRBeamSearchDecoder(BaseOCR):
         provides also the Rects for individual text elements found (e.g. words), and the list of those
         text elements with their confidence values.
 
-        @param image Input binary image CV_8UC1 with a single text line (or word). 
-        @param output_text Output text. Most likely character sequence found by the HMM decoder. 
-        @param component_rects If provided the method will output a list of Rects for the individual text elements found (e.g. words). 
-        @param component_texts If provided the method will output a list of text strings for the recognition of individual text elements found (e.g. words). 
-        @param component_confidences If provided the method will output a list of confidence values for the recognition of individual text elements found (e.g. words). 
+        @param image Input binary image CV_8UC1 with a single text line (or word).
+        @param output_text Output text. Most likely character sequence found by the HMM decoder.
+        @param component_rects If provided the method will output a list of Rects for the individual text elements found (e.g. words).
+        @param component_texts If provided the method will output a list of text strings for the recognition of individual text elements found (e.g. words).
+        @param component_confidences If provided the method will output a list of confidence values for the recognition of individual text elements found (e.g. words).
         @param component_level Only OCR_LEVEL_WORD is supported.
         """
 
@@ -31,11 +31,11 @@ class OCRBeamSearchDecoder(BaseOCR):
         """
         @brief Creates an instance of the OCRBeamSearchDecoder class. Initializes HMMDecoder.
 
-        @param classifier The character classifier with built in feature extractor. 
-        @param vocabulary The language vocabulary (chars when ASCII English text). vocabulary.size() must be equal to the number of classes of the classifier. 
-        @param transition_probabilities_table Table with transition probabilities between character pairs. cols == rows == vocabulary.size(). 
-        @param emission_probabilities_table Table with observation emission probabilities. cols == rows == vocabulary.size(). 
-        @param mode HMM Decoding algorithm. Only OCR_DECODER_VITERBI is available for the moment (<http://en.wikipedia.org/wiki/Viterbi_algorithm>). 
+        @param classifier The character classifier with built in feature extractor.
+        @param vocabulary The language vocabulary (chars when ASCII English text). vocabulary.size() must be equal to the number of classes of the classifier.
+        @param transition_probabilities_table Table with transition probabilities between character pairs. cols == rows == vocabulary.size().
+        @param emission_probabilities_table Table with observation emission probabilities. cols == rows == vocabulary.size().
+        @param mode HMM Decoding algorithm. Only OCR_DECODER_VITERBI is available for the moment (<http://en.wikipedia.org/wiki/Viterbi_algorithm>).
         @param beam_size Size of the beam in Beam Search algorithm.
         """
 
@@ -51,11 +51,11 @@ class OCRHMMDecoder(BaseOCR):
         text elements with their confidence values.
 
         @param image Input image CV_8UC1 or CV_8UC3 with a single text line (or word).
-        @param mask Input binary image CV_8UC1 same size as input image. Each connected component in mask corresponds to a segmented character in the input image. 
-        @param output_text Output text. Most likely character sequence found by the HMM decoder. 
-        @param component_rects If provided the method will output a list of Rects for the individual text elements found (e.g. words). 
-        @param component_texts If provided the method will output a list of text strings for the recognition of individual text elements found (e.g. words). 
-        @param component_confidences If provided the method will output a list of confidence values for the recognition of individual text elements found (e.g. words). 
+        @param mask Input binary image CV_8UC1 same size as input image. Each connected component in mask corresponds to a segmented character in the input image.
+        @param output_text Output text. Most likely character sequence found by the HMM decoder.
+        @param component_rects If provided the method will output a list of Rects for the individual text elements found (e.g. words).
+        @param component_texts If provided the method will output a list of text strings for the recognition of individual text elements found (e.g. words).
+        @param component_confidences If provided the method will output a list of confidence values for the recognition of individual text elements found (e.g. words).
         @param component_level Only OCR_LEVEL_WORD is supported.
         """
 
@@ -66,10 +66,10 @@ class OCRHMMDecoder(BaseOCR):
         """
         @brief Creates an instance of the OCRHMMDecoder class. Initializes HMMDecoder.
 
-        @param classifier The character classifier with built in feature extractor. 
-        @param vocabulary The language vocabulary (chars when ascii english text). vocabulary.size() must be equal to the number of classes of the classifier. 
-        @param transition_probabilities_table Table with transition probabilities between character pairs. cols == rows == vocabulary.size(). 
-        @param emission_probabilities_table Table with observation emission probabilities. cols == rows == vocabulary.size(). 
+        @param classifier The character classifier with built in feature extractor.
+        @param vocabulary The language vocabulary (chars when ascii english text). vocabulary.size() must be equal to the number of classes of the classifier.
+        @param transition_probabilities_table Table with transition probabilities between character pairs. cols == rows == vocabulary.size().
+        @param emission_probabilities_table Table with observation emission probabilities. cols == rows == vocabulary.size().
         @param mode HMM Decoding algorithm. Only OCR_DECODER_VITERBI is available for the moment (<http://en.wikipedia.org/wiki/Viterbi_algorithm>).
         """
 
