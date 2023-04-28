@@ -1,3 +1,5 @@
+import builtins
+
 from . import wip
 from . import video
 from . import sys
@@ -136,14 +138,6 @@ def Canny(image, threshold1, threshold2, apertureSize = ..., L2gradient = ...) -
     \f$=\sqrt{(dI/dx)^2 + (dI/dy)^2}\f$ should be used to calculate the image gradient magnitude (
     L2gradient=true ), or whether the default \f$L_1\f$ norm \f$=|dI/dx|+|dI/dy|\f$ is enough (
     L2gradient=false ).
-    """
-
-def :
-    """
-    """
-
-def :
-    """
     """
 
 def I4202BGR(src) -> retval:
@@ -540,8 +534,7 @@ def absDiff(src1, src2) -> retval:
 
 @overload
 def absDiff(src1, src2) -> retval:
-    """
-    """
+    """"""
 
 @overload
 def absDiff(src1, src2) -> retval:
@@ -629,9 +622,7 @@ def addC(src1, c, ddepth = ...) -> retval:
 
 @overload
 def addC(src1, c, ddepth = ...) -> retval:
-    """
-        .
-    """
+    """"""
 
 def addWeighted(src1, alpha, src2, beta, gamma, ddepth = ...) -> retval:
     """
@@ -1038,10 +1029,6 @@ def cmpNE(src1, src2) -> retval:
     @sa min, max, threshold, cmpEQ
     """
 
-def :
-    """
-    """
-
 @overload
 def concatHor(src1, src2) -> retval:
     """
@@ -1205,10 +1192,6 @@ def crop(src, rect) -> retval:
     @param src input matrix.
     @param rect a rect to crop a matrix to
     @sa resize
-    """
-
-def :
-    """
     """
 
 def dilate(src, kernel, anchor = ..., iterations = ..., borderType = ..., borderValue = ...) -> retval:
@@ -1452,8 +1435,7 @@ def flip(src, flipCode) -> retval:
 
 @overload
 def flip(src, flipCode) -> retval:
-    """
-    """
+    """"""
 
 @overload
 def flip(src, flipCode) -> retval:
@@ -1463,8 +1445,7 @@ def flip(src, flipCode) -> retval:
 
 @overload
 def flip(src, flipCode) -> retval:
-    """
-    """
+    """"""
 
 @overload
 def flip(src, flipCode) -> retval:
@@ -1474,8 +1455,7 @@ def flip(src, flipCode) -> retval:
 
 @overload
 def flip(src, flipCode) -> retval:
-    """
-    """
+    """"""
 
 @overload
 def flip(src, flipCode) -> retval:
@@ -1523,10 +1503,6 @@ def gaussianBlur(src, ksize, sigmaX, sigmaY = ..., borderType = ..., borderValue
     @param borderType pixel extrapolation method, see cv::BorderTypes
     @param borderValue border value in case of constant border type
     @sa  sepFilter, boxFilter, medianBlur
-    """
-
-def :
-    """
     """
 
 @overload
@@ -1605,24 +1581,18 @@ def inRange(src, threshLow, threshUp) -> retval:
 
 @overload
 def infer(name, inputs) -> retval:
-    """
-    """
+    """"""
 
 @overload
 def infer(name, inputs) -> retval:
-    """
-    """
+    """"""
 
 @overload
 def infer(name, inputs) -> retval:
-    """
-        .
-    """
+    """"""
 
 def infer2(name, in_, inputs) -> retval:
-    """
-        .
-    """
+    """"""
 
 def integral(src, sdepth = ..., sqdepth = ...) -> retval:
     """
@@ -1645,13 +1615,8 @@ def integral(src, sdepth = ..., sqdepth = ...) -> retval:
     @param sqdepth desired depth of the integral image of squared pixel values, CV_32F or CV_64F.
     """
 
-def :
-    """
-    """
-
-def kernels(...) -> GKernelPackage:
-    """
-    """
+def kernels() -> GKernelPackage:
+    """"""
 
 @overload
 def kmeans(data, K, bestLabels, criteria, attempts, flags) -> retval:
@@ -1737,8 +1702,7 @@ def max(src1, src2) -> retval:
 
 @overload
 def max(src1, src2) -> retval:
-    """
-    """
+    """"""
 
 @overload
 def max(src1, src2) -> retval:
@@ -1836,8 +1800,7 @@ def min(src1, src2) -> retval:
 
 @overload
 def min(src1, src2) -> retval:
-    """
-    """
+    """"""
 
 @overload
 def min(src1, src2) -> retval:
@@ -1925,13 +1888,7 @@ def mulC(src, multiplier, ddepth = ...) -> retval:
 
 @overload
 def mulC(src, multiplier, ddepth = ...) -> retval:
-    """
-        .
-    """
-
-def :
-    """
-    """
+    """"""
 
 def normInf(src) -> retval:
     """
@@ -2025,10 +1982,6 @@ def normalize(src, alpha, beta, norm_type, ddepth = ...) -> retval:
     @param ddepth when negative, the output array has the same type as src; otherwise, it has the same
     number of channels as src and the depth =ddepth.
     @sa norm, Mat::convertTo
-    """
-
-def # NB: Top lvl decorator takes arguments:
-    """
     """
 
 @overload
@@ -2134,10 +2087,6 @@ def polarToCart(magnitude, angle, angleInDegrees = ...) -> retval:
     @param angleInDegrees when true, the input angles are measured in
     degrees, otherwise, they are measured in radians.
     @sa cartToPolar, exp, log, pow, sqrt
-    """
-
-def # NB: Register function in specific module:
-    """
     """
 
 def remap(src, map1, map2, interpolation, borderMode = ..., borderValue = ...) -> retval:

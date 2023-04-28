@@ -34,6 +34,7 @@ packages = [
 [project.optional-dependencies]
 dev = ["pre-commit", "pip-tools", "ruff", "pyright"]
 build = ["hatch"]
+flake8 = ["flake8", "flake8-bugbear", "flake8-comprehensions", "flake8-docstrings", "flake8-builtins", "flake8-quotes", "pep8-naming", "flake8-import-order", "flake8-noqa", "flake8-broken-line", "flake8-commas", "Flake8-pyproject"]
 # I couldn't figure out how to have "opencv or opencv-headless" as dependency, so they are both optional.
 opencv = ["opencv-python>=4.7.0"]
 opencv-contrib = ["opencv-contrib-python>=4.7.0"]
@@ -60,7 +61,7 @@ publish_test = "hatch build --clean && hatch publish -r test"
 publish = "hatch build --clean && hatch publish"
 
 [tool.ruff]
-select = ["A", "B", "C4", "E", "I", "Q", "UP", "ANN", "S", "BLE", "COM", "DTZ", "PIE", "PT", "RSE", "SIM","PTH", "TRY", "NPY", "RUF"]
+select = ["A", "B", "C4", "E", "I", "Q", "UP", "S", "BLE", "COM", "DTZ", "PIE", "PT", "RSE", "SIM","PTH", "TRY", "NPY", "RUF"]  # , "ANN"
 ignore = ["D1", "D401", "D204", "D203", "D213", "S101", "PLR2004", "A002", "A003"]
 line-length = 10000
 

@@ -39,3 +39,5 @@ A stub file with all the cv2 functions can be found on the [Microsoft stubs repo
 
 ## TODO:
 - [ ] Do something about `cv2.gapi.cv`, `cv2.utils.cv2` and `cv2.mat_wrapper.cv` (do not duplicate everything if possible).
+- [ ] Handle cases like `cv2.misc.version.cv2.misc.version.cv2.misc.get_ocv_version()`.
+- [ ] Fix missing "..."   (` """\n\n/"""\n    ...\n\n`)

@@ -124,8 +124,8 @@ class AgastFeatureDetector(Feature2D):
 
 
 class Algorithm(builtins.object):
-     @abstractmethod
-     def clear(self) -> None:
+    @abstractmethod
+    def clear(self) -> None:
         """
         @brief Clears the algorithm state
         """
