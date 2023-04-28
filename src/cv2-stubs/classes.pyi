@@ -6,6 +6,8 @@ import numpy as np
 import numpy.typing as npt
 from typing_extensions import Self
 
+from .modules import *
+
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 InputArrayOfArrays: TypeAlias = npt.NDArray[Any]
