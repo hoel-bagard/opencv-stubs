@@ -2,7 +2,7 @@ from typing import Any, TypeAlias
 
 retval: TypeAlias = Any
 
-cv2 = cv2_stubs
+from ... import functions as cv2
 class Retina(cv2.Algorithm):
     def activateContoursProcessing(self, activate) -> None:
         """

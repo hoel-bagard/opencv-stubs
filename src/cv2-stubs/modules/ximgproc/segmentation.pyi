@@ -2,7 +2,7 @@ from typing import Any, TypeAlias
 
 dst: TypeAlias = Any
 retval: TypeAlias = Any
-cv2 = cv2_stubs
+from ... import functions as cv2
 
 class GraphSegmentation(cv2.Algorithm):
     def getK(self) -> retval:

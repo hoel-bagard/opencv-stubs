@@ -22,8 +22,9 @@ def main():
         #         subprocess.run(["sed", "-i", f"1ifrom typing import Any, TypeAlias", str(file_path)])
         #     subprocess.run(["sed", "-i", f"2idst: TypeAlias = Any", str(file_path)])
 
+
         # if "cv2" in file_path.read_text():
-        #     subprocess.run(["sed", "-i", f"4icv2 = cv2_stubs", str(file_path)])
+        #     subprocess.run(["sed", "-i", f"4ifrom ... import functions as cv2", str(file_path)])
 
 
 if __name__ == "__main__":

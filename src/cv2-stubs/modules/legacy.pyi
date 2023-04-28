@@ -2,7 +2,7 @@ from typing import Any, TypeAlias
 
 retval: TypeAlias = Any
 
-cv2 = cv2_stubs
+from ... import functions as cv2
 class MultiTracker(cv2.Algorithm):
     def add(self, newTracker, image, boundingBox) -> retval:
         """

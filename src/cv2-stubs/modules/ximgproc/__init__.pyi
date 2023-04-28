@@ -7,7 +7,7 @@ from . import segmentation
 
 dst: TypeAlias = Any
 retval: TypeAlias = Any
-cv2 = cv2_stubs
+from ... import functions as cv2
 
 class AdaptiveManifoldFilter(cv2.Algorithm):
     def collectGarbage(self) -> None:
