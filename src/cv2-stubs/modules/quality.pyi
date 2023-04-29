@@ -78,12 +78,14 @@ class QualityGMSD(QualityBase):
         @brief Implements Algorithm::clear()
         """
 
+    @overload
     def compute(self, cmp) -> retval:
         """
         @brief Compute GMSD
         @param cmp comparison image @returns cv::Scalar with per-channel quality value.  Values range from 0 (worst) to 1 (best)
         """
 
+    @overload
     def compute(self, ref, cmp, qualityMap = ...) -> tuple[retval, qualityMap]:
         """
         @brief static method for computing quality
@@ -110,12 +112,14 @@ class QualityMSE(QualityBase):
         @brief Implements Algorithm::clear()
         """
 
+    @overload
     def compute(self, cmpImgs) -> retval:
         """
         @brief Computes MSE for reference images supplied in class constructor and provided comparison images
         @param cmpImgs Comparison image(s) @returns cv::Scalar with per-channel quality values.  Values range from 0 (best) to potentially max float (worst)
         """
 
+    @overload
     def compute(self, ref, cmp, qualityMap = ...) -> tuple[retval, qualityMap]:
         """
         @brief static method for computing quality
@@ -142,12 +146,14 @@ class QualityPSNR(QualityBase):
         @brief Implements Algorithm::clear()
         """
 
+    @overload
     def compute(self, cmp) -> retval:
         """
         @brief Compute the PSNR
         @param cmp Comparison image @returns Per-channel PSNR value, or std::numeric_limits<double>::infinity() if the MSE between the two images == 0
         """
 
+    @overload
     def compute(self, ref, cmp, qualityMap = ..., maxPixelValue = ...) -> tuple[retval, qualityMap]:
         """
         @brief static method for computing quality
@@ -187,12 +193,14 @@ class QualitySSIM(QualityBase):
         @brief Implements Algorithm::clear()
         """
 
+    @overload
     def compute(self, cmp) -> retval:
         """
         @brief Computes SSIM
         @param cmp Comparison image @returns cv::Scalar with per-channel quality values.  Values range from 0 (worst) to 1 (best)
         """
 
+    @overload
     def compute(self, ref, cmp, qualityMap = ...) -> tuple[retval, qualityMap]:
         """
         @brief static method for computing quality

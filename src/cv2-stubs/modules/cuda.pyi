@@ -12,9 +12,11 @@ class BufferPool(builtins.object):
     def getAllocator(self) -> retval:
         """"""
 
+    @overload
     def getBuffer(self, rows, cols, type) -> retval:
         """"""
 
+    @overload
     def getBuffer(self, size, type) -> retval:
         """"""
 
@@ -234,42 +236,53 @@ class GpuMat(builtins.object):
     def col(self, x) -> retval:
         """"""
 
+    @overload
     def colRange(self, startcol, endcol) -> retval:
         """"""
 
+    @overload
     def colRange(self, r) -> retval:
         """"""
 
+    @overload
     def convertTo(self, rtype, dst = ...) -> dst:
         """"""
 
+    @overload
     def convertTo(self, rtype, stream, dst = ...) -> dst:
         """"""
 
+    @overload
     def convertTo(self, rtype, alpha, dst = ..., beta = ...) -> dst:
         """"""
 
+    @overload
     def convertTo(self, rtype, alpha, stream, dst = ...) -> dst:
         """"""
 
     def convertTo(self, rtype, alpha, beta, stream, dst = ...) -> dst:
         """"""
 
+    @overload
     def copyTo(self, dst = ...) -> dst:
         """"""
 
+    @overload
     def copyTo(self, stream, dst = ...) -> dst:
         """"""
 
+    @overload
     def copyTo(self, mask, dst = ...) -> dst:
         """"""
 
     def copyTo(self, mask, stream, dst = ...) -> dst:
         """"""
 
+    @overload
     def create(self, rows, cols, type) -> None:
         """"""
 
+    @overload
     def create(self, size, type) -> None:
         """"""
 
@@ -279,6 +292,7 @@ class GpuMat(builtins.object):
     def depth(self) -> retval:
         """"""
 
+    @overload
     def download(self, dst = ...) -> dst:
         """
         @brief Performs data download from GpuMat (Blocking call)
@@ -287,6 +301,7 @@ class GpuMat(builtins.object):
         guaranteed that the copy operation is finished when this function returns.
         """
 
+    @overload
     def download(self, stream, dst = ...) -> dst:
         """
         @brief Performs data download from GpuMat (Non-Blocking call)
@@ -322,18 +337,23 @@ class GpuMat(builtins.object):
     def row(self, y) -> retval:
         """"""
 
+    @overload
     def rowRange(self, startrow, endrow) -> retval:
         """"""
 
+    @overload
     def rowRange(self, r) -> retval:
         """"""
 
+    @overload
     def setTo(self, s) -> retval:
         """"""
 
+    @overload
     def setTo(self, s, stream) -> retval:
         """"""
 
+    @overload
     def setTo(self, s, mask) -> retval:
         """"""
 
@@ -355,6 +375,7 @@ class GpuMat(builtins.object):
     def updateContinuityFlag(self) -> None:
         """"""
 
+    @overload
     def upload(self, arr) -> None:
         """
         @brief Performs data upload to GpuMat (Blocking call)
@@ -363,6 +384,7 @@ class GpuMat(builtins.object):
         guaranteed that the copy operation is finished when this function returns.
         """
 
+    @overload
     def upload(self, arr, stream) -> None:
         """
         @brief Performs data upload to GpuMat (Non-Blocking call)

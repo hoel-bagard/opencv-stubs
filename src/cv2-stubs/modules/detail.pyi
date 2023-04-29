@@ -59,6 +59,7 @@ class Blender(builtins.object):
         @param tl Source image top-left corners
         """
 
+    @overload
     def prepare(self, corners, sizes) -> None:
         """
         @brief Prepares the blender for blending.
@@ -100,9 +101,11 @@ class BlocksCompensator(ExposureCompensator):
     def getSimilarityThreshold(self) -> retval:
         """"""
 
+    @overload
     def setBlockSize(self, width, height) -> None:
         """"""
 
+    @overload
     def setBlockSize(self, size) -> None:
         """"""
 
@@ -268,7 +271,6 @@ class FeatherBlender(Blender):
 
 
 class FeaturesMatcher(builtins.object):
-    @overload
     def apply(self, features1, features2) -> matches_info:
         """
         @overload

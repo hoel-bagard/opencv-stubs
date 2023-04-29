@@ -117,7 +117,6 @@ class FaceRecognizer(cv2.Algorithm):
         @param collector User-defined collector object that accepts all results  To implement this method u just have to do same internal cycle as in predict(InputArray src, CV_OUT int &label, CV_OUT double &confidence) but not try to get "best@ result, just resend it to caller side with given collector
         """
 
-    @overload
     def predict_label(self, src) -> retval:
         """
         @overload

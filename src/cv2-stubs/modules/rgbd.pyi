@@ -1,5 +1,5 @@
 import builtins
-from typing import Any, TypeAlias
+from typing import Any, overload, TypeAlias
 
 from .. import functions as cv2
 
@@ -518,6 +518,7 @@ class RgbdOdometry(Odometry):
 
 
 class RgbdPlane(cv2.Algorithm):
+    @overload
     def apply(self, points3d, normals, mask = ..., plane_coefficients = ...) -> tuple[mask, plane_coefficients]:
         """
         Find The planes in a depth image
@@ -527,6 +528,7 @@ class RgbdPlane(cv2.Algorithm):
         * @param plane_coefficients the coefficients of the corresponding planes (a,b,c,d) such that ax+by+cz+d=0, norm(a,b,c)=1 *        and c < 0 (so that the normal points towards the camera)
         """
 
+    @overload
     def apply(self, points3d, mask = ..., plane_coefficients = ...) -> tuple[mask, plane_coefficients]:
         """
         Find The planes in a depth image but without doing a normal check, which is faster but less accurate

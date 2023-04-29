@@ -169,6 +169,7 @@ class Model(builtins.object):
         *  @param[in] scale Multiplier for frame values.
         """
 
+    @overload
     def setInputSize(self, size) -> retval:
         """
         @brief Set input size for frame.
@@ -235,12 +236,14 @@ class Net(builtins.object):
         * @param useWinograd true to enable the Winograd compute branch. The default is true.
         """
 
+    @overload
     def forward(self, outputName = ...) -> retval:
         """
         @brief Runs forward pass to compute output of layer with name @p outputName.
         *  @param outputName name for layer which output is needed to get *  @return blob for first output of specified layer. *  @details By default runs forward pass for the whole network.
         """
 
+    @overload
     def forward(self, outputBlobs = ..., outputName = ...) -> outputBlobs:
         """
         @brief Runs forward pass to compute output of layer with name @p outputName.
@@ -268,6 +271,7 @@ class Net(builtins.object):
         *  @param outputName name for layer which output is needed to get *  @details By default runs forward pass for the whole network. * *  This is an asynchronous version of forward(const String&). *  dnn::DNN_BACKEND_INFERENCE_ENGINE backend is required.
         """
 
+    @overload
     def getFLOPS(self, netInputShapes) -> retval:
         """
         @brief Computes FLOP for whole loaded model with specified input shapes.
@@ -299,6 +303,7 @@ class Net(builtins.object):
         *  @param zeropoints output parameter for returning input zeropoints.
         """
 
+    @overload
     def getLayer(self, layerId) -> retval:
         """
         @brief Returns pointer to layer with specified id or name which the network use.
@@ -332,6 +337,7 @@ class Net(builtins.object):
         * @param layerType type. * @returns count of layers
         """
 
+    @overload
     def getLayersShapes(self, netInputShapes) -> tuple[layersIds, inLayersShapes, outLayersShapes]:
         """
         @brief Returns input and output shapes for all layers in loaded model;
@@ -373,6 +379,7 @@ class Net(builtins.object):
         *  @param zeropoints output parameter for returning output zeropoints.
         """
 
+    @overload
     def getParam(self, layer, numParam = ...) -> retval:
         """
         @brief Returns parameter blob of the layer.
@@ -380,6 +387,7 @@ class Net(builtins.object):
         *  @param numParam index of the layer parameter in the Layer::blobs array. *  @see Layer::blobs
         """
 
+    @overload
     def getParam(self, layerName, numParam = ...) -> retval:
         """"""
 
@@ -446,6 +454,7 @@ class Net(builtins.object):
         * As any other layer, this layer can label its outputs and this function provides an easy way to do this.
         """
 
+    @overload
     def setParam(self, layer, numParam, blob) -> None:
         """
         @brief Sets the new value for the learned param of the layer.
@@ -454,6 +463,7 @@ class Net(builtins.object):
         *  @param blob the new value. *  @see Layer::blobs *  @note If shape of the new blob differs from the previous shape, *  then the following forward pass may fail.
         """
 
+    @overload
     def setParam(self, layerName, numParam, blob) -> None:
         """"""
 
@@ -469,6 +479,7 @@ class Net(builtins.object):
         * @param[in] targetId target identifier. * @see Target * * List of supported combinations backend / target: * |                        | DNN_BACKEND_OPENCV | DNN_BACKEND_INFERENCE_ENGINE | DNN_BACKEND_HALIDE |  DNN_BACKEND_CUDA | * |------------------------|--------------------|------------------------------|--------------------|-------------------| * | DNN_TARGET_CPU         |                  + |                            + |                  + |                   | * | DNN_TARGET_OPENCL      |                  + |                            + |                  + |                   | * | DNN_TARGET_OPENCL_FP16 |                  + |                            + |                    |                   | * | DNN_TARGET_MYRIAD      |                    |                            + |                    |                   | * | DNN_TARGET_FPGA        |                    |                            + |                    |                   | * | DNN_TARGET_CUDA        |                    |                              |                    |                 + | * | DNN_TARGET_CUDA_FP16   |                    |                              |                    |                 + | * | DNN_TARGET_HDDL        |                    |                            + |                    |                   |
         """
 
+    @overload
     def readFromModelOptimizer(self, xml, bin) -> retval:
         """
         @brief Create a network from Intel's Model Optimizer intermediate representation (IR).
@@ -476,6 +487,7 @@ class Net(builtins.object):
         *  @param[in] bin Binary file with trained weights. *  Networks imported from Intel's Model Optimizer are launched in Intel's Inference Engine *  backend.
         """
 
+    @overload
     def readFromModelOptimizer(self, bufferModelConfig, bufferWeights) -> retval:
         """
         @brief Create a network from Intel's Model Optimizer in-memory buffers with intermediate representation (IR).
@@ -494,6 +506,7 @@ class SegmentationModel(Model):
 
 
 class TextDetectionModel(Model):
+    @overload
     def detect(self, frame) -> tuple[detections, confidences]:
         """
         @brief Performs detection
@@ -521,6 +534,7 @@ class TextDetectionModel(Model):
         @overload
         """
 
+    @overload
     def detectTextRectangles(self, frame) -> tuple[detections, confidences]:
         """
         @brief Performs detection
@@ -606,12 +620,14 @@ class TextRecognitionModel(Model):
         * @return vocabulary the associated vocabulary
         """
 
+    @overload
     def recognize(self, frame) -> retval:
         """
         * @brief Given the @p input frame, create input blob, run net and return recognition result
         * @param[in] frame The input image * @return The text recognition result
         """
 
+    @overload
     def recognize(self, frame, roiRects) -> results:
         """
         * @brief Given the @p input frame, create input blob, run net and return recognition result

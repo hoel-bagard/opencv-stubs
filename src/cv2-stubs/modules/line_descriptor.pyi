@@ -86,7 +86,6 @@ class BinaryDescriptorMatcher(cv2.Algorithm):
         @param compactResult flag to obtain a compact result (if true, a vector that doesn't contain any matches for a given query is not inserted in final result)
         """
 
-    @overload
     def knnMatchQuery(self, queryDescriptors, matches, k, masks = ..., compactResult = ...) -> None:
         """
         @overload
@@ -108,7 +107,6 @@ class BinaryDescriptorMatcher(cv2.Algorithm):
         @param mask mask to select which input descriptors must be matched to one in dataset
         """
 
-    @overload
     def matchQuery(self, queryDescriptors, masks = ...) -> matches:
         """
         @overload
@@ -145,6 +143,7 @@ class KeyLine(builtins.object):
 
 
 class LSDDetector(cv2.Algorithm):
+    @overload
     def detect(self, image, scale, numOctaves, mask = ...) -> keypoints:
         """
         @brief Detect lines inside an image.

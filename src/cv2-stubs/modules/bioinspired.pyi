@@ -65,6 +65,7 @@ class Retina(cv2.Algorithm):
         @param retinaOutput_magno the output buffer (reallocated if necessary), format can be : -   a Mat, this output is rescaled for standard 8bits image processing use in OpenCV -   RAW methods actually return a 1D matrix (encoding is M1, M2,... Mn), this output is the original retina filter model output, without any quantification or rescaling. @see getMagnoRAW
         """
 
+    @overload
     def getMagnoRAW(self, retinaOutput_magno = ...) -> retinaOutput_magno:
         """
         @brief Accessor of the motion channel of the retina (models peripheral vision).
@@ -94,6 +95,7 @@ class Retina(cv2.Algorithm):
         @param retinaOutput_parvo the output buffer (reallocated if necessary), format can be : -   a Mat, this output is rescaled for standard 8bits image processing use in OpenCV -   RAW methods actually return a 1D matrix (encoding is R1, R2, ... Rn, G1, G2, ..., Gn, B1, B2, ...Bn), this output is the original retina filter model output, without any quantification or rescaling. @see getParvoRAW
         """
 
+    @overload
     def getParvoRAW(self, retinaOutput_parvo = ...) -> retinaOutput_parvo:
         """
         @brief Accessor of the details channel of the retina (models foveal vision).
@@ -190,6 +192,7 @@ class Retina(cv2.Algorithm):
         @overload
         """
 
+    @overload
     def create(self, inputSize, colorMode, colorSamplingMethod = ..., useRetinaLogSampling = ..., reductionFactor = ..., samplingStrength = ...) -> retval:
         """
         @brief Constructors from standardized interfaces : retreive a smart pointer to a Retina instance

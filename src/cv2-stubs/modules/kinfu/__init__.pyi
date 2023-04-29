@@ -37,6 +37,7 @@ class KinFu(builtins.object):
         @param points vector of points which are 4-float vectors
         """
 
+    @overload
     def render(self, image = ...) -> image:
         """
         @brief Renders a volume into an image
@@ -47,6 +48,7 @@ class KinFu(builtins.object):
         @param image resulting image
         """
 
+    @overload
     def render(self, cameraPose, image = ...) -> image:
         """
         @brief Renders a volume into an image
@@ -80,6 +82,7 @@ class KinFu(builtins.object):
 
 
 class Params(builtins.object):
+    @overload
     def setInitialVolumePose(self, R, t) -> None:
         """
         * @brief Set Initial Volume Pose
@@ -88,6 +91,7 @@ class Params(builtins.object):
         * @param t translation vector
         """
 
+    @overload
     def setInitialVolumePose(self, homogen_tf) -> None:
         """
         * @brief Set Initial Volume Pose

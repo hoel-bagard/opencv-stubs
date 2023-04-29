@@ -98,9 +98,11 @@ class Detector(builtins.object):
     def numClasses(self) -> retval:
         """"""
 
+    @overload
     def numTemplates(self) -> retval:
         """"""
 
+    @overload
     def numTemplates(self, class_id) -> retval:
         """"""
 
@@ -143,6 +145,7 @@ class Modality(builtins.object):
     def read(self, fn) -> None:
         """"""
 
+    @overload
     def create(self, modality_type) -> retval:
         """
         * \brief Create modality by name.
@@ -152,6 +155,7 @@ class Modality(builtins.object):
         * - "DepthNormal"
         """
 
+    @overload
     def create(self, fn) -> retval:
         """
         * \brief Load a modality from file.

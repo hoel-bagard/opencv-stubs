@@ -69,6 +69,7 @@ class Plot2d(cv2.Algorithm):
     def setShowText(self, needShowText) -> None:
         """"""
 
+    @overload
     def create(self, data) -> retval:
         """
         * @brief Creates Plot2d object
@@ -76,6 +77,7 @@ class Plot2d(cv2.Algorithm):
         * @param data \f$1xN\f$ or \f$Nx1\f$ matrix containing \f$Y\f$ values of points to plot. \f$X\f$ values * will be equal to indexes of correspondind elements in data matrix.
         """
 
+    @overload
     def create(self, dataX, dataY) -> retval:
         """
         * @brief Creates Plot2d object

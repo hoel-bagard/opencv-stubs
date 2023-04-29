@@ -62,12 +62,14 @@ class Pose3D(builtins.object):
     def printPose(self) -> None:
         """"""
 
+    @overload
     def updatePose(self, NewPose) -> None:
         """
         *  \brief Updates the pose with the new one
         *  \param [in] NewPose New pose to overwrite
         """
 
+    @overload
     def updatePose(self, NewR, NewT) -> None:
         """
         *  \brief Updates the pose with the new one

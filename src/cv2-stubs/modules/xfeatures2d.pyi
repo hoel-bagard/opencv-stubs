@@ -587,6 +587,7 @@ class PCTSignatures(cv2.Algorithm):
         *       of the corresponding feature sample).
         """
 
+    @overload
     def create(self, initSampleCount = ..., initSeedCount = ..., pointDistribution = ...) -> retval:
         """
         * @brief Creates PCTSignatures algorithm using sample and seed count.
@@ -596,6 +597,7 @@ class PCTSignatures(cv2.Algorithm):
         * @param pointDistribution Distribution of generated points. Default: UNIFORM. *       Available: UNIFORM, REGULAR, NORMAL. * @return Created algorithm.
         """
 
+    @overload
     def create(self, initSamplingPoints, initSeedCount) -> retval:
         """
         * @brief Creates PCTSignatures algorithm using pre-generated sampling points

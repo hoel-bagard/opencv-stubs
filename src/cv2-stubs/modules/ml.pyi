@@ -1102,6 +1102,7 @@ class StatModel(cv2.Algorithm):
         @param flags The optional flags, model-dependent. See cv::ml::StatModel::Flags.
         """
 
+    @overload
     def train(self, trainData, flags = ...) -> retval:
         """
         @brief Trains the statistical model
@@ -1110,6 +1111,7 @@ class StatModel(cv2.Algorithm):
         @param flags optional flags, depending on the model. Some of the models can be updated with the new training samples, not completely overwritten (such as NormalBayesClassifier or ANN_MLP).
         """
 
+    @overload
     def train(self, samples, layout, responses) -> retval:
         """
         @brief Trains the statistical model

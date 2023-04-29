@@ -1,5 +1,5 @@
 import builtins
-from typing import Any, TypeAlias
+from typing import Any, overload, TypeAlias
 
 normals: TypeAlias = Any
 points: TypeAlias = Any
@@ -17,9 +17,11 @@ class LargeKinfu(builtins.object):
     def getPoints(self, points = ...) -> points:
         """"""
 
+    @overload
     def render(self, image = ...) -> image:
         """"""
 
+    @overload
     def render(self, cameraPose, image = ...) -> image:
         """"""
 
