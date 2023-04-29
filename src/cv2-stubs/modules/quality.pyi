@@ -2,6 +2,9 @@ from typing import Any, overload, TypeAlias
 
 from .. import functions as cv2
 
+qualityMap: TypeAlias = Any
+features: TypeAlias = Any
+
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 

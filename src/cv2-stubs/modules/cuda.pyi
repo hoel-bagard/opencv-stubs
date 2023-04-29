@@ -1,6 +1,10 @@
 import builtins
 from typing import Any, overload, TypeAlias
 
+keypoints: TypeAlias = Any
+descriptors: TypeAlias = Any
+arr: TypeAlias = Any
+
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 

@@ -3,6 +3,13 @@ from typing import Any, overload, TypeAlias
 
 from .. import functions as cv2
 
+matches: TypeAlias = Any
+outImage: TypeAlias = Any
+descriptors: TypeAlias = Any
+keylines: TypeAlias = Any
+keypoints: TypeAlias = Any
+outImg: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class BinaryDescriptor(cv2.Algorithm):

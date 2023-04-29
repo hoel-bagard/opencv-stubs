@@ -3,6 +3,31 @@ from typing import Any, overload, TypeAlias
 
 from .. import functions as cv2
 
+timings: TypeAlias = Any
+layersTypes: TypeAlias = Any
+images_: TypeAlias = Any
+inLayersShapes: TypeAlias = Any
+outputBlobs: TypeAlias = Any
+layersIds: TypeAlias = Any
+outputs: TypeAlias = Any
+internals: TypeAlias = Any
+outs: TypeAlias = Any
+detections: TypeAlias = Any
+blobs: TypeAlias = Any
+weights: TypeAlias = Any
+confidences: TypeAlias = Any
+zeropoints: TypeAlias = Any
+updated_scores: TypeAlias = Any
+scales: TypeAlias = Any
+classId: TypeAlias = Any
+boxes: TypeAlias = Any
+conf: TypeAlias = Any
+outLayersShapes: TypeAlias = Any
+mask: TypeAlias = Any
+indices: TypeAlias = Any
+classIds: TypeAlias = Any
+results: TypeAlias = Any
+
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 

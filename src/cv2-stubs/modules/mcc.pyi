@@ -3,6 +3,8 @@ from typing import Any, TypeAlias
 
 from .. import functions as cv2
 
+img: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class CChecker(builtins.object):

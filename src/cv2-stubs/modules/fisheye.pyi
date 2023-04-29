@@ -1,5 +1,28 @@
 from typing import Any, overload, TypeAlias
 
+rvecs: TypeAlias = Any
+K2: TypeAlias = Any
+D1: TypeAlias = Any
+R1: TypeAlias = Any
+map1: TypeAlias = Any
+T: TypeAlias = Any
+R2: TypeAlias = Any
+distorted: TypeAlias = Any
+D: TypeAlias = Any
+P: TypeAlias = Any
+K1: TypeAlias = Any
+map2: TypeAlias = Any
+R: TypeAlias = Any
+Q: TypeAlias = Any
+jacobian: TypeAlias = Any
+P2: TypeAlias = Any
+D2: TypeAlias = Any
+K: TypeAlias = Any
+imagePoints: TypeAlias = Any
+P1: TypeAlias = Any
+tvecs: TypeAlias = Any
+undistorted: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 @overload

@@ -3,6 +3,8 @@ from typing import Any, overload, TypeAlias
 
 from . import core, cv, ie, oak, onnx, own, render, streaming, video, wip
 
+GKernelPackage: TypeAlias = Any
+
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 

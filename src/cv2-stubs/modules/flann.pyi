@@ -1,6 +1,9 @@
 import builtins
 from typing import Any, TypeAlias
 
+indices: TypeAlias = Any
+dists: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class Index(builtins.object):

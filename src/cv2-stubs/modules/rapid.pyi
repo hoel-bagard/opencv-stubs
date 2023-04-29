@@ -2,6 +2,19 @@ from typing import Any, TypeAlias
 
 from .. import functions as cv2
 
+tvec: TypeAlias = Any
+img: TypeAlias = Any
+rmsd: TypeAlias = Any
+pts3d: TypeAlias = Any
+bundle: TypeAlias = Any
+cols: TypeAlias = Any
+pts2d: TypeAlias = Any
+ctl2d: TypeAlias = Any
+srcLocations: TypeAlias = Any
+response: TypeAlias = Any
+ctl3d: TypeAlias = Any
+rvec: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class GOSTracker(Tracker):

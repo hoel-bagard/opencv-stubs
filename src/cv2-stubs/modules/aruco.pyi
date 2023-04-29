@@ -3,6 +3,36 @@ from typing import Any, TypeAlias
 
 from .. import functions as cv2
 
+rvecs: TypeAlias = Any
+detectedCorners: TypeAlias = Any
+image: TypeAlias = Any
+charucoCorners: TypeAlias = Any
+tvec: TypeAlias = Any
+cameraMatrix: TypeAlias = Any
+perViewErrors: TypeAlias = Any
+diamondIds: TypeAlias = Any
+imgPoints: TypeAlias = Any
+corners: TypeAlias = Any
+idx: TypeAlias = Any
+rejectedCorners: TypeAlias = Any
+markerCorners: TypeAlias = Any
+rvec: TypeAlias = Any
+recoveredIdxs: TypeAlias = Any
+charucoIds: TypeAlias = Any
+rotation: TypeAlias = Any
+markerIds: TypeAlias = Any
+ids: TypeAlias = Any
+img: TypeAlias = Any
+_img: TypeAlias = Any
+stdDeviationsExtrinsics: TypeAlias = Any
+diamondCorners: TypeAlias = Any
+stdDeviationsIntrinsics: TypeAlias = Any
+rejectedImgPoints: TypeAlias = Any
+objPoints: TypeAlias = Any
+detectedIds: TypeAlias = Any
+tvecs: TypeAlias = Any
+distCoeffs: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class ArucoDetector(cv2.Algorithm):

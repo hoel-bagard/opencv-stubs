@@ -1,6 +1,8 @@
 import builtins
 from typing import Any, TypeAlias
 
+points: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class WeChatQRCode(builtins.object):

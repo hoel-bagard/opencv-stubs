@@ -3,6 +3,15 @@ from typing import Any, overload, TypeAlias
 
 from .. import functions as cv2
 
+groups_rects: TypeAlias = Any
+confidence: TypeAlias = Any
+regions: TypeAlias = Any
+draw: TypeAlias = Any
+chainBBs: TypeAlias = Any
+result: TypeAlias = Any
+Bbox: TypeAlias = Any
+_channels: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class BaseOCR(builtins.object):

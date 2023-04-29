@@ -1,6 +1,12 @@
 import builtins
 from typing import Any, overload, TypeAlias
 
+img: TypeAlias = Any
+bounding_box: TypeAlias = Any
+quantized_images: TypeAlias = Any
+templ: TypeAlias = Any
+matches: TypeAlias = Any
+
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 

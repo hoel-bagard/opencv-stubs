@@ -1,3 +1,7 @@
+from typing import Any, overload, TypeAlias
+
+output: TypeAlias = Any
+
 def BIMEF(input, output = ..., mu = ..., a = ..., b = ...) -> output:
     """
     * @brief Given an input color image, enhance low-light images using the BIMEF method (@cite ying2017bio @cite ying2017new).

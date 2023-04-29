@@ -6,6 +6,23 @@ import numpy.typing as _npt
 from ... import functions as cv2
 from . import segmentation
 
+lines: TypeAlias = Any
+qnimg: TypeAlias = Any
+out: TypeAlias = Any
+image: TypeAlias = Any
+alphaPhiST: TypeAlias = Any
+labels_out: TypeAlias = Any
+dense_flow: TypeAlias = Any
+dist: TypeAlias = Any
+filtered_disparity_map: TypeAlias = Any
+ellipses: TypeAlias = Any
+boxes: TypeAlias = Any
+scores: TypeAlias = Any
+qimg: TypeAlias = Any
+result: TypeAlias = Any
+qcimg: TypeAlias = Any
+_dst: TypeAlias = Any
+
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 

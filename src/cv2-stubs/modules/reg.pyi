@@ -1,6 +1,11 @@
 import builtins
 from typing import Any, TypeAlias
 
+linTr: TypeAlias = Any
+img2: TypeAlias = Any
+shift: TypeAlias = Any
+projTr: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class Map(builtins.object):

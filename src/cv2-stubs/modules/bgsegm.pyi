@@ -3,6 +3,11 @@ from typing import Any, TypeAlias
 
 from .. import functions as cv2
 
+gtMask: TypeAlias = Any
+fgmask: TypeAlias = Any
+backgroundImage: TypeAlias = Any
+frame: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class BackgroundSubtractorCNT(cv2.BackgroundSubtractor):

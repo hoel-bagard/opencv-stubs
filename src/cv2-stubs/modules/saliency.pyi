@@ -2,6 +2,9 @@ from typing import Any, TypeAlias
 
 from .. import functions as cv2
 
+_binaryMap: TypeAlias = Any
+saliencyMap: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class MotionSaliency(Saliency):

@@ -2,6 +2,8 @@ from typing import Any, overload, TypeAlias
 
 from ... import functions as cv2
 
+rects: TypeAlias = Any
+
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 

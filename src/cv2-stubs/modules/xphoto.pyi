@@ -2,6 +2,9 @@ from typing import Any, overload, TypeAlias
 
 from .. import functions as cv2
 
+dstStep2: TypeAlias = Any
+dstStep1: TypeAlias = Any
+
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 

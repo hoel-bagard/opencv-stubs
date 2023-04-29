@@ -2,6 +2,8 @@ from typing import Any, TypeAlias
 
 from .. import functions as cv2
 
+boundingBox: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class MultiTracker(cv2.Algorithm):

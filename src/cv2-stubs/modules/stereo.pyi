@@ -1,6 +1,9 @@
 import builtins
 from typing import Any, TypeAlias
 
+sMatches: TypeAlias = Any
+denseMatches: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class MatchQuasiDense(builtins.object):

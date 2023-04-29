@@ -2,6 +2,8 @@ from typing import Any, overload, TypeAlias
 
 from .. import functions as cv2
 
+outputArr: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class AverageHash(ImgHashBase):

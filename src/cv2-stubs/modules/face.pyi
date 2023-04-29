@@ -3,6 +3,15 @@ from typing import Any, overload, TypeAlias
 
 from .. import functions as cv2
 
+confidence: TypeAlias = Any
+facePoints: TypeAlias = Any
+points: TypeAlias = Any
+image: TypeAlias = Any
+label: TypeAlias = Any
+landmarks: TypeAlias = Any
+faces: TypeAlias = Any
+features: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class BIF(cv2.Algorithm):

@@ -3,6 +3,9 @@ from typing import Any, overload, TypeAlias
 
 from . import fs, nested
 
+argument: TypeAlias = Any
+vec: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class ClassWithKeywordProperties(builtins.object):

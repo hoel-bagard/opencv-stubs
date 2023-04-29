@@ -1,5 +1,11 @@
 from typing import Any, TypeAlias
 
+mask: TypeAlias = Any
+boundingRects: TypeAlias = Any
+mhi: TypeAlias = Any
+orientation: TypeAlias = Any
+segmask: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 def calcGlobalOrientation(orientation, mask, mhi, timestamp, duration) -> retval:

@@ -2,6 +2,10 @@ from typing import Any, overload, TypeAlias
 
 from .. import functions as cv2
 
+result: TypeAlias = Any
+signature: TypeAlias = Any
+matchesGMS: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class AffineFeature2D(cv2.Feature2D):

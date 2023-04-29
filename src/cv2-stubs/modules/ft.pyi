@@ -1,5 +1,14 @@
 from typing import Any, overload, TypeAlias
 
+c01: TypeAlias = Any
+components: TypeAlias = Any
+output: TypeAlias = Any
+maskOutput: TypeAlias = Any
+c00: TypeAlias = Any
+kernel: TypeAlias = Any
+matrix: TypeAlias = Any
+c10: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 @overload

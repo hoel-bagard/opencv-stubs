@@ -3,6 +3,11 @@ from typing import Any, overload, TypeAlias
 
 from .. import functions as cv2
 
+status: TypeAlias = Any
+nextPts: TypeAlias = Any
+flow: TypeAlias = Any
+err: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class DenseRLOFOpticalFlow(cv2.DenseOpticalFlow):

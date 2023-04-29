@@ -2,6 +2,11 @@ from typing import Any, overload, TypeAlias
 
 from .. import functions as cv2
 
+outputToneMappedImage: TypeAlias = Any
+retinaOutput_parvo: TypeAlias = Any
+retinaOutput_magno: TypeAlias = Any
+transientAreas: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class Retina(cv2.Algorithm):

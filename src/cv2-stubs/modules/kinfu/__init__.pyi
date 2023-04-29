@@ -3,6 +3,10 @@ from typing import Any, overload, TypeAlias
 
 from . import detail
 
+normals: TypeAlias = Any
+points: TypeAlias = Any
+image: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class KinFu(builtins.object):

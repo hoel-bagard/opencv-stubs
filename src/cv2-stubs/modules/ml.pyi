@@ -3,6 +3,19 @@ from typing import Any, overload, TypeAlias
 
 from .. import functions as cv2
 
+outputs: TypeAlias = Any
+svidx: TypeAlias = Any
+neighborResponses: TypeAlias = Any
+covs: TypeAlias = Any
+resp: TypeAlias = Any
+probs: TypeAlias = Any
+outputProbs: TypeAlias = Any
+dist: TypeAlias = Any
+alpha: TypeAlias = Any
+labels: TypeAlias = Any
+results: TypeAlias = Any
+logLikelihoods: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class ANN_MLP(StatModel):

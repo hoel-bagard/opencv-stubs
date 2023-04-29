@@ -1,6 +1,11 @@
 import builtins
 from typing import Any, overload, TypeAlias
 
+normals: TypeAlias = Any
+points: TypeAlias = Any
+image: TypeAlias = Any
+colors: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class ColoredKinFu(builtins.object):

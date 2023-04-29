@@ -2,6 +2,17 @@ from typing import Any, TypeAlias
 
 from .. import functions as cv2
 
+wrappedPhaseMap: TypeAlias = Any
+whiteImage: TypeAlias = Any
+patternImages: TypeAlias = Any
+disparityMap: TypeAlias = Any
+dataModulationTerm: TypeAlias = Any
+shadowMask: TypeAlias = Any
+unwrappedPhaseMap: TypeAlias = Any
+projPix: TypeAlias = Any
+matches: TypeAlias = Any
+blackImage: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class GrayCodePattern(StructuredLightPattern):

@@ -1,6 +1,8 @@
 import builtins
 from typing import Any, TypeAlias
 
+contour: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class IntelligentScissorsMB(builtins.object):

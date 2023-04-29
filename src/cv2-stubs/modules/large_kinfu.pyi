@@ -1,6 +1,10 @@
 import builtins
 from typing import Any, TypeAlias
 
+normals: TypeAlias = Any
+points: TypeAlias = Any
+image: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class LargeKinfu(builtins.object):

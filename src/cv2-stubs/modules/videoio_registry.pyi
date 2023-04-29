@@ -1,5 +1,8 @@
 from typing import Any, TypeAlias
 
+version_ABI: TypeAlias = Any
+version_API: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 def getBackendName(api) -> retval:

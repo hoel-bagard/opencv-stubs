@@ -3,6 +3,18 @@ from typing import Any, TypeAlias
 
 from .. import functions as cv2
 
+depth: TypeAlias = Any
+mask: TypeAlias = Any
+normals: TypeAlias = Any
+out: TypeAlias = Any
+plane_coefficients: TypeAlias = Any
+Rt: TypeAlias = Any
+warpedMask: TypeAlias = Any
+points3d: TypeAlias = Any
+warpedImage: TypeAlias = Any
+registeredDepth: TypeAlias = Any
+warpedDepth: TypeAlias = Any
+
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 

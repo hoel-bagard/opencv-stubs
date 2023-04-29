@@ -1,6 +1,23 @@
 import builtins
 from typing import Any, overload, TypeAlias
 
+matches_info: TypeAlias = Any
+rmats: TypeAlias = Any
+src: TypeAlias = Any
+image: TypeAlias = Any
+weight: TypeAlias = Any
+K: TypeAlias = Any
+umv: TypeAlias = Any
+pyr: TypeAlias = Any
+arg3: TypeAlias = Any
+arg1: TypeAlias = Any
+dst_mask: TypeAlias = Any
+masks: TypeAlias = Any
+weight_maps: TypeAlias = Any
+features: TypeAlias = Any
+pairwise_matches: TypeAlias = Any
+cameras: TypeAlias = Any
+
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 

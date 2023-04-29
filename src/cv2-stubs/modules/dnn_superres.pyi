@@ -1,6 +1,8 @@
 import builtins
 from typing import Any, TypeAlias
 
+result: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class DnnSuperResImpl(builtins.object):

@@ -2,6 +2,8 @@ from typing import Any, overload, TypeAlias
 
 from .. import functions as cv2
 
+_plotResult: TypeAlias = Any
+
 retval: TypeAlias = Any
 
 class Plot2d(cv2.Algorithm):
