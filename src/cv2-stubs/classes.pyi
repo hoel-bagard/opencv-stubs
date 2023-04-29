@@ -80,7 +80,6 @@ grad: TypeAlias = Any
 image2: TypeAlias = Any
 colored: TypeAlias = Any
 ppf: TypeAlias = Any
-
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 InputArrayOfArrays: TypeAlias = npt.NDArray[Any]
@@ -1418,7 +1417,7 @@ class FastFeatureDetector(Feature2D):
         """"""
 
 
-class Feature2D(builtins.object, ABC):
+class Feature2D(ABC, builtins.object):
     @overload
     def compute(self, image, keypoints, descriptors = ...) -> tuple[keypoints, descriptors]:
         """
