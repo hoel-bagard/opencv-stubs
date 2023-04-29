@@ -6,9 +6,8 @@ from pathlib import Path
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Script to set every undefined type as an alias of Any.",
-                                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    args = parser.parse_args()
+    argparse.ArgumentParser(description="Script to set every undefined type as an alias of Any.",
+                            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     print("Running pyright")
     pyright_result = subprocess.run(["pyright", "."], stdout=subprocess.PIPE).stdout.decode().splitlines()
@@ -29,7 +28,7 @@ def main() -> None:
         print(f"Adding aliases to file {path.name}")
         with path.open("r", encoding="utf-8") as stub_file:
             write_line = 0
-            while (line := stub_file.readline().strip()) is not None and ("from" in line or "import" in line or line == ""):
+            while "from" in (line := stub_file.readline().strip()) or "import" in line or line == "":
                 write_line += 1
                 continue
 
