@@ -1,6 +1,5 @@
 import builtins
 
-
 class GStreamerPipeline(builtins.object):
     ...
 
