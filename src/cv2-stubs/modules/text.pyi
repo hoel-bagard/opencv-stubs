@@ -21,6 +21,9 @@ class BaseOCR(builtins.object):
 class ERFilter(cv2.Algorithm):
     ...
 
+    class Callback(builtins.object):
+        ...
+
 
 class OCRBeamSearchDecoder(BaseOCR):
     @overload
@@ -55,6 +58,9 @@ class OCRBeamSearchDecoder(BaseOCR):
         @param mode HMM Decoding algorithm. Only OCR_DECODER_VITERBI is available for the moment (<http://en.wikipedia.org/wiki/Viterbi_algorithm>).
         @param beam_size Size of the beam in Beam Search algorithm.
         """
+
+    class ClassifierCallback(builtins.object):
+        ...
 
 
 class OCRHMMDecoder(BaseOCR):
@@ -101,6 +107,9 @@ class OCRHMMDecoder(BaseOCR):
 
         @overload
         """
+
+    class ClassifierCallback(builtins.object):
+        ...
 
 
 class OCRTesseract(BaseOCR):

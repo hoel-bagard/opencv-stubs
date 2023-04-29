@@ -1,3 +1,4 @@
+import builtins
 from typing import Any, TypeAlias
 
 import numpy as _np
@@ -427,6 +428,21 @@ class EdgeDrawing(cv2.Algorithm):
         this function is meant to be used for parameter setting in other languages than c++ like python.
         @param parameters
         """
+
+    class Params(builtins.object):
+        AnchorThresholdValue: int = 0
+        EdgeDetectionOperator: int = 0
+        GradientThresholdValue: int = 20
+        LineFitErrorThreshold: float = 1.0
+        MaxDistanceBetweenTwoLines: float = 6.0
+        MaxErrorThreshold: float = 1.3
+        MinLineLength: int = -1
+        MinPathLength: int = 10
+        NFAValidation: bool = True
+        PFmode: bool = False
+        ScanInterval: int = 1
+        Sigma: float = 1.0
+        SumFlag: bool = True
 
 
 class FastBilateralSolverFilter(cv2.Algorithm):
