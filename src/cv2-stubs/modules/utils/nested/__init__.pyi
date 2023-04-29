@@ -1,6 +1,8 @@
 import builtins
 from typing import Any, TypeAlias
 
+from . import export_class_name as ExportClassName  # pyright: ignore
+
 retval: TypeAlias = Any
 
 class ExportClassName(builtins.object):
