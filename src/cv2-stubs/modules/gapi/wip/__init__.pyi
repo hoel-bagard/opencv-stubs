@@ -1,6 +1,8 @@
 import builtins
 from typing import Any, overload, TypeAlias
 
+from . import draw, gst
+
 retval: TypeAlias = Any
 
 class GOutputs(builtins.object):
