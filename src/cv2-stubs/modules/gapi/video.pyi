@@ -1,0 +1,3 @@
+
+TYPE_BS_KNN: int
+TYPE_BS_MOG2: int

@@ -29,9 +29,9 @@ def main() -> None:
             and not inspect.isclass(member)
             and not inspect.isbuiltin(member)
             and not inspect.ismodule(member)
-            and not name.startswith("_")):
-            if name not in existing_constants:
-                stubs.append(f"{name}: int\n")
+            and not name.startswith("_")
+            and name not in existing_constants):
+            stubs.append(f"{name}: int\n")
 
     with output_path.open("a", encoding="utf-8") as stub_file:
         stub_file.writelines(stubs)
