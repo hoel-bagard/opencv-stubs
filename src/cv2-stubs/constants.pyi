@@ -329,7 +329,7 @@ CV_16UC2: int
 CV_16UC3: int
 CV_16UC4: int
 CV_32F: int
-CV_32FC1: int
+CV_32FC1: int = 5
 CV_32FC2: int
 CV_32FC3: int
 CV_32FC4: int
@@ -339,7 +339,7 @@ CV_32SC2: int
 CV_32SC3: int
 CV_32SC4: int
 CV_64F: int
-CV_64FC1: int
+CV_64FC1: int = 6
 CV_64FC2: int
 CV_64FC3: int
 CV_64FC4: int
