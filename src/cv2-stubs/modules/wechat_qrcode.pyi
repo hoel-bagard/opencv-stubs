@@ -31,4 +31,3 @@ class WeChatQRCode(builtins.object):
         * scaleFactor valuse must be > 0 and <= 1, otherwise the scaleFactor value is set to -1
         * and use default scaled to an image with an area of 160000 pixels.
         """
-

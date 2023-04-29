@@ -93,4 +93,3 @@ class IntelligentScissorsMB(builtins.object):
         * @param weight_gradient_direction Specify cost of gradient direction function (default: 0.43f)
         * @param weight_gradient_magnitude Specify cost of gradient magnitude function (default: 0.14f)
         """
-
