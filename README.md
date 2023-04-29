@@ -42,4 +42,3 @@ A stub file with all the cv2 functions can be found on the [Microsoft stubs repo
 - [ ] Do something about `cv2.gapi.cv`, `cv2.utils.cv2` and `cv2.mat_wrapper.cv` (do not duplicate everything if possible).
 - [ ] Handle cases like `cv2.misc.version.cv2.misc.version.cv2.misc.get_ocv_version()`.
 - [ ] Only include the `opencv-contrib` specific stubs when using `opencv-stubs[opencv-contrib]`.
-- [ ] Find a way to handle classes that are also modules (cf `utils.nested.ExportClassName.Params` or `cv2.cuda.GpuMat.Allocator`).

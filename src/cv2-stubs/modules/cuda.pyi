@@ -1,8 +1,6 @@
 import builtins
 from typing import Any, overload, TypeAlias
 
-from . import GpuMat  # type: ignore
-
 keypoints: TypeAlias = Any
 descriptors: TypeAlias = Any
 arr: TypeAlias = Any
@@ -222,6 +220,12 @@ class GpuData(builtins.object):
 
 
 class GpuMat(builtins.object):
+
+    step: int = 0
+
+    class Allocator(builtins.object):
+        ...
+
     def adjustROI(self, dtop, dbottom, dleft, dright) -> retval:
         """"""
 
@@ -397,7 +401,7 @@ class GpuMat(builtins.object):
         not the default stream and \p dst is HostMem allocated with HostMem::PAGE_LOCKED option.
         """
 
-    def defaultAllocator(self) -> retval:
+    def defaultAllocator(self) -> Allocator:
         """"""
 
     def setDefaultAllocator(self, allocator) -> None:

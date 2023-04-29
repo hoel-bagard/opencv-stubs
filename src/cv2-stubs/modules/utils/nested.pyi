@@ -1,8 +1,6 @@
 import builtins
 from typing import Any, TypeAlias
 
-from . import export_class_name as ExportClassName  # pyright: ignore
-
 retval: TypeAlias = Any
 
 class ExportClassName(builtins.object):
@@ -17,6 +15,16 @@ class ExportClassName(builtins.object):
 
     def originalName(self) -> retval:
         """"""
+
+    class Params(builtins.object):
+        float_value: float = 3.5
+        int_value: int = 123
+
+        def __init__(self, /, *args, **kwargs):
+            """Initialize self.  See help(type(self)) for accurate signature."""
+
+        def __repr__(self, /):
+            """Return repr(self)."""
 
 
 def ExportClassName_create(params = ...) -> retval:
