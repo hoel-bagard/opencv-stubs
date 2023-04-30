@@ -15,7 +15,7 @@ The typing is still a work in progress, if you want a function/method to be adde
 
 The stubs include the docstrings as they are otherwise not available in the IDE (as far as I know).
 
-These stubs are a temporary help until official ones are made (see [this issue](https://github.com/opencv/opencv/issues/14590)).
+These stubs are a temporary help until official ones are made (see [this issue](https://github.com/opencv/opencv/issues/14590) and [this PR](https://github.com/opencv/opencv/pull/20370)).
 
 
 ## Installation
