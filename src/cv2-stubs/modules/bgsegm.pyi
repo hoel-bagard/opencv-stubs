@@ -1,5 +1,5 @@
 import builtins
-from typing import Any, TypeAlias
+from typing import Any, Final, TypeAlias
 
 from .. import functions as cv2
 
@@ -7,7 +7,6 @@ gtMask: TypeAlias = Any
 fgmask: TypeAlias = Any
 backgroundImage: TypeAlias = Any
 frame: TypeAlias = Any
-
 retval: TypeAlias = Any
 
 class BackgroundSubtractorCNT(cv2.BackgroundSubtractor):
@@ -304,5 +303,5 @@ def createSyntheticSequenceGenerator(background, object, amplitude = ..., wavele
     @param objspeed How fast object will fly over background.
     """
 
-LSBP_CAMERA_MOTION_COMPENSATION_LK: int
-LSBP_CAMERA_MOTION_COMPENSATION_NONE: int
+LSBP_CAMERA_MOTION_COMPENSATION_LK: Final[int]
+LSBP_CAMERA_MOTION_COMPENSATION_NONE: Final[int]

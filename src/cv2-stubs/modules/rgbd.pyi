@@ -1,5 +1,5 @@
 import builtins
-from typing import Any, overload, TypeAlias
+from typing import Any, Final, overload, TypeAlias
 
 from .. import functions as cv2
 
@@ -14,7 +14,6 @@ points3d: TypeAlias = Any
 warpedImage: TypeAlias = Any
 registeredDepth: TypeAlias = Any
 warpedDepth: TypeAlias = Any
-
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 
@@ -764,25 +763,25 @@ def warpFrame(image, depth, mask, Rt, cameraMatrix, distCoeff, warpedImage = ...
        * @param warpedMask The warped mask.
     """
 
-DEPTH_CLEANER_DEPTH_CLEANER_NIL: int
-DepthCleaner_DEPTH_CLEANER_NIL: int
-ODOMETRY_FRAME_CACHE_ALL: int
-ODOMETRY_FRAME_CACHE_DST: int
-ODOMETRY_FRAME_CACHE_SRC: int
-ODOMETRY_RIGID_BODY_MOTION: int
-ODOMETRY_ROTATION: int
-ODOMETRY_TRANSLATION: int
-OdometryFrame_CACHE_ALL: int
-OdometryFrame_CACHE_DST: int
-OdometryFrame_CACHE_SRC: int
-Odometry_RIGID_BODY_MOTION: int
-Odometry_ROTATION: int
-Odometry_TRANSLATION: int
-RGBD_NORMALS_RGBD_NORMALS_METHOD_FALS: int
-RGBD_NORMALS_RGBD_NORMALS_METHOD_LINEMOD: int
-RGBD_NORMALS_RGBD_NORMALS_METHOD_SRI: int
-RGBD_PLANE_RGBD_PLANE_METHOD_DEFAULT: int
-RgbdNormals_RGBD_NORMALS_METHOD_FALS: int
-RgbdNormals_RGBD_NORMALS_METHOD_LINEMOD: int
-RgbdNormals_RGBD_NORMALS_METHOD_SRI: int
-RgbdPlane_RGBD_PLANE_METHOD_DEFAULT: int
+DEPTH_CLEANER_DEPTH_CLEANER_NIL: Final[int]
+DepthCleaner_DEPTH_CLEANER_NIL: Final[int]
+ODOMETRY_FRAME_CACHE_ALL: Final[int]
+ODOMETRY_FRAME_CACHE_DST: Final[int]
+ODOMETRY_FRAME_CACHE_SRC: Final[int]
+ODOMETRY_RIGID_BODY_MOTION: Final[int]
+ODOMETRY_ROTATION: Final[int]
+ODOMETRY_TRANSLATION: Final[int]
+OdometryFrame_CACHE_ALL: Final[int]
+OdometryFrame_CACHE_DST: Final[int]
+OdometryFrame_CACHE_SRC: Final[int]
+Odometry_RIGID_BODY_MOTION: Final[int]
+Odometry_ROTATION: Final[int]
+Odometry_TRANSLATION: Final[int]
+RGBD_NORMALS_RGBD_NORMALS_METHOD_FALS: Final[int]
+RGBD_NORMALS_RGBD_NORMALS_METHOD_LINEMOD: Final[int]
+RGBD_NORMALS_RGBD_NORMALS_METHOD_SRI: Final[int]
+RGBD_PLANE_RGBD_PLANE_METHOD_DEFAULT: Final[int]
+RgbdNormals_RGBD_NORMALS_METHOD_FALS: Final[int]
+RgbdNormals_RGBD_NORMALS_METHOD_LINEMOD: Final[int]
+RgbdNormals_RGBD_NORMALS_METHOD_SRI: Final[int]
+RgbdPlane_RGBD_PLANE_METHOD_DEFAULT: Final[int]

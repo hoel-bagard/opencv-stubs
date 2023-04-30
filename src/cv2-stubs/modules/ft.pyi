@@ -1,4 +1,4 @@
-from typing import Any, overload, TypeAlias
+from typing import Any, Final, overload, TypeAlias
 
 c01: TypeAlias = Any
 components: TypeAlias = Any
@@ -8,7 +8,6 @@ c00: TypeAlias = Any
 kernel: TypeAlias = Any
 matrix: TypeAlias = Any
 c10: TypeAlias = Any
-
 retval: TypeAlias = Any
 
 @overload
@@ -265,8 +264,8 @@ def inpaint(image, mask, radius, function, algorithm, output = ...) -> output:
             The algorithms are described in paper @cite Perf:rec.
     """
 
-ITERATIVE: int
-LINEAR: int
-MULTI_STEP: int
-ONE_STEP: int
-SINUS: int
+ITERATIVE: Final[int]
+LINEAR: Final[int]
+MULTI_STEP: Final[int]
+ONE_STEP: Final[int]
+SINUS: Final[int]

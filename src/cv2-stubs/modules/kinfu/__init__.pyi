@@ -1,12 +1,11 @@
 import builtins
-from typing import Any, overload, TypeAlias
+from typing import Any, Final, overload, TypeAlias
 
 from . import detail
 
 normals: TypeAlias = Any
 points: TypeAlias = Any
 image: TypeAlias = Any
-
 retval: TypeAlias = Any
 
 class KinFu(builtins.object):
@@ -199,9 +198,9 @@ def makeVolume(_volumeType, _voxelSize, _pose, _raycastStepFactor, _truncDist, _
         .
     """
 
-VOLUME_TYPE_COLOREDTSDF: int
-VOLUME_TYPE_HASHTSDF: int
-VOLUME_TYPE_TSDF: int
-VolumeType_COLOREDTSDF: int
-VolumeType_HASHTSDF: int
-VolumeType_TSDF: int
+VOLUME_TYPE_COLOREDTSDF: Final[int]
+VOLUME_TYPE_HASHTSDF: Final[int]
+VOLUME_TYPE_TSDF: Final[int]
+VolumeType_COLOREDTSDF: Final[int]
+VolumeType_HASHTSDF: Final[int]
+VolumeType_TSDF: Final[int]

@@ -1,9 +1,8 @@
-from typing import Any, overload, TypeAlias
+from typing import Any, Final, overload, TypeAlias
 
 from .. import functions as cv2
 
 outputArr: TypeAlias = Any
-
 retval: TypeAlias = Any
 
 class AverageHash(ImgHashBase):
@@ -206,4 +205,4 @@ def radialVarianceHash(inputArr, outputArr = ..., sigma = ..., numOfAngleLine = 
     """
 
 BLOCK_MEAN_HASH_MODE_0: int
-BLOCK_MEAN_HASH_MODE_1: int
+BLOCK_MEAN_HASH_MODE_1: Final[int]

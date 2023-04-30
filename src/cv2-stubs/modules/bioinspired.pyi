@@ -1,4 +1,4 @@
-from typing import Any, overload, TypeAlias
+from typing import Any, Final, overload, TypeAlias
 
 from .. import functions as cv2
 
@@ -6,7 +6,6 @@ outputToneMappedImage: TypeAlias = Any
 retinaOutput_parvo: TypeAlias = Any
 retinaOutput_magno: TypeAlias = Any
 transientAreas: TypeAlias = Any
-
 retval: TypeAlias = Any
 
 class Retina(cv2.Algorithm):
@@ -345,6 +344,6 @@ def TransientAreasSegmentationModule_create(inputSize) -> retval:
         @param inputSize : size of the images input to segment (output will be the same size)
     """
 
-RETINA_COLOR_BAYER: int
-RETINA_COLOR_DIAGONAL: int
-RETINA_COLOR_RANDOM: int
+RETINA_COLOR_BAYER: Final[int]
+RETINA_COLOR_DIAGONAL: Final[int]
+RETINA_COLOR_RANDOM: Final[int]

@@ -1,10 +1,9 @@
 import builtins
-from typing import Any, TypeAlias
+from typing import Any, Final, TypeAlias
 
 from .. import functions as cv2
 
 img: TypeAlias = Any
-
 retval: TypeAlias = Any
 
 class CChecker(builtins.object):
@@ -185,6 +184,6 @@ def DetectorParameters_create() -> retval:
         .
     """
 
-MCC24: int
+MCC24: Final[int]
 SG140: int
-VINYL18: int
+VINYL18: Final[int]

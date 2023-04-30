@@ -1,5 +1,5 @@
 import builtins
-from typing import Any, overload, TypeAlias
+from typing import Any, Final, overload, TypeAlias
 
 from .. import functions as cv2
 
@@ -11,7 +11,6 @@ chainBBs: TypeAlias = Any
 result: TypeAlias = Any
 Bbox: TypeAlias = Any
 _channels: TypeAlias = Any
-
 retval: TypeAlias = Any
 
 class BaseOCR(builtins.object):
@@ -527,29 +526,29 @@ def loadOCRHMMClassifierNM(filename) -> retval:
     @deprecated loadOCRHMMClassifier instead
     """
 
-ERFILTER_NM_IHSGRAD: int
-ERFILTER_NM_IHSGrad: int
-ERFILTER_NM_RGBLGRAD: int
-ERFILTER_NM_RGBLGrad: int
-ERGROUPING_ORIENTATION_ANY: int
-ERGROUPING_ORIENTATION_HORIZ: int
-OCR_CNN_CLASSIFIER: int
-OCR_DECODER_VITERBI: int
-OCR_KNN_CLASSIFIER: int
-OCR_LEVEL_TEXTLINE: int
-OCR_LEVEL_WORD: int
-OEM_CUBE_ONLY: int
-OEM_DEFAULT: int
-OEM_TESSERACT_CUBE_COMBINED: int
-OEM_TESSERACT_ONLY: int
-PSM_AUTO: int
-PSM_AUTO_ONLY: int
-PSM_AUTO_OSD: int
-PSM_CIRCLE_WORD: int
-PSM_OSD_ONLY: int
-PSM_SINGLE_BLOCK: int
-PSM_SINGLE_BLOCK_VERT_TEXT: int
-PSM_SINGLE_CHAR: int
-PSM_SINGLE_COLUMN: int
-PSM_SINGLE_LINE: int
-PSM_SINGLE_WORD: int
+ERFILTER_NM_IHSGRAD: Final[int]
+ERFILTER_NM_IHSGrad: Final[int]
+ERFILTER_NM_RGBLGRAD: Final[int]
+ERFILTER_NM_RGBLGrad: Final[int]
+ERGROUPING_ORIENTATION_ANY: Final[int]
+ERGROUPING_ORIENTATION_HORIZ: Final[int]
+OCR_CNN_CLASSIFIER: Final[int]
+OCR_DECODER_VITERBI: Final[int]
+OCR_KNN_CLASSIFIER: Final[int]
+OCR_LEVEL_TEXTLINE: Final[int]
+OCR_LEVEL_WORD: Final[int]
+OEM_CUBE_ONLY: Final[int]
+OEM_DEFAULT: Final[int]
+OEM_TESSERACT_CUBE_COMBINED: Final[int]
+OEM_TESSERACT_ONLY: Final[int]
+PSM_AUTO: Final[int]
+PSM_AUTO_ONLY: Final[int]
+PSM_AUTO_OSD: Final[int]
+PSM_CIRCLE_WORD: Final[int]
+PSM_OSD_ONLY: Final[int]
+PSM_SINGLE_BLOCK: Final[int]
+PSM_SINGLE_BLOCK_VERT_TEXT: Final[int]
+PSM_SINGLE_CHAR: Final[int]
+PSM_SINGLE_COLUMN: Final[int]
+PSM_SINGLE_LINE: Final[int]
+PSM_SINGLE_WORD: Final[int]

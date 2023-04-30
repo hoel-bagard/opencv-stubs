@@ -1,5 +1,5 @@
 import builtins
-from typing import Any, overload, TypeAlias
+from typing import Any, Final, overload, TypeAlias
 
 from .. import functions as cv2
 
@@ -27,7 +27,6 @@ mask: TypeAlias = Any
 indices: TypeAlias = Any
 classIds: TypeAlias = Any
 results: TypeAlias = Any
-
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 
@@ -980,26 +979,26 @@ def writeTextGraph(model, output) -> None:
          *  @note To reduce output file size, trained weights are not included.
     """
 
-DNN_BACKEND_CANN: int
-DNN_BACKEND_CUDA: int
-DNN_BACKEND_DEFAULT: int
-DNN_BACKEND_HALIDE: int
-DNN_BACKEND_INFERENCE_ENGINE: int
-DNN_BACKEND_OPENCV: int
-DNN_BACKEND_TIMVX: int
-DNN_BACKEND_VKCOM: int
-DNN_BACKEND_WEBNN: int
-DNN_TARGET_CPU: int
-DNN_TARGET_CUDA: int
-DNN_TARGET_CUDA_FP16: int
-DNN_TARGET_FPGA: int
-DNN_TARGET_HDDL: int
-DNN_TARGET_MYRIAD: int
-DNN_TARGET_NPU: int
-DNN_TARGET_OPENCL: int
-DNN_TARGET_OPENCL_FP16: int
-DNN_TARGET_VULKAN: int
-SOFT_NMSMETHOD_SOFTNMS_GAUSSIAN: int
-SOFT_NMSMETHOD_SOFTNMS_LINEAR: int
-SoftNMSMethod_SOFTNMS_GAUSSIAN: int
-SoftNMSMethod_SOFTNMS_LINEAR: int
+DNN_BACKEND_CANN: Final[int]
+DNN_BACKEND_CUDA: Final[int]
+DNN_BACKEND_DEFAULT: Final[int]
+DNN_BACKEND_HALIDE: Final[int]
+DNN_BACKEND_INFERENCE_ENGINE: Final[int]
+DNN_BACKEND_OPENCV: Final[int]
+DNN_BACKEND_TIMVX: Final[int]
+DNN_BACKEND_VKCOM: Final[int]
+DNN_BACKEND_WEBNN: Final[int]
+DNN_TARGET_CPU: Final[int]
+DNN_TARGET_CUDA: Final[int]
+DNN_TARGET_CUDA_FP16: Final[int]
+DNN_TARGET_FPGA: Final[int]
+DNN_TARGET_HDDL: Final[int]
+DNN_TARGET_MYRIAD: Final[int]
+DNN_TARGET_NPU: Final[int]
+DNN_TARGET_OPENCL: Final[int]
+DNN_TARGET_OPENCL_FP16: Final[int]
+DNN_TARGET_VULKAN: Final[int]
+SOFT_NMSMETHOD_SOFTNMS_GAUSSIAN: Final[int]
+SOFT_NMSMETHOD_SOFTNMS_LINEAR: Final[int]
+SoftNMSMethod_SOFTNMS_GAUSSIAN: Final[int]
+SoftNMSMethod_SOFTNMS_LINEAR: Final[int]

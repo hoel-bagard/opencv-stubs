@@ -1,5 +1,5 @@
 import builtins
-from typing import Any, TypeAlias
+from typing import Any, Final, TypeAlias
 
 indices: TypeAlias = Any
 dists: TypeAlias = Any
@@ -32,14 +32,14 @@ class Index(builtins.object):
         """"""
 
 
-FLANN_INDEX_TYPE_16S: int
-FLANN_INDEX_TYPE_16U: int
-FLANN_INDEX_TYPE_32F: int
-FLANN_INDEX_TYPE_32S: int
-FLANN_INDEX_TYPE_64F: int
-FLANN_INDEX_TYPE_8S: int
-FLANN_INDEX_TYPE_8U: int
-FLANN_INDEX_TYPE_ALGORITHM: int
-FLANN_INDEX_TYPE_BOOL: int
-FLANN_INDEX_TYPE_STRING: int
-LAST_VALUE_FLANN_INDEX_TYPE: int
+FLANN_INDEX_TYPE_16S: Final[int]
+FLANN_INDEX_TYPE_16U: Final[int]
+FLANN_INDEX_TYPE_32F: Final[int]
+FLANN_INDEX_TYPE_32S: Final[int]
+FLANN_INDEX_TYPE_64F: Final[int]
+FLANN_INDEX_TYPE_8S: Final[int]
+FLANN_INDEX_TYPE_8U: Final[int]
+FLANN_INDEX_TYPE_ALGORITHM: Final[int]
+FLANN_INDEX_TYPE_BOOL: Final[int]
+FLANN_INDEX_TYPE_STRING: Final[int]
+LAST_VALUE_FLANN_INDEX_TYPE: Final[int]

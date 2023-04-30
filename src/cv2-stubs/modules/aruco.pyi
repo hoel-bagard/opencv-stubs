@@ -1,5 +1,5 @@
 import builtins
-from typing import Any, TypeAlias
+from typing import Any, Final, TypeAlias
 
 from .. import functions as cv2
 
@@ -613,12 +613,12 @@ def testCharucoCornersCollinear(board, charucoIds) -> retval:
     @deprecated Use CharucoBoard::checkCharucoCornersCollinear
     """
 
-ARUCO_CCW_CENTER: int
-ARUCO_CW_TOP_LEFT_CORNER: int
-CORNER_REFINE_APRILTAG: int
-CORNER_REFINE_CONTOUR: int
-CORNER_REFINE_NONE: int
-CORNER_REFINE_SUBPIX: int
+ARUCO_CCW_CENTER: Final[int]
+ARUCO_CW_TOP_LEFT_CORNER: Final[int]
+CORNER_REFINE_APRILTAG: Final[int]
+CORNER_REFINE_CONTOUR: Final[int]
+CORNER_REFINE_NONE: Final[int]
+CORNER_REFINE_SUBPIX: Final[int]
 DICT_4X4_100: int
 DICT_4X4_1000: int
 DICT_4X4_250: int
@@ -635,12 +635,12 @@ DICT_7X7_100: int
 DICT_7X7_1000: int
 DICT_7X7_250: int
 DICT_7X7_50: int
-DICT_APRILTAG_16H5: int
-DICT_APRILTAG_16h5: int
-DICT_APRILTAG_25H9: int
-DICT_APRILTAG_25h9: int
+DICT_APRILTAG_16H5: Final[int]
+DICT_APRILTAG_16h5: Final[int]
+DICT_APRILTAG_25H9: Final[int]
+DICT_APRILTAG_25h9: Final[int]
 DICT_APRILTAG_36H10: int
-DICT_APRILTAG_36H11: int
+DICT_APRILTAG_36H11: Final[int]
 DICT_APRILTAG_36h10: int
-DICT_APRILTAG_36h11: int
-DICT_ARUCO_ORIGINAL: int
+DICT_APRILTAG_36h11: Final[int]
+DICT_ARUCO_ORIGINAL: Final[int]

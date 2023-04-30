@@ -1,4 +1,4 @@
-from typing import Any, overload, TypeAlias
+from typing import Any, Final, overload, TypeAlias
 
 rvecs: TypeAlias = Any
 K2: TypeAlias = Any
@@ -460,15 +460,15 @@ def undistortPoints(distorted, K, D, undistorted = ..., R = ..., P = ..., criter
         @param undistorted Output array of image points, 1xN/Nx1 2-channel, or vector\<Point2f\> .
     """
 
-CALIB_CHECK_COND: int
-CALIB_FIX_FOCAL_LENGTH: int
-CALIB_FIX_INTRINSIC: int
-CALIB_FIX_K1: int
-CALIB_FIX_K2: int
-CALIB_FIX_K3: int
-CALIB_FIX_K4: int
-CALIB_FIX_PRINCIPAL_POINT: int
-CALIB_FIX_SKEW: int
-CALIB_RECOMPUTE_EXTRINSIC: int
-CALIB_USE_INTRINSIC_GUESS: int
-CALIB_ZERO_DISPARITY: int
+CALIB_CHECK_COND: Final[int]
+CALIB_FIX_FOCAL_LENGTH: Final[int]
+CALIB_FIX_INTRINSIC: Final[int]
+CALIB_FIX_K1: Final[int]
+CALIB_FIX_K2: Final[int]
+CALIB_FIX_K3: Final[int]
+CALIB_FIX_K4: Final[int]
+CALIB_FIX_PRINCIPAL_POINT: Final[int]
+CALIB_FIX_SKEW: Final[int]
+CALIB_RECOMPUTE_EXTRINSIC: Final[int]
+CALIB_USE_INTRINSIC_GUESS: Final[int]
+CALIB_ZERO_DISPARITY: Final[int]

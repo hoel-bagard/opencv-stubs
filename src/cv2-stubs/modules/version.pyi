@@ -1,6 +1,7 @@
+from typing import Final
 
-ci_build: int
-contrib: int
-headless: int
-opencv_version: int
-rolling: int
+ci_build: Final[int]
+contrib: Final[int]
+headless: Final[int]
+opencv_version: Final[int]
+rolling: Final[int]

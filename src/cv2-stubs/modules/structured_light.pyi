@@ -1,4 +1,4 @@
-from typing import Any, TypeAlias
+from typing import Any, Final, TypeAlias
 
 from .. import functions as cv2
 
@@ -12,7 +12,6 @@ unwrappedPhaseMap: TypeAlias = Any
 projPix: TypeAlias = Any
 matches: TypeAlias = Any
 blackImage: TypeAlias = Any
-
 retval: TypeAlias = Any
 
 class GrayCodePattern(StructuredLightPattern):
@@ -149,7 +148,7 @@ def SinusoidalPattern_create(parameters = ...) -> retval:
          *
     """
 
-DECODE_3D_UNDERWORLD: int
-FAPS: int
-FTP: int
-PSP: int
+DECODE_3D_UNDERWORLD: Final[int]
+FAPS: Final[int]
+FTP: Final[int]
+PSP: Final[int]

@@ -1,10 +1,9 @@
 import builtins
-from typing import Any, overload, TypeAlias
+from typing import Any, Final, overload, TypeAlias
 
 from . import core, cv, ie, oak, onnx, own, render, streaming, video, wip
 
 GKernelPackage: TypeAlias = Any
-
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 
@@ -2447,35 +2446,35 @@ def warpPerspective(src, M, dsize, flags = ..., borderMode = ..., borderValue = 
     @sa  warpAffine, resize, remap, getRectSubPix, perspectiveTransform
     """
 
-CV_ANY: int
-CV_BOOL: int
-CV_DOUBLE: int
-CV_DRAW_PRIM: int
-CV_FLOAT: int
-CV_GMAT: int
-CV_INT: int
-CV_INT64: int
-CV_MAT: int
-CV_POINT: int
-CV_POINT2F: int
-CV_POINT3F: int
-CV_RECT: int
-CV_SCALAR: int
-CV_SIZE: int
-CV_STRING: int
-STEREO_OUTPUT_FORMAT_DEPTH_16F: int
-STEREO_OUTPUT_FORMAT_DEPTH_32F: int
-STEREO_OUTPUT_FORMAT_DEPTH_FLOAT16: int
-STEREO_OUTPUT_FORMAT_DEPTH_FLOAT32: int
+CV_ANY: Final[int]
+CV_BOOL: Final[int]
+CV_DOUBLE: Final[int]
+CV_DRAW_PRIM: Final[int]
+CV_FLOAT: Final[int]
+CV_GMAT: Final[int]
+CV_INT: Final[int]
+CV_INT64: Final[int]
+CV_MAT: Final[int]
+CV_POINT: Final[int]
+CV_POINT2F: Final[int]
+CV_POINT3F: Final[int]
+CV_RECT: Final[int]
+CV_SCALAR: Final[int]
+CV_SIZE: Final[int]
+CV_STRING: Final[int]
+STEREO_OUTPUT_FORMAT_DEPTH_16F: Final[int]
+STEREO_OUTPUT_FORMAT_DEPTH_32F: Final[int]
+STEREO_OUTPUT_FORMAT_DEPTH_FLOAT16: Final[int]
+STEREO_OUTPUT_FORMAT_DEPTH_FLOAT32: Final[int]
 STEREO_OUTPUT_FORMAT_DISPARITY_16Q_10_5: int
-STEREO_OUTPUT_FORMAT_DISPARITY_16Q_11_4: int
-STEREO_OUTPUT_FORMAT_DISPARITY_FIXED16_11_5: int
-STEREO_OUTPUT_FORMAT_DISPARITY_FIXED16_12_4: int
-StereoOutputFormat_DEPTH_16F: int
-StereoOutputFormat_DEPTH_32F: int
-StereoOutputFormat_DEPTH_FLOAT16: int
-StereoOutputFormat_DEPTH_FLOAT32: int
+STEREO_OUTPUT_FORMAT_DISPARITY_16Q_11_4: Final[int]
+STEREO_OUTPUT_FORMAT_DISPARITY_FIXED16_11_5: Final[int]
+STEREO_OUTPUT_FORMAT_DISPARITY_FIXED16_12_4: Final[int]
+StereoOutputFormat_DEPTH_16F: Final[int]
+StereoOutputFormat_DEPTH_32F: Final[int]
+StereoOutputFormat_DEPTH_FLOAT16: Final[int]
+StereoOutputFormat_DEPTH_FLOAT32: Final[int]
 StereoOutputFormat_DISPARITY_16Q_10_5: int
-StereoOutputFormat_DISPARITY_16Q_11_4: int
-StereoOutputFormat_DISPARITY_FIXED16_11_5: int
-StereoOutputFormat_DISPARITY_FIXED16_12_4: int
+StereoOutputFormat_DISPARITY_16Q_11_4: Final[int]
+StereoOutputFormat_DISPARITY_FIXED16_11_5: Final[int]
+StereoOutputFormat_DISPARITY_FIXED16_12_4: Final[int]

@@ -1,10 +1,9 @@
 import builtins
-from typing import Any, TypeAlias
+from typing import Any, Final, TypeAlias
 
 decoded_info: TypeAlias = Any
 points: TypeAlias = Any
 decoded_type: TypeAlias = Any
-
 retval: TypeAlias = Any
 
 class BarcodeDetector(builtins.object):
@@ -37,9 +36,9 @@ class BarcodeDetector(builtins.object):
         """
 
 
-EAN_13: int
-EAN_8: int
-NONE: int
-UPC_A: int
-UPC_E: int
-UPC_EAN_EXTENSION: int
+EAN_13: Final[int]
+EAN_8: Final[int]
+NONE: Final[int]
+UPC_A: Final[int]
+UPC_E: Final[int]
+UPC_EAN_EXTENSION: Final[int]

@@ -1,9 +1,8 @@
 import builtins
-from typing import Any, TypeAlias
+from typing import Any, Final, TypeAlias
 
 sMatches: TypeAlias = Any
 denseMatches: TypeAlias = Any
-
 retval: TypeAlias = Any
 
 class MatchQuasiDense(builtins.object):
@@ -76,26 +75,26 @@ def QuasiDenseStereo_create(monoImgSize, paramFilepath = ...) -> retval:
         .
     """
 
-CV_CS_CENSUS: int
-CV_DENSE_CENSUS: int
-CV_MEAN_VARIATION: int
-CV_MODIFIED_CENSUS_TRANSFORM: int
-CV_MODIFIED_CS_CENSUS: int
-CV_QUADRATIC_INTERPOLATION: int
-CV_SIMETRICV_INTERPOLATION: int
-CV_SPARSE_CENSUS: int
-CV_SPECKLE_REMOVAL_ALGORITHM: int
-CV_SPECKLE_REMOVAL_AVG_ALGORITHM: int
-CV_STAR_KERNEL: int
-STEREO_BINARY_BM_PREFILTER_NORMALIZED_RESPONSE: int
-STEREO_BINARY_BM_PREFILTER_XSOBEL: int
-STEREO_BINARY_SGBM_MODE_HH: int
-STEREO_BINARY_SGBM_MODE_SGBM: int
-STEREO_MATCHER_DISP_SCALE: int
-STEREO_MATCHER_DISP_SHIFT: int
-StereoBinaryBM_PREFILTER_NORMALIZED_RESPONSE: int
-StereoBinaryBM_PREFILTER_XSOBEL: int
-StereoBinarySGBM_MODE_HH: int
-StereoBinarySGBM_MODE_SGBM: int
-StereoMatcher_DISP_SCALE: int
-StereoMatcher_DISP_SHIFT: int
+CV_CS_CENSUS: Final[int]
+CV_DENSE_CENSUS: Final[int]
+CV_MEAN_VARIATION: Final[int]
+CV_MODIFIED_CENSUS_TRANSFORM: Final[int]
+CV_MODIFIED_CS_CENSUS: Final[int]
+CV_QUADRATIC_INTERPOLATION: Final[int]
+CV_SIMETRICV_INTERPOLATION: Final[int]
+CV_SPARSE_CENSUS: Final[int]
+CV_SPECKLE_REMOVAL_ALGORITHM: Final[int]
+CV_SPECKLE_REMOVAL_AVG_ALGORITHM: Final[int]
+CV_STAR_KERNEL: Final[int]
+STEREO_BINARY_BM_PREFILTER_NORMALIZED_RESPONSE: Final[int]
+STEREO_BINARY_BM_PREFILTER_XSOBEL: Final[int]
+STEREO_BINARY_SGBM_MODE_HH: Final[int]
+STEREO_BINARY_SGBM_MODE_SGBM: Final[int]
+STEREO_MATCHER_DISP_SCALE: Final[int]
+STEREO_MATCHER_DISP_SHIFT: Final[int]
+StereoBinaryBM_PREFILTER_NORMALIZED_RESPONSE: Final[int]
+StereoBinaryBM_PREFILTER_XSOBEL: Final[int]
+StereoBinarySGBM_MODE_HH: Final[int]
+StereoBinarySGBM_MODE_SGBM: Final[int]
+StereoMatcher_DISP_SCALE: Final[int]
+StereoMatcher_DISP_SHIFT: Final[int]

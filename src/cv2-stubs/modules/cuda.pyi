@@ -1,5 +1,5 @@
 import builtins
-from typing import Any, overload, TypeAlias
+from typing import Any, Final, overload, TypeAlias
 
 keypoints: TypeAlias = Any
 descriptors: TypeAlias = Any
@@ -826,48 +826,48 @@ def unregisterPageLocked(m) -> None:
     @param m Input matrix.
     """
 
-DEVICE_INFO_COMPUTE_MODE_DEFAULT: int
-DEVICE_INFO_COMPUTE_MODE_EXCLUSIVE: int
-DEVICE_INFO_COMPUTE_MODE_EXCLUSIVE_PROCESS: int
-DEVICE_INFO_COMPUTE_MODE_PROHIBITED: int
-DYNAMIC_PARALLELISM: int
-DeviceInfo_ComputeModeDefault: int
-DeviceInfo_ComputeModeExclusive: int
-DeviceInfo_ComputeModeExclusiveProcess: int
-DeviceInfo_ComputeModeProhibited: int
-EVENT_BLOCKING_SYNC: int
-EVENT_DEFAULT: int
-EVENT_DISABLE_TIMING: int
-EVENT_INTERPROCESS: int
-Event_BLOCKING_SYNC: int
-Event_DEFAULT: int
-Event_DISABLE_TIMING: int
-Event_INTERPROCESS: int
+DEVICE_INFO_COMPUTE_MODE_DEFAULT: Final[int]
+DEVICE_INFO_COMPUTE_MODE_EXCLUSIVE: Final[int]
+DEVICE_INFO_COMPUTE_MODE_EXCLUSIVE_PROCESS: Final[int]
+DEVICE_INFO_COMPUTE_MODE_PROHIBITED: Final[int]
+DYNAMIC_PARALLELISM: Final[int]
+DeviceInfo_ComputeModeDefault: Final[int]
+DeviceInfo_ComputeModeExclusive: Final[int]
+DeviceInfo_ComputeModeExclusiveProcess: Final[int]
+DeviceInfo_ComputeModeProhibited: Final[int]
+EVENT_BLOCKING_SYNC: Final[int]
+EVENT_DEFAULT: Final[int]
+EVENT_DISABLE_TIMING: Final[int]
+EVENT_INTERPROCESS: Final[int]
+Event_BLOCKING_SYNC: Final[int]
+Event_DEFAULT: Final[int]
+Event_DISABLE_TIMING: Final[int]
+Event_INTERPROCESS: Final[int]
 FEATURE_SET_COMPUTE_10: int
-FEATURE_SET_COMPUTE_11: int
-FEATURE_SET_COMPUTE_12: int
-FEATURE_SET_COMPUTE_13: int
+FEATURE_SET_COMPUTE_11: Final[int]
+FEATURE_SET_COMPUTE_12: Final[int]
+FEATURE_SET_COMPUTE_13: Final[int]
 FEATURE_SET_COMPUTE_20: int
-FEATURE_SET_COMPUTE_21: int
+FEATURE_SET_COMPUTE_21: Final[int]
 FEATURE_SET_COMPUTE_30: int
-FEATURE_SET_COMPUTE_32: int
-FEATURE_SET_COMPUTE_35: int
+FEATURE_SET_COMPUTE_32: Final[int]
+FEATURE_SET_COMPUTE_35: Final[int]
 FEATURE_SET_COMPUTE_50: int
-GLOBAL_ATOMICS: int
-HOST_MEM_PAGE_LOCKED: int
-HOST_MEM_SHARED: int
-HOST_MEM_WRITE_COMBINED: int
-HostMem_PAGE_LOCKED: int
-HostMem_SHARED: int
-HostMem_WRITE_COMBINED: int
-NATIVE_DOUBLE: int
-SHARED_ATOMICS: int
-SURF_CUDA_ANGLE_ROW: int
-SURF_CUDA_HESSIAN_ROW: int
-SURF_CUDA_LAPLACIAN_ROW: int
-SURF_CUDA_OCTAVE_ROW: int
-SURF_CUDA_ROWS_COUNT: int
-SURF_CUDA_SIZE_ROW: int
-SURF_CUDA_X_ROW: int
-SURF_CUDA_Y_ROW: int
-WARP_SHUFFLE_FUNCTIONS: int
+GLOBAL_ATOMICS: Final[int]
+HOST_MEM_PAGE_LOCKED: Final[int]
+HOST_MEM_SHARED: Final[int]
+HOST_MEM_WRITE_COMBINED: Final[int]
+HostMem_PAGE_LOCKED: Final[int]
+HostMem_SHARED: Final[int]
+HostMem_WRITE_COMBINED: Final[int]
+NATIVE_DOUBLE: Final[int]
+SHARED_ATOMICS: Final[int]
+SURF_CUDA_ANGLE_ROW: Final[int]
+SURF_CUDA_HESSIAN_ROW: Final[int]
+SURF_CUDA_LAPLACIAN_ROW: Final[int]
+SURF_CUDA_OCTAVE_ROW: Final[int]
+SURF_CUDA_ROWS_COUNT: Final[int]
+SURF_CUDA_SIZE_ROW: Final[int]
+SURF_CUDA_X_ROW: Final[int]
+SURF_CUDA_Y_ROW: Final[int]
+WARP_SHUFFLE_FUNCTIONS: Final[int]

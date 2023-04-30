@@ -1,5 +1,5 @@
 import builtins
-from typing import Any, overload, TypeAlias
+from typing import Any, Final, overload, TypeAlias
 
 retval: TypeAlias = Any
 
@@ -50,7 +50,7 @@ def timestamp(arg1) -> retval:
         .
     """
 
-SYNC_POLICY_DONT_SYNC: int
-SYNC_POLICY_DROP: int
-sync_policy_dont_sync: int
-sync_policy_drop: int
+SYNC_POLICY_DONT_SYNC: Final[int]
+SYNC_POLICY_DROP: Final[int]
+sync_policy_dont_sync: Final[int]
+sync_policy_drop: Final[int]

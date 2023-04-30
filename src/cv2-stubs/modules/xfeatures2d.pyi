@@ -1,11 +1,10 @@
-from typing import Any, overload, TypeAlias
+from typing import Any, Final, overload, TypeAlias
 
 from .. import functions as cv2
 
 result: TypeAlias = Any
 signature: TypeAlias = Any
 matchesGMS: TypeAlias = Any
-
 retval: TypeAlias = Any
 
 class AffineFeature2D(cv2.Feature2D):
@@ -1040,37 +1039,37 @@ def matchLOGOS(keypoints1, keypoints2, nn1, nn2, matches1to2) -> None:
             Image descriptors are then represented by their closest codevector (nearest BoW centroid).
     """
 
-BEBLID_SIZE_256_BITS: int
-BEBLID_SIZE_512_BITS: int
-DAISY_NRM_FULL: int
-DAISY_NRM_NONE: int
-DAISY_NRM_PARTIAL: int
-DAISY_NRM_SIFT: int
-PCTSIGNATURES_GAUSSIAN: int
-PCTSIGNATURES_HEURISTIC: int
+BEBLID_SIZE_256_BITS: Final[int]
+BEBLID_SIZE_512_BITS: Final[int]
+DAISY_NRM_FULL: Final[int]
+DAISY_NRM_NONE: Final[int]
+DAISY_NRM_PARTIAL: Final[int]
+DAISY_NRM_SIFT: Final[int]
+PCTSIGNATURES_GAUSSIAN: Final[int]
+PCTSIGNATURES_HEURISTIC: Final[int]
 PCTSIGNATURES_L0_25: int
 PCTSIGNATURES_L0_5: int
-PCTSIGNATURES_L1: int
-PCTSIGNATURES_L2: int
-PCTSIGNATURES_L2SQUARED: int
-PCTSIGNATURES_L5: int
-PCTSIGNATURES_L_INFINITY: int
-PCTSIGNATURES_MINUS: int
-PCTSIGNATURES_NORMAL: int
-PCTSIGNATURES_REGULAR: int
-PCTSIGNATURES_UNIFORM: int
-PCTSignatures_GAUSSIAN: int
-PCTSignatures_HEURISTIC: int
+PCTSIGNATURES_L1: Final[int]
+PCTSIGNATURES_L2: Final[int]
+PCTSIGNATURES_L2SQUARED: Final[int]
+PCTSIGNATURES_L5: Final[int]
+PCTSIGNATURES_L_INFINITY: Final[int]
+PCTSIGNATURES_MINUS: Final[int]
+PCTSIGNATURES_NORMAL: Final[int]
+PCTSIGNATURES_REGULAR: Final[int]
+PCTSIGNATURES_UNIFORM: Final[int]
+PCTSignatures_GAUSSIAN: Final[int]
+PCTSignatures_HEURISTIC: Final[int]
 PCTSignatures_L0_25: int
 PCTSignatures_L0_5: int
-PCTSignatures_L1: int
-PCTSignatures_L2: int
-PCTSignatures_L2SQUARED: int
-PCTSignatures_L5: int
-PCTSignatures_L_INFINITY: int
-PCTSignatures_MINUS: int
-PCTSignatures_NORMAL: int
-PCTSignatures_REGULAR: int
-PCTSignatures_UNIFORM: int
-TEBLID_SIZE_256_BITS: int
-TEBLID_SIZE_512_BITS: int
+PCTSignatures_L1: Final[int]
+PCTSignatures_L2: Final[int]
+PCTSignatures_L2SQUARED: Final[int]
+PCTSignatures_L5: Final[int]
+PCTSignatures_L_INFINITY: Final[int]
+PCTSignatures_MINUS: Final[int]
+PCTSignatures_NORMAL: Final[int]
+PCTSignatures_REGULAR: Final[int]
+PCTSignatures_UNIFORM: Final[int]
+TEBLID_SIZE_256_BITS: Final[int]
+TEBLID_SIZE_512_BITS: Final[int]

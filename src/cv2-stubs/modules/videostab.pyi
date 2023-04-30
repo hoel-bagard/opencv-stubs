@@ -1,9 +1,10 @@
+from typing import Final
 
-MM_AFFINE: int
-MM_HOMOGRAPHY: int
-MM_RIGID: int
-MM_ROTATION: int
-MM_SIMILARITY: int
-MM_TRANSLATION: int
-MM_TRANSLATION_AND_SCALE: int
-MM_UNKNOWN: int
+MM_AFFINE: Final[int]
+MM_HOMOGRAPHY: Final[int]
+MM_RIGID: Final[int]
+MM_ROTATION: Final[int]
+MM_SIMILARITY: Final[int]
+MM_TRANSLATION: Final[int]
+MM_TRANSLATION_AND_SCALE: Final[int]
+MM_UNKNOWN: Final[int]

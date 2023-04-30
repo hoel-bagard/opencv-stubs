@@ -1,5 +1,5 @@
 import builtins
-from typing import Any, TypeAlias
+from typing import Any, Final, TypeAlias
 
 import numpy as _np
 import numpy.typing as _npt
@@ -23,7 +23,6 @@ qimg: TypeAlias = Any
 result: TypeAlias = Any
 qcimg: TypeAlias = Any
 _dst: TypeAlias = Any
-
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 
@@ -1784,46 +1783,46 @@ def weightedMedianFilter(joint, src, r, dst = ..., sigma = ..., weightType = ...
     * @sa medianBlur, jointBilateralFilter
     """
 
-AM_FILTER: int
+AM_FILTER: Final[int]
 ARO_0_45: int
 ARO_315_0: int
-ARO_315_135: int
-ARO_315_45: int
-ARO_45_135: int
+ARO_315_135: Final[int]
+ARO_315_45: Final[int]
+ARO_45_135: Final[int]
 ARO_45_90: int
 ARO_90_135: int
-ARO_CTR_HOR: int
-ARO_CTR_VER: int
-BINARIZATION_NIBLACK: int
-BINARIZATION_NICK: int
-BINARIZATION_SAUVOLA: int
-BINARIZATION_WOLF: int
-DTF_IC: int
-DTF_NC: int
-DTF_RF: int
-EDGE_DRAWING_LSD: int
-EDGE_DRAWING_PREWITT: int
-EDGE_DRAWING_SCHARR: int
-EDGE_DRAWING_SOBEL: int
-EdgeDrawing_LSD: int
-EdgeDrawing_PREWITT: int
-EdgeDrawing_SCHARR: int
-EdgeDrawing_SOBEL: int
-FHT_ADD: int
-FHT_AVE: int
-FHT_MAX: int
-FHT_MIN: int
-GUIDED_FILTER: int
-HDO_DESKEW: int
-HDO_RAW: int
-MSLIC: int
-SLIC: int
-SLICO: int
-THINNING_GUOHALL: int
-THINNING_ZHANGSUEN: int
-WMF_COS: int
-WMF_EXP: int
-WMF_IV1: int
-WMF_IV2: int
-WMF_JAC: int
-WMF_OFF: int
+ARO_CTR_HOR: Final[int]
+ARO_CTR_VER: Final[int]
+BINARIZATION_NIBLACK: Final[int]
+BINARIZATION_NICK: Final[int]
+BINARIZATION_SAUVOLA: Final[int]
+BINARIZATION_WOLF: Final[int]
+DTF_IC: Final[int]
+DTF_NC: Final[int]
+DTF_RF: Final[int]
+EDGE_DRAWING_LSD: Final[int]
+EDGE_DRAWING_PREWITT: Final[int]
+EDGE_DRAWING_SCHARR: Final[int]
+EDGE_DRAWING_SOBEL: Final[int]
+EdgeDrawing_LSD: Final[int]
+EdgeDrawing_PREWITT: Final[int]
+EdgeDrawing_SCHARR: Final[int]
+EdgeDrawing_SOBEL: Final[int]
+FHT_ADD: Final[int]
+FHT_AVE: Final[int]
+FHT_MAX: Final[int]
+FHT_MIN: Final[int]
+GUIDED_FILTER: Final[int]
+HDO_DESKEW: Final[int]
+HDO_RAW: Final[int]
+MSLIC: Final[int]
+SLIC: Final[int]
+SLICO: Final[int]
+THINNING_GUOHALL: Final[int]
+THINNING_ZHANGSUEN: Final[int]
+WMF_COS: Final[int]
+WMF_EXP: Final[int]
+WMF_IV1: Final[int]
+WMF_IV2: Final[int]
+WMF_JAC: Final[int]
+WMF_OFF: Final[int]

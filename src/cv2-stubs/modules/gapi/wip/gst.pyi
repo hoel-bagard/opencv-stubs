@@ -1,10 +1,11 @@
 import builtins
+from typing import Final
 
 class GStreamerPipeline(builtins.object):
     ...
 
 
-GSTREAMER_SOURCE_OUTPUT_TYPE_FRAME: int
-GSTREAMER_SOURCE_OUTPUT_TYPE_MAT: int
-GStreamerSource_OutputType_FRAME: int
-GStreamerSource_OutputType_MAT: int
+GSTREAMER_SOURCE_OUTPUT_TYPE_FRAME: Final[int]
+GSTREAMER_SOURCE_OUTPUT_TYPE_MAT: Final[int]
+GStreamerSource_OutputType_FRAME: Final[int]
+GStreamerSource_OutputType_MAT: Final[int]

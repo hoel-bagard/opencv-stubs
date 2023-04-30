@@ -1,5 +1,5 @@
 import builtins
-from typing import Any, overload, TypeAlias
+from typing import Any, Final, overload, TypeAlias
 
 from .. import functions as cv2
 
@@ -7,7 +7,6 @@ status: TypeAlias = Any
 nextPts: TypeAlias = Any
 flow: TypeAlias = Any
 err: TypeAlias = Any
-
 retval: TypeAlias = Any
 
 class DenseRLOFOpticalFlow(cv2.DenseOpticalFlow):
@@ -722,12 +721,12 @@ def createOptFlow_SparseToDense() -> retval:
         .
     """
 
-GPC_DESCRIPTOR_DCT: int
-GPC_DESCRIPTOR_WHT: int
-INTERP_EPIC: int
-INTERP_GEO: int
-INTERP_RIC: int
-SR_CROSS: int
-SR_FIXED: int
-ST_BILINEAR: int
-ST_STANDART: int
+GPC_DESCRIPTOR_DCT: Final[int]
+GPC_DESCRIPTOR_WHT: Final[int]
+INTERP_EPIC: Final[int]
+INTERP_GEO: Final[int]
+INTERP_RIC: Final[int]
+SR_CROSS: Final[int]
+SR_FIXED: Final[int]
+ST_BILINEAR: Final[int]
+ST_STANDART: Final[int]

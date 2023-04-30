@@ -1,10 +1,9 @@
-from typing import Any, overload, TypeAlias
+from typing import Any, Final, overload, TypeAlias
 
 from .. import functions as cv2
 
 dstStep2: TypeAlias = Any
 dstStep1: TypeAlias = Any
-
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 
@@ -372,10 +371,10 @@ def oilPainting(src, size, dynRatio, code, dst = ...) -> dst:
     @param dynRatio image is divided by dynRatio before histogram processing
     """
 
-BM3D_STEP1: int
-BM3D_STEP2: int
-BM3D_STEPALL: int
-HAAR: int
-INPAINT_FSR_BEST: int
-INPAINT_FSR_FAST: int
-INPAINT_SHIFTMAP: int
+BM3D_STEP1: Final[int]
+BM3D_STEP2: Final[int]
+BM3D_STEPALL: Final[int]
+HAAR: Final[int]
+INPAINT_FSR_BEST: Final[int]
+INPAINT_FSR_FAST: Final[int]
+INPAINT_SHIFTMAP: Final[int]

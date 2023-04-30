@@ -1,4 +1,4 @@
-from typing import Any, overload, TypeAlias
+from typing import Any, Final, overload, TypeAlias
 
 rvecs: TypeAlias = Any
 K2: TypeAlias = Any
@@ -30,7 +30,6 @@ pointCloud: TypeAlias = Any
 tvecs: TypeAlias = Any
 objectPoints: TypeAlias = Any
 undistorted: TypeAlias = Any
-
 retval: TypeAlias = Any
 
 @overload
@@ -271,18 +270,18 @@ def undistortPoints(distorted, K, D, xi, R, undistorted = ...) -> undistorted:
     """
     """
 
-CALIB_FIX_CENTER: int
-CALIB_FIX_GAMMA: int
-CALIB_FIX_K1: int
-CALIB_FIX_K2: int
-CALIB_FIX_P1: int
-CALIB_FIX_P2: int
-CALIB_FIX_SKEW: int
-CALIB_FIX_XI: int
-CALIB_USE_GUESS: int
-RECTIFY_CYLINDRICAL: int
-RECTIFY_LONGLATI: int
-RECTIFY_PERSPECTIVE: int
-RECTIFY_STEREOGRAPHIC: int
-XYZ: int
-XYZRGB: int
+CALIB_FIX_CENTER: Final[int]
+CALIB_FIX_GAMMA: Final[int]
+CALIB_FIX_K1: Final[int]
+CALIB_FIX_K2: Final[int]
+CALIB_FIX_P1: Final[int]
+CALIB_FIX_P2: Final[int]
+CALIB_FIX_SKEW: Final[int]
+CALIB_FIX_XI: Final[int]
+CALIB_USE_GUESS: Final[int]
+RECTIFY_CYLINDRICAL: Final[int]
+RECTIFY_LONGLATI: Final[int]
+RECTIFY_PERSPECTIVE: Final[int]
+RECTIFY_STEREOGRAPHIC: Final[int]
+XYZ: Final[int]
+XYZRGB: Final[int]
