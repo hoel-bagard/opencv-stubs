@@ -34,7 +34,7 @@ The dependency on opencv is optional, and can be accessed with:
 
 ## Acknowledgements
 
-A stub file with all the cv2 functions can be found on the [Microsoft stubs repo](https://github.com/microsoft/python-type-stubs/tree/main/cv2). This package reused those functions and added typing.
+A stub file with opencv functions can be found on the [Microsoft stubs repo](https://github.com/microsoft/python-type-stubs/tree/main/cv2). This package reused those functions (with some added typing).
 
 
 ## TODO:
