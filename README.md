@@ -1,3 +1,5 @@
+Official OpenCV stubs now exist (in OpenCV>=4.8), so this repo is archived.
+
 # OpenCV stubs
 
 [![PyPI](https://img.shields.io/pypi/v/opencv-stubs?color=green&style=flat)](https://pypi.org/project/opencv-stubs)
