@@ -4,28 +4,26 @@ build-backend = "hatchling.build"
 
 [project]
 name = "opencv-stubs"
-authors = [{name="Bagard Hoel"}]
+authors = [{ name = "Bagard Hoel" }]
 description = "Unofficial stubs for the opencv-python package."
 keywords = ["OpenCV", "stubs"]
 readme = "README.md"
 classifiers = [
-    "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: Implementation :: CPython",
-    "Operating System :: OS Independent",
-    "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Operating System :: OS Independent",
+  "Intended Audience :: Developers",
 ]
-license = {text = "MIT"}
+license = { text = "MIT" }
 dynamic = ["version"]
 dependencies = ["numpy>=1.21"]
 requires-python = ">=3.8"
-packages = [
-    { "include" = "cv2-stubs"}
-]
+packages = [{ "include" = "cv2-stubs" }]
 
 [project.urls]
 "Homepage" = "https://github.com/hoel-bagard/opencv-stubs"
@@ -34,7 +32,20 @@ packages = [
 [project.optional-dependencies]
 dev = ["pre-commit", "pip-tools", "ruff", "pyright"]
 build = ["hatch"]
-flake8 = ["flake8", "flake8-bugbear", "flake8-comprehensions", "flake8-docstrings", "flake8-builtins", "flake8-quotes", "pep8-naming", "flake8-import-order", "flake8-noqa", "flake8-broken-line", "flake8-commas", "Flake8-pyproject"]
+flake8 = [
+  "flake8",
+  "flake8-bugbear",
+  "flake8-comprehensions",
+  "flake8-docstrings",
+  "flake8-builtins",
+  "flake8-quotes",
+  "pep8-naming",
+  "flake8-import-order",
+  "flake8-noqa",
+  "flake8-broken-line",
+  "flake8-commas",
+  "Flake8-pyproject",
+]
 # I couldn't figure out how to have "opencv or opencv-headless" as dependency, so they are both optional.
 opencv = ["opencv-python>=4.7.0"]
 opencv-contrib = ["opencv-contrib-python>=4.7.0"]
@@ -44,13 +55,7 @@ opencv-headless = ["opencv-python-headless>=4.7.0"]
 path = "src/cv2-stubs/__init__.pyi"
 
 [tool.hatch.build.targets.sdist]
-exclude = [
-  "/.github",
-  "/.pytest_cache",
-  "/build",
-  "/dist",
-  "/docs",
-]
+exclude = ["/.github", "/.pytest_cache", "/build", "/dist", "/docs"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/cv2-stubs"]
@@ -61,7 +66,27 @@ publish_test = "hatch build --clean && hatch publish -r test"
 publish = "hatch build --clean && hatch publish"
 
 [tool.ruff]
-select = ["B", "C4", "E", "I", "Q", "UP", "S", "BLE", "COM", "DTZ", "PIE", "PT", "RSE", "SIM","PTH", "TRY", "NPY", "RUF"]  # , "ANN"
+select = [
+  "B",
+  "C4",
+  "E",
+  "I",
+  "Q",
+  "UP",
+  "S",
+  "BLE",
+  "COM",
+  "DTZ",
+  "PIE",
+  "PT",
+  "RSE",
+  "SIM",
+  "PTH",
+  "TRY",
+  "NPY",
+  "RUF",
+  # "ANN",
+]
 ignore = ["D1", "D401", "D204", "D203", "D213", "S101", "PLR2004"]
 line-length = 20000
 
