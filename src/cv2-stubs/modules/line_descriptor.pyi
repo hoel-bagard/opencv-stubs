@@ -13,7 +13,7 @@ outImg: TypeAlias = Any
 retval: TypeAlias = Any
 
 class BinaryDescriptor(cv2.Algorithm):
-    def compute(self, image, keylines, descriptors = ..., returnFloatDescr = ...) -> tuple[keylines, descriptors]:
+    def compute(self, image, keylines, descriptors=..., returnFloatDescr=...) -> tuple[keylines, descriptors]:
         """
         @brief Requires descriptors computation
 
@@ -23,7 +23,7 @@ class BinaryDescriptor(cv2.Algorithm):
         @param returnFloatDescr flag (when set to true, original non-binary descriptors are returned)
         """
 
-    def detect(self, image, mask = ...) -> keypoints:
+    def detect(self, image, mask=...) -> keypoints:
         """
         @brief Requires line detection
 
@@ -71,9 +71,8 @@ class BinaryDescriptor(cv2.Algorithm):
         and return a smart pointer to it
         """
 
-
 class BinaryDescriptorMatcher(cv2.Algorithm):
-    def knnMatch(self, queryDescriptors, trainDescriptors, k, mask = ..., compactResult = ...) -> matches:
+    def knnMatch(self, queryDescriptors, trainDescriptors, k, mask=..., compactResult=...) -> matches:
         """
         @brief For every input query descriptor, retrieve the best *k* matching ones from a dataset provided from
         user or from the one internal to class
@@ -86,7 +85,7 @@ class BinaryDescriptorMatcher(cv2.Algorithm):
         @param compactResult flag to obtain a compact result (if true, a vector that doesn't contain any matches for a given query is not inserted in final result)
         """
 
-    def knnMatchQuery(self, queryDescriptors, matches, k, masks = ..., compactResult = ...) -> None:
+    def knnMatchQuery(self, queryDescriptors, matches, k, masks=..., compactResult=...) -> None:
         """
         @overload
         @param queryDescriptors query descriptors
@@ -96,7 +95,7 @@ class BinaryDescriptorMatcher(cv2.Algorithm):
         @param compactResult flag to obtain a compact result (if true, a vector that doesn't contain any matches for a given query is not inserted in final result)
         """
 
-    def match(self, queryDescriptors, trainDescriptors, mask = ...) -> matches:
+    def match(self, queryDescriptors, trainDescriptors, mask=...) -> matches:
         """
         @brief For every input query descriptor, retrieve the best matching one from a dataset provided from user
         or from the one internal to class
@@ -107,7 +106,7 @@ class BinaryDescriptorMatcher(cv2.Algorithm):
         @param mask mask to select which input descriptors must be matched to one in dataset
         """
 
-    def matchQuery(self, queryDescriptors, masks = ...) -> matches:
+    def matchQuery(self, queryDescriptors, masks=...) -> matches:
         """
         @overload
         @param queryDescriptors query descriptors
@@ -115,10 +114,7 @@ class BinaryDescriptorMatcher(cv2.Algorithm):
         @param masks vector of masks to select which input descriptors must be matched to one in dataset (the *i*-th mask in vector indicates whether each input query can be matched with descriptors in dataset relative to *i*-th image)
         """
 
-
-class DrawLinesMatchesFlags(builtins.object):
-    ...
-
+class DrawLinesMatchesFlags(builtins.object): ...
 
 class KeyLine(builtins.object):
     def getEndPoint(self) -> retval:
@@ -141,10 +137,9 @@ class KeyLine(builtins.object):
         Returns the start point of the line in the octave it was extracted from
         """
 
-
 class LSDDetector(cv2.Algorithm):
     @overload
-    def detect(self, image, scale, numOctaves, mask = ...) -> keypoints:
+    def detect(self, image, scale, numOctaves, mask=...) -> keypoints:
         """
         @brief Detect lines inside an image.
 
@@ -156,7 +151,7 @@ class LSDDetector(cv2.Algorithm):
         """
 
     @overload
-    def detect(self, images, keylines, scale, numOctaves, masks = ...) -> None:
+    def detect(self, images, keylines, scale, numOctaves, masks=...) -> None:
         """
         @overload
         @param images input images
@@ -174,10 +169,7 @@ class LSDDetector(cv2.Algorithm):
     def createLSDDetectorWithParams(self, params) -> retval:
         """"""
 
-
-class LSDParam(builtins.object):
-    ...
-
+class LSDParam(builtins.object): ...
 
 def BinaryDescriptor_createBinaryDescriptor() -> retval:
     """
@@ -192,10 +184,10 @@ def LSDDetector_createLSDDetector() -> retval:
 
 def LSDDetector_createLSDDetectorWithParams(params) -> retval:
     """
-        .
+    .
     """
 
-def drawKeylines(image, keylines, outImage = ..., color = ..., flags = ...) -> outImage:
+def drawKeylines(image, keylines, outImage=..., color=..., flags=...) -> outImage:
     """
     @brief Draws keylines.
 
@@ -206,7 +198,7 @@ def drawKeylines(image, keylines, outImage = ..., color = ..., flags = ...) -> o
     @param flags drawing flags
     """
 
-def drawLineMatches(img1, keylines1, img2, keylines2, matches1to2, outImg = ..., matchColor = ..., singleLineColor = ..., matchesMask = ..., flags = ...) -> outImg:
+def drawLineMatches(img1, keylines1, img2, keylines2, matches1to2, outImg=..., matchColor=..., singleLineColor=..., matchesMask=..., flags=...) -> outImg:
     """
     @brief Draws the found matches of keylines from two images.
 

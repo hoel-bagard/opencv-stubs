@@ -4,17 +4,17 @@ retval: TypeAlias = Any
 
 def getIppVersion() -> retval:
     """
-        .
+    .
     """
 
 def setUseIPP(flag) -> None:
     """
-        .
+    .
     """
 
 def setUseIPP_NotExact(flag) -> None:
     """
-        .
+    .
     """
 
 def useIPP() -> retval:
@@ -24,5 +24,5 @@ def useIPP() -> retval:
 
 def useIPP_NotExact() -> retval:
     """
-        .
+    .
     """

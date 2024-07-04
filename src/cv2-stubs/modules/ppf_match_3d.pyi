@@ -32,9 +32,8 @@ class ICP(builtins.object):
         *  @param [in,out] poses Input poses to start with but also list output of poses. *  \return On successful termination, the function returns 0. * *  \details It is assumed that the model is registered on the scene. Scene remains static, while the model transforms. The output poses transform the models onto the scene. Because of the point to plane minimization, the scene is expected to have the normals available. Expected to have the normals (Nx6).
         """
 
-
 class PPF3DDetector(builtins.object):
-    def match(self, scene, relativeSceneSampleStep = ..., relativeSceneDistance = ...) -> results:
+    def match(self, scene, relativeSceneSampleStep=..., relativeSceneDistance=...) -> results:
         """
         *  \brief Matches a trained model across a provided scene.
         *
@@ -50,7 +49,6 @@ class PPF3DDetector(builtins.object):
         *
         *  @param [in] Model The input point cloud with normals (Nx6) * *  \details Uses the parameters set in the constructor to downsample and learn a new model. When the model is learnt, the instance gets ready for calling "match".
         """
-
 
 class Pose3D(builtins.object):
     def appendPose(self, IncrementalPose) -> None:
@@ -80,10 +78,7 @@ class Pose3D(builtins.object):
         *  \brief Updates the pose with the new one, but this time using quaternions to represent rotation
         """
 
-
-class PoseCluster3D(builtins.object):
-    ...
-
+class PoseCluster3D(builtins.object): ...
 
 def addNoisePC(pc, scale) -> retval:
     """
@@ -92,7 +87,7 @@ def addNoisePC(pc, scale) -> retval:
      @param [in] scale Input scale of the noise. The larger the scale, the more noisy the output
     """
 
-def computeNormalsPC3d(PC, NumNeighbors, FlipViewpoint, viewpoint, PCNormals = ...) -> tuple[retval, PCNormals]:
+def computeNormalsPC3d(PC, NumNeighbors, FlipViewpoint, viewpoint, PCNormals=...) -> tuple[retval, PCNormals]:
     """
     *  @brief Compute the normals of an arbitrary point cloud
      computeNormalsPC3d uses a plane fitting approach to smoothly compute
@@ -114,7 +109,7 @@ def getRandomPose(Pose) -> None:
      @param [out] Pose The random pose
     """
 
-def loadPLYSimple(fileName, withNormals = ...) -> retval:
+def loadPLYSimple(fileName, withNormals=...) -> retval:
     """
     *  @brief Load a PLY file
      @param [in] fileName The PLY model to read
@@ -123,7 +118,7 @@ def loadPLYSimple(fileName, withNormals = ...) -> retval:
      @return Returns the matrix on successful load
     """
 
-def samplePCByQuantization(pc, xrange, yrange, zrange, sample_step_relative, weightByCenter = ...) -> retval:
+def samplePCByQuantization(pc, xrange, yrange, zrange, sample_step_relative, weightByCenter=...) -> retval:
     """
     *  Sample a point cloud using uniform steps
      @param [in] pc Input point cloud

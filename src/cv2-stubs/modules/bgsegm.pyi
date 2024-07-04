@@ -10,10 +10,10 @@ frame: TypeAlias = Any
 retval: TypeAlias = Any
 
 class BackgroundSubtractorCNT(cv2.BackgroundSubtractor):
-    def apply(self, image, fgmask = ..., learningRate = ...) -> fgmask:
+    def apply(self, image, fgmask=..., learningRate=...) -> fgmask:
         """"""
 
-    def getBackgroundImage(self, backgroundImage = ...) -> backgroundImage:
+    def getBackgroundImage(self, backgroundImage=...) -> backgroundImage:
         """"""
 
     def getIsParallel(self) -> retval:
@@ -55,7 +55,6 @@ class BackgroundSubtractorCNT(cv2.BackgroundSubtractor):
         """
         @brief Sets if we're giving a pixel credit for being stable for a long time.
         """
-
 
 class BackgroundSubtractorGMG(cv2.BackgroundSubtractor):
     def getBackgroundPrior(self) -> retval:
@@ -165,26 +164,21 @@ class BackgroundSubtractorGMG(cv2.BackgroundSubtractor):
         @brief Sets the status of background model update
         """
 
-
 class BackgroundSubtractorGSOC(cv2.BackgroundSubtractor):
-    def apply(self, image, fgmask = ..., learningRate = ...) -> fgmask:
+    def apply(self, image, fgmask=..., learningRate=...) -> fgmask:
         """"""
 
-    def getBackgroundImage(self, backgroundImage = ...) -> backgroundImage:
+    def getBackgroundImage(self, backgroundImage=...) -> backgroundImage:
         """"""
-
 
 class BackgroundSubtractorLSBP(cv2.BackgroundSubtractor):
-    def apply(self, image, fgmask = ..., learningRate = ...) -> fgmask:
+    def apply(self, image, fgmask=..., learningRate=...) -> fgmask:
         """"""
 
-    def getBackgroundImage(self, backgroundImage = ...) -> backgroundImage:
+    def getBackgroundImage(self, backgroundImage=...) -> backgroundImage:
         """"""
 
-
-class BackgroundSubtractorLSBPDesc(builtins.object):
-    ...
-
+class BackgroundSubtractorLSBPDesc(builtins.object): ...
 
 class BackgroundSubtractorMOG(cv2.BackgroundSubtractor):
     def getBackgroundRatio(self) -> retval:
@@ -211,9 +205,8 @@ class BackgroundSubtractorMOG(cv2.BackgroundSubtractor):
     def setNoiseSigma(self, noiseSigma) -> None:
         """"""
 
-
 class SyntheticSequenceGenerator(cv2.Algorithm):
-    def getNextFrame(self, frame = ..., gtMask = ...) -> tuple[frame, gtMask]:
+    def getNextFrame(self, frame=..., gtMask=...) -> tuple[frame, gtMask]:
         """
         @brief Obtain the next frame in the sequence.
 
@@ -221,8 +214,7 @@ class SyntheticSequenceGenerator(cv2.Algorithm):
         @param gtMask Output ground-truth (reference) segmentation mask object/background.
         """
 
-
-def createBackgroundSubtractorCNT(minPixelStability = ..., useHistory = ..., maxPixelStability = ..., isParallel = ...) -> retval:
+def createBackgroundSubtractorCNT(minPixelStability=..., useHistory=..., maxPixelStability=..., isParallel=...) -> retval:
     """
     @brief Creates a CNT Background Subtractor
 
@@ -232,7 +224,7 @@ def createBackgroundSubtractorCNT(minPixelStability = ..., useHistory = ..., max
     @param isParallel determines if we're parallelizing the algorithm
     """
 
-def createBackgroundSubtractorGMG(initializationFrames = ..., decisionThreshold = ...) -> retval:
+def createBackgroundSubtractorGMG(initializationFrames=..., decisionThreshold=...) -> retval:
     """
     @brief Creates a GMG Background Subtractor
 
@@ -240,7 +232,7 @@ def createBackgroundSubtractorGMG(initializationFrames = ..., decisionThreshold 
     @param decisionThreshold Threshold value, above which it is marked foreground, else background.
     """
 
-def createBackgroundSubtractorGSOC(mc = ..., nSamples = ..., replaceRate = ..., propagationRate = ..., hitsThreshold = ..., alpha = ..., beta = ..., blinkingSupressionDecay = ..., blinkingSupressionMultiplier = ..., noiseRemovalThresholdFacBG = ..., noiseRemovalThresholdFacFG = ...) -> retval:
+def createBackgroundSubtractorGSOC(mc=..., nSamples=..., replaceRate=..., propagationRate=..., hitsThreshold=..., alpha=..., beta=..., blinkingSupressionDecay=..., blinkingSupressionMultiplier=..., noiseRemovalThresholdFacBG=..., noiseRemovalThresholdFacFG=...) -> retval:
     """
     @brief Creates an instance of BackgroundSubtractorGSOC algorithm.
 
@@ -259,7 +251,7 @@ def createBackgroundSubtractorGSOC(mc = ..., nSamples = ..., replaceRate = ..., 
     @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
     """
 
-def createBackgroundSubtractorLSBP(mc = ..., nSamples = ..., LSBPRadius = ..., Tlower = ..., Tupper = ..., Tinc = ..., Tdec = ..., Rscale = ..., Rincdec = ..., noiseRemovalThresholdFacBG = ..., noiseRemovalThresholdFacFG = ..., LSBPthreshold = ..., minCount = ...) -> retval:
+def createBackgroundSubtractorLSBP(mc=..., nSamples=..., LSBPRadius=..., Tlower=..., Tupper=..., Tinc=..., Tdec=..., Rscale=..., Rincdec=..., noiseRemovalThresholdFacBG=..., noiseRemovalThresholdFacFG=..., LSBPthreshold=..., minCount=...) -> retval:
     """
     @brief Creates an instance of BackgroundSubtractorLSBP algorithm.
 
@@ -280,7 +272,7 @@ def createBackgroundSubtractorLSBP(mc = ..., nSamples = ..., LSBPRadius = ..., T
     @param minCount Minimal number of matches for sample to be considered as foreground.
     """
 
-def createBackgroundSubtractorMOG(history = ..., nmixtures = ..., backgroundRatio = ..., noiseSigma = ...) -> retval:
+def createBackgroundSubtractorMOG(history=..., nmixtures=..., backgroundRatio=..., noiseSigma=...) -> retval:
     """
     @brief Creates mixture-of-gaussian background subtractor
 
@@ -291,7 +283,7 @@ def createBackgroundSubtractorMOG(history = ..., nmixtures = ..., backgroundRati
     means some automatic value.
     """
 
-def createSyntheticSequenceGenerator(background, object, amplitude = ..., wavelength = ..., wavespeed = ..., objspeed = ...) -> retval:
+def createSyntheticSequenceGenerator(background, object, amplitude=..., wavelength=..., wavespeed=..., objspeed=...) -> retval:
     """
     @brief Creates an instance of SyntheticSequenceGenerator.
 

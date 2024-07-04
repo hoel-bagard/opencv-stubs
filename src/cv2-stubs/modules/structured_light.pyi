@@ -72,9 +72,8 @@ class GrayCodePattern(StructuredLightPattern):
         @param parameters GrayCodePattern parameters GrayCodePattern::Params: the width and the height of the projector.
         """
 
-
 class SinusoidalPattern(StructuredLightPattern):
-    def computeDataModulationTerm(self, patternImages, shadowMask, dataModulationTerm = ...) -> dataModulationTerm:
+    def computeDataModulationTerm(self, patternImages, shadowMask, dataModulationTerm=...) -> dataModulationTerm:
         """
         * @brief compute the data modulation term.
         * @param patternImages captured images with projected patterns.
@@ -82,7 +81,7 @@ class SinusoidalPattern(StructuredLightPattern):
         * @param shadowMask Mask used to discard shadow regions.
         """
 
-    def computePhaseMap(self, patternImages, wrappedPhaseMap = ..., shadowMask = ..., fundamental = ...) -> tuple[wrappedPhaseMap, shadowMask]:
+    def computePhaseMap(self, patternImages, wrappedPhaseMap=..., shadowMask=..., fundamental=...) -> tuple[wrappedPhaseMap, shadowMask]:
         """
         * @brief Compute a wrapped phase map from sinusoidal patterns.
         * @param patternImages Input data to compute the wrapped phase map.
@@ -91,7 +90,7 @@ class SinusoidalPattern(StructuredLightPattern):
         * @param fundamental Fundamental matrix used to compute epipolar lines and ease the matching step.
         """
 
-    def findProCamMatches(self, projUnwrappedPhaseMap, camUnwrappedPhaseMap, matches = ...) -> matches:
+    def findProCamMatches(self, projUnwrappedPhaseMap, camUnwrappedPhaseMap, matches=...) -> matches:
         """
         * @brief Find correspondences between the two devices thanks to unwrapped phase maps.
         * @param projUnwrappedPhaseMap Projector's unwrapped phase map.
@@ -99,7 +98,7 @@ class SinusoidalPattern(StructuredLightPattern):
         * @param matches Images used to display correspondences map.
         """
 
-    def unwrapPhaseMap(self, wrappedPhaseMap, camSize, unwrappedPhaseMap = ..., shadowMask = ...) -> unwrappedPhaseMap:
+    def unwrapPhaseMap(self, wrappedPhaseMap, camSize, unwrappedPhaseMap=..., shadowMask=...) -> unwrappedPhaseMap:
         """
         * @brief Unwrap the wrapped phase map to remove phase ambiguities.
         * @param wrappedPhaseMap The wrapped phase map computed from the pattern.
@@ -108,15 +107,14 @@ class SinusoidalPattern(StructuredLightPattern):
         * @param shadowMask Mask used to discard shadow regions.
         """
 
-    def create(self, parameters = ...) -> retval:
+    def create(self, parameters=...) -> retval:
         """
         * @brief Constructor.
         * @param parameters SinusoidalPattern parameters SinusoidalPattern::Params: width, height of the projector and patterns parameters. *
         """
 
-
 class StructuredLightPattern(cv2.Algorithm):
-    def decode(self, patternImages, disparityMap = ..., blackImages = ..., whiteImages = ..., flags = ...) -> tuple[retval, disparityMap]:
+    def decode(self, patternImages, disparityMap=..., blackImages=..., whiteImages=..., flags=...) -> tuple[retval, disparityMap]:
         """
         @brief Decodes the structured light pattern, generating a disparity map
 
@@ -127,13 +125,12 @@ class StructuredLightPattern(cv2.Algorithm):
         @param flags Flags setting decoding algorithms. Default: DECODE_3D_UNDERWORLD. @note All the images must be at the same resolution.
         """
 
-    def generate(self, patternImages = ...) -> tuple[retval, patternImages]:
+    def generate(self, patternImages=...) -> tuple[retval, patternImages]:
         """
         @brief Generates the structured light pattern to project.
 
         @param patternImages The generated pattern: a vector<Mat>, in which each image is a CV_8U Mat at projector's resolution.
         """
-
 
 def GrayCodePattern_create(width, height) -> retval:
     """
@@ -141,7 +138,7 @@ def GrayCodePattern_create(width, height) -> retval:
        @param parameters GrayCodePattern parameters GrayCodePattern::Params: the width and the height of the projector.
     """
 
-def SinusoidalPattern_create(parameters = ...) -> retval:
+def SinusoidalPattern_create(parameters=...) -> retval:
     """
     * @brief Constructor.
          * @param parameters SinusoidalPattern parameters SinusoidalPattern::Params: width, height of the projector and patterns parameters.

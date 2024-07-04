@@ -33,7 +33,6 @@ class MultiTracker(cv2.Algorithm):
         * \brief Returns a pointer to a new instance of MultiTracker
         """
 
-
 class Tracker(cv2.Algorithm):
     def init(self, image, boundingBox) -> retval:
         """
@@ -49,14 +48,12 @@ class Tracker(cv2.Algorithm):
         @param boundingBox The bounding box that represent the new target location, if true was returned, not modified otherwise  @return True means that target was located and false means that tracker cannot locate target in current frame. Note, that latter *does not* imply that tracker has failed, maybe target is indeed missing from the frame (say, out of sight)
         """
 
-
 class TrackerBoosting(Tracker):
     def create(self) -> retval:
         """
         @brief Constructor
         @param parameters BOOSTING parameters TrackerBoosting::Params
         """
-
 
 class TrackerCSRT(Tracker):
     def setInitialMask(self, mask) -> None:
@@ -68,14 +65,12 @@ class TrackerCSRT(Tracker):
         @param parameters CSRT parameters TrackerCSRT::Params
         """
 
-
 class TrackerKCF(Tracker):
     def create(self) -> retval:
         """
         @brief Constructor
         @param parameters KCF parameters TrackerKCF::Params
         """
-
 
 class TrackerMIL(Tracker):
     def create(self) -> retval:
@@ -84,13 +79,11 @@ class TrackerMIL(Tracker):
         @param parameters MIL parameters TrackerMIL::Params
         """
 
-
 class TrackerMOSSE(Tracker):
     def create(self) -> retval:
         """
         @brief Constructor
         """
-
 
 class TrackerMedianFlow(Tracker):
     def create(self) -> retval:
@@ -99,14 +92,12 @@ class TrackerMedianFlow(Tracker):
         @param parameters Median Flow parameters TrackerMedianFlow::Params
         """
 
-
 class TrackerTLD(Tracker):
     def create(self) -> retval:
         """
         @brief Constructor
         @param parameters TLD parameters TrackerTLD::Params
         """
-
 
 def MultiTracker_create() -> retval:
     """
@@ -156,5 +147,5 @@ def TrackerTLD_create() -> retval:
 
 def upgradeTrackingAPI(legacy_tracker) -> retval:
     """
-        .
+    .
     """

@@ -7,7 +7,7 @@ dists: TypeAlias = Any
 retval: TypeAlias = Any
 
 class Index(builtins.object):
-    def build(self, features, params, distType = ...) -> None:
+    def build(self, features, params, distType=...) -> None:
         """"""
 
     def getAlgorithm(self) -> retval:
@@ -16,13 +16,13 @@ class Index(builtins.object):
     def getDistance(self) -> retval:
         """"""
 
-    def knnSearch(self, query, knn, indices = ..., dists = ..., params = ...) -> tuple[indices, dists]:
+    def knnSearch(self, query, knn, indices=..., dists=..., params=...) -> tuple[indices, dists]:
         """"""
 
     def load(self, features, filename) -> retval:
         """"""
 
-    def radiusSearch(self, query, radius, maxResults, indices = ..., dists = ..., params = ...) -> tuple[retval, indices, dists]:
+    def radiusSearch(self, query, radius, maxResults, indices=..., dists=..., params=...) -> tuple[retval, indices, dists]:
         """"""
 
     def release(self) -> None:
@@ -30,7 +30,6 @@ class Index(builtins.object):
 
     def save(self, filename) -> None:
         """"""
-
 
 FLANN_INDEX_TYPE_16S: Final[int]
 FLANN_INDEX_TYPE_16U: Final[int]

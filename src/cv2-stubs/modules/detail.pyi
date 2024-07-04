@@ -20,25 +20,17 @@ cameras: TypeAlias = Any
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 
-class AffineBasedEstimator(Estimator):
-    ...
-
-
-class AffineBestOf2NearestMatcher(BestOf2NearestMatcher):
-    ...
-
+class AffineBasedEstimator(Estimator): ...
+class AffineBestOf2NearestMatcher(BestOf2NearestMatcher): ...
 
 class BestOf2NearestMatcher(FeaturesMatcher):
     def collectGarbage(self) -> None:
         """"""
 
-    def create(self, try_use_gpu = ..., match_conf = ..., num_matches_thresh1 = ..., num_matches_thresh2 = ..., matches_confindece_thresh = ...) -> retval:
+    def create(self, try_use_gpu=..., match_conf=..., num_matches_thresh1=..., num_matches_thresh2=..., matches_confindece_thresh=...) -> retval:
         """"""
 
-
-class BestOf2NearestRangeMatcher(BestOf2NearestMatcher):
-    ...
-
+class BestOf2NearestRangeMatcher(BestOf2NearestMatcher): ...
 
 class Blender(builtins.object):
     def blend(self, dst, dst_mask) -> tuple[dst, dst_mask]:
@@ -73,13 +65,10 @@ class Blender(builtins.object):
         @overload
         """
 
-    def createDefault(self, type, try_gpu = ...) -> retval:
+    def createDefault(self, type, try_gpu=...) -> retval:
         """"""
 
-
-class BlocksChannelsCompensator(BlocksCompensator):
-    ...
-
+class BlocksChannelsCompensator(BlocksCompensator): ...
 
 class BlocksCompensator(ExposureCompensator):
     def apply(self, index, corner, image, mask) -> image:
@@ -88,7 +77,7 @@ class BlocksCompensator(ExposureCompensator):
     def getBlockSize(self) -> retval:
         """"""
 
-    def getMatGains(self, umv = ...) -> umv:
+    def getMatGains(self, umv=...) -> umv:
         """"""
 
     def getNrFeeds(self) -> retval:
@@ -120,25 +109,18 @@ class BlocksCompensator(ExposureCompensator):
     def setSimilarityThreshold(self, similarity_threshold) -> None:
         """"""
 
-
 class BlocksGainCompensator(BlocksCompensator):
     def apply(self, index, corner, image, mask) -> image:
         """"""
 
-    def getMatGains(self, umv = ...) -> umv:
+    def getMatGains(self, umv=...) -> umv:
         """"""
 
     def setMatGains(self, umv) -> None:
         """"""
 
-
-class BundleAdjusterAffine(BundleAdjusterBase):
-    ...
-
-
-class BundleAdjusterAffinePartial(BundleAdjusterBase):
-    ...
-
+class BundleAdjusterAffine(BundleAdjusterBase): ...
+class BundleAdjusterAffinePartial(BundleAdjusterBase): ...
 
 class BundleAdjusterBase(Estimator):
     def confThresh(self) -> retval:
@@ -159,28 +141,18 @@ class BundleAdjusterBase(Estimator):
     def termCriteria(self) -> retval:
         """"""
 
-
-class BundleAdjusterRay(BundleAdjusterBase):
-    ...
-
-
-class BundleAdjusterReproj(BundleAdjusterBase):
-    ...
-
+class BundleAdjusterRay(BundleAdjusterBase): ...
+class BundleAdjusterReproj(BundleAdjusterBase): ...
 
 class CameraParams(builtins.object):
     def K(self) -> retval:
-        """
-
-
-        """
-
+        """ """
 
 class ChannelsCompensator(ExposureCompensator):
     def apply(self, index, corner, image, mask) -> image:
         """"""
 
-    def getMatGains(self, umv = ...) -> umv:
+    def getMatGains(self, umv=...) -> umv:
         """"""
 
     def getNrFeeds(self) -> retval:
@@ -198,11 +170,9 @@ class ChannelsCompensator(ExposureCompensator):
     def setSimilarityThreshold(self, similarity_threshold) -> None:
         """"""
 
-
 class DpSeamFinder(SeamFinder):
     def setCostFunction(self, val) -> None:
         """"""
-
 
 class Estimator(builtins.object):
     def apply(self, features, pairwise_matches, cameras) -> tuple[retval, cameras]:
@@ -213,7 +183,6 @@ class Estimator(builtins.object):
         @param pairwise_matches Pairwise matches of images
         @param cameras Estimated camera parameters @return True in case of success, false otherwise
         """
-
 
 class ExposureCompensator(builtins.object):
     def apply(self, index, corner, image, mask) -> image:
@@ -233,7 +202,7 @@ class ExposureCompensator(builtins.object):
         @param masks Image masks to update (second value in pair specifies the value which should be used to detect where image is)
         """
 
-    def getMatGains(self, arg1 = ...) -> arg1:
+    def getMatGains(self, arg1=...) -> arg1:
         """"""
 
     def getUpdateGain(self) -> retval:
@@ -247,7 +216,6 @@ class ExposureCompensator(builtins.object):
 
     def createDefault(self, type) -> retval:
         """"""
-
 
 class FeatherBlender(Blender):
     def blend(self, dst, dst_mask) -> tuple[dst, dst_mask]:
@@ -268,7 +236,6 @@ class FeatherBlender(Blender):
     def sharpness(self) -> retval:
         """"""
 
-
 class FeaturesMatcher(builtins.object):
     def apply(self, features1, features2) -> matches_info:
         """
@@ -278,7 +245,7 @@ class FeaturesMatcher(builtins.object):
         @param matches_info Found matches
         """
 
-    def apply2(self, features, mask = ...) -> pairwise_matches:
+    def apply2(self, features, mask=...) -> pairwise_matches:
         """
         @brief Performs images matching.
 
@@ -297,12 +264,11 @@ class FeaturesMatcher(builtins.object):
         @return True, if it's possible to use the same matcher instance in parallel, false otherwise
         """
 
-
 class GainCompensator(ExposureCompensator):
     def apply(self, index, corner, image, mask) -> image:
         """"""
 
-    def getMatGains(self, umv = ...) -> umv:
+    def getMatGains(self, umv=...) -> umv:
         """"""
 
     def getNrFeeds(self) -> retval:
@@ -320,20 +286,15 @@ class GainCompensator(ExposureCompensator):
     def setSimilarityThreshold(self, similarity_threshold) -> None:
         """"""
 
-
 class GraphCutSeamFinder(builtins.object):
     def find(self, src, corners, masks) -> masks:
         """"""
 
-
-class HomographyBasedEstimator(Estimator):
-    ...
-
+class HomographyBasedEstimator(Estimator): ...
 
 class ImageFeatures(builtins.object):
     def getKeypoints(self) -> retval:
         """"""
-
 
 class MatchesInfo(builtins.object):
     def getInliers(self) -> retval:
@@ -341,7 +302,6 @@ class MatchesInfo(builtins.object):
 
     def getMatches(self) -> retval:
         """"""
-
 
 class MultiBandBlender(Blender):
     def blend(self, dst, dst_mask) -> tuple[dst, dst_mask]:
@@ -359,35 +319,27 @@ class MultiBandBlender(Blender):
     def setNumBands(self, val) -> None:
         """"""
 
-
-class NoBundleAdjuster(BundleAdjusterBase):
-    ...
-
+class NoBundleAdjuster(BundleAdjusterBase): ...
 
 class NoExposureCompensator(ExposureCompensator):
     def apply(self, arg1, arg2, arg3, arg4) -> arg3:
         """"""
 
-    def getMatGains(self, umv = ...) -> umv:
+    def getMatGains(self, umv=...) -> umv:
         """"""
 
     def setMatGains(self, umv) -> None:
         """"""
 
-
 class NoSeamFinder(SeamFinder):
     def find(self, arg1, arg2, arg3) -> arg3:
         """"""
-
 
 class PairwiseSeamFinder(SeamFinder):
     def find(self, src, corners, masks) -> masks:
         """"""
 
-
-class ProjectorBase(builtins.object):
-    ...
-
+class ProjectorBase(builtins.object): ...
 
 class SeamFinder(builtins.object):
     def find(self, src, corners, masks) -> masks:
@@ -402,14 +354,12 @@ class SeamFinder(builtins.object):
     def createDefault(self, type) -> retval:
         """"""
 
-
 class SphericalProjector(ProjectorBase):
     def mapBackward(self, u, v, x, y) -> None:
         """"""
 
     def mapForward(self, x, y, u, v) -> None:
         """"""
-
 
 class Timelapser(builtins.object):
     def getDst(self) -> retval:
@@ -424,42 +374,38 @@ class Timelapser(builtins.object):
     def createDefault(self, type) -> retval:
         """"""
 
-
-class TimelapserCrop(Timelapser):
-    ...
-
+class TimelapserCrop(Timelapser): ...
 
 class VoronoiSeamFinder(PairwiseSeamFinder):
     def find(self, src, corners, masks) -> masks:
         """"""
 
+def BestOf2NearestMatcher_create(try_use_gpu=..., match_conf=..., num_matches_thresh1=..., num_matches_thresh2=..., matches_confindece_thresh=...) -> retval:
+    """
+    .
+    """
 
-def BestOf2NearestMatcher_create(try_use_gpu = ..., match_conf = ..., num_matches_thresh1 = ..., num_matches_thresh2 = ..., matches_confindece_thresh = ...) -> retval:
+def Blender_createDefault(type, try_gpu=...) -> retval:
     """
-        .
-    """
-
-def Blender_createDefault(type, try_gpu = ...) -> retval:
-    """
-        .
+    .
     """
 
 def ExposureCompensator_createDefault(type) -> retval:
     """
-        .
+    .
     """
 
 def SeamFinder_createDefault(type) -> retval:
     """
-        .
+    .
     """
 
 def Timelapser_createDefault(type) -> retval:
     """
-        .
+    .
     """
 
-def calibrateRotatingCamera(Hs, K = ...) -> tuple[retval, K]:
+def calibrateRotatingCamera(Hs, K=...) -> tuple[retval, K]:
     """
     @brief Estimates focal lengths for each given camera.
 
@@ -468,7 +414,7 @@ def calibrateRotatingCamera(Hs, K = ...) -> tuple[retval, K]:
     @param focals Estimated focal lengths for each camera.
     """
 
-def computeImageFeatures(featuresFinder, images, masks = ...) -> features:
+def computeImageFeatures(featuresFinder, images, masks=...) -> features:
     """
     @brief
 
@@ -478,7 +424,7 @@ def computeImageFeatures(featuresFinder, images, masks = ...) -> features:
     @param masks
     """
 
-def computeImageFeatures2(featuresFinder, image, mask = ...) -> features:
+def computeImageFeatures2(featuresFinder, image, mask=...) -> features:
     """
     @brief
 
@@ -490,17 +436,17 @@ def computeImageFeatures2(featuresFinder, image, mask = ...) -> features:
 
 def createLaplacePyr(img, num_levels, pyr) -> pyr:
     """
-        .
+    .
     """
 
 def createLaplacePyrGpu(img, num_levels, pyr) -> pyr:
     """
-        .
+    .
     """
 
 def createWeightMap(mask, sharpness, weight) -> weight:
     """
-        .
+    .
     """
 
 def focalsFromHomography(H, f0, f1, f0_ok, f1_ok) -> None:
@@ -520,68 +466,67 @@ def focalsFromHomography(H, f0, f1, f0_ok, f1_ok) -> None:
 
 def leaveBiggestComponent(features, pairwise_matches, conf_threshold) -> retval:
     """
-        .
+    .
     """
 
 def matchesGraphAsString(pathes, pairwise_matches, conf_threshold) -> retval:
     """
-        .
+    .
     """
 
 def normalizeUsingWeightMap(weight, src) -> src:
     """
-        .
+    .
     """
 
 def overlapRoi(tl1, tl2, sz1, sz2, roi) -> retval:
     """
-        .
+    .
     """
 
 def restoreImageFromLaplacePyr(pyr) -> pyr:
     """
-        .
+    .
     """
 
 def restoreImageFromLaplacePyrGpu(pyr) -> pyr:
     """
-        .
+    .
     """
 
 @overload
 def resultRoi(corners, images) -> retval:
-    """
-    """
+    """ """
 
 @overload
 def resultRoi(corners, images) -> retval:
     """
-        .
+    .
     """
 
 def resultRoiIntersection(corners, sizes) -> retval:
     """
-        .
+    .
     """
 
 def resultTl(corners) -> retval:
     """
-        .
+    .
     """
 
 def selectRandomSubset(count, size, subset) -> None:
     """
-        .
+    .
     """
 
 def stitchingLogLevel() -> retval:
     """
-        .
+    .
     """
 
 def strip(params) -> retval:
     """
-        .
+    .
     """
 
 def waveCorrect(rmats, kind) -> rmats:

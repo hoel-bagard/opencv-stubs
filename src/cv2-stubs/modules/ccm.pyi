@@ -23,7 +23,7 @@ class ColorCorrectionModel(builtins.object):
     def get_src_rgbl(self) -> retval:
         """"""
 
-    def infer(self, img, islinear = ...) -> retval:
+    def infer(self, img, islinear=...) -> retval:
         """
         @brief Infer using fitting ccm.
         @param img the input image.
@@ -128,7 +128,6 @@ class ColorCorrectionModel(builtins.object):
         @brief set WeightsList
         @param weights_list the list of weight of each color;\n default: empty array
         """
-
 
 CCM_3X3: Final[int]
 CCM_3x3: Final[int]

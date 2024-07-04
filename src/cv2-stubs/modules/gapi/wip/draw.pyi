@@ -3,37 +3,16 @@ from typing import Any, overload, TypeAlias
 
 retval: TypeAlias = Any
 
-
-class Circle(builtins.object):
-    ...
-
-
-class Image(builtins.object):
-    ...
-
-
-class Line(builtins.object):
-    ...
-
-
-class Mosaic(builtins.object):
-    ...
-
-
-class Poly(builtins.object):
-    ...
-
-
-class Rect(builtins.object):
-    ...
-
-
-class Text(builtins.object):
-    ...
-
+class Circle(builtins.object): ...
+class Image(builtins.object): ...
+class Line(builtins.object): ...
+class Mosaic(builtins.object): ...
+class Poly(builtins.object): ...
+class Rect(builtins.object): ...
+class Text(builtins.object): ...
 
 @overload
-def render(bgr, prims, args = ...) -> None:
+def render(bgr, prims, args=...) -> None:
     """
     @brief The function renders on the input image passed drawing primitivies
 
@@ -43,7 +22,7 @@ def render(bgr, prims, args = ...) -> None:
     """
 
 @overload
-def render(bgr, prims, args = ...) -> None:
+def render(bgr, prims, args=...) -> None:
     """
     @brief The function renders on two NV12 planes passed drawing primitivies
 

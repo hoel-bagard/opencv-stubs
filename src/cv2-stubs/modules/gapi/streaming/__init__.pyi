@@ -3,23 +3,21 @@ from typing import Any, Final, overload, TypeAlias
 
 retval: TypeAlias = Any
 
-class queue_capacity(builtins.object):
-    ...
-
+class queue_capacity(builtins.object): ...
 
 def desync(g) -> retval:
     """
-        .
+    .
     """
 
 def seqNo(arg1) -> retval:
     """
-        .
+    .
     """
 
 def seq_id(arg1) -> retval:
     """
-        .
+    .
     """
 
 @overload
@@ -47,7 +45,7 @@ def size(src) -> retval:
 
 def timestamp(arg1) -> retval:
     """
-        .
+    .
     """
 
 SYNC_POLICY_DONT_SYNC: Final[int]

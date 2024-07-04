@@ -19,7 +19,6 @@ class BufferPool(builtins.object):
     def getBuffer(self, size, type) -> retval:
         """"""
 
-
 class DeviceInfo(builtins.object):
     def ECCEnabled(self) -> retval:
         """
@@ -200,12 +199,11 @@ class DeviceInfo(builtins.object):
     def warpSize(self) -> retval:
         """"""
 
-
 class Event(builtins.object):
     def queryIfComplete(self) -> retval:
         """"""
 
-    def record(self, stream = ...) -> None:
+    def record(self, stream=...) -> None:
         """"""
 
     def waitForCompletion(self) -> None:
@@ -214,22 +212,17 @@ class Event(builtins.object):
     def elapsedTime(self, start, end) -> retval:
         """"""
 
-
-class GpuData(builtins.object):
-    ...
-
+class GpuData(builtins.object): ...
 
 class GpuMat(builtins.object):
-
     step: int = 0
 
-    class Allocator(builtins.object):
-        ...
+    class Allocator(builtins.object): ...
 
     def adjustROI(self, dtop, dbottom, dleft, dright) -> retval:
         """"""
 
-    def assignTo(self, m, type = ...) -> None:
+    def assignTo(self, m, type=...) -> None:
         """"""
 
     def channels(self) -> retval:
@@ -250,37 +243,37 @@ class GpuMat(builtins.object):
         """"""
 
     @overload
-    def convertTo(self, rtype, dst = ...) -> dst:
+    def convertTo(self, rtype, dst=...) -> dst:
         """"""
 
     @overload
-    def convertTo(self, rtype, stream, dst = ...) -> dst:
+    def convertTo(self, rtype, stream, dst=...) -> dst:
         """"""
 
     @overload
-    def convertTo(self, rtype, alpha, dst = ..., beta = ...) -> dst:
+    def convertTo(self, rtype, alpha, dst=..., beta=...) -> dst:
         """"""
 
     @overload
-    def convertTo(self, rtype, alpha, stream, dst = ...) -> dst:
+    def convertTo(self, rtype, alpha, stream, dst=...) -> dst:
         """"""
 
-    def convertTo(self, rtype, alpha, beta, stream, dst = ...) -> dst:
-        """"""
-
-    @overload
-    def copyTo(self, dst = ...) -> dst:
+    def convertTo(self, rtype, alpha, beta, stream, dst=...) -> dst:
         """"""
 
     @overload
-    def copyTo(self, stream, dst = ...) -> dst:
+    def copyTo(self, dst=...) -> dst:
         """"""
 
     @overload
-    def copyTo(self, mask, dst = ...) -> dst:
+    def copyTo(self, stream, dst=...) -> dst:
         """"""
 
-    def copyTo(self, mask, stream, dst = ...) -> dst:
+    @overload
+    def copyTo(self, mask, dst=...) -> dst:
+        """"""
+
+    def copyTo(self, mask, stream, dst=...) -> dst:
         """"""
 
     @overload
@@ -298,7 +291,7 @@ class GpuMat(builtins.object):
         """"""
 
     @overload
-    def download(self, dst = ...) -> dst:
+    def download(self, dst=...) -> dst:
         """
         @brief Performs data download from GpuMat (Blocking call)
 
@@ -307,7 +300,7 @@ class GpuMat(builtins.object):
         """
 
     @overload
-    def download(self, stream, dst = ...) -> dst:
+    def download(self, stream, dst=...) -> dst:
         """
         @brief Performs data download from GpuMat (Non-Blocking call)
 
@@ -336,7 +329,7 @@ class GpuMat(builtins.object):
     def release(self) -> None:
         """"""
 
-    def reshape(self, cn, rows = ...) -> retval:
+    def reshape(self, cn, rows=...) -> retval:
         """"""
 
     def row(self, y) -> retval:
@@ -407,10 +400,7 @@ class GpuMat(builtins.object):
     def setDefaultAllocator(self, allocator) -> None:
         """"""
 
-
-class GpuMatND(builtins.object):
-    ...
-
+class GpuMatND(builtins.object): ...
 
 class HostMem(builtins.object):
     def channels(self) -> retval:
@@ -447,7 +437,7 @@ class HostMem(builtins.object):
         eliminates an extra copy.
         """
 
-    def reshape(self, cn, rows = ...) -> retval:
+    def reshape(self, cn, rows=...) -> retval:
         """"""
 
     def size(self) -> retval:
@@ -462,7 +452,6 @@ class HostMem(builtins.object):
     def type(self) -> retval:
         """"""
 
-
 class SURF_CUDA(builtins.object):
     def defaultNorm(self) -> retval:
         """"""
@@ -470,7 +459,7 @@ class SURF_CUDA(builtins.object):
     def descriptorSize(self) -> retval:
         """"""
 
-    def detect(self, img, mask, keypoints = ...) -> keypoints:
+    def detect(self, img, mask, keypoints=...) -> keypoints:
         """
         @brief Finds the keypoints using fast hessian detector used in SURF
 
@@ -479,7 +468,7 @@ class SURF_CUDA(builtins.object):
         @param keypoints Detected keypoints.
         """
 
-    def detectWithDescriptors(self, img, mask, keypoints = ..., descriptors = ..., useProvidedKeypoints = ...) -> tuple[keypoints, descriptors]:
+    def detectWithDescriptors(self, img, mask, keypoints=..., descriptors=..., useProvidedKeypoints=...) -> tuple[keypoints, descriptors]:
         """
         @brief Finds the keypoints and computes their descriptors using fast hessian detector used in SURF
 
@@ -493,7 +482,7 @@ class SURF_CUDA(builtins.object):
     def downloadKeypoints(self, keypointsGPU) -> keypoints:
         """"""
 
-    def create(self, _hessianThreshold, _nOctaves = ..., _nOctaveLayers = ..., _extended = ..., _keypointsRatio = ..., _upright = ...) -> retval:
+    def create(self, _hessianThreshold, _nOctaves=..., _nOctaveLayers=..., _extended=..., _keypointsRatio=..., _upright=...) -> retval:
         """
         @param _hessianThreshold Threshold for hessian keypoint detector used in SURF.
         @param _nOctaves Number of pyramid octaves the keypoint detector will use.
@@ -502,7 +491,6 @@ class SURF_CUDA(builtins.object):
         @param _keypointsRatio
         @param _upright Up-right or rotated features flag (true - do not compute orientation of features; false - compute orientation).
         """
-
 
 class Stream(builtins.object):
     def cudaPtr(self) -> retval:
@@ -536,7 +524,6 @@ class Stream(builtins.object):
         See help(type) for accurate signature.
         """
 
-
 class TargetArchs(builtins.object):
     def has(self, major, minor) -> retval:
         """
@@ -565,24 +552,23 @@ class TargetArchs(builtins.object):
     def hasPtx(self, major, minor) -> retval:
         """"""
 
-
 def Event_elapsedTime(start, end) -> retval:
     """
-        .
+    .
     """
 
 def GpuMat_defaultAllocator() -> retval:
     """
-        .
+    .
     """
 
 def GpuMat_setDefaultAllocator(allocator) -> None:
     """
-        .
+    .
     """
 
 @overload
-def SURF_CUDA_create(_hessianThreshold, _nOctaves = ..., _nOctaveLayers = ..., _extended = ..., _keypointsRatio = ..., _upright = ...) -> retval:
+def SURF_CUDA_create(_hessianThreshold, _nOctaves=..., _nOctaveLayers=..., _extended=..., _keypointsRatio=..., _upright=...) -> retval:
     """
     @param _hessianThreshold Threshold for hessian keypoint detector used in SURF.
         @param _nOctaves Number of pyramid octaves the keypoint detector will use.
@@ -594,9 +580,8 @@ def SURF_CUDA_create(_hessianThreshold, _nOctaves = ..., _nOctaveLayers = ..., _
     """
 
 @overload
-def SURF_CUDA_create(_hessianThreshold, _nOctaves = ..., _nOctaveLayers = ..., _extended = ..., _keypointsRatio = ..., _upright = ...) -> retval:
-    """
-    """
+def SURF_CUDA_create(_hessianThreshold, _nOctaves=..., _nOctaveLayers=..., _extended=..., _keypointsRatio=..., _upright=...) -> retval:
+    """ """
 
 @overload
 def Stream_Null() -> retval:
@@ -608,23 +593,20 @@ def Stream_Null() -> retval:
 def Stream_Null() -> retval:
     """
 
-        @note Callbacks must not make any CUDA API calls. Callbacks must not perform any synchronization
+    @note Callbacks must not make any CUDA API calls. Callbacks must not perform any synchronization
     """
 
 @overload
 def Stream_Null() -> retval:
-    """
-    """
+    """ """
 
 @overload
 def Stream_Null() -> retval:
-    """
-    """
+    """ """
 
 @overload
 def Stream_Null() -> retval:
-    """
-    """
+    """ """
 
 @overload
 def TargetArchs_has(major, minor) -> retval:
@@ -636,41 +618,41 @@ def TargetArchs_has(major, minor) -> retval:
 def TargetArchs_has(major, minor) -> retval:
     """
 
-        @param major Major compute capability version.
-        @param minor Minor compute capability version.
+    @param major Major compute capability version.
+    @param minor Minor compute capability version.
     """
 
 def TargetArchs_hasBin(major, minor) -> retval:
     """
-        .
+    .
     """
 
 def TargetArchs_hasEqualOrGreater(major, minor) -> retval:
     """
-        .
+    .
     """
 
 def TargetArchs_hasEqualOrGreaterBin(major, minor) -> retval:
     """
-        .
+    .
     """
 
 def TargetArchs_hasEqualOrGreaterPtx(major, minor) -> retval:
     """
-        .
+    .
     """
 
 def TargetArchs_hasEqualOrLessPtx(major, minor) -> retval:
     """
-        .
+    .
     """
 
 def TargetArchs_hasPtx(major, minor) -> retval:
     """
-        .
+    .
     """
 
-def createContinuous(rows, cols, type, arr = ...) -> arr:
+def createContinuous(rows, cols, type, arr=...) -> arr:
     """
     @brief Creates a continuous matrix.
 
@@ -684,7 +666,7 @@ def createContinuous(rows, cols, type, arr = ...) -> arr:
     end of each row.
     """
 
-def ensureSizeIsEnough(rows, cols, type, arr = ...) -> arr:
+def ensureSizeIsEnough(rows, cols, type, arr=...) -> arr:
     """
     @brief Ensures that the size of a matrix is big enough and the matrix has a proper type.
 
@@ -696,7 +678,7 @@ def ensureSizeIsEnough(rows, cols, type, arr = ...) -> arr:
     The function does not reallocate memory if the matrix has proper attributes already.
     """
 
-def fastNlMeansDenoising(src, h, dst = ..., search_window = ..., block_size = ..., stream = ...) -> dst:
+def fastNlMeansDenoising(src, h, dst=..., search_window=..., block_size=..., stream=...) -> dst:
     """
     @brief Perform image denoising using Non-local Means Denoising algorithm
     <http://www.ipol.im/pub/algo/bcm_non_local_means_denoising> with several computational
@@ -720,7 +702,7 @@ def fastNlMeansDenoising(src, h, dst = ..., search_window = ..., block_size = ..
        fastNlMeansDenoising
     """
 
-def fastNlMeansDenoisingColored(src, h_luminance, photo_render, dst = ..., search_window = ..., block_size = ..., stream = ...) -> dst:
+def fastNlMeansDenoisingColored(src, h_luminance, photo_render, dst=..., search_window=..., block_size=..., stream=...) -> dst:
     """
     @brief Modification of fastNlMeansDenoising function for colored images
 
@@ -758,7 +740,7 @@ def getDevice() -> retval:
     @brief Returns the current device index set by cuda::setDevice or initialized by default.
     """
 
-def nonLocalMeans(src, h, dst = ..., search_window = ..., block_size = ..., borderMode = ..., stream = ...) -> dst:
+def nonLocalMeans(src, h, dst=..., search_window=..., block_size=..., borderMode=..., stream=...) -> dst:
     """
     @brief Performs pure non local means denoising without any simplification, and thus it is not fast.
 
@@ -777,12 +759,12 @@ def nonLocalMeans(src, h, dst = ..., search_window = ..., block_size = ..., bord
 
 def printCudaDeviceInfo(device) -> None:
     """
-        .
+    .
     """
 
 def printShortCudaDeviceInfo(device) -> None:
     """
-        .
+    .
     """
 
 def registerPageLocked(m) -> None:
@@ -802,12 +784,12 @@ def resetDevice() -> None:
 
 def setBufferPoolConfig(deviceId, stackSize, stackCount) -> None:
     """
-        .
+    .
     """
 
 def setBufferPoolUsage(on) -> None:
     """
-        .
+    .
     """
 
 def setDevice(device) -> None:

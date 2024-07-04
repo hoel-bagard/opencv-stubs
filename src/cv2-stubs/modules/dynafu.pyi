@@ -8,7 +8,7 @@ image: TypeAlias = Any
 retval: TypeAlias = Any
 
 class DynaFu(builtins.object):
-    def getCloud(self, points = ..., normals = ...) -> tuple[points, normals]:
+    def getCloud(self, points=..., normals=...) -> tuple[points, normals]:
         """
         @brief Gets points and normals of current 3d mesh
 
@@ -19,14 +19,14 @@ class DynaFu(builtins.object):
         @param normals vector of normals which are 4-float vectors
         """
 
-    def getNormals(self, points, normals = ...) -> normals:
+    def getNormals(self, points, normals=...) -> normals:
         """
         @brief Calculates normals for given points
         @param points input vector of points which are 4-float vectors
         @param normals output vector of corresponding normals which are 4-float vectors
         """
 
-    def getPoints(self, points = ...) -> points:
+    def getPoints(self, points=...) -> points:
         """
         @brief Gets points of current 3d mesh
 
@@ -35,7 +35,7 @@ class DynaFu(builtins.object):
         @param points vector of points which are 4-float vectors
         """
 
-    def render(self, image = ..., cameraPose = ...) -> image:
+    def render(self, image=..., cameraPose=...) -> image:
         """
         @brief Renders a volume into an image
 
@@ -66,8 +66,7 @@ class DynaFu(builtins.object):
     def create(self, _params) -> retval:
         """"""
 
-
 def DynaFu_create(_params) -> retval:
     """
-        .
+    .
     """

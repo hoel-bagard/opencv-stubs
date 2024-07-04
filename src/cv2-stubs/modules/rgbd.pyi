@@ -18,7 +18,7 @@ dst: TypeAlias = Any
 retval: TypeAlias = Any
 
 class DepthCleaner(cv2.Algorithm):
-    def apply(self, points, depth = ...) -> depth:
+    def apply(self, points, depth=...) -> depth:
         """
         Given a set of 3d points in a depth image, compute the normals at each point.
         * @param points a rows x cols x 3 matrix of CV_32F/CV64F or a rows x cols x 1 CV_U16S
@@ -49,14 +49,13 @@ class DepthCleaner(cv2.Algorithm):
     def setWindowSize(self, val) -> None:
         """"""
 
-    def create(self, depth, window_size = ..., method = ...) -> retval:
+    def create(self, depth, window_size=..., method=...) -> retval:
         """
         Constructor
         * @param depth the depth of the normals (only CV_32F or CV_64F)
         * @param window_size the window size to compute the normals: can only be 1,3,5 or 7
         * @param method one of the methods to use: RGBD_NORMALS_METHOD_SRI, RGBD_NORMALS_METHOD_FALS
         """
-
 
 class FastICPOdometry(Odometry):
     def getAngleThreshold(self) -> retval:
@@ -110,7 +109,7 @@ class FastICPOdometry(Odometry):
     def setTransformType(self, val) -> None:
         """"""
 
-    def create(self, cameraMatrix, maxDistDiff = ..., angleThreshold = ..., sigmaDepth = ..., sigmaSpatial = ..., kernelSize = ..., iterCounts = ...) -> retval:
+    def create(self, cameraMatrix, maxDistDiff=..., angleThreshold=..., sigmaDepth=..., sigmaSpatial=..., kernelSize=..., iterCounts=...) -> retval:
         """
         Constructor.
         * @param cameraMatrix Camera matrix
@@ -121,7 +120,6 @@ class FastICPOdometry(Odometry):
         * @param kernelSize Kernel size in pixels for bilateral smooth
         * @param iterCounts Count of iterations on each pyramid level
         """
-
 
 class ICPOdometry(Odometry):
     def getCameraMatrix(self) -> retval:
@@ -184,7 +182,7 @@ class ICPOdometry(Odometry):
     def setTransformType(self, val) -> None:
         """"""
 
-    def create(self, cameraMatrix = ..., minDepth = ..., maxDepth = ..., maxDepthDiff = ..., maxPointsPart = ..., iterCounts = ..., transformType = ...) -> retval:
+    def create(self, cameraMatrix=..., minDepth=..., maxDepth=..., maxDepthDiff=..., maxPointsPart=..., iterCounts=..., transformType=...) -> retval:
         """
         Constructor.
         * @param cameraMatrix Camera matrix
@@ -195,7 +193,6 @@ class ICPOdometry(Odometry):
         * @param iterCounts Count of iterations on each pyramid level.
         * @param transformType Class of trasformation
         """
-
 
 class Odometry(cv2.Algorithm):
     def DEFAULT_MAX_DEPTH(self) -> retval:
@@ -214,12 +211,9 @@ class Odometry(cv2.Algorithm):
         """"""
 
     def DEFAULT_MIN_DEPTH(self) -> retval:
-        """
+        """ """
 
-
-        """
-
-    def compute(self, srcImage, srcDepth, srcMask, dstImage, dstDepth, dstMask, Rt = ..., initRt = ...) -> tuple[retval, Rt]:
+    def compute(self, srcImage, srcDepth, srcMask, dstImage, dstDepth, dstMask, Rt=..., initRt=...) -> tuple[retval, Rt]:
         """
         Method to compute a transformation from the source frame to the destination one.
         * Some odometry algorithms do not used some data of frames (eg. ICP does not use images).
@@ -237,7 +231,7 @@ class Odometry(cv2.Algorithm):
         * @param initRt Initial transformation from the source frame to the destination one (optional)
         """
 
-    def compute2(self, srcFrame, dstFrame, Rt = ..., initRt = ...) -> tuple[retval, Rt]:
+    def compute2(self, srcFrame, dstFrame, Rt=..., initRt=...) -> tuple[retval, Rt]:
         """
         One more method to compute a transformation from the source frame to the destination one.
         * It is designed to save on computing the frame data (image pyramids, normals, etc.).
@@ -275,7 +269,6 @@ class Odometry(cv2.Algorithm):
     def create(self, odometryType) -> retval:
         """"""
 
-
 class OdometryFrame(RgbdFrame):
     def release(self) -> None:
         """"""
@@ -283,17 +276,15 @@ class OdometryFrame(RgbdFrame):
     def releasePyramids(self) -> None:
         """"""
 
-    def create(self, image = ..., depth = ..., mask = ..., normals = ..., ID = ...) -> retval:
+    def create(self, image=..., depth=..., mask=..., normals=..., ID=...) -> retval:
         """"""
-
 
 class RgbdFrame(builtins.object):
     def release(self) -> None:
         """"""
 
-    def create(self, image = ..., depth = ..., mask = ..., normals = ..., ID = ...) -> retval:
+    def create(self, image=..., depth=..., mask=..., normals=..., ID=...) -> retval:
         """"""
-
 
 class RgbdICPOdometry(Odometry):
     def getCameraMatrix(self) -> retval:
@@ -362,7 +353,7 @@ class RgbdICPOdometry(Odometry):
     def setTransformType(self, val) -> None:
         """"""
 
-    def create(self, cameraMatrix = ..., minDepth = ..., maxDepth = ..., maxDepthDiff = ..., maxPointsPart = ..., iterCounts = ..., minGradientMagnitudes = ..., transformType = ...) -> retval:
+    def create(self, cameraMatrix=..., minDepth=..., maxDepth=..., maxDepthDiff=..., maxPointsPart=..., iterCounts=..., minGradientMagnitudes=..., transformType=...) -> retval:
         """
         Constructor.
         * @param cameraMatrix Camera matrix
@@ -375,9 +366,8 @@ class RgbdICPOdometry(Odometry):
         * @param transformType Class of trasformation
         """
 
-
 class RgbdNormals(cv2.Algorithm):
-    def apply(self, points, normals = ...) -> normals:
+    def apply(self, points, normals=...) -> normals:
         """
         Given a set of 3d points in a depth image, compute the normals at each point.
         * @param points a rows x cols x 3 matrix of CV_32F/CV64F or a rows x cols x 1 CV_U16S
@@ -426,7 +416,7 @@ class RgbdNormals(cv2.Algorithm):
     def setWindowSize(self, val) -> None:
         """"""
 
-    def create(self, rows, cols, depth, K, window_size = ..., method = ...) -> retval:
+    def create(self, rows, cols, depth, K, window_size=..., method=...) -> retval:
         """
         Constructor
         * @param rows the number of rows of the depth image normals will be computed on
@@ -436,7 +426,6 @@ class RgbdNormals(cv2.Algorithm):
         * @param window_size the window size to compute the normals: can only be 1,3,5 or 7
         * @param method one of the methods to use: RGBD_NORMALS_METHOD_SRI, RGBD_NORMALS_METHOD_FALS
         """
-
 
 class RgbdOdometry(Odometry):
     def getCameraMatrix(self) -> retval:
@@ -502,7 +491,7 @@ class RgbdOdometry(Odometry):
     def setTransformType(self, val) -> None:
         """"""
 
-    def create(self, cameraMatrix = ..., minDepth = ..., maxDepth = ..., maxDepthDiff = ..., iterCounts = ..., minGradientMagnitudes = ..., maxPointsPart = ..., transformType = ...) -> retval:
+    def create(self, cameraMatrix=..., minDepth=..., maxDepth=..., maxDepthDiff=..., iterCounts=..., minGradientMagnitudes=..., maxPointsPart=..., transformType=...) -> retval:
         """
         Constructor.
         * @param cameraMatrix Camera matrix
@@ -515,10 +504,9 @@ class RgbdOdometry(Odometry):
         * @param transformType Class of transformation
         """
 
-
 class RgbdPlane(cv2.Algorithm):
     @overload
-    def apply(self, points3d, normals, mask = ..., plane_coefficients = ...) -> tuple[mask, plane_coefficients]:
+    def apply(self, points3d, normals, mask=..., plane_coefficients=...) -> tuple[mask, plane_coefficients]:
         """
         Find The planes in a depth image
         * @param points3d the 3d points organized like the depth image: rows x cols with 3 channels
@@ -528,7 +516,7 @@ class RgbdPlane(cv2.Algorithm):
         """
 
     @overload
-    def apply(self, points3d, mask = ..., plane_coefficients = ...) -> tuple[mask, plane_coefficients]:
+    def apply(self, points3d, mask=..., plane_coefficients=...) -> tuple[mask, plane_coefficients]:
         """
         Find The planes in a depth image but without doing a normal check, which is faster but less accurate
         * @param points3d the 3d points organized like the depth image: rows x cols with 3 channels
@@ -578,7 +566,7 @@ class RgbdPlane(cv2.Algorithm):
     def setThreshold(self, val) -> None:
         """"""
 
-    def create(self, method, block_size, min_size, threshold, sensor_error_a = ..., sensor_error_b = ..., sensor_error_c = ...) -> retval:
+    def create(self, method, block_size, min_size, threshold, sensor_error_a=..., sensor_error_b=..., sensor_error_c=...) -> retval:
         """
         Constructor
         * @param block_size The size of the blocks to look at for a stable MSE
@@ -590,8 +578,7 @@ class RgbdPlane(cv2.Algorithm):
         * @param method The method to use to compute the planes.
         """
 
-
-def DepthCleaner_create(depth, window_size = ..., method = ...) -> retval:
+def DepthCleaner_create(depth, window_size=..., method=...) -> retval:
     """
     Constructor
          * @param depth the depth of the normals (only CV_32F or CV_64F)
@@ -599,7 +586,7 @@ def DepthCleaner_create(depth, window_size = ..., method = ...) -> retval:
          * @param method one of the methods to use: RGBD_NORMALS_METHOD_SRI, RGBD_NORMALS_METHOD_FALS
     """
 
-def FastICPOdometry_create(cameraMatrix, maxDistDiff = ..., angleThreshold = ..., sigmaDepth = ..., sigmaSpatial = ..., kernelSize = ..., iterCounts = ...) -> retval:
+def FastICPOdometry_create(cameraMatrix, maxDistDiff=..., angleThreshold=..., sigmaDepth=..., sigmaSpatial=..., kernelSize=..., iterCounts=...) -> retval:
     """
     Constructor.
          * @param cameraMatrix Camera matrix
@@ -613,7 +600,7 @@ def FastICPOdometry_create(cameraMatrix, maxDistDiff = ..., angleThreshold = ...
          * @param iterCounts Count of iterations on each pyramid level
     """
 
-def ICPOdometry_create(cameraMatrix = ..., minDepth = ..., maxDepth = ..., maxDepthDiff = ..., maxPointsPart = ..., iterCounts = ..., transformType = ...) -> retval:
+def ICPOdometry_create(cameraMatrix=..., minDepth=..., maxDepth=..., maxDepthDiff=..., maxPointsPart=..., iterCounts=..., transformType=...) -> retval:
     """
     Constructor.
          * @param cameraMatrix Camera matrix
@@ -626,22 +613,22 @@ def ICPOdometry_create(cameraMatrix = ..., minDepth = ..., maxDepth = ..., maxDe
          * @param transformType Class of trasformation
     """
 
-def OdometryFrame_create(image = ..., depth = ..., mask = ..., normals = ..., ID = ...) -> retval:
+def OdometryFrame_create(image=..., depth=..., mask=..., normals=..., ID=...) -> retval:
     """
-        .
+    .
     """
 
 def Odometry_create(odometryType) -> retval:
     """
-        .
+    .
     """
 
-def RgbdFrame_create(image = ..., depth = ..., mask = ..., normals = ..., ID = ...) -> retval:
+def RgbdFrame_create(image=..., depth=..., mask=..., normals=..., ID=...) -> retval:
     """
-        .
+    .
     """
 
-def RgbdICPOdometry_create(cameraMatrix = ..., minDepth = ..., maxDepth = ..., maxDepthDiff = ..., maxPointsPart = ..., iterCounts = ..., minGradientMagnitudes = ..., transformType = ...) -> retval:
+def RgbdICPOdometry_create(cameraMatrix=..., minDepth=..., maxDepth=..., maxDepthDiff=..., maxPointsPart=..., iterCounts=..., minGradientMagnitudes=..., transformType=...) -> retval:
     """
     Constructor.
          * @param cameraMatrix Camera matrix
@@ -656,7 +643,7 @@ def RgbdICPOdometry_create(cameraMatrix = ..., minDepth = ..., maxDepth = ..., m
          * @param transformType Class of trasformation
     """
 
-def RgbdNormals_create(rows, cols, depth, K, window_size = ..., method = ...) -> retval:
+def RgbdNormals_create(rows, cols, depth, K, window_size=..., method=...) -> retval:
     """
     Constructor
          * @param rows the number of rows of the depth image normals will be computed on
@@ -667,7 +654,7 @@ def RgbdNormals_create(rows, cols, depth, K, window_size = ..., method = ...) ->
          * @param method one of the methods to use: RGBD_NORMALS_METHOD_SRI, RGBD_NORMALS_METHOD_FALS
     """
 
-def RgbdOdometry_create(cameraMatrix = ..., minDepth = ..., maxDepth = ..., maxDepthDiff = ..., iterCounts = ..., minGradientMagnitudes = ..., maxPointsPart = ..., transformType = ...) -> retval:
+def RgbdOdometry_create(cameraMatrix=..., minDepth=..., maxDepth=..., maxDepthDiff=..., iterCounts=..., minGradientMagnitudes=..., maxPointsPart=..., transformType=...) -> retval:
     """
     Constructor.
          * @param cameraMatrix Camera matrix
@@ -682,7 +669,7 @@ def RgbdOdometry_create(cameraMatrix = ..., minDepth = ..., maxDepth = ..., maxD
          * @param transformType Class of transformation
     """
 
-def RgbdPlane_create(method, block_size, min_size, threshold, sensor_error_a = ..., sensor_error_b = ..., sensor_error_c = ...) -> retval:
+def RgbdPlane_create(method, block_size, min_size, threshold, sensor_error_a=..., sensor_error_b=..., sensor_error_c=...) -> retval:
     """
     Constructor
          * @param block_size The size of the blocks to look at for a stable MSE
@@ -694,7 +681,7 @@ def RgbdPlane_create(method, block_size, min_size, threshold, sensor_error_a = .
          * @param method The method to use to compute the planes.
     """
 
-def depthTo3d(depth, K, points3d = ..., mask = ...) -> points3d:
+def depthTo3d(depth, K, points3d=..., mask=...) -> points3d:
     """
     Converts a depth image to an organized set of 3d points.
        * The coordinate system is x pointing left, y down and z away from the camera
@@ -706,7 +693,7 @@ def depthTo3d(depth, K, points3d = ..., mask = ...) -> points3d:
        * @param mask the mask of the points to consider (can be empty)
     """
 
-def depthTo3dSparse(depth, in_K, in_points, points3d = ...) -> points3d:
+def depthTo3dSparse(depth, in_K, in_points, points3d=...) -> points3d:
     """
     * @param depth the depth image
        * @param in_K
@@ -714,7 +701,7 @@ def depthTo3dSparse(depth, in_K, in_points, points3d = ...) -> points3d:
        * @param points3d the resulting 3d points
     """
 
-def registerDepth(unregisteredCameraMatrix, registeredCameraMatrix, registeredDistCoeffs, Rt, unregisteredDepth, outputImagePlaneSize, registeredDepth = ..., depthDilation = ...) -> registeredDepth:
+def registerDepth(unregisteredCameraMatrix, registeredCameraMatrix, registeredDistCoeffs, Rt, unregisteredDepth, outputImagePlaneSize, registeredDepth=..., depthDilation=...) -> registeredDepth:
     """
     Registers depth data to an external camera
        * Registration is performed by creating a depth cloud, transforming the cloud by
@@ -735,7 +722,7 @@ def registerDepth(unregisteredCameraMatrix, registeredCameraMatrix, registeredDi
        * @param depthDilation whether or not the depth is dilated to avoid holes and occlusion errors (optional)
     """
 
-def rescaleDepth(in_, depth, out = ..., depth_factor = ...) -> out:
+def rescaleDepth(in_, depth, out=..., depth_factor=...) -> out:
     """
     If the input image is of type CV_16UC1 (like the Kinect one), the image is converted to floats, divided
        * by depth_factor to get a depth in meters, and the values 0 are converted to std::numeric_limits<float>::quiet_NaN()
@@ -747,7 +734,7 @@ def rescaleDepth(in_, depth, out = ..., depth_factor = ...) -> out:
        * @param depth_factor (optional) factor by which depth is converted to distance (by default = 1000.0 for Kinect sensor)
     """
 
-def warpFrame(image, depth, mask, Rt, cameraMatrix, distCoeff, warpedImage = ..., warpedDepth = ..., warpedMask = ...) -> tuple[warpedImage, warpedDepth, warpedMask]:
+def warpFrame(image, depth, mask, Rt, cameraMatrix, distCoeff, warpedImage=..., warpedDepth=..., warpedMask=...) -> tuple[warpedImage, warpedDepth, warpedMask]:
     """
     Warp the image: compute 3d points from the depth, transform them using given transformation,
        * then project color point cloud to an image plane.

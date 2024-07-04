@@ -21,7 +21,6 @@ class ColorGradient(Modality):
         *                         larger than this.
         """
 
-
 class DepthNormal(Modality):
     def create(self, distance_threshold, difference_threshold, num_features, extract_threshold) -> retval:
         """
@@ -34,7 +33,6 @@ class DepthNormal(Modality):
         * \param extract_threshold    Consider as candidate feature only if there are no differing
         *                             orientations within a distance of extract_threshold.
         """
-
 
 class Detector(builtins.object):
     def addSyntheticTemplate(self, templates, class_id) -> retval:
@@ -78,7 +76,7 @@ class Detector(builtins.object):
         * (L0, L1), the order is (GradientL0, NormalL0, GradientL1, NormalL1).
         """
 
-    def match(self, sources, threshold, class_ids = ..., quantized_images = ..., masks = ...) -> tuple[matches, quantized_images]:
+    def match(self, sources, threshold, class_ids=..., quantized_images=..., masks=...) -> tuple[matches, quantized_images]:
         """
         * \brief Detect objects by template matching.
         *
@@ -114,26 +112,20 @@ class Detector(builtins.object):
     def read(self, fn) -> None:
         """"""
 
-    def readClasses(self, class_ids, format = ...) -> None:
+    def readClasses(self, class_ids, format=...) -> None:
         """"""
 
-    def writeClasses(self, format = ...) -> None:
+    def writeClasses(self, format=...) -> None:
         """"""
 
-
-class Feature(builtins.object):
-    ...
-
-
-class Match(builtins.object):
-    ...
-
+class Feature(builtins.object): ...
+class Match(builtins.object): ...
 
 class Modality(builtins.object):
     def name(self) -> retval:
         """"""
 
-    def process(self, src, mask = ...) -> retval:
+    def process(self, src, mask=...) -> retval:
         """
         * \brief Form a quantized image pyramid from a source image.
         *
@@ -161,7 +153,6 @@ class Modality(builtins.object):
         * \brief Load a modality from file.
         """
 
-
 class QuantizedPyramid(builtins.object):
     def extractTemplate(self) -> tuple[retval, templ]:
         """
@@ -177,7 +168,7 @@ class QuantizedPyramid(builtins.object):
         * \todo Allow pyramid scale factor other than 2
         """
 
-    def quantize(self, dst = ...) -> dst:
+    def quantize(self, dst=...) -> dst:
         """
         * \brief Compute quantized image at current pyramid level for online detection.
         *
@@ -185,10 +176,7 @@ class QuantizedPyramid(builtins.object):
         *                 representing its classification.
         """
 
-
-class Template(builtins.object):
-    ...
-
+class Template(builtins.object): ...
 
 def ColorGradient_create(weak_threshold, num_features, strong_threshold) -> retval:
     """
@@ -228,12 +216,12 @@ def Modality_create(modality_type) -> retval:
     * \brief Load a modality from file.
     """
 
-def colormap(quantized, dst = ...) -> dst:
+def colormap(quantized, dst=...) -> dst:
     """
     * \brief Debug function to colormap a quantized image for viewing.
     """
 
-def drawFeatures(img, templates, tl, size = ...) -> img:
+def drawFeatures(img, templates, tl, size=...) -> img:
     """
     * \brief Debug function to draw linemod features
     @param img

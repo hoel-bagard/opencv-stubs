@@ -18,44 +18,40 @@ rvec: TypeAlias = Any
 retval: TypeAlias = Any
 
 class GOSTracker(Tracker):
-    def create(self, pts3d, tris, histBins = ..., sobelThesh = ...) -> retval:
+    def create(self, pts3d, tris, histBins=..., sobelThesh=...) -> retval:
         """"""
-
 
 class OLSTracker(Tracker):
-    def create(self, pts3d, tris, histBins = ..., sobelThesh = ...) -> retval:
+    def create(self, pts3d, tris, histBins=..., sobelThesh=...) -> retval:
         """"""
-
 
 class Rapid(Tracker):
     def create(self, pts3d, tris) -> retval:
         """"""
 
-
 class Tracker(cv2.Algorithm):
     def clearState(self) -> None:
         """"""
 
-    def compute(self, img, num, len, K, rvec, tvec, termcrit = ...) -> tuple[retval, rvec, tvec]:
+    def compute(self, img, num, len, K, rvec, tvec, termcrit=...) -> tuple[retval, rvec, tvec]:
         """"""
 
+def GOSTracker_create(pts3d, tris, histBins=..., sobelThesh=...) -> retval:
+    """
+    .
+    """
 
-def GOSTracker_create(pts3d, tris, histBins = ..., sobelThesh = ...) -> retval:
+def OLSTracker_create(pts3d, tris, histBins=..., sobelThesh=...) -> retval:
     """
-        .
-    """
-
-def OLSTracker_create(pts3d, tris, histBins = ..., sobelThesh = ...) -> retval:
-    """
-        .
+    .
     """
 
 def Rapid_create(pts3d, tris) -> retval:
     """
-        .
+    .
     """
 
-def convertCorrespondencies(cols, srcLocations, pts2d = ..., pts3d = ..., mask = ...) -> tuple[pts2d, pts3d]:
+def convertCorrespondencies(cols, srcLocations, pts2d=..., pts3d=..., mask=...) -> tuple[pts2d, pts3d]:
     """
     * Collect corresponding 2d and 3d points based on correspondencies and mask
     @param cols correspondence-position per line in line-bundle-space
@@ -65,7 +61,7 @@ def convertCorrespondencies(cols, srcLocations, pts2d = ..., pts3d = ..., mask =
     @param mask mask containing non-zero values for the elements to be retained
     """
 
-def drawCorrespondencies(bundle, cols, colors = ...) -> bundle:
+def drawCorrespondencies(bundle, cols, colors=...) -> bundle:
     """
     * Debug draw markers of matched correspondences onto a lineBundle
     @param bundle the lineBundle
@@ -81,7 +77,7 @@ def drawSearchLines(img, locations, color) -> img:
     @param color the line color
     """
 
-def drawWireframe(img, pts2d, tris, color, type = ..., cullBackface = ...) -> img:
+def drawWireframe(img, pts2d, tris, color, type=..., cullBackface=...) -> img:
     """
     * Draw a wireframe of a triangle mesh
     @param img the output image
@@ -92,7 +88,7 @@ def drawWireframe(img, pts2d, tris, color, type = ..., cullBackface = ...) -> im
     @param cullBackface enable back-face culling based on CCW order
     """
 
-def extractControlPoints(num, len, pts3d, rvec, tvec, K, imsize, tris, ctl2d = ..., ctl3d = ...) -> tuple[ctl2d, ctl3d]:
+def extractControlPoints(num, len, pts3d, rvec, tvec, K, imsize, tris, ctl2d=..., ctl3d=...) -> tuple[ctl2d, ctl3d]:
     """
     * Extract control points from the projected silhouette of a mesh
 
@@ -109,7 +105,7 @@ def extractControlPoints(num, len, pts3d, rvec, tvec, K, imsize, tris, ctl2d = .
     @param ctl3d matching 3D points of the mesh
     """
 
-def extractLineBundle(len, ctl2d, img, bundle = ..., srcLocations = ...) -> tuple[bundle, srcLocations]:
+def extractLineBundle(len, ctl2d, img, bundle=..., srcLocations=...) -> tuple[bundle, srcLocations]:
     """
     * Extract the line bundle from an image
     @param len the search radius. The bundle will have `2*len + 1` columns.
@@ -120,7 +116,7 @@ def extractLineBundle(len, ctl2d, img, bundle = ..., srcLocations = ...) -> tupl
     @param srcLocations the source pixel locations of @p bundle in @p img as CV_16SC2
     """
 
-def findCorrespondencies(bundle, cols = ..., response = ...) -> tuple[cols, response]:
+def findCorrespondencies(bundle, cols=..., response=...) -> tuple[cols, response]:
     """
     * Find corresponding image locations by searching for a maximal sobel edge along the search line (a single
     row in the bundle)

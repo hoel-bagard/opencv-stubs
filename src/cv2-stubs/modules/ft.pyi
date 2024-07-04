@@ -11,7 +11,7 @@ c10: TypeAlias = Any
 retval: TypeAlias = Any
 
 @overload
-def FT02D_FL_process(matrix, radius, output = ...) -> output:
+def FT02D_FL_process(matrix, radius, output=...) -> output:
     """
     @brief Sligtly less accurate version of \f$F^0\f$-transfrom computation optimized for higher speed. The methods counts with linear basic function.
         @param matrix Input 3 channels matrix.
@@ -20,12 +20,11 @@ def FT02D_FL_process(matrix, radius, output = ...) -> output:
     """
 
 @overload
-def FT02D_FL_process(matrix, radius, output = ...) -> output:
-    """
-    """
+def FT02D_FL_process(matrix, radius, output=...) -> output:
+    """ """
 
 @overload
-def FT02D_FL_process_float(matrix, radius, output = ...) -> output:
+def FT02D_FL_process_float(matrix, radius, output=...) -> output:
     """
     @brief Sligtly less accurate version of \f$F^0\f$-transfrom computation optimized for higher speed. The methods counts with linear basic function.
         @param matrix Input 3 channels matrix.
@@ -34,12 +33,11 @@ def FT02D_FL_process_float(matrix, radius, output = ...) -> output:
     """
 
 @overload
-def FT02D_FL_process_float(matrix, radius, output = ...) -> output:
-    """
-    """
+def FT02D_FL_process_float(matrix, radius, output=...) -> output:
+    """ """
 
 @overload
-def FT02D_components(matrix, kernel, components = ..., mask = ...) -> components:
+def FT02D_components(matrix, kernel, components=..., mask=...) -> components:
     """
     @brief Computes components of the array using direct \f$F^0\f$-transform.
         @param matrix Input array.
@@ -49,12 +47,11 @@ def FT02D_components(matrix, kernel, components = ..., mask = ...) -> components
     """
 
 @overload
-def FT02D_components(matrix, kernel, components = ..., mask = ...) -> components:
-    """
-    """
+def FT02D_components(matrix, kernel, components=..., mask=...) -> components:
+    """ """
 
 @overload
-def FT02D_inverseFT(components, kernel, width, height, output = ...) -> output:
+def FT02D_inverseFT(components, kernel, width, height, output=...) -> output:
     """
     @brief Computes inverse \f$F^0\f$-transfrom.
         @param components Input 32-bit float single channel array for the components.
@@ -65,12 +62,11 @@ def FT02D_inverseFT(components, kernel, width, height, output = ...) -> output:
     """
 
 @overload
-def FT02D_inverseFT(components, kernel, width, height, output = ...) -> output:
-    """
-    """
+def FT02D_inverseFT(components, kernel, width, height, output=...) -> output:
+    """ """
 
 @overload
-def FT02D_iteration(matrix, kernel, mask, firstStop, output = ..., maskOutput = ...) -> tuple[retval, output, maskOutput]:
+def FT02D_iteration(matrix, kernel, mask, firstStop, output=..., maskOutput=...) -> tuple[retval, output, maskOutput]:
     """
     @brief Computes \f$F^0\f$-transfrom and inverse \f$F^0\f$-transfrom at once and return state.
         @param matrix Input matrix.
@@ -82,12 +78,11 @@ def FT02D_iteration(matrix, kernel, mask, firstStop, output = ..., maskOutput = 
     """
 
 @overload
-def FT02D_iteration(matrix, kernel, mask, firstStop, output = ..., maskOutput = ...) -> tuple[retval, output, maskOutput]:
-    """
-    """
+def FT02D_iteration(matrix, kernel, mask, firstStop, output=..., maskOutput=...) -> tuple[retval, output, maskOutput]:
+    """ """
 
 @overload
-def FT02D_process(matrix, kernel, output = ..., mask = ...) -> output:
+def FT02D_process(matrix, kernel, output=..., mask=...) -> output:
     """
     @brief Computes \f$F^0\f$-transfrom and inverse \f$F^0\f$-transfrom at once.
         @param matrix Input matrix.
@@ -97,12 +92,11 @@ def FT02D_process(matrix, kernel, output = ..., mask = ...) -> output:
     """
 
 @overload
-def FT02D_process(matrix, kernel, output = ..., mask = ...) -> output:
-    """
-    """
+def FT02D_process(matrix, kernel, output=..., mask=...) -> output:
+    """ """
 
 @overload
-def FT12D_components(matrix, kernel, components = ...) -> components:
+def FT12D_components(matrix, kernel, components=...) -> components:
     """
     @brief Computes components of the array using direct \f$F^1\f$-transform.
         @param matrix Input array.
@@ -111,12 +105,11 @@ def FT12D_components(matrix, kernel, components = ...) -> components:
     """
 
 @overload
-def FT12D_components(matrix, kernel, components = ...) -> components:
-    """
-    """
+def FT12D_components(matrix, kernel, components=...) -> components:
+    """ """
 
 @overload
-def FT12D_createPolynomMatrixHorizontal(radius, chn, matrix = ...) -> matrix:
+def FT12D_createPolynomMatrixHorizontal(radius, chn, matrix=...) -> matrix:
     """
     @brief Creates horizontal matrix for \f$F^1\f$-transform computation.
         @param radius Radius of the basic function.
@@ -125,12 +118,11 @@ def FT12D_createPolynomMatrixHorizontal(radius, chn, matrix = ...) -> matrix:
     """
 
 @overload
-def FT12D_createPolynomMatrixHorizontal(radius, chn, matrix = ...) -> matrix:
-    """
-    """
+def FT12D_createPolynomMatrixHorizontal(radius, chn, matrix=...) -> matrix:
+    """ """
 
 @overload
-def FT12D_createPolynomMatrixVertical(radius, chn, matrix = ...) -> matrix:
+def FT12D_createPolynomMatrixVertical(radius, chn, matrix=...) -> matrix:
     """
     @brief Creates vertical matrix for \f$F^1\f$-transform computation.
         @param radius Radius of the basic function.
@@ -139,12 +131,11 @@ def FT12D_createPolynomMatrixVertical(radius, chn, matrix = ...) -> matrix:
     """
 
 @overload
-def FT12D_createPolynomMatrixVertical(radius, chn, matrix = ...) -> matrix:
-    """
-    """
+def FT12D_createPolynomMatrixVertical(radius, chn, matrix=...) -> matrix:
+    """ """
 
 @overload
-def FT12D_inverseFT(components, kernel, width, height, output = ...) -> output:
+def FT12D_inverseFT(components, kernel, width, height, output=...) -> output:
     """
     @brief Computes inverse \f$F^1\f$-transfrom.
         @param components Input 32-bit float single channel array for the components.
@@ -155,12 +146,11 @@ def FT12D_inverseFT(components, kernel, width, height, output = ...) -> output:
     """
 
 @overload
-def FT12D_inverseFT(components, kernel, width, height, output = ...) -> output:
-    """
-    """
+def FT12D_inverseFT(components, kernel, width, height, output=...) -> output:
+    """ """
 
 @overload
-def FT12D_polynomial(matrix, kernel, c00 = ..., c10 = ..., c01 = ..., components = ..., mask = ...) -> tuple[c00, c10, c01, components]:
+def FT12D_polynomial(matrix, kernel, c00=..., c10=..., c01=..., components=..., mask=...) -> tuple[c00, c10, c01, components]:
     """
     @brief Computes elements of \f$F^1\f$-transform components.
         @param matrix Input array.
@@ -173,12 +163,11 @@ def FT12D_polynomial(matrix, kernel, c00 = ..., c10 = ..., c01 = ..., components
     """
 
 @overload
-def FT12D_polynomial(matrix, kernel, c00 = ..., c10 = ..., c01 = ..., components = ..., mask = ...) -> tuple[c00, c10, c01, components]:
-    """
-    """
+def FT12D_polynomial(matrix, kernel, c00=..., c10=..., c01=..., components=..., mask=...) -> tuple[c00, c10, c01, components]:
+    """ """
 
 @overload
-def FT12D_process(matrix, kernel, output = ..., mask = ...) -> output:
+def FT12D_process(matrix, kernel, output=..., mask=...) -> output:
     """
     @brief Computes \f$F^1\f$-transfrom and inverse \f$F^1\f$-transfrom at once.
         @param matrix Input matrix.
@@ -188,15 +177,15 @@ def FT12D_process(matrix, kernel, output = ..., mask = ...) -> output:
     """
 
 @overload
-def FT12D_process(matrix, kernel, output = ..., mask = ...) -> output:
+def FT12D_process(matrix, kernel, output=..., mask=...) -> output:
     """
 
-        @note
-            F-transform technique of first degreee is described in paper @cite Vlas:FT.
+    @note
+        F-transform technique of first degreee is described in paper @cite Vlas:FT.
     """
 
 @overload
-def createKernel(function, radius, chn, kernel = ...) -> kernel:
+def createKernel(function, radius, chn, kernel=...) -> kernel:
     """
     @brief Creates kernel from general functions.
         @param function Function type could be one of the following:
@@ -207,12 +196,11 @@ def createKernel(function, radius, chn, kernel = ...) -> kernel:
     """
 
 @overload
-def createKernel(function, radius, chn, kernel = ...) -> kernel:
-    """
-    """
+def createKernel(function, radius, chn, kernel=...) -> kernel:
+    """ """
 
 @overload
-def createKernel1(A, B, chn, kernel = ...) -> kernel:
+def createKernel1(A, B, chn, kernel=...) -> kernel:
     """
     @brief Creates kernel from basic functions.
         @param A Basic function used in axis **x**.
@@ -222,12 +210,11 @@ def createKernel1(A, B, chn, kernel = ...) -> kernel:
     """
 
 @overload
-def createKernel1(A, B, chn, kernel = ...) -> kernel:
-    """
-    """
+def createKernel1(A, B, chn, kernel=...) -> kernel:
+    """ """
 
 @overload
-def filter(image, kernel, output = ...) -> output:
+def filter(image, kernel, output=...) -> output:
     """
     @brief Image filtering
         @param image Input image.
@@ -236,12 +223,11 @@ def filter(image, kernel, output = ...) -> output:
     """
 
 @overload
-def filter(image, kernel, output = ...) -> output:
-    """
-    """
+def filter(image, kernel, output=...) -> output:
+    """ """
 
 @overload
-def inpaint(image, mask, radius, function, algorithm, output = ...) -> output:
+def inpaint(image, mask, radius, function, algorithm, output=...) -> output:
     """
     @brief Image inpainting
         @param image Input image.
@@ -257,11 +243,11 @@ def inpaint(image, mask, radius, function, algorithm, output = ...) -> output:
     """
 
 @overload
-def inpaint(image, mask, radius, function, algorithm, output = ...) -> output:
+def inpaint(image, mask, radius, function, algorithm, output=...) -> output:
     """
 
-        @note
-            The algorithms are described in paper @cite Perf:rec.
+    @note
+        The algorithms are described in paper @cite Perf:rec.
     """
 
 ITERATIVE: Final[int]

@@ -7,9 +7,7 @@ signature: TypeAlias = Any
 matchesGMS: TypeAlias = Any
 retval: TypeAlias = Any
 
-class AffineFeature2D(cv2.Feature2D):
-    ...
-
+class AffineFeature2D(cv2.Feature2D): ...
 
 class BEBLID(cv2.Feature2D):
     def getDefaultName(self) -> retval:
@@ -21,13 +19,12 @@ class BEBLID(cv2.Feature2D):
     def setScaleFactor(self, scale_factor) -> None:
         """"""
 
-    def create(self, scale_factor, n_bits = ...) -> retval:
+    def create(self, scale_factor, n_bits=...) -> retval:
         """
         @brief Creates the BEBLID descriptor.
         @param scale_factor Adjust the sampling window around detected keypoints: - <b> 1.00f </b> should be the scale for ORB keypoints - <b> 6.75f </b> should be the scale for SIFT detected keypoints - <b> 6.25f </b> is default and fits for KAZE, SURF detected keypoints - <b> 5.00f </b> should be the scale for AKAZE, MSD, AGAST, FAST, BRISK keypoints
         @param n_bits Determine the number of bits in the descriptor. Should be either BEBLID::SIZE_512_BITS or BEBLID::SIZE_256_BITS.
         """
-
 
 class BoostDesc(cv2.Feature2D):
     def getDefaultName(self) -> retval:
@@ -45,9 +42,8 @@ class BoostDesc(cv2.Feature2D):
     def setUseScaleOrientation(self, use_scale_orientation) -> None:
         """"""
 
-    def create(self, desc = ..., use_scale_orientation = ..., scale_factor = ...) -> retval:
+    def create(self, desc=..., use_scale_orientation=..., scale_factor=...) -> retval:
         """"""
-
 
 class BriefDescriptorExtractor(cv2.Feature2D):
     def getDefaultName(self) -> retval:
@@ -65,9 +61,8 @@ class BriefDescriptorExtractor(cv2.Feature2D):
     def setUseOrientation(self, use_orientation) -> None:
         """"""
 
-    def create(self, bytes = ..., use_orientation = ...) -> retval:
+    def create(self, bytes=..., use_orientation=...) -> retval:
         """"""
-
 
 class DAISY(cv2.Feature2D):
     def getDefaultName(self) -> retval:
@@ -121,9 +116,8 @@ class DAISY(cv2.Feature2D):
     def setUseOrientation(self, use_orientation) -> None:
         """"""
 
-    def create(self, radius = ..., q_radius = ..., q_theta = ..., q_hist = ..., norm = ..., H = ..., interpolation = ..., use_orientation = ...) -> retval:
+    def create(self, radius=..., q_radius=..., q_theta=..., q_hist=..., norm=..., H=..., interpolation=..., use_orientation=...) -> retval:
         """"""
-
 
 class FREAK(cv2.Feature2D):
     def getDefaultName(self) -> retval:
@@ -153,7 +147,7 @@ class FREAK(cv2.Feature2D):
     def setScaleNormalized(self, scaleNormalized) -> None:
         """"""
 
-    def create(self, orientationNormalized = ..., scaleNormalized = ..., patternScale = ..., nOctaves = ..., selectedPairs = ...) -> retval:
+    def create(self, orientationNormalized=..., scaleNormalized=..., patternScale=..., nOctaves=..., selectedPairs=...) -> retval:
         """
         @param orientationNormalized Enable orientation normalization.
         @param scaleNormalized Enable scale normalization.
@@ -161,7 +155,6 @@ class FREAK(cv2.Feature2D):
         @param nOctaves Number of octaves covered by the detected keypoints.
         @param selectedPairs (Optional) user defined selected pairs indexes,
         """
-
 
 class HarrisLaplaceFeatureDetector(cv2.Feature2D):
     def getCornThresh(self) -> retval:
@@ -197,7 +190,7 @@ class HarrisLaplaceFeatureDetector(cv2.Feature2D):
     def setNumOctaves(self, numOctaves_) -> None:
         """"""
 
-    def create(self, numOctaves = ..., corn_thresh = ..., DOG_thresh = ..., maxCorners = ..., num_layers = ...) -> retval:
+    def create(self, numOctaves=..., corn_thresh=..., DOG_thresh=..., maxCorners=..., num_layers=...) -> retval:
         """
         * @brief Creates a new implementation instance.
         *
@@ -207,7 +200,6 @@ class HarrisLaplaceFeatureDetector(cv2.Feature2D):
         * @param maxCorners the maximum number of corners to consider
         * @param num_layers the number of intermediate scales per octave
         """
-
 
 class LATCH(cv2.Feature2D):
     def getBytes(self) -> retval:
@@ -237,9 +229,8 @@ class LATCH(cv2.Feature2D):
     def setSigma(self, sigma) -> None:
         """"""
 
-    def create(self, bytes = ..., rotationInvariance = ..., half_ssd_size = ..., sigma = ...) -> retval:
+    def create(self, bytes=..., rotationInvariance=..., half_ssd_size=..., sigma=...) -> retval:
         """"""
-
 
 class LUCID(cv2.Feature2D):
     def getBlurKernel(self) -> retval:
@@ -257,12 +248,11 @@ class LUCID(cv2.Feature2D):
     def setLucidKernel(self, lucid_kernel) -> None:
         """"""
 
-    def create(self, lucid_kernel = ..., blur_kernel = ...) -> retval:
+    def create(self, lucid_kernel=..., blur_kernel=...) -> retval:
         """
         * @param lucid_kernel kernel for descriptor construction, where 1=3x3, 2=5x5, 3=7x7 and so forth
         * @param blur_kernel kernel for blurring image prior to descriptor construction, where 1=3x3, 2=5x5, 3=7x7 and so forth
         """
-
 
 class MSDDetector(cv2.Feature2D):
     def getComputeOrientation(self) -> retval:
@@ -322,12 +312,11 @@ class MSDDetector(cv2.Feature2D):
     def setThSaliency(self, th_saliency) -> None:
         """"""
 
-    def create(self, m_patch_radius = ..., m_search_area_radius = ..., m_nms_radius = ..., m_nms_scale_radius = ..., m_th_saliency = ..., m_kNN = ..., m_scale_factor = ..., m_n_scales = ..., m_compute_orientation = ...) -> retval:
+    def create(self, m_patch_radius=..., m_search_area_radius=..., m_nms_radius=..., m_nms_scale_radius=..., m_th_saliency=..., m_kNN=..., m_scale_factor=..., m_n_scales=..., m_compute_orientation=...) -> retval:
         """"""
 
-
 class PCTSignatures(cv2.Algorithm):
-    def computeSignature(self, image, signature = ...) -> signature:
+    def computeSignature(self, image, signature=...) -> signature:
         """
         * @brief Computes signature of given image.
         * @param image Input image of CV_8U type.
@@ -587,7 +576,7 @@ class PCTSignatures(cv2.Algorithm):
         """
 
     @overload
-    def create(self, initSampleCount = ..., initSeedCount = ..., pointDistribution = ...) -> retval:
+    def create(self, initSampleCount=..., initSeedCount=..., pointDistribution=...) -> retval:
         """
         * @brief Creates PCTSignatures algorithm using sample and seed count.
         *       It generates its own sets of sampling points and clusterization seed indexes.
@@ -614,7 +603,7 @@ class PCTSignatures(cv2.Algorithm):
         * @param initClusterSeedIndexes Indexes of initial clusterization seeds. *       Its size must be lower or equal to initSamplingPoints.size(). * @return Created algorithm.
         """
 
-    def drawSignature(self, source, signature, result = ..., radiusToShorterSideRatio = ..., borderThickness = ...) -> result:
+    def drawSignature(self, source, signature, result=..., radiusToShorterSideRatio=..., borderThickness=...) -> result:
         """
         * @brief Draws signature in the source image and outputs the result.
         *       Signatures are visualized as a circle
@@ -636,7 +625,6 @@ class PCTSignatures(cv2.Algorithm):
         * @param pointDistribution Point distribution selector. *       Available: UNIFORM, REGULAR, NORMAL. * @note Generated coordinates are in range [0..1)
         """
 
-
 class PCTSignaturesSQFD(cv2.Algorithm):
     def computeQuadraticFormDistance(self, _signature0, _signature1) -> retval:
         """
@@ -654,7 +642,7 @@ class PCTSignaturesSQFD(cv2.Algorithm):
         * @param distances Output vector of measured distances.
         """
 
-    def create(self, distanceFunction = ..., similarityFunction = ..., similarityParameter = ...) -> retval:
+    def create(self, distanceFunction=..., similarityFunction=..., similarityParameter=...) -> retval:
         """
         * @brief Creates the algorithm instance using selected distance function,
         *       similarity function and similarity function parameter.
@@ -662,7 +650,6 @@ class PCTSignaturesSQFD(cv2.Algorithm):
         * @param similarityFunction Similarity function selector. Default: HEURISTIC *       Available: MINUS, GAUSSIAN, HEURISTIC
         * @param similarityParameter Parameter of the similarity function.
         """
-
 
 class SURF(cv2.Feature2D):
     def getDefaultName(self) -> retval:
@@ -698,7 +685,7 @@ class SURF(cv2.Feature2D):
     def setUpright(self, upright) -> None:
         """"""
 
-    def create(self, hessianThreshold = ..., nOctaves = ..., nOctaveLayers = ..., extended = ..., upright = ...) -> retval:
+    def create(self, hessianThreshold=..., nOctaves=..., nOctaveLayers=..., extended=..., upright=...) -> retval:
         """
         @param hessianThreshold Threshold for hessian keypoint detector used in SURF.
         @param nOctaves Number of pyramid octaves the keypoint detector will use.
@@ -706,7 +693,6 @@ class SURF(cv2.Feature2D):
         @param extended Extended descriptor flag (true - use extended 128-element descriptors; false - use 64-element descriptors).
         @param upright Up-right or rotated features flag (true - do not compute orientation of features; false - compute orientation).
         """
-
 
 class StarDetector(cv2.Feature2D):
     def getDefaultName(self) -> retval:
@@ -742,9 +728,8 @@ class StarDetector(cv2.Feature2D):
     def setSuppressNonmaxSize(self, _suppressNonmaxSize) -> None:
         """"""
 
-    def create(self, maxSize = ..., responseThreshold = ..., lineThresholdProjected = ..., lineThresholdBinarized = ..., suppressNonmaxSize = ...) -> retval:
+    def create(self, maxSize=..., responseThreshold=..., lineThresholdProjected=..., lineThresholdBinarized=..., suppressNonmaxSize=...) -> retval:
         """"""
-
 
 class TBMR(AffineFeature2D):
     def getMaxAreaRelative(self) -> retval:
@@ -771,21 +756,19 @@ class TBMR(AffineFeature2D):
     def setScaleFactor(self, scale_factor) -> None:
         """"""
 
-    def create(self, min_area = ..., max_area_relative = ..., scale_factor = ..., n_scales = ...) -> retval:
+    def create(self, min_area=..., max_area_relative=..., scale_factor=..., n_scales=...) -> retval:
         """"""
-
 
 class TEBLID(cv2.Feature2D):
     def getDefaultName(self) -> retval:
         """"""
 
-    def create(self, scale_factor, n_bits = ...) -> retval:
+    def create(self, scale_factor, n_bits=...) -> retval:
         """
         @brief Creates the TEBLID descriptor.
         @param scale_factor Adjust the sampling window around detected keypoints: - <b> 1.00f </b> should be the scale for ORB keypoints - <b> 6.75f </b> should be the scale for SIFT detected keypoints - <b> 6.25f </b> is default and fits for KAZE, SURF detected keypoints - <b> 5.00f </b> should be the scale for AKAZE, MSD, AGAST, FAST, BRISK keypoints
         @param n_bits Determine the number of bits in the descriptor. Should be either TEBLID::SIZE_256_BITS or TEBLID::SIZE_512_BITS.
         """
-
 
 class VGG(cv2.Feature2D):
     def getDefaultName(self) -> retval:
@@ -821,11 +804,10 @@ class VGG(cv2.Feature2D):
     def setUseScaleOrientation(self, use_scale_orientation) -> None:
         """"""
 
-    def create(self, desc = ..., isigma = ..., img_normalize = ..., use_scale_orientation = ..., scale_factor = ..., dsc_normalize = ...) -> retval:
+    def create(self, desc=..., isigma=..., img_normalize=..., use_scale_orientation=..., scale_factor=..., dsc_normalize=...) -> retval:
         """"""
 
-
-def BEBLID_create(scale_factor, n_bits = ...) -> retval:
+def BEBLID_create(scale_factor, n_bits=...) -> retval:
     """
     @brief Creates the BEBLID descriptor.
         @param scale_factor Adjust the sampling window around detected keypoints:
@@ -837,22 +819,22 @@ def BEBLID_create(scale_factor, n_bits = ...) -> retval:
          BEBLID::SIZE_512_BITS or BEBLID::SIZE_256_BITS.
     """
 
-def BoostDesc_create(desc = ..., use_scale_orientation = ..., scale_factor = ...) -> retval:
+def BoostDesc_create(desc=..., use_scale_orientation=..., scale_factor=...) -> retval:
     """
-        .
-    """
-
-def BriefDescriptorExtractor_create(bytes = ..., use_orientation = ...) -> retval:
-    """
-        .
+    .
     """
 
-def DAISY_create(radius = ..., q_radius = ..., q_theta = ..., q_hist = ..., norm = ..., H = ..., interpolation = ..., use_orientation = ...) -> retval:
+def BriefDescriptorExtractor_create(bytes=..., use_orientation=...) -> retval:
     """
-        .
+    .
     """
 
-def FREAK_create(orientationNormalized = ..., scaleNormalized = ..., patternScale = ..., nOctaves = ..., selectedPairs = ...) -> retval:
+def DAISY_create(radius=..., q_radius=..., q_theta=..., q_hist=..., norm=..., H=..., interpolation=..., use_orientation=...) -> retval:
+    """
+    .
+    """
+
+def FREAK_create(orientationNormalized=..., scaleNormalized=..., patternScale=..., nOctaves=..., selectedPairs=...) -> retval:
     """
     @param orientationNormalized Enable orientation normalization.
         @param scaleNormalized Enable scale normalization.
@@ -861,7 +843,7 @@ def FREAK_create(orientationNormalized = ..., scaleNormalized = ..., patternScal
         @param selectedPairs (Optional) user defined selected pairs indexes,
     """
 
-def HarrisLaplaceFeatureDetector_create(numOctaves = ..., corn_thresh = ..., DOG_thresh = ..., maxCorners = ..., num_layers = ...) -> retval:
+def HarrisLaplaceFeatureDetector_create(numOctaves=..., corn_thresh=..., DOG_thresh=..., maxCorners=..., num_layers=...) -> retval:
     """
     * @brief Creates a new implementation instance.
          *
@@ -872,23 +854,23 @@ def HarrisLaplaceFeatureDetector_create(numOctaves = ..., corn_thresh = ..., DOG
          * @param num_layers the number of intermediate scales per octave
     """
 
-def LATCH_create(bytes = ..., rotationInvariance = ..., half_ssd_size = ..., sigma = ...) -> retval:
+def LATCH_create(bytes=..., rotationInvariance=..., half_ssd_size=..., sigma=...) -> retval:
     """
-        .
+    .
     """
 
-def LUCID_create(lucid_kernel = ..., blur_kernel = ...) -> retval:
+def LUCID_create(lucid_kernel=..., blur_kernel=...) -> retval:
     """
     * @param lucid_kernel kernel for descriptor construction, where 1=3x3, 2=5x5, 3=7x7 and so forth
          * @param blur_kernel kernel for blurring image prior to descriptor construction, where 1=3x3, 2=5x5, 3=7x7 and so forth
     """
 
-def MSDDetector_create(m_patch_radius = ..., m_search_area_radius = ..., m_nms_radius = ..., m_nms_scale_radius = ..., m_th_saliency = ..., m_kNN = ..., m_scale_factor = ..., m_n_scales = ..., m_compute_orientation = ...) -> retval:
+def MSDDetector_create(m_patch_radius=..., m_search_area_radius=..., m_nms_radius=..., m_nms_scale_radius=..., m_th_saliency=..., m_kNN=..., m_scale_factor=..., m_n_scales=..., m_compute_orientation=...) -> retval:
     """
-        .
+    .
     """
 
-def PCTSignaturesSQFD_create(distanceFunction = ..., similarityFunction = ..., similarityParameter = ...) -> retval:
+def PCTSignaturesSQFD_create(distanceFunction=..., similarityFunction=..., similarityParameter=...) -> retval:
     """
     * @brief Creates the algorithm instance using selected distance function,
         *       similarity function and similarity function parameter.
@@ -900,7 +882,7 @@ def PCTSignaturesSQFD_create(distanceFunction = ..., similarityFunction = ..., s
     """
 
 @overload
-def PCTSignatures_create(initSampleCount = ..., initSeedCount = ..., pointDistribution = ...) -> retval:
+def PCTSignatures_create(initSampleCount=..., initSeedCount=..., pointDistribution=...) -> retval:
     """
     * @brief Creates PCTSignatures algorithm using sample and seed count.
         *       It generates its own sets of sampling points and clusterization seed indexes.
@@ -913,7 +895,7 @@ def PCTSignatures_create(initSampleCount = ..., initSeedCount = ..., pointDistri
     """
 
 @overload
-def PCTSignatures_create(initSampleCount = ..., initSeedCount = ..., pointDistribution = ...) -> retval:
+def PCTSignatures_create(initSampleCount=..., initSeedCount=..., pointDistribution=...) -> retval:
     """
     * @brief Creates PCTSignatures algorithm using pre-generated sampling points
         *       and number of clusterization seeds. It uses the provided
@@ -925,7 +907,7 @@ def PCTSignatures_create(initSampleCount = ..., initSeedCount = ..., pointDistri
     """
 
 @overload
-def PCTSignatures_create(initSampleCount = ..., initSeedCount = ..., pointDistribution = ...) -> retval:
+def PCTSignatures_create(initSampleCount=..., initSeedCount=..., pointDistribution=...) -> retval:
     """
     * @brief Creates PCTSignatures algorithm using pre-generated sampling points
         *       and clusterization seeds indexes.
@@ -935,7 +917,7 @@ def PCTSignatures_create(initSampleCount = ..., initSeedCount = ..., pointDistri
         * @return Created algorithm.
     """
 
-def PCTSignatures_drawSignature(source, signature, result = ..., radiusToShorterSideRatio = ..., borderThickness = ...) -> result:
+def PCTSignatures_drawSignature(source, signature, result=..., radiusToShorterSideRatio=..., borderThickness=...) -> result:
     """
     * @brief Draws signature in the source image and outputs the result.
         *       Signatures are visualized as a circle
@@ -959,13 +941,13 @@ def PCTSignatures_generateInitPoints(initPoints, count, pointDistribution) -> No
         * @note Generated coordinates are in range [0..1)
     """
 
-def SIFT_create(nfeatures = ..., nOctaveLayers = ..., contrastThreshold = ..., edgeThreshold = ..., sigma = ...) -> retval:
+def SIFT_create(nfeatures=..., nOctaveLayers=..., contrastThreshold=..., edgeThreshold=..., sigma=...) -> retval:
     """
     Use cv.SIFT_create() instead
     """
 
 @overload
-def SURF_create(hessianThreshold = ..., nOctaves = ..., nOctaveLayers = ..., extended = ..., upright = ...) -> retval:
+def SURF_create(hessianThreshold=..., nOctaves=..., nOctaveLayers=..., extended=..., upright=...) -> retval:
     """
     @param hessianThreshold Threshold for hessian keypoint detector used in SURF.
         @param nOctaves Number of pyramid octaves the keypoint detector will use.
@@ -976,21 +958,20 @@ def SURF_create(hessianThreshold = ..., nOctaves = ..., nOctaveLayers = ..., ext
     """
 
 @overload
-def SURF_create(hessianThreshold = ..., nOctaves = ..., nOctaveLayers = ..., extended = ..., upright = ...) -> retval:
+def SURF_create(hessianThreshold=..., nOctaves=..., nOctaveLayers=..., extended=..., upright=...) -> retval:
+    """ """
+
+def StarDetector_create(maxSize=..., responseThreshold=..., lineThresholdProjected=..., lineThresholdBinarized=..., suppressNonmaxSize=...) -> retval:
     """
+    .
     """
 
-def StarDetector_create(maxSize = ..., responseThreshold = ..., lineThresholdProjected = ..., lineThresholdBinarized = ..., suppressNonmaxSize = ...) -> retval:
+def TBMR_create(min_area=..., max_area_relative=..., scale_factor=..., n_scales=...) -> retval:
     """
-        .
-    """
-
-def TBMR_create(min_area = ..., max_area_relative = ..., scale_factor = ..., n_scales = ...) -> retval:
-    """
-        .
+    .
     """
 
-def TEBLID_create(scale_factor, n_bits = ...) -> retval:
+def TEBLID_create(scale_factor, n_bits=...) -> retval:
     """
     @brief Creates the TEBLID descriptor.
         @param scale_factor Adjust the sampling window around detected keypoints:
@@ -1002,12 +983,12 @@ def TEBLID_create(scale_factor, n_bits = ...) -> retval:
          TEBLID::SIZE_256_BITS or TEBLID::SIZE_512_BITS.
     """
 
-def VGG_create(desc = ..., isigma = ..., img_normalize = ..., use_scale_orientation = ..., scale_factor = ..., dsc_normalize = ...) -> retval:
+def VGG_create(desc=..., isigma=..., img_normalize=..., use_scale_orientation=..., scale_factor=..., dsc_normalize=...) -> retval:
     """
-        .
+    .
     """
 
-def matchGMS(size1, size2, keypoints1, keypoints2, matches1to2, withRotation = ..., withScale = ..., thresholdFactor = ...) -> matchesGMS:
+def matchGMS(size1, size2, keypoints1, keypoints2, matches1to2, withRotation=..., withScale=..., thresholdFactor=...) -> matchesGMS:
     """
     @brief GMS (Grid-based Motion Statistics) feature matching strategy described in @cite Bian2017gms .
         @param size1 Input size of image1.

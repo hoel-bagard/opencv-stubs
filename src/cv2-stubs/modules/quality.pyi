@@ -25,7 +25,7 @@ class QualityBRISQUE(QualityBase):
         @param range_file_path cv::String which contains a path to the BRISQUE range data, eg. /path/to/brisque_range_live.yml @returns cv::Scalar with the score in the first element.  The score ranges from 0 (best quality) to 100 (worst quality)
         """
 
-    def computeFeatures(self, img, features = ...) -> features:
+    def computeFeatures(self, img, features=...) -> features:
         """
         @brief static method for computing image features used by the BRISQUE algorithm
         @param img image (BGR(A) or grayscale) for which to compute features
@@ -48,7 +48,6 @@ class QualityBRISQUE(QualityBase):
         @param range cv::Mat which contains BRISQUE range data
         """
 
-
 class QualityBase(cv2.Algorithm):
     def clear(self) -> None:
         """
@@ -66,11 +65,10 @@ class QualityBase(cv2.Algorithm):
         @brief Implements Algorithm::empty()
         """
 
-    def getQualityMap(self, dst = ...) -> dst:
+    def getQualityMap(self, dst=...) -> dst:
         """
         @brief Returns output quality map that was generated during computation, if supported by the algorithm
         """
-
 
 class QualityGMSD(QualityBase):
     def clear(self) -> None:
@@ -86,7 +84,7 @@ class QualityGMSD(QualityBase):
         """
 
     @overload
-    def compute(self, ref, cmp, qualityMap = ...) -> tuple[retval, qualityMap]:
+    def compute(self, ref, cmp, qualityMap=...) -> tuple[retval, qualityMap]:
         """
         @brief static method for computing quality
         @param ref reference image
@@ -105,7 +103,6 @@ class QualityGMSD(QualityBase):
         @param ref reference image
         """
 
-
 class QualityMSE(QualityBase):
     def clear(self) -> None:
         """
@@ -120,7 +117,7 @@ class QualityMSE(QualityBase):
         """
 
     @overload
-    def compute(self, ref, cmp, qualityMap = ...) -> tuple[retval, qualityMap]:
+    def compute(self, ref, cmp, qualityMap=...) -> tuple[retval, qualityMap]:
         """
         @brief static method for computing quality
         @param ref reference image
@@ -139,7 +136,6 @@ class QualityMSE(QualityBase):
         @param ref input image to use as the reference for comparison
         """
 
-
 class QualityPSNR(QualityBase):
     def clear(self) -> None:
         """
@@ -154,7 +150,7 @@ class QualityPSNR(QualityBase):
         """
 
     @overload
-    def compute(self, ref, cmp, qualityMap = ..., maxPixelValue = ...) -> tuple[retval, qualityMap]:
+    def compute(self, ref, cmp, qualityMap=..., maxPixelValue=...) -> tuple[retval, qualityMap]:
         """
         @brief static method for computing quality
         @param ref reference image
@@ -179,13 +175,12 @@ class QualityPSNR(QualityBase):
         @param val Maximum pixel value
         """
 
-    def create(self, ref, maxPixelValue = ...) -> retval:
+    def create(self, ref, maxPixelValue=...) -> retval:
         """
         @brief Create an object which calculates quality
         @param ref input image to use as the source for comparison
         @param maxPixelValue maximum per-channel value for any individual pixel; eg 255 for uint8 image
         """
-
 
 class QualitySSIM(QualityBase):
     def clear(self) -> None:
@@ -201,7 +196,7 @@ class QualitySSIM(QualityBase):
         """
 
     @overload
-    def compute(self, ref, cmp, qualityMap = ...) -> tuple[retval, qualityMap]:
+    def compute(self, ref, cmp, qualityMap=...) -> tuple[retval, qualityMap]:
         """
         @brief static method for computing quality
         @param ref reference image
@@ -220,7 +215,6 @@ class QualitySSIM(QualityBase):
         @param ref input image to use as the reference image for comparison
         """
 
-
 def QualityBRISQUE_compute(img, model_file_path, range_file_path) -> retval:
     """
     @brief static method for computing quality
@@ -230,7 +224,7 @@ def QualityBRISQUE_compute(img, model_file_path, range_file_path) -> retval:
         @returns cv::Scalar with the score in the first element.  The score ranges from 0 (best quality) to 100 (worst quality)
     """
 
-def QualityBRISQUE_computeFeatures(img, features = ...) -> features:
+def QualityBRISQUE_computeFeatures(img, features=...) -> features:
     """
     @brief static method for computing image features used by the BRISQUE algorithm
         @param img image (BGR(A) or grayscale) for which to compute features
@@ -253,7 +247,7 @@ def QualityBRISQUE_create(model_file_path, range_file_path) -> retval:
         @param range cv::Mat which contains BRISQUE range data
     """
 
-def QualityGMSD_compute(ref, cmp, qualityMap = ...) -> tuple[retval, qualityMap]:
+def QualityGMSD_compute(ref, cmp, qualityMap=...) -> tuple[retval, qualityMap]:
     """
     @brief static method for computing quality
         @param ref reference image
@@ -268,7 +262,7 @@ def QualityGMSD_create(ref) -> retval:
         @param ref reference image
     """
 
-def QualityMSE_compute(ref, cmp, qualityMap = ...) -> tuple[retval, qualityMap]:
+def QualityMSE_compute(ref, cmp, qualityMap=...) -> tuple[retval, qualityMap]:
     """
     @brief static method for computing quality
         @param ref reference image
@@ -283,7 +277,7 @@ def QualityMSE_create(ref) -> retval:
         @param ref input image to use as the reference for comparison
     """
 
-def QualityPSNR_compute(ref, cmp, qualityMap = ..., maxPixelValue = ...) -> tuple[retval, qualityMap]:
+def QualityPSNR_compute(ref, cmp, qualityMap=..., maxPixelValue=...) -> tuple[retval, qualityMap]:
     """
     @brief static method for computing quality
         @param ref reference image
@@ -293,14 +287,14 @@ def QualityPSNR_compute(ref, cmp, qualityMap = ..., maxPixelValue = ...) -> tupl
         @returns PSNR value, or std::numeric_limits<double>::infinity() if the MSE between the two images == 0
     """
 
-def QualityPSNR_create(ref, maxPixelValue = ...) -> retval:
+def QualityPSNR_create(ref, maxPixelValue=...) -> retval:
     """
     @brief Create an object which calculates quality
         @param ref input image to use as the source for comparison
         @param maxPixelValue maximum per-channel value for any individual pixel; eg 255 for uint8 image
     """
 
-def QualitySSIM_compute(ref, cmp, qualityMap = ...) -> tuple[retval, qualityMap]:
+def QualitySSIM_compute(ref, cmp, qualityMap=...) -> tuple[retval, qualityMap]:
     """
     @brief static method for computing quality
         @param ref reference image

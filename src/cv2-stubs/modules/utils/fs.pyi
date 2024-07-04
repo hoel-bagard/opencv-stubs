@@ -4,5 +4,5 @@ retval: TypeAlias = Any
 
 def getCacheDirectoryForDownloads() -> retval:
     """
-        .
+    .
     """

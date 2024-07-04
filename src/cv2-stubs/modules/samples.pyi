@@ -22,7 +22,7 @@ def addSamplesDataSearchSubDirectory(subdir) -> None:
     @param subdir samples data sub directory
     """
 
-def findFile(relative_path, required = ..., silentMode = ...) -> retval:
+def findFile(relative_path, required=..., silentMode=...) -> retval:
     """
     @brief Try to find requested data file
 
@@ -48,7 +48,7 @@ def findFile(relative_path, required = ..., silentMode = ...) -> retval:
     @return Returns path (absolute or relative to the current directory) or empty string if file is not found
     """
 
-def findFileOrKeep(relative_path, silentMode = ...) -> retval:
+def findFileOrKeep(relative_path, silentMode=...) -> retval:
     """
-        .
+    .
     """

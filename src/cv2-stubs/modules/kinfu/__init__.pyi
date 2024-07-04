@@ -9,7 +9,7 @@ image: TypeAlias = Any
 retval: TypeAlias = Any
 
 class KinFu(builtins.object):
-    def getCloud(self, points = ..., normals = ...) -> tuple[points, normals]:
+    def getCloud(self, points=..., normals=...) -> tuple[points, normals]:
         """
         @brief Gets points and normals of current 3d mesh
 
@@ -20,14 +20,14 @@ class KinFu(builtins.object):
         @param normals vector of normals which are 4-float vectors
         """
 
-    def getNormals(self, points, normals = ...) -> normals:
+    def getNormals(self, points, normals=...) -> normals:
         """
         @brief Calculates normals for given points
         @param points input vector of points which are 4-float vectors
         @param normals output vector of corresponding normals which are 4-float vectors
         """
 
-    def getPoints(self, points = ...) -> points:
+    def getPoints(self, points=...) -> points:
         """
         @brief Gets points of current 3d mesh
 
@@ -37,7 +37,7 @@ class KinFu(builtins.object):
         """
 
     @overload
-    def render(self, image = ...) -> image:
+    def render(self, image=...) -> image:
         """
         @brief Renders a volume into an image
 
@@ -48,7 +48,7 @@ class KinFu(builtins.object):
         """
 
     @overload
-    def render(self, cameraPose, image = ...) -> image:
+    def render(self, cameraPose, image=...) -> image:
         """
         @brief Renders a volume into an image
 
@@ -78,7 +78,6 @@ class KinFu(builtins.object):
 
     def create(self, _params) -> retval:
         """"""
-
 
 class Params(builtins.object):
     @overload
@@ -123,10 +122,7 @@ class Params(builtins.object):
         A set of parameters suitable for use with HashTSDFVolume
         """
 
-
-class Volume(builtins.object):
-    ...
-
+class Volume(builtins.object): ...
 
 class VolumeParams(builtins.object):
     def coarseParams(self, _volumeType) -> retval:
@@ -141,10 +137,9 @@ class VolumeParams(builtins.object):
         at the cost of slow performance.
         """
 
-
 def KinFu_create(_params) -> retval:
     """
-        .
+    .
     """
 
 @overload
@@ -155,13 +150,11 @@ def Params_coarseParams() -> retval:
 
 @overload
 def Params_coarseParams() -> retval:
-    """
-    """
+    """ """
 
 @overload
 def Params_coarseParams() -> retval:
-    """
-    """
+    """ """
 
 def Params_coloredTSDFParams(isCoarse) -> retval:
     """
@@ -195,7 +188,7 @@ def VolumeParams_defaultParams(_volumeType) -> retval:
 
 def makeVolume(_volumeType, _voxelSize, _pose, _raycastStepFactor, _truncDist, _maxWeight, _truncateThreshold, _resolution) -> retval:
     """
-        .
+    .
     """
 
 VOLUME_TYPE_COLOREDTSDF: Final[int]

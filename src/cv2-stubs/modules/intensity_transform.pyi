@@ -2,7 +2,7 @@ from typing import Any, overload, TypeAlias
 
 output: TypeAlias = Any
 
-def BIMEF(input, output = ..., mu = ..., a = ..., b = ...) -> output:
+def BIMEF(input, output=..., mu=..., a=..., b=...) -> output:
     """
     * @brief Given an input color image, enhance low-light images using the BIMEF method (@cite ying2017bio @cite ying2017new).
 
@@ -17,7 +17,7 @@ def BIMEF(input, output = ..., mu = ..., a = ..., b = ...) -> output:
     In particular, quality of the image enhancement is degraded for the bright areas in certain conditions.
     """
 
-def BIMEF2(input, k, mu, a, b, output = ...) -> output:
+def BIMEF2(input, k, mu, a, b, output=...) -> output:
     """
     * @brief Given an input color image, enhance low-light images using the BIMEF method (@cite ying2017bio @cite ying2017new).
 

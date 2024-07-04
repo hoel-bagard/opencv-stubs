@@ -94,7 +94,7 @@ class ANN_MLP(StatModel):
     def getWeights(self, layerIdx) -> retval:
         """"""
 
-    def setActivationFunction(self, type, param1 = ..., param2 = ...) -> None:
+    def setActivationFunction(self, type, param1=..., param2=...) -> None:
         """
         Initialize the activation function for each neuron.
         Currently the default and the only fully supported activation function is ANN_MLP::SIGMOID_SYM.
@@ -171,7 +171,7 @@ class ANN_MLP(StatModel):
         @copybrief getTermCriteria @see getTermCriteria
         """
 
-    def setTrainMethod(self, method, param1 = ..., param2 = ...) -> None:
+    def setTrainMethod(self, method, param1=..., param2=...) -> None:
         """
         Sets training method and common parameters.
         @param method Default value is ANN_MLP::RPROP. See ANN_MLP::TrainingMethods.
@@ -196,7 +196,6 @@ class ANN_MLP(StatModel):
         *
         * @param filepath path to serialized ANN
         """
-
 
 class Boost(DTrees):
     def getBoostType(self) -> retval:
@@ -235,7 +234,7 @@ class Boost(DTrees):
         Use StatModel::train to train the model, Algorithm::load\<Boost\>(filename) to load the pre-trained model.
         """
 
-    def load(self, filepath, nodeName = ...) -> retval:
+    def load(self, filepath, nodeName=...) -> retval:
         """
         @brief Loads and creates a serialized Boost from a file
         *
@@ -246,7 +245,6 @@ class Boost(DTrees):
         * @param filepath path to serialized Boost
         * @param nodeName name of node containing the classifier
         """
-
 
 class DTrees(StatModel):
     def getCVFolds(self) -> retval:
@@ -348,7 +346,7 @@ class DTrees(StatModel):
         file using Algorithm::load\<DTrees\>(filename).
         """
 
-    def load(self, filepath, nodeName = ...) -> retval:
+    def load(self, filepath, nodeName=...) -> retval:
         """
         @brief Loads and creates a serialized DTrees from a file
         *
@@ -359,7 +357,6 @@ class DTrees(StatModel):
         * @param filepath path to serialized DTree
         * @param nodeName name of node containing the classifier
         """
-
 
 class EM(StatModel):
     def getClustersNumber(self) -> retval:
@@ -372,7 +369,7 @@ class EM(StatModel):
         @see setCovarianceMatrixType
         """
 
-    def getCovs(self, covs = ...) -> covs:
+    def getCovs(self, covs=...) -> covs:
         """
         @brief Returns covariation matrices
 
@@ -400,7 +397,7 @@ class EM(StatModel):
         Returns vector with the number of elements equal to the number of mixtures.
         """
 
-    def predict(self, samples, results = ..., flags = ...) -> tuple[retval, results]:
+    def predict(self, samples, results=..., flags=...) -> tuple[retval, results]:
         """
         @brief Returns posterior probabilities for the provided samples
 
@@ -409,7 +406,7 @@ class EM(StatModel):
         @param flags This parameter will be ignored
         """
 
-    def predict2(self, sample, probs = ...) -> tuple[retval, probs]:
+    def predict2(self, sample, probs=...) -> tuple[retval, probs]:
         """
         @brief Returns a likelihood logarithm value and an index of the most probable mixture component
         for the given sample.
@@ -433,7 +430,7 @@ class EM(StatModel):
         @copybrief getTermCriteria @see getTermCriteria
         """
 
-    def trainE(self, samples, means0, covs0 = ..., weights0 = ..., logLikelihoods = ..., labels = ..., probs = ...) -> tuple[retval, logLikelihoods, labels, probs]:
+    def trainE(self, samples, means0, covs0=..., weights0=..., logLikelihoods=..., labels=..., probs=...) -> tuple[retval, logLikelihoods, labels, probs]:
         """
         @brief Estimate the Gaussian mixture parameters from a samples set.
 
@@ -450,7 +447,7 @@ class EM(StatModel):
         @param probs The optional output matrix that contains posterior probabilities of each Gaussian mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and CV_64FC1 type.
         """
 
-    def trainEM(self, samples, logLikelihoods = ..., labels = ..., probs = ...) -> tuple[retval, logLikelihoods, labels, probs]:
+    def trainEM(self, samples, logLikelihoods=..., labels=..., probs=...) -> tuple[retval, logLikelihoods, labels, probs]:
         """
         @brief Estimate the Gaussian mixture parameters from a samples set.
 
@@ -474,7 +471,7 @@ class EM(StatModel):
         @param probs The optional output matrix that contains posterior probabilities of each Gaussian mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and CV_64FC1 type.
         """
 
-    def trainM(self, samples, probs0, logLikelihoods = ..., labels = ..., probs = ...) -> tuple[retval, logLikelihoods, labels, probs]:
+    def trainM(self, samples, probs0, logLikelihoods=..., labels=..., probs=...) -> tuple[retval, logLikelihoods, labels, probs]:
         """
         @brief Estimate the Gaussian mixture parameters from a samples set.
 
@@ -495,7 +492,7 @@ class EM(StatModel):
         can use one of the EM::train\* methods or load it from file using Algorithm::load\<EM\>(filename).
         """
 
-    def load(self, filepath, nodeName = ...) -> retval:
+    def load(self, filepath, nodeName=...) -> retval:
         """
         @brief Loads and creates a serialized EM from a file
         *
@@ -507,9 +504,8 @@ class EM(StatModel):
         * @param nodeName name of node containing the classifier
         """
 
-
 class KNearest(StatModel):
-    def findNearest(self, samples, k, results = ..., neighborResponses = ..., dist = ...) -> tuple[retval, results, neighborResponses, dist]:
+    def findNearest(self, samples, k, results=..., neighborResponses=..., dist=...) -> tuple[retval, results, neighborResponses, dist]:
         """
         @brief Finds the neighbors and predicts responses for input vectors.
 
@@ -577,7 +573,6 @@ class KNearest(StatModel):
         * @param filepath path to serialized KNearest
         """
 
-
 class LogisticRegression(StatModel):
     def getIterations(self) -> retval:
         """
@@ -617,7 +612,7 @@ class LogisticRegression(StatModel):
         the Logistic Regression as a matrix of type CV_32F.
         """
 
-    def predict(self, samples, results = ..., flags = ...) -> tuple[retval, results]:
+    def predict(self, samples, results=..., flags=...) -> tuple[retval, results]:
         """
         @brief Predicts responses for input samples and returns a float type.
 
@@ -663,7 +658,7 @@ class LogisticRegression(StatModel):
         Creates Logistic Regression model with parameters given.
         """
 
-    def load(self, filepath, nodeName = ...) -> retval:
+    def load(self, filepath, nodeName=...) -> retval:
         """
         @brief Loads and creates a serialized LogisticRegression from a file
         *
@@ -675,9 +670,8 @@ class LogisticRegression(StatModel):
         * @param nodeName name of node containing the classifier
         """
 
-
 class NormalBayesClassifier(StatModel):
-    def predictProb(self, inputs, outputs = ..., outputProbs = ..., flags = ...) -> tuple[retval, outputs, outputProbs]:
+    def predictProb(self, inputs, outputs=..., outputProbs=..., flags=...) -> tuple[retval, outputs, outputProbs]:
         """
         @brief Predicts the response for sample(s).
 
@@ -694,7 +688,7 @@ class NormalBayesClassifier(StatModel):
         Use StatModel::train to train the model after creation.
         """
 
-    def load(self, filepath, nodeName = ...) -> retval:
+    def load(self, filepath, nodeName=...) -> retval:
         """
         @brief Loads and creates a serialized NormalBayesClassifier from a file
         *
@@ -706,9 +700,8 @@ class NormalBayesClassifier(StatModel):
         * @param nodeName name of node containing the classifier
         """
 
-
 class ParamGrid(builtins.object):
-    def create(self, minVal = ..., maxVal = ..., logstep = ...) -> retval:
+    def create(self, minVal=..., maxVal=..., logstep=...) -> retval:
         """
         @brief Creates a ParamGrid Ptr that can be given to the %SVM::trainAuto method
 
@@ -716,7 +709,6 @@ class ParamGrid(builtins.object):
         @param maxVal maximum value of the parameter grid
         @param logstep Logarithmic step for iterating the statmodel parameter
         """
-
 
 class RTrees(DTrees):
     def getActiveVarCount(self) -> retval:
@@ -748,7 +740,7 @@ class RTrees(DTrees):
         returned.
         """
 
-    def getVotes(self, samples, flags, results = ...) -> results:
+    def getVotes(self, samples, flags, results=...) -> results:
         """
         Returns the result of each individual tree in the forest.
         In case the model is a regression problem, the method will return each of the trees'
@@ -782,7 +774,7 @@ class RTrees(DTrees):
         Algorithm::load to load the pre-trained model.
         """
 
-    def load(self, filepath, nodeName = ...) -> retval:
+    def load(self, filepath, nodeName=...) -> retval:
         """
         @brief Loads and creates a serialized RTree from a file
         *
@@ -793,7 +785,6 @@ class RTrees(DTrees):
         * @param filepath path to serialized RTree
         * @param nodeName name of node containing the classifier
         """
-
 
 class SVM(StatModel):
     def getC(self) -> retval:
@@ -811,7 +802,7 @@ class SVM(StatModel):
         @see setCoef0
         """
 
-    def getDecisionFunction(self, i, alpha = ..., svidx = ...) -> tuple[retval, alpha, svidx]:
+    def getDecisionFunction(self, i, alpha=..., svidx=...) -> tuple[retval, alpha, svidx]:
         """
         @brief Retrieves the decision function
 
@@ -924,7 +915,7 @@ class SVM(StatModel):
         @copybrief getType @see getType
         """
 
-    def trainAuto(self, samples, layout, responses, kFold = ..., Cgrid = ..., gammaGrid = ..., pGrid = ..., nuGrid = ..., coeffGrid = ..., degreeGrid = ..., balanced = ...) -> retval:
+    def trainAuto(self, samples, layout, responses, kFold=..., Cgrid=..., gammaGrid=..., pGrid=..., nuGrid=..., coeffGrid=..., degreeGrid=..., balanced=...) -> retval:
         """
         @brief Trains an %SVM with optimal parameters
 
@@ -964,7 +955,6 @@ class SVM(StatModel):
         *
         * @param filepath path to serialized svm
         """
-
 
 class SVMSGD(StatModel):
     def getInitialStepSize(self) -> retval:
@@ -1022,7 +1012,7 @@ class SVMSGD(StatModel):
         @copybrief getMarginType @see getMarginType
         """
 
-    def setOptimalParameters(self, svmsgdType = ..., marginType = ...) -> None:
+    def setOptimalParameters(self, svmsgdType=..., marginType=...) -> None:
         """
         @brief Function sets optimal parameters values for chosen SVM SGD model.
         * @param svmsgdType is the type of SVMSGD classifier.
@@ -1051,7 +1041,7 @@ class SVMSGD(StatModel):
         * find the best parameters for your problem or use setOptimalParameters() to set some default parameters.
         """
 
-    def load(self, filepath, nodeName = ...) -> retval:
+    def load(self, filepath, nodeName=...) -> retval:
         """
         @brief Loads and creates a serialized SVMSGD from a file
         *
@@ -1063,9 +1053,8 @@ class SVMSGD(StatModel):
         * @param nodeName name of node containing the classifier
         """
 
-
 class StatModel(cv2.Algorithm):
-    def calcError(self, data, test, resp = ...) -> tuple[retval, resp]:
+    def calcError(self, data, test, resp=...) -> tuple[retval, resp]:
         """
         @brief Computes error on the training or test dataset
 
@@ -1092,7 +1081,7 @@ class StatModel(cv2.Algorithm):
         @brief Returns true if the model is trained
         """
 
-    def predict(self, samples, results = ..., flags = ...) -> tuple[retval, results]:
+    def predict(self, samples, results=..., flags=...) -> tuple[retval, results]:
         """
         @brief Predicts response(s) for the provided sample(s)
 
@@ -1102,7 +1091,7 @@ class StatModel(cv2.Algorithm):
         """
 
     @overload
-    def train(self, trainData, flags = ...) -> retval:
+    def train(self, trainData, flags=...) -> retval:
         """
         @brief Trains the statistical model
 
@@ -1119,7 +1108,6 @@ class StatModel(cv2.Algorithm):
         @param layout See ml::SampleTypes.
         @param responses vector of responses associated with the training samples.
         """
-
 
 class TrainData(builtins.object):
     def getCatCount(self, vi) -> retval:
@@ -1225,7 +1213,7 @@ class TrainData(builtins.object):
     def getTrainSampleWeights(self) -> retval:
         """"""
 
-    def getTrainSamples(self, layout = ..., compressSamples = ..., compressVars = ...) -> retval:
+    def getTrainSamples(self, layout=..., compressSamples=..., compressVars=...) -> retval:
         """
         @brief Returns matrix of train samples
 
@@ -1246,13 +1234,13 @@ class TrainData(builtins.object):
     def getVarType(self) -> retval:
         """"""
 
-    def setTrainTestSplit(self, count, shuffle = ...) -> None:
+    def setTrainTestSplit(self, count, shuffle=...) -> None:
         """
         @brief Splits the training data into the training and test parts
         @sa TrainData::setTrainTestSplitRatio
         """
 
-    def setTrainTestSplitRatio(self, ratio, shuffle = ...) -> None:
+    def setTrainTestSplitRatio(self, ratio, shuffle=...) -> None:
         """
         @brief Splits the training data into the training and test parts
 
@@ -1266,7 +1254,7 @@ class TrainData(builtins.object):
     def shuffleTrainTest(self) -> None:
         """"""
 
-    def create(self, samples, layout, responses, varIdx = ..., sampleIdx = ..., sampleWeights = ..., varType = ...) -> retval:
+    def create(self, samples, layout, responses, varIdx=..., sampleIdx=..., sampleWeights=..., varType=...) -> retval:
         """
         @brief Creates training data from in-memory arrays.
 
@@ -1294,7 +1282,6 @@ class TrainData(builtins.object):
         @param idx 1D index vector
         """
 
-
 @overload
 def ANN_MLP_create() -> retval:
     """
@@ -1303,13 +1290,11 @@ def ANN_MLP_create() -> retval:
 
 @overload
 def ANN_MLP_create() -> retval:
-    """
-    """
+    """ """
 
 @overload
 def ANN_MLP_create() -> retval:
-    """
-    """
+    """ """
 
 def ANN_MLP_load(filepath) -> retval:
     """
@@ -1327,7 +1312,7 @@ def Boost_create() -> retval:
     Use StatModel::train to train the model, Algorithm::load\<Boost\>(filename) to load the pre-trained model.
     """
 
-def Boost_load(filepath, nodeName = ...) -> retval:
+def Boost_load(filepath, nodeName=...) -> retval:
     """
     @brief Loads and creates a serialized Boost from a file
          *
@@ -1347,20 +1332,17 @@ def DTrees_create() -> retval:
 
 @overload
 def DTrees_create() -> retval:
-    """
-    """
+    """ """
 
 @overload
 def DTrees_create() -> retval:
-    """
-    """
+    """ """
 
 @overload
 def DTrees_create() -> retval:
-    """
-    """
+    """ """
 
-def DTrees_load(filepath, nodeName = ...) -> retval:
+def DTrees_load(filepath, nodeName=...) -> retval:
     """
     @brief Loads and creates a serialized DTrees from a file
          *
@@ -1380,15 +1362,13 @@ def EM_create() -> retval:
 
 @overload
 def EM_create() -> retval:
-    """
-    """
+    """ """
 
 @overload
 def EM_create() -> retval:
-    """
-    """
+    """ """
 
-def EM_load(filepath, nodeName = ...) -> retval:
+def EM_load(filepath, nodeName=...) -> retval:
     """
     @brief Loads and creates a serialized EM from a file
          *
@@ -1408,8 +1388,7 @@ def KNearest_create() -> retval:
 
 @overload
 def KNearest_create() -> retval:
-    """
-    """
+    """ """
 
 def KNearest_load(filepath) -> retval:
     """
@@ -1429,10 +1408,9 @@ def LogisticRegression_create() -> retval:
 
 @overload
 def LogisticRegression_create() -> retval:
-    """
-    """
+    """ """
 
-def LogisticRegression_load(filepath, nodeName = ...) -> retval:
+def LogisticRegression_load(filepath, nodeName=...) -> retval:
     """
     @brief Loads and creates a serialized LogisticRegression from a file
          *
@@ -1450,7 +1428,7 @@ def NormalBayesClassifier_create() -> retval:
     Use StatModel::train to train the model after creation.
     """
 
-def NormalBayesClassifier_load(filepath, nodeName = ...) -> retval:
+def NormalBayesClassifier_load(filepath, nodeName=...) -> retval:
     """
     @brief Loads and creates a serialized NormalBayesClassifier from a file
          *
@@ -1462,7 +1440,7 @@ def NormalBayesClassifier_load(filepath, nodeName = ...) -> retval:
          * @param nodeName name of node containing the classifier
     """
 
-def ParamGrid_create(minVal = ..., maxVal = ..., logstep = ...) -> retval:
+def ParamGrid_create(minVal=..., maxVal=..., logstep=...) -> retval:
     """
     @brief Creates a ParamGrid Ptr that can be given to the %SVM::trainAuto method
 
@@ -1479,15 +1457,13 @@ def RTrees_create() -> retval:
 
 @overload
 def RTrees_create() -> retval:
-    """
-    """
+    """ """
 
 @overload
 def RTrees_create() -> retval:
-    """
-    """
+    """ """
 
-def RTrees_load(filepath, nodeName = ...) -> retval:
+def RTrees_load(filepath, nodeName=...) -> retval:
     """
     @brief Loads and creates a serialized RTree from a file
          *
@@ -1506,7 +1482,7 @@ def SVMSGD_create() -> retval:
          * find the best parameters for your problem or use setOptimalParameters() to set some default parameters.
     """
 
-def SVMSGD_load(filepath, nodeName = ...) -> retval:
+def SVMSGD_load(filepath, nodeName=...) -> retval:
     """
     @brief Loads and creates a serialized SVMSGD from a file
          *
@@ -1540,18 +1516,15 @@ def SVM_getDefaultGridPtr(param_id) -> retval:
 
 @overload
 def SVM_getDefaultGridPtr(param_id) -> retval:
-    """
-    """
+    """ """
 
 @overload
 def SVM_getDefaultGridPtr(param_id) -> retval:
-    """
-    """
+    """ """
 
 @overload
 def SVM_getDefaultGridPtr(param_id) -> retval:
-    """
-    """
+    """ """
 
 def SVM_load(filepath) -> retval:
     """
@@ -1563,7 +1536,7 @@ def SVM_load(filepath) -> retval:
          * @param filepath path to serialized svm
     """
 
-def TrainData_create(samples, layout, responses, varIdx = ..., sampleIdx = ..., sampleWeights = ..., varType = ...) -> retval:
+def TrainData_create(samples, layout, responses, varIdx=..., sampleIdx=..., sampleWeights=..., varType=...) -> retval:
     """
     @brief Creates training data from in-memory arrays.
 

@@ -8,21 +8,21 @@ image: TypeAlias = Any
 retval: TypeAlias = Any
 
 class LargeKinfu(builtins.object):
-    def getCloud(self, points = ..., normals = ...) -> tuple[points, normals]:
+    def getCloud(self, points=..., normals=...) -> tuple[points, normals]:
         """"""
 
-    def getNormals(self, points, normals = ...) -> normals:
+    def getNormals(self, points, normals=...) -> normals:
         """"""
 
-    def getPoints(self, points = ...) -> points:
-        """"""
-
-    @overload
-    def render(self, image = ...) -> image:
+    def getPoints(self, points=...) -> points:
         """"""
 
     @overload
-    def render(self, cameraPose, image = ...) -> image:
+    def render(self, image=...) -> image:
+        """"""
+
+    @overload
+    def render(self, cameraPose, image=...) -> image:
         """"""
 
     def reset(self) -> None:
@@ -33,7 +33,6 @@ class LargeKinfu(builtins.object):
 
     def create(self, _params) -> retval:
         """"""
-
 
 class Params(builtins.object):
     def coarseParams(self) -> retval:
@@ -55,10 +54,9 @@ class Params(builtins.object):
         A set of parameters suitable for use with HashTSDFVolume
         """
 
-
 def LargeKinfu_create(_params) -> retval:
     """
-        .
+    .
     """
 
 def Params_coarseParams() -> retval:

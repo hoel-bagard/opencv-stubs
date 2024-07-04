@@ -441,7 +441,7 @@ RETR_FLOODFILL: Final[int]
 # seamlessClone algorithm flags
 # https://docs.opencv.org/3.4/df/da0/group__photo__clone.html#ga19386064a1bd4e1153262844e6875bcc
 NORMAL_CLONE: Final[int]  # The power of the method is fully expressed when inserting objects with complex outlines into a new background
-MIXED_CLONE:int   # The classic method, color-based selection and alpha masking might be time consuming and often leaves an undesirable halo. Seamless cloning, even averaged with the original image, is not effective. Mixed seamless cloning based on a loose selection proves effective.
+MIXED_CLONE: int  # The classic method, color-based selection and alpha masking might be time consuming and often leaves an undesirable halo. Seamless cloning, even averaged with the original image, is not effective. Mixed seamless cloning based on a loose selection proves effective.
 MONOCHROME_TRANSFER: Final[int]  # Monochrome transfer allows the user to easily replace certain features of one object by alternative features.
 
 # ThresholdTypes
@@ -459,8 +459,8 @@ WARP_POLAR_LINEAR: Final[int]
 WARP_POLAR_LOG: Final[int]
 
 # WindowFlags
-WINDOW_NORMAL: Final[int] # The user can resize the window (no constraint) / also use to switch a fullscreen window to a normal size.
-WINDOW_AUTOSIZE: Final[int] # The user cannot resize the window, the size is constrainted by the image displayed.
+WINDOW_NORMAL: Final[int]  # The user can resize the window (no constraint) / also use to switch a fullscreen window to a normal size.
+WINDOW_AUTOSIZE: Final[int]  # The user cannot resize the window, the size is constrainted by the image displayed.
 WINDOW_OPENGL: Final[int]  # Window with opengl support.
 WINDOW_FULLSCREEN: Final[int]  # Change the window to fullscreen.
 WINDOW_FREERATIO: Final[int]  # The image expends as much as it can (no ratio constraint).
@@ -476,8 +476,6 @@ WND_PROP_OPENGL: Final[int]  # Opengl support.
 WND_PROP_VISIBLE: Final[int]  # Checks whether the window exists and is visible
 WND_PROP_TOPMOST: Final[int]  # Property to toggle normal window being topmost or not
 WND_PROP_VSYNC: Final[int]
-
-
 
 ACCESS_FAST: Final[int]
 ACCESS_MASK: Final[int]

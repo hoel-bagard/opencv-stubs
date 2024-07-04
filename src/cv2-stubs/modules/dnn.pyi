@@ -54,9 +54,8 @@ class ClassificationModel(Model):
         * @param[in] enable Set enable softmax post processing within the classify() function.
         """
 
-
 class DetectionModel(Model):
-    def detect(self, frame, confThreshold = ..., nmsThreshold = ...) -> tuple[classIds, confidences, boxes]:
+    def detect(self, frame, confThreshold=..., nmsThreshold=...) -> tuple[classIds, confidences, boxes]:
         """
         @brief Given the @p input frame, create input blob, run net and return result detections.
         *  @param[in]  frame  The input image.
@@ -81,15 +80,14 @@ class DetectionModel(Model):
         * @param[in] value The new value for nmsAcrossClasses
         """
 
-
 class DictValue(builtins.object):
-    def getIntValue(self, idx = ...) -> retval:
+    def getIntValue(self, idx=...) -> retval:
         """"""
 
-    def getRealValue(self, idx = ...) -> retval:
+    def getRealValue(self, idx=...) -> retval:
         """"""
 
-    def getStringValue(self, idx = ...) -> retval:
+    def getStringValue(self, idx=...) -> retval:
         """"""
 
     def isInt(self) -> retval:
@@ -101,18 +99,16 @@ class DictValue(builtins.object):
     def isString(self) -> retval:
         """"""
 
-
 class KeypointsModel(Model):
-    def estimate(self, frame, thresh = ...) -> retval:
+    def estimate(self, frame, thresh=...) -> retval:
         """
         @brief Given the @p input frame, create input blob, run net
         *  @param[in]  frame  The input image.
         *  @param thresh minimum confidence threshold to select a keypoint *  @returns a vector holding the x and y coordinates of each detected keypoint *
         """
 
-
 class Layer(cv2.Algorithm):
-    def finalize(self, inputs, outputs = ...) -> outputs:
+    def finalize(self, inputs, outputs=...) -> outputs:
         """
         @brief Computes and sets internal parameters according to inputs, outputs and blobs.
         *  @param[in]  inputs  vector of already allocated input blobs
@@ -125,15 +121,14 @@ class Layer(cv2.Algorithm):
         *  @see inputNameToIndex()
         """
 
-    def run(self, inputs, internals, outputs = ...) -> tuple[outputs, internals]:
+    def run(self, inputs, internals, outputs=...) -> tuple[outputs, internals]:
         """
         @brief Allocates layer and computes output.
         *  @deprecated This method will be removed in the future release.
         """
 
-
 class Model(builtins.object):
-    def predict(self, frame, outs = ...) -> outs:
+    def predict(self, frame, outs=...) -> outs:
         """
         @brief Given the @p input frame, create input blob, run net and return the output @p blobs.
         *  @param[in]  frame  The input image.
@@ -152,7 +147,7 @@ class Model(builtins.object):
         *  @param[in] mean Scalar with mean values which are subtracted from channels.
         """
 
-    def setInputParams(self, scale = ..., size = ..., mean = ..., swapRB = ..., crop = ...) -> None:
+    def setInputParams(self, scale=..., size=..., mean=..., swapRB=..., crop=...) -> None:
         """
         @brief Set preprocessing parameters for frame.
         *  @param[in] size New input size.
@@ -195,7 +190,6 @@ class Model(builtins.object):
     def setPreferableTarget(self, targetId) -> retval:
         """"""
 
-
 class Net(builtins.object):
     def connect(self, outPin, inpPin) -> None:
         """
@@ -236,21 +230,21 @@ class Net(builtins.object):
         """
 
     @overload
-    def forward(self, outputName = ...) -> retval:
+    def forward(self, outputName=...) -> retval:
         """
         @brief Runs forward pass to compute output of layer with name @p outputName.
         *  @param outputName name for layer which output is needed to get *  @return blob for first output of specified layer. *  @details By default runs forward pass for the whole network.
         """
 
     @overload
-    def forward(self, outputBlobs = ..., outputName = ...) -> outputBlobs:
+    def forward(self, outputBlobs=..., outputName=...) -> outputBlobs:
         """
         @brief Runs forward pass to compute output of layer with name @p outputName.
         *  @param outputBlobs contains all output blobs for specified layer.
         *  @param outputName name for layer which output is needed to get *  @details If @p outputName is empty, runs forward pass for the whole network.
         """
 
-    def forward(self, outBlobNames, outputBlobs = ...) -> outputBlobs:
+    def forward(self, outBlobNames, outputBlobs=...) -> outputBlobs:
         """
         @brief Runs forward pass to compute outputs of layers listed in @p outBlobNames.
         *  @param outputBlobs contains blobs for first outputs of specified layers.
@@ -264,7 +258,7 @@ class Net(builtins.object):
         *  @param outBlobNames names for layers which outputs are needed to get
         """
 
-    def forwardAsync(self, outputName = ...) -> retval:
+    def forwardAsync(self, outputName=...) -> retval:
         """
         @brief Runs forward pass to compute output of layer with name @p outputName.
         *  @param outputName name for layer which output is needed to get *  @details By default runs forward pass for the whole network. * *  This is an asynchronous version of forward(const String&). *  dnn::DNN_BACKEND_INFERENCE_ENGINE backend is required.
@@ -379,7 +373,7 @@ class Net(builtins.object):
         """
 
     @overload
-    def getParam(self, layer, numParam = ...) -> retval:
+    def getParam(self, layer, numParam=...) -> retval:
         """
         @brief Returns parameter blob of the layer.
         *  @param layer name or id of the layer.
@@ -387,7 +381,7 @@ class Net(builtins.object):
         """
 
     @overload
-    def getParam(self, layerName, numParam = ...) -> retval:
+    def getParam(self, layerName, numParam=...) -> retval:
         """"""
 
     def getPerfProfile(self) -> tuple[retval, timings]:
@@ -414,7 +408,7 @@ class Net(builtins.object):
         * FIXIT: Rework API to registerOutput() approach, deprecate this call
         """
 
-    def quantize(self, calibData, inputsDtype, outputsDtype, perChannel = ...) -> retval:
+    def quantize(self, calibData, inputsDtype, outputsDtype, perChannel=...) -> retval:
         """
         @brief Returns a quantized Net from a floating-point Net.
         *  @param calibData Calibration data to compute the quantization parameters.
@@ -429,7 +423,7 @@ class Net(builtins.object):
         * @param[in] scheduler Path to YAML file with scheduling directives. * @see setPreferableBackend * * Schedule layers that support Halide backend. Then compile them for * specific target. For layers that not represented in scheduling file * or if no manual scheduling used at all, automatic scheduling will be applied.
         """
 
-    def setInput(self, blob, name = ..., scalefactor = ..., mean = ...) -> None:
+    def setInput(self, blob, name=..., scalefactor=..., mean=...) -> None:
         """
         @brief Sets the new input value for the network
         *  @param blob        A new blob. Should have CV_32F or CV_8U depth.
@@ -494,15 +488,13 @@ class Net(builtins.object):
         *  @param[in] bufferWeights buffer with model's trained weights. *  @returns Net object.
         """
 
-
 class SegmentationModel(Model):
-    def segment(self, frame, mask = ...) -> mask:
+    def segment(self, frame, mask=...) -> mask:
         """
         @brief Given the @p input frame, create input blob, run net
         *  @param[in]  frame  The input image.
         *  @param[out] mask Allocated class prediction for each pixel
         """
-
 
 class TextDetectionModel(Model):
     @overload
@@ -555,7 +547,6 @@ class TextDetectionModel(Model):
         @overload
         """
 
-
 class TextDetectionModel_DB(TextDetectionModel):
     def getBinaryThreshold(self) -> retval:
         """"""
@@ -581,7 +572,6 @@ class TextDetectionModel_DB(TextDetectionModel):
     def setUnclipRatio(self, unclipRatio) -> retval:
         """"""
 
-
 class TextDetectionModel_EAST(TextDetectionModel):
     def getConfidenceThreshold(self) -> retval:
         """
@@ -604,7 +594,6 @@ class TextDetectionModel_EAST(TextDetectionModel):
         * @brief Set the detection NMS filter threshold
         * @param[in] nmsThreshold A threshold used in non maximum suppression
         """
-
 
 class TextRecognitionModel(Model):
     def getDecodeType(self) -> retval:
@@ -635,7 +624,7 @@ class TextRecognitionModel(Model):
         * @param[out] results A set of text recognition results.
         """
 
-    def setDecodeOptsCTCPrefixBeamSearch(self, beamSize, vocPruneSize = ...) -> retval:
+    def setDecodeOptsCTCPrefixBeamSearch(self, beamSize, vocPruneSize=...) -> retval:
         """
         * @brief Set the decoding method options for `"CTC-prefix-beam-search"` decode usage
         * @param[in] beamSize Beam size for search
@@ -654,8 +643,7 @@ class TextRecognitionModel(Model):
         * @param[in] vocabulary the associated vocabulary of the network.
         """
 
-
-def NMSBoxes(bboxes, scores, score_threshold, nms_threshold, eta = ..., top_k = ...) -> indices:
+def NMSBoxes(bboxes, scores, score_threshold, nms_threshold, eta=..., top_k=...) -> indices:
     """
     @brief Performs non maximum suppression given boxes and corresponding scores.
 
@@ -668,7 +656,7 @@ def NMSBoxes(bboxes, scores, score_threshold, nms_threshold, eta = ..., top_k = 
          * @param top_k if `>0`, keep at most @p top_k picked indices.
     """
 
-def NMSBoxesBatched(bboxes, scores, class_ids, score_threshold, nms_threshold, eta = ..., top_k = ...) -> indices:
+def NMSBoxesBatched(bboxes, scores, class_ids, score_threshold, nms_threshold, eta=..., top_k=...) -> indices:
     """
     @brief Performs batched non maximum suppression on given boxes and corresponding scores across different classes.
 
@@ -682,9 +670,9 @@ def NMSBoxesBatched(bboxes, scores, class_ids, score_threshold, nms_threshold, e
          * @param top_k if `>0`, keep at most @p top_k picked indices.
     """
 
-def NMSBoxesRotated(bboxes, scores, score_threshold, nms_threshold, eta = ..., top_k = ...) -> indices:
+def NMSBoxesRotated(bboxes, scores, score_threshold, nms_threshold, eta=..., top_k=...) -> indices:
     """
-        .
+    .
     """
 
 @overload
@@ -706,7 +694,7 @@ def Net_readFromModelOptimizer(xml, bin) -> retval:
              *  @returns Net object.
     """
 
-def blobFromImage(image, scalefactor = ..., size = ..., mean = ..., swapRB = ..., crop = ..., ddepth = ...) -> retval:
+def blobFromImage(image, scalefactor=..., size=..., mean=..., swapRB=..., crop=..., ddepth=...) -> retval:
     """
     @brief Creates 4-dimensional blob from image. Optionally resizes and crops @p image from center,
          *  subtract @p mean values, scales values by @p scalefactor, swap Blue and Red channels.
@@ -725,7 +713,7 @@ def blobFromImage(image, scalefactor = ..., size = ..., mean = ..., swapRB = ...
          *  @returns 4-dimensional Mat with NCHW dimensions order.
     """
 
-def blobFromImages(images, scalefactor = ..., size = ..., mean = ..., swapRB = ..., crop = ..., ddepth = ...) -> retval:
+def blobFromImages(images, scalefactor=..., size=..., mean=..., swapRB=..., crop=..., ddepth=...) -> retval:
     """
     @brief Creates 4-dimensional blob from series of images. Optionally resizes and
          *  crops @p images from center, subtract @p mean values, scales values by @p scalefactor,
@@ -747,10 +735,10 @@ def blobFromImages(images, scalefactor = ..., size = ..., mean = ..., swapRB = .
 
 def getAvailableTargets(be) -> retval:
     """
-        .
+    .
     """
 
-def imagesFromBlob(blob_, images_ = ...) -> images_:
+def imagesFromBlob(blob_, images_=...) -> images_:
     """
     @brief Parse a 4D blob and output the images it contains as 2D arrays through a simpler data structure
          *  (std::vector<cv::Mat>).
@@ -762,7 +750,7 @@ def imagesFromBlob(blob_, images_ = ...) -> images_:
     """
 
 @overload
-def readNet(model, config = ..., framework = ...) -> retval:
+def readNet(model, config=..., framework=...) -> retval:
     """
     * @brief Read deep learning network represented in one of the supported formats.
           * @param[in] model Binary file contains trained weights. The following file
@@ -789,7 +777,7 @@ def readNet(model, config = ..., framework = ...) -> retval:
     """
 
 @overload
-def readNet(model, config = ..., framework = ...) -> retval:
+def readNet(model, config=..., framework=...) -> retval:
     """
     * @brief Read deep learning network represented in one of the supported formats.
           * @details This is an overloaded member function, provided for convenience.
@@ -801,7 +789,7 @@ def readNet(model, config = ..., framework = ...) -> retval:
     """
 
 @overload
-def readNetFromCaffe(prototxt, caffeModel = ...) -> retval:
+def readNetFromCaffe(prototxt, caffeModel=...) -> retval:
     """
     @brief Reads a network model stored in <a href="http://caffe.berkeleyvision.org">Caffe</a> framework's format.
           * @param prototxt   path to the .prototxt file with text description of the network architecture.
@@ -810,7 +798,7 @@ def readNetFromCaffe(prototxt, caffeModel = ...) -> retval:
     """
 
 @overload
-def readNetFromCaffe(prototxt, caffeModel = ...) -> retval:
+def readNetFromCaffe(prototxt, caffeModel=...) -> retval:
     """
     @brief Reads a network model stored in Caffe model in memory.
           * @param bufferProto buffer containing the content of the .prototxt file
@@ -819,7 +807,7 @@ def readNetFromCaffe(prototxt, caffeModel = ...) -> retval:
     """
 
 @overload
-def readNetFromDarknet(cfgFile, darknetModel = ...) -> retval:
+def readNetFromDarknet(cfgFile, darknetModel=...) -> retval:
     """
     @brief Reads a network model stored in <a href="https://pjreddie.com/darknet/">Darknet</a> model files.
         *  @param cfgFile      path to the .cfg file with text description of the network architecture.
@@ -829,7 +817,7 @@ def readNetFromDarknet(cfgFile, darknetModel = ...) -> retval:
     """
 
 @overload
-def readNetFromDarknet(cfgFile, darknetModel = ...) -> retval:
+def readNetFromDarknet(cfgFile, darknetModel=...) -> retval:
     """
     @brief Reads a network model stored in <a href="https://pjreddie.com/darknet/">Darknet</a> model files.
          *  @param bufferCfg   A buffer contains a content of .cfg file with text description of the network architecture.
@@ -878,7 +866,7 @@ def readNetFromONNX(onnxFile) -> retval:
     """
 
 @overload
-def readNetFromTensorflow(model, config = ...) -> retval:
+def readNetFromTensorflow(model, config=...) -> retval:
     """
     @brief Reads a network model stored in <a href="https://www.tensorflow.org/">TensorFlow</a> framework's format.
           * @param model  path to the .pb file with binary protobuf description of the network architecture
@@ -889,7 +877,7 @@ def readNetFromTensorflow(model, config = ...) -> retval:
     """
 
 @overload
-def readNetFromTensorflow(model, config = ...) -> retval:
+def readNetFromTensorflow(model, config=...) -> retval:
     """
     @brief Reads a network model stored in <a href="https://www.tensorflow.org/">TensorFlow</a> framework's format.
           * @param bufferModel buffer containing the content of the pb file
@@ -897,7 +885,7 @@ def readNetFromTensorflow(model, config = ...) -> retval:
           * @returns Net object.
     """
 
-def readNetFromTorch(model, isBinary = ..., evaluate = ...) -> retval:
+def readNetFromTorch(model, isBinary=..., evaluate=...) -> retval:
     """
     *  @brief Reads a network model stored in <a href="http://torch.ch">Torch7</a> framework's format.
          *  @param model    path to the file, dumped from Torch by using torch.save() function.
@@ -932,13 +920,13 @@ def readTensorFromONNX(path) -> retval:
          *  @returns Mat.
     """
 
-def readTorchBlob(filename, isBinary = ...) -> retval:
+def readTorchBlob(filename, isBinary=...) -> retval:
     """
     @brief Loads blob which was serialized as torch.Tensor object of Torch7 framework.
          *  @warning This function has the same limitations as readNetFromTorch().
     """
 
-def shrinkCaffeModel(src, dst, layersTypes = ...) -> None:
+def shrinkCaffeModel(src, dst, layersTypes=...) -> None:
     """
     @brief Convert all weights of Caffe network to half precision floating point.
          * @param src Path to origin model from Caffe framework contains single
@@ -954,7 +942,7 @@ def shrinkCaffeModel(src, dst, layersTypes = ...) -> None:
          *       So the resulting model may be used there.
     """
 
-def softNMSBoxes(bboxes, scores, score_threshold, nms_threshold, top_k = ..., sigma = ..., method = ...) -> tuple[updated_scores, indices]:
+def softNMSBoxes(bboxes, scores, score_threshold, nms_threshold, top_k=..., sigma=..., method=...) -> tuple[updated_scores, indices]:
     """
     @brief Performs soft non maximum suppression given boxes and corresponding scores.
          * Reference: https://arxiv.org/abs/1704.04503

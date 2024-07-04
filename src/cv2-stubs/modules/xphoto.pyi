@@ -20,9 +20,8 @@ class GrayworldWB(WhiteBalancer):
         @copybrief getSaturationThreshold @see getSaturationThreshold
         """
 
-
 class LearningBasedWB(WhiteBalancer):
-    def extractSimpleFeatures(self, src, dst = ...) -> dst:
+    def extractSimpleFeatures(self, src, dst=...) -> dst:
         """
         @brief Implements the feature extraction part of the algorithm.
 
@@ -75,7 +74,6 @@ class LearningBasedWB(WhiteBalancer):
         """
         @copybrief getSaturationThreshold @see getSaturationThreshold
         """
-
 
 class SimpleWB(WhiteBalancer):
     def getInputMax(self) -> retval:
@@ -133,7 +131,6 @@ class SimpleWB(WhiteBalancer):
         @copybrief getP @see getP
         """
 
-
 class TonemapDurand(cv2.Tonemap):
     def getContrast(self) -> retval:
         """"""
@@ -159,9 +156,8 @@ class TonemapDurand(cv2.Tonemap):
     def setSigmaSpace(self, sigma_space) -> None:
         """"""
 
-
 class WhiteBalancer(cv2.Algorithm):
-    def balanceWhite(self, src, dst = ...) -> dst:
+    def balanceWhite(self, src, dst=...) -> dst:
         """
         @brief Applies white balancing to the input image
 
@@ -169,15 +165,14 @@ class WhiteBalancer(cv2.Algorithm):
         @param dst White balancing result @sa cvtColor, equalizeHist
         """
 
-
 @overload
-def applyChannelGains(src, gainB, gainG, gainR, dst = ...) -> dst:
+def applyChannelGains(src, gainB, gainG, gainR, dst=...) -> dst:
     """
     @brief Implements an efficient fixed-point approximation for applying channel gains, which is
     """
 
 @overload
-def applyChannelGains(src, gainB, gainG, gainR, dst = ...) -> dst:
+def applyChannelGains(src, gainB, gainG, gainR, dst=...) -> dst:
     """
 
     @param src Input three-channel image in the BGR color space (either CV_8UC3 or CV_16UC3)
@@ -188,7 +183,7 @@ def applyChannelGains(src, gainB, gainG, gainR, dst = ...) -> dst:
     """
 
 @overload
-def bm3dDenoising(src, dstStep1, dstStep2 = ..., h = ..., templateWindowSize = ..., searchWindowSize = ..., blockMatchingStep1 = ..., blockMatchingStep2 = ..., groupSize = ..., slidingStep = ..., beta = ..., normType = ..., step = ..., transformType = ...) -> tuple[dstStep1, dstStep2]:
+def bm3dDenoising(src, dstStep1, dstStep2=..., h=..., templateWindowSize=..., searchWindowSize=..., blockMatchingStep1=..., blockMatchingStep2=..., groupSize=..., slidingStep=..., beta=..., normType=..., step=..., transformType=...) -> tuple[dstStep1, dstStep2]:
     """
     @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
             <http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf> with several computational
@@ -229,7 +224,7 @@ def bm3dDenoising(src, dstStep1, dstStep2 = ..., h = ..., templateWindowSize = .
     """
 
 @overload
-def bm3dDenoising(src, dstStep1, dstStep2 = ..., h = ..., templateWindowSize = ..., searchWindowSize = ..., blockMatchingStep1 = ..., blockMatchingStep2 = ..., groupSize = ..., slidingStep = ..., beta = ..., normType = ..., step = ..., transformType = ...) -> tuple[dstStep1, dstStep2]:
+def bm3dDenoising(src, dstStep1, dstStep2=..., h=..., templateWindowSize=..., searchWindowSize=..., blockMatchingStep1=..., blockMatchingStep2=..., groupSize=..., slidingStep=..., beta=..., normType=..., step=..., transformType=...) -> tuple[dstStep1, dstStep2]:
     """
     @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
             <http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf> with several computational
@@ -274,7 +269,7 @@ def createGrayworldWB() -> retval:
     @brief Creates an instance of GrayworldWB
     """
 
-def createLearningBasedWB(path_to_model = ...) -> retval:
+def createLearningBasedWB(path_to_model=...) -> retval:
     """
     @brief Creates an instance of LearningBasedWB
 
@@ -286,7 +281,7 @@ def createSimpleWB() -> retval:
     @brief Creates an instance of SimpleWB
     """
 
-def createTonemapDurand(gamma = ..., contrast = ..., saturation = ..., sigma_color = ..., sigma_space = ...) -> retval:
+def createTonemapDurand(gamma=..., contrast=..., saturation=..., sigma_color=..., sigma_space=...) -> retval:
     """
     @brief Creates TonemapDurand object
 
@@ -300,7 +295,7 @@ def createTonemapDurand(gamma = ..., contrast = ..., saturation = ..., sigma_col
     @param sigma_space bilateral filter sigma in coordinate space
     """
 
-def dctDenoising(src, dst, sigma, psize = ...) -> None:
+def dctDenoising(src, dst, sigma, psize=...) -> None:
     """
     @brief The function implements simple dct-based denoising
 
@@ -324,32 +319,31 @@ def inpaint(src, mask, dst, algorithmType) -> None:
 def inpaint(src, mask, dst, algorithmType) -> None:
     """
 
-        @param src source image
-        - #INPAINT_SHIFTMAP: it could be of any type and any number of channels from 1 to 4. In case of
-        3- and 4-channels images the function expect them in CIELab colorspace or similar one, where first
+    @param src source image
+    - #INPAINT_SHIFTMAP: it could be of any type and any number of channels from 1 to 4. In case of
+    3- and 4-channels images the function expect them in CIELab colorspace or similar one, where first
+    """
+
+@overload
+def inpaint(src, mask, dst, algorithmType) -> None:
+    """ """
+
+@overload
+def inpaint(src, mask, dst, algorithmType) -> None:
+    """
+    - #INPAINT_FSR_BEST or #INPAINT_FSR_FAST: 1-channel grayscale or 3-channel BGR image.
+    @param mask mask (#CV_8UC1), where non-zero pixels indicate valid image area, while zero pixels
     """
 
 @overload
 def inpaint(src, mask, dst, algorithmType) -> None:
     """
+    @param dst destination image
+    @param algorithmType see xphoto::InpaintTypes
     """
 
 @overload
-def inpaint(src, mask, dst, algorithmType) -> None:
-    """
-        - #INPAINT_FSR_BEST or #INPAINT_FSR_FAST: 1-channel grayscale or 3-channel BGR image.
-        @param mask mask (#CV_8UC1), where non-zero pixels indicate valid image area, while zero pixels
-    """
-
-@overload
-def inpaint(src, mask, dst, algorithmType) -> None:
-    """
-        @param dst destination image
-        @param algorithmType see xphoto::InpaintTypes
-    """
-
-@overload
-def oilPainting(src, size, dynRatio, code, dst = ...) -> dst:
+def oilPainting(src, size, dynRatio, code, dst=...) -> dst:
     """
     @brief oilPainting
     See the book @cite Holzmann1988 for details.
@@ -361,7 +355,7 @@ def oilPainting(src, size, dynRatio, code, dst = ...) -> dst:
     """
 
 @overload
-def oilPainting(src, size, dynRatio, code, dst = ...) -> dst:
+def oilPainting(src, size, dynRatio, code, dst=...) -> dst:
     """
     @brief oilPainting
     See the book @cite Holzmann1988 for details.

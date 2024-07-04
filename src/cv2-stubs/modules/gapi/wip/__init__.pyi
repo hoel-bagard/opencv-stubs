@@ -18,18 +18,12 @@ class GOutputs(builtins.object):
     def getGScalar(self) -> retval:
         """"""
 
+class GStreamerPipeline(builtins.object): ...
+class IStreamSource(builtins.object): ...
 
-class GStreamerPipeline(builtins.object):
-    ...
-
-
-class IStreamSource(builtins.object):
-    ...
-
-
-def get_streaming_source(pipeline, appsinkName, outputType = ...) -> retval:
+def get_streaming_source(pipeline, appsinkName, outputType=...) -> retval:
     """
-        .
+    .
     """
 
 @overload
@@ -51,10 +45,10 @@ def make_capture_src(path) -> retval:
 @overload
 def make_capture_src(path) -> retval:
     """
-        .
+    .
     """
 
-def make_gst_src(pipeline, outputType = ...) -> retval:
+def make_gst_src(pipeline, outputType=...) -> retval:
     """
-        .
+    .
     """

@@ -13,7 +13,7 @@ class IntelligentScissorsMB(builtins.object):
         * @param image input image. Type is #CV_8UC1 / #CV_8UC3
         """
 
-    def applyImageFeatures(self, non_edge, gradient_direction, gradient_magnitude, image = ...) -> retval:
+    def applyImageFeatures(self, non_edge, gradient_direction, gradient_magnitude, image=...) -> retval:
         """
         @brief Specify custom features of input image
         *
@@ -34,7 +34,7 @@ class IntelligentScissorsMB(builtins.object):
         * @param sourcePt The source point used to find the paths
         """
 
-    def getContour(self, targetPt, contour = ..., backward = ...) -> contour:
+    def getContour(self, targetPt, contour=..., backward=...) -> contour:
         """
         @brief Extracts optimal contour for the given target point on the image
         *
@@ -45,7 +45,7 @@ class IntelligentScissorsMB(builtins.object):
         * @param backward Flag to indicate reverse order of retrived pixels (use "true" value to fetch points from the target to the source point)
         """
 
-    def setEdgeFeatureCannyParameters(self, threshold1, threshold2, apertureSize = ..., L2gradient = ...) -> retval:
+    def setEdgeFeatureCannyParameters(self, threshold1, threshold2, apertureSize=..., L2gradient=...) -> retval:
         """
         @brief Switch edge feature extractor to use Canny edge detector
         *
@@ -54,7 +54,7 @@ class IntelligentScissorsMB(builtins.object):
         * @sa Canny
         """
 
-    def setEdgeFeatureZeroCrossingParameters(self, gradient_magnitude_min_value = ...) -> retval:
+    def setEdgeFeatureZeroCrossingParameters(self, gradient_magnitude_min_value=...) -> retval:
         """
         @brief Switch to "Laplacian Zero-Crossing" edge feature extractor and specify its parameters
         *
@@ -70,7 +70,7 @@ class IntelligentScissorsMB(builtins.object):
         * @param gradient_magnitude_min_value Minimal gradient magnitude value for edge pixels (default: 0, check is disabled)
         """
 
-    def setGradientMagnitudeMaxLimit(self, gradient_magnitude_threshold_max = ...) -> retval:
+    def setGradientMagnitudeMaxLimit(self, gradient_magnitude_threshold_max=...) -> retval:
         """
         @brief Specify gradient magnitude max value threshold
         *

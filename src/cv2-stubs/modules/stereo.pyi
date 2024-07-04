@@ -9,10 +9,7 @@ class MatchQuasiDense(builtins.object):
     def apply(self, rhs) -> retval:
         """"""
 
-
-class PropagationParameters(builtins.object):
-    ...
-
+class PropagationParameters(builtins.object): ...
 
 class QuasiDenseStereo(builtins.object):
     def getDenseMatches(self) -> denseMatches:
@@ -66,13 +63,12 @@ class QuasiDenseStereo(builtins.object):
         * @param[in] filepath The location to store the parameters file. * @note Calling this method with no arguments will result in storing class parameters to a file * names "qds_parameters.yaml" in the root project folder. * @note This method can be used to generate a template file for tuning the class. * @sa loadParameters
         """
 
-    def create(self, monoImgSize, paramFilepath = ...) -> retval:
+    def create(self, monoImgSize, paramFilepath=...) -> retval:
         """"""
 
-
-def QuasiDenseStereo_create(monoImgSize, paramFilepath = ...) -> retval:
+def QuasiDenseStereo_create(monoImgSize, paramFilepath=...) -> retval:
     """
-        .
+    .
     """
 
 CV_CS_CENSUS: Final[int]

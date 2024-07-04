@@ -10,19 +10,17 @@ class PyParams(builtins.object):
     def cfgNumRequests(self, nireq) -> retval:
         """"""
 
-    def constInput(self, layer_name, data, hint = ...) -> retval:
+    def constInput(self, layer_name, data, hint=...) -> retval:
         """"""
 
+@overload
+def params(tag, model, weights, device) -> retval:
+    """ """
 
 @overload
 def params(tag, model, weights, device) -> retval:
     """
-    """
-
-@overload
-def params(tag, model, weights, device) -> retval:
-    """
-        .
+    .
     """
 
 ASYNC: Final[int] = 1

@@ -17,7 +17,7 @@ class BarcodeDetector(builtins.object):
         * @param decoded_type vector of BarcodeType, specifies the type of these barcodes
         """
 
-    def detect(self, img, points = ...) -> tuple[retval, points]:
+    def detect(self, img, points=...) -> tuple[retval, points]:
         """
         @brief Detects Barcode in image and returns the rectangle(s) containing the code.
         *
@@ -25,7 +25,7 @@ class BarcodeDetector(builtins.object):
         * @param points Output vector of vector of vertices of the minimum-area rotated rectangle containing the codes. * For N detected barcodes, the dimensions of this array should be [N][4]. * Order of four points in vector< Point2f> is bottomLeft, topLeft, topRight, bottomRight.
         """
 
-    def detectAndDecode(self, img, points = ...) -> tuple[retval, decoded_info, decoded_type, points]:
+    def detectAndDecode(self, img, points=...) -> tuple[retval, decoded_info, decoded_type, points]:
         """
         @brief Both detects and decodes barcode
 
@@ -34,7 +34,6 @@ class BarcodeDetector(builtins.object):
         * @param decoded_type vector of BarcodeType, specifies the type of these barcodes
         * @param points optional output vector of vertices of the found  barcode rectangle. Will be empty if not found.
         """
-
 
 EAN_13: Final[int]
 EAN_8: Final[int]

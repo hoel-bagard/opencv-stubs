@@ -41,7 +41,7 @@ class DnnSuperResImpl(builtins.object):
         @brief Set computation target
         """
 
-    def upsample(self, img, result = ...) -> result:
+    def upsample(self, img, result=...) -> result:
         """
         @brief Upsample via neural network
         @param img Image to upscale
@@ -61,7 +61,6 @@ class DnnSuperResImpl(builtins.object):
         """
         @brief Empty constructor for python
         """
-
 
 def DnnSuperResImpl_create() -> retval:
     """

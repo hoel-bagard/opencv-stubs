@@ -221,44 +221,41 @@ class Device(builtins.object):
     def getDefault(self) -> retval:
         """"""
 
-
-class OpenCLExecutionContext(builtins.object):
-    ...
-
+class OpenCLExecutionContext(builtins.object): ...
 
 def Device_getDefault() -> retval:
     """
-        .
+    .
     """
 
 def finish() -> None:
     """
-        .
+    .
     """
 
 def haveAmdBlas() -> retval:
     """
-        .
+    .
     """
 
 def haveAmdFft() -> retval:
     """
-        .
+    .
     """
 
 def haveOpenCL() -> retval:
     """
-        .
+    .
     """
 
 def setUseOpenCL(flag) -> None:
     """
-        .
+    .
     """
 
 def useOpenCL() -> retval:
     """
-        .
+    .
     """
 
 DEVICE_EXEC_KERNEL: Final[int]

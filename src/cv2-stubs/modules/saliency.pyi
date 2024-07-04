@@ -7,12 +7,10 @@ saliencyMap: TypeAlias = Any
 
 retval: TypeAlias = Any
 
-class MotionSaliency(Saliency):
-    ...
-
+class MotionSaliency(Saliency): ...
 
 class MotionSaliencyBinWangApr2014(MotionSaliency):
-    def computeSaliency(self, image, saliencyMap = ...) -> tuple[retval, saliencyMap]:
+    def computeSaliency(self, image, saliencyMap=...) -> tuple[retval, saliencyMap]:
         """"""
 
     def getImageHeight(self) -> retval:
@@ -44,13 +42,10 @@ class MotionSaliencyBinWangApr2014(MotionSaliency):
     def create(self) -> retval:
         """"""
 
-
-class Objectness(Saliency):
-    ...
-
+class Objectness(Saliency): ...
 
 class ObjectnessBING(Objectness):
-    def computeSaliency(self, image, saliencyMap = ...) -> tuple[retval, saliencyMap]:
+    def computeSaliency(self, image, saliencyMap=...) -> tuple[retval, saliencyMap]:
         """"""
 
     def getBase(self) -> retval:
@@ -106,9 +101,8 @@ class ObjectnessBING(Objectness):
     def create(self) -> retval:
         """"""
 
-
 class Saliency(cv2.Algorithm):
-    def computeSaliency(self, image, saliencyMap = ...) -> tuple[retval, saliencyMap]:
+    def computeSaliency(self, image, saliencyMap=...) -> tuple[retval, saliencyMap]:
         """
         * \brief Compute the saliency
         * \param image        The image.
@@ -116,9 +110,8 @@ class Saliency(cv2.Algorithm):
         * \return true if the saliency map is computed, false otherwise
         """
 
-
 class StaticSaliency(Saliency):
-    def computeBinaryMap(self, _saliencyMap, _binaryMap = ...) -> tuple[retval, _binaryMap]:
+    def computeBinaryMap(self, _saliencyMap, _binaryMap=...) -> tuple[retval, _binaryMap]:
         """
         @brief This function perform a binary map of given saliency map. This is obtained in this
         way:
@@ -136,17 +129,15 @@ class StaticSaliency(Saliency):
         @param _binaryMap the binary map
         """
 
-
 class StaticSaliencyFineGrained(StaticSaliency):
-    def computeSaliency(self, image, saliencyMap = ...) -> tuple[retval, saliencyMap]:
+    def computeSaliency(self, image, saliencyMap=...) -> tuple[retval, saliencyMap]:
         """"""
 
     def create(self) -> retval:
         """"""
 
-
 class StaticSaliencySpectralResidual(StaticSaliency):
-    def computeSaliency(self, image, saliencyMap = ...) -> tuple[retval, saliencyMap]:
+    def computeSaliency(self, image, saliencyMap=...) -> tuple[retval, saliencyMap]:
         """"""
 
     def getImageHeight(self) -> retval:
@@ -167,23 +158,22 @@ class StaticSaliencySpectralResidual(StaticSaliency):
     def create(self) -> retval:
         """"""
 
-
 def MotionSaliencyBinWangApr2014_create() -> retval:
     """
-        .
+    .
     """
 
 def ObjectnessBING_create() -> retval:
     """
-        .
+    .
     """
 
 def StaticSaliencyFineGrained_create() -> retval:
     """
-        .
+    .
     """
 
 def StaticSaliencySpectralResidual_create() -> retval:
     """
-        .
+    .
     """

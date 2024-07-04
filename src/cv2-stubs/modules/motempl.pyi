@@ -25,7 +25,7 @@ def calcGlobalOrientation(orientation, mask, mhi, timestamp, duration) -> retval
     smaller weight, as recorded in mhi .
     """
 
-def calcMotionGradient(mhi, delta1, delta2, mask = ..., orientation = ..., apertureSize = ...) -> tuple[mask, orientation]:
+def calcMotionGradient(mhi, delta1, delta2, mask=..., orientation=..., apertureSize=...) -> tuple[mask, orientation]:
     """
     @brief Calculates a gradient orientation of a motion history image.
 
@@ -56,7 +56,7 @@ def calcMotionGradient(mhi, delta1, delta2, mask = ..., orientation = ..., apert
             opencv_source_code/samples/python2/motempl.py
     """
 
-def segmentMotion(mhi, timestamp, segThresh, segmask = ...) -> tuple[segmask, boundingRects]:
+def segmentMotion(mhi, timestamp, segThresh, segmask=...) -> tuple[segmask, boundingRects]:
     """
     @brief Splits a motion history image into a few parts corresponding to separate independent motions (for
     example, left hand, right hand).

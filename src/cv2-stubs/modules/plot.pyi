@@ -7,7 +7,7 @@ _plotResult: TypeAlias = Any
 retval: TypeAlias = Any
 
 class Plot2d(cv2.Algorithm):
-    def render(self, _plotResult = ...) -> _plotResult:
+    def render(self, _plotResult=...) -> _plotResult:
         """"""
 
     def setGridLinesNumber(self, gridLinesNumber) -> None:
@@ -85,7 +85,6 @@ class Plot2d(cv2.Algorithm):
         * @param dataX \f$1xN\f$ or \f$Nx1\f$ matrix \f$X\f$ values of points to plot.
         * @param dataY \f$1xN\f$ or \f$Nx1\f$ matrix containing \f$Y\f$ values of points to plot.
         """
-
 
 @overload
 def Plot2d_create(data) -> retval:

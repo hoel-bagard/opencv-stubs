@@ -49,7 +49,6 @@ class CChecker(builtins.object):
         * \return A pointer to the implementation of the CChecker
         """
 
-
 class CCheckerDetector(cv2.Algorithm):
     def getBestColorChecker(self) -> retval:
         """
@@ -65,7 +64,7 @@ class CCheckerDetector(cv2.Algorithm):
         * \return checkers vector of colorcheckers
         """
 
-    def process(self, image, chartType, nc = ..., useNet = ..., params = ...) -> retval:
+    def process(self, image, chartType, nc=..., useNet=..., params=...) -> retval:
         """
         \brief Find the ColorCharts in the given image.
         *
@@ -88,7 +87,7 @@ class CCheckerDetector(cv2.Algorithm):
         * \return true if atleast one chart is detected otherwise false
         """
 
-    def processWithROI(self, image, chartType, regionsOfInterest, nc = ..., useNet = ..., params = ...) -> retval:
+    def processWithROI(self, image, chartType, regionsOfInterest, nc=..., useNet=..., params=...) -> retval:
         """
         \brief Find the ColorCharts in the given image.
         *
@@ -130,7 +129,6 @@ class CCheckerDetector(cv2.Algorithm):
         *
         """
 
-
 class CCheckerDraw(builtins.object):
     def draw(self, img) -> img:
         """
@@ -139,7 +137,7 @@ class CCheckerDraw(builtins.object):
         * \return void
         """
 
-    def create(self, pChecker, color = ..., thickness = ...) -> retval:
+    def create(self, pChecker, color=..., thickness=...) -> retval:
         """
         \brief Create a new CCheckerDraw object.
         * \param pChecker The checker which will be drawn by this object.
@@ -150,11 +148,9 @@ class CCheckerDraw(builtins.object):
         * \return A pointer to the implementation of the CCheckerDraw
         """
 
-
 class DetectorParameters(builtins.object):
     def create(self) -> retval:
         """"""
-
 
 def CCheckerDetector_create() -> retval:
     """
@@ -162,7 +158,7 @@ def CCheckerDetector_create() -> retval:
         *
     """
 
-def CCheckerDraw_create(pChecker, color = ..., thickness = ...) -> retval:
+def CCheckerDraw_create(pChecker, color=..., thickness=...) -> retval:
     """
     \brief Create a new CCheckerDraw object.
         * \param pChecker The checker which will be drawn by this object.
@@ -181,7 +177,7 @@ def CChecker_create() -> retval:
 
 def DetectorParameters_create() -> retval:
     """
-        .
+    .
     """
 
 MCC24: Final[int]

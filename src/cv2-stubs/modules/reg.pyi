@@ -15,47 +15,45 @@ class Map(builtins.object):
     def inverseMap(self) -> retval:
         """"""
 
-    def inverseWarp(self, img1, img2 = ...) -> img2:
+    def inverseWarp(self, img1, img2=...) -> img2:
         """"""
 
     def scale(self, factor) -> None:
         """"""
 
-    def warp(self, img1, img2 = ...) -> img2:
+    def warp(self, img1, img2=...) -> img2:
         """"""
-
 
 class MapAffine(Map):
     def compose(self, map) -> None:
         """"""
 
-    def getLinTr(self, linTr = ...) -> linTr:
+    def getLinTr(self, linTr=...) -> linTr:
         """"""
 
-    def getShift(self, shift = ...) -> shift:
+    def getShift(self, shift=...) -> shift:
         """"""
 
     def inverseMap(self) -> retval:
         """"""
 
-    def inverseWarp(self, img1, img2 = ...) -> img2:
+    def inverseWarp(self, img1, img2=...) -> img2:
         """"""
 
     def scale(self, factor) -> None:
         """"""
 
-
 class MapProjec(Map):
     def compose(self, map) -> None:
         """"""
 
-    def getProjTr(self, projTr = ...) -> projTr:
+    def getProjTr(self, projTr=...) -> projTr:
         """"""
 
     def inverseMap(self) -> retval:
         """"""
 
-    def inverseWarp(self, img1, img2 = ...) -> img2:
+    def inverseWarp(self, img1, img2=...) -> img2:
         """"""
 
     def normalize(self) -> None:
@@ -64,23 +62,21 @@ class MapProjec(Map):
     def scale(self, factor) -> None:
         """"""
 
-
 class MapShift(Map):
     def compose(self, map) -> None:
         """"""
 
-    def getShift(self, shift = ...) -> shift:
+    def getShift(self, shift=...) -> shift:
         """"""
 
     def inverseMap(self) -> retval:
         """"""
 
-    def inverseWarp(self, img1, img2 = ...) -> img2:
+    def inverseWarp(self, img1, img2=...) -> img2:
         """"""
 
     def scale(self, factor) -> None:
         """"""
-
 
 class MapTypeCaster(builtins.object):
     def toAffine(self, sourceMap) -> retval:
@@ -92,74 +88,66 @@ class MapTypeCaster(builtins.object):
     def toShift(self, sourceMap) -> retval:
         """"""
 
-
 class Mapper(builtins.object):
-    def calculate(self, img1, img2, init = ...) -> retval:
+    def calculate(self, img1, img2, init=...) -> retval:
         """"""
 
     def getMap(self) -> retval:
         """"""
-
 
 class MapperGradAffine(Mapper):
-    def calculate(self, img1, img2, init = ...) -> retval:
+    def calculate(self, img1, img2, init=...) -> retval:
         """"""
 
     def getMap(self) -> retval:
         """"""
-
 
 class MapperGradEuclid(Mapper):
-    def calculate(self, img1, img2, init = ...) -> retval:
+    def calculate(self, img1, img2, init=...) -> retval:
         """"""
 
     def getMap(self) -> retval:
         """"""
-
 
 class MapperGradProj(Mapper):
-    def calculate(self, img1, img2, init = ...) -> retval:
+    def calculate(self, img1, img2, init=...) -> retval:
         """"""
 
     def getMap(self) -> retval:
         """"""
-
 
 class MapperGradShift(Mapper):
-    def calculate(self, img1, img2, init = ...) -> retval:
+    def calculate(self, img1, img2, init=...) -> retval:
         """"""
 
     def getMap(self) -> retval:
         """"""
-
 
 class MapperGradSimilar(Mapper):
-    def calculate(self, img1, img2, init = ...) -> retval:
+    def calculate(self, img1, img2, init=...) -> retval:
         """"""
 
     def getMap(self) -> retval:
         """"""
-
 
 class MapperPyramid(Mapper):
-    def calculate(self, img1, img2, init = ...) -> retval:
+    def calculate(self, img1, img2, init=...) -> retval:
         """"""
 
     def getMap(self) -> retval:
         """"""
-
 
 def MapTypeCaster_toAffine(sourceMap) -> retval:
     """
-        .
+    .
     """
 
 def MapTypeCaster_toProjec(sourceMap) -> retval:
     """
-        .
+    .
     """
 
 def MapTypeCaster_toShift(sourceMap) -> retval:
     """
-        .
+    .
     """

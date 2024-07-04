@@ -17,7 +17,7 @@ class GraphSegmentation(cv2.Algorithm):
     def getSigma(self) -> retval:
         """"""
 
-    def processImage(self, src, dst = ...) -> dst:
+    def processImage(self, src, dst=...) -> dst:
         """
         @brief Segment an image and store output in dst
         @param src The input image. Any number of channel (1 (Eg: Gray), 3 (Eg: RGB), 4 (Eg: RGB-D)) can be provided
@@ -32,7 +32,6 @@ class GraphSegmentation(cv2.Algorithm):
 
     def setSigma(self, sigma) -> None:
         """"""
-
 
 class SelectiveSearchSegmentation(cv2.Algorithm):
     def addGraphSegmentation(self, g) -> None:
@@ -80,7 +79,7 @@ class SelectiveSearchSegmentation(cv2.Algorithm):
         @param img The image
         """
 
-    def switchToSelectiveSearchFast(self, base_k = ..., inc_k = ..., sigma = ...) -> None:
+    def switchToSelectiveSearchFast(self, base_k=..., inc_k=..., sigma=...) -> None:
         """
         @brief Initialize the class with the 'Selective search fast' parameters describled in @cite uijlings2013selective.
         @param base_k The k parameter for the first graph segmentation
@@ -88,7 +87,7 @@ class SelectiveSearchSegmentation(cv2.Algorithm):
         @param sigma The sigma parameter for the graph segmentation
         """
 
-    def switchToSelectiveSearchQuality(self, base_k = ..., inc_k = ..., sigma = ...) -> None:
+    def switchToSelectiveSearchQuality(self, base_k=..., inc_k=..., sigma=...) -> None:
         """
         @brief Initialize the class with the 'Selective search fast' parameters describled in @cite uijlings2013selective.
         @param base_k The k parameter for the first graph segmentation
@@ -96,13 +95,12 @@ class SelectiveSearchSegmentation(cv2.Algorithm):
         @param sigma The sigma parameter for the graph segmentation
         """
 
-    def switchToSingleStrategy(self, k = ..., sigma = ...) -> None:
+    def switchToSingleStrategy(self, k=..., sigma=...) -> None:
         """
         @brief Initialize the class with the 'Single stragegy' parameters describled in @cite uijlings2013selective.
         @param k The k parameter for the graph segmentation
         @param sigma The sigma parameter for the graph segmentation
         """
-
 
 class SelectiveSearchSegmentationStrategy(cv2.Algorithm):
     def get(self, r1, r2) -> retval:
@@ -119,7 +117,7 @@ class SelectiveSearchSegmentationStrategy(cv2.Algorithm):
         @param r2 The second region
         """
 
-    def setImage(self, img, regions, sizes, image_id = ...) -> None:
+    def setImage(self, img, regions, sizes, image_id=...) -> None:
         """
         @brief Set a initial image, with a segmentation.
         @param img The input image. Any number of channel can be provided
@@ -128,14 +126,8 @@ class SelectiveSearchSegmentationStrategy(cv2.Algorithm):
         @param image_id If not set to -1, try to cache pre-computations. If the same set og (img, regions, size) is used, the image_id need to be the same.
         """
 
-
-class SelectiveSearchSegmentationStrategyColor(SelectiveSearchSegmentationStrategy):
-    ...
-
-
-class SelectiveSearchSegmentationStrategyFill(SelectiveSearchSegmentationStrategy):
-    ...
-
+class SelectiveSearchSegmentationStrategyColor(SelectiveSearchSegmentationStrategy): ...
+class SelectiveSearchSegmentationStrategyFill(SelectiveSearchSegmentationStrategy): ...
 
 class SelectiveSearchSegmentationStrategyMultiple(SelectiveSearchSegmentationStrategy):
     def addStrategy(self, g, weight) -> None:
@@ -150,16 +142,10 @@ class SelectiveSearchSegmentationStrategyMultiple(SelectiveSearchSegmentationStr
         @brief Remove all sub-strategies
         """
 
+class SelectiveSearchSegmentationStrategySize(SelectiveSearchSegmentationStrategy): ...
+class SelectiveSearchSegmentationStrategyTexture(SelectiveSearchSegmentationStrategy): ...
 
-class SelectiveSearchSegmentationStrategySize(SelectiveSearchSegmentationStrategy):
-    ...
-
-
-class SelectiveSearchSegmentationStrategyTexture(SelectiveSearchSegmentationStrategy):
-    ...
-
-
-def createGraphSegmentation(sigma = ..., k = ..., min_size = ...) -> retval:
+def createGraphSegmentation(sigma=..., k=..., min_size=...) -> retval:
     """
     @brief Creates a graph based segmentor
                             @param sigma The sigma parameter, used to smooth image

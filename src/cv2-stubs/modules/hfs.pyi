@@ -26,14 +26,14 @@ class HfsSegment(cv2.Algorithm):
     def getSpatialWeight(self) -> retval:
         """"""
 
-    def performSegmentCpu(self, src, ifDraw = ...) -> retval:
+    def performSegmentCpu(self, src, ifDraw=...) -> retval:
         """
         @brief do segmentation with cpu
         * This method is only implemented for reference.
         * It is highly NOT recommanded to use it.
         """
 
-    def performSegmentGpu(self, src, ifDraw = ...) -> retval:
+    def performSegmentGpu(self, src, ifDraw=...) -> retval:
         """
         @brief do segmentation gpu
         * @param src: the input image
@@ -102,7 +102,7 @@ class HfsSegment(cv2.Algorithm):
         * if this value is larger.
         """
 
-    def create(self, height, width, segEgbThresholdI = ..., minRegionSizeI = ..., segEgbThresholdII = ..., minRegionSizeII = ..., spatialWeight = ..., slicSpixelSize = ..., numSlicIter = ...) -> retval:
+    def create(self, height, width, segEgbThresholdI=..., minRegionSizeI=..., segEgbThresholdII=..., minRegionSizeII=..., spatialWeight=..., slicSpixelSize=..., numSlicIter=...) -> retval:
         """
         @brief: create a hfs object
         * @param height: the height of the input image
@@ -116,8 +116,7 @@ class HfsSegment(cv2.Algorithm):
         * @param numSlicIter: parameter numSlicIter
         """
 
-
-def HfsSegment_create(height, width, segEgbThresholdI = ..., minRegionSizeI = ..., segEgbThresholdII = ..., minRegionSizeII = ..., spatialWeight = ..., slicSpixelSize = ..., numSlicIter = ...) -> retval:
+def HfsSegment_create(height, width, segEgbThresholdI=..., minRegionSizeI=..., segEgbThresholdII=..., minRegionSizeII=..., spatialWeight=..., slicSpixelSize=..., numSlicIter=...) -> retval:
     """
     @brief: create a hfs object
     * @param height: the height of the input image

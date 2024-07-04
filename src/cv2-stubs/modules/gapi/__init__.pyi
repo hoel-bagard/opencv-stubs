@@ -7,21 +7,10 @@ GKernelPackage: TypeAlias = Any
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 
-class GArray(builtins.object):
-    ...
-
-
-class GNetPackage(builtins.object):
-    ...
-
-
-class GNetParam(builtins.object):
-    ...
-
-
-class GOpaque(builtins.object):
-    ...
-
+class GArray(builtins.object): ...
+class GNetPackage(builtins.object): ...
+class GNetParam(builtins.object): ...
+class GOpaque(builtins.object): ...
 
 def BGR2Gray(src) -> retval:
     """
@@ -114,7 +103,7 @@ def BayerGR2RGB(src_gr) -> retval:
     @sa YUV2BGR, NV12toRGB
     """
 
-def Canny(image, threshold1, threshold2, apertureSize = ..., L2gradient = ...) -> retval:
+def Canny(image, threshold1, threshold2, apertureSize=..., L2gradient=...) -> retval:
     """
     @brief Finds edges in an image using the Canny algorithm.
 
@@ -203,7 +192,7 @@ def LUV2BGR(src) -> retval:
     @sa BGR2LUV
     """
 
-def Laplacian(src, ddepth, ksize = ..., scale = ..., delta = ..., borderType = ...) -> retval:
+def Laplacian(src, ddepth, ksize=..., scale=..., delta=..., borderType=...) -> retval:
     """
     @brief Calculates the Laplacian of an image.
 
@@ -390,7 +379,7 @@ def RGB2YUV422(src) -> retval:
     @sa YUV2BGR, NV12toRGB
     """
 
-def Sobel(src, ddepth, dx, dy, ksize = ..., scale = ..., delta = ..., borderType = ..., borderValue = ...) -> retval:
+def Sobel(src, ddepth, dx, dy, ksize=..., scale=..., delta=..., borderType=..., borderValue=...) -> retval:
     """
     @brief Calculates the first, second, third, or mixed image derivatives using an extended Sobel operator.
 
@@ -439,7 +428,7 @@ def Sobel(src, ddepth, dx, dy, ksize = ..., scale = ..., delta = ..., borderType
     @sa filter2D, gaussianBlur, cartToPolar
     """
 
-def SobelXY(src, ddepth, order, ksize = ..., scale = ..., delta = ..., borderType = ..., borderValue = ...) -> retval:
+def SobelXY(src, ddepth, order, ksize=..., scale=..., delta=..., borderType=..., borderValue=...) -> retval:
     """
     @brief Calculates the first, second, third, or mixed image derivatives using an extended Sobel operator.
 
@@ -567,7 +556,7 @@ def absDiffC(src, c) -> retval:
     @sa min, max
     """
 
-def add(src1, src2, ddepth = ...) -> retval:
+def add(src1, src2, ddepth=...) -> retval:
     """
     @brief Calculates the per-element sum of two matrices.
 
@@ -593,7 +582,7 @@ def add(src1, src2, ddepth = ...) -> retval:
     """
 
 @overload
-def addC(src1, c, ddepth = ...) -> retval:
+def addC(src1, c, ddepth=...) -> retval:
     """
     @brief Calculates the per-element sum of matrix and given scalar.
 
@@ -616,10 +605,10 @@ def addC(src1, c, ddepth = ...) -> retval:
     """
 
 @overload
-def addC(src1, c, ddepth = ...) -> retval:
+def addC(src1, c, ddepth=...) -> retval:
     """"""
 
-def addWeighted(src1, alpha, src2, beta, gamma, ddepth = ...) -> retval:
+def addWeighted(src1, alpha, src2, beta, gamma, ddepth=...) -> retval:
     """
     @brief Calculates the weighted sum of two matrices.
 
@@ -643,7 +632,7 @@ def addWeighted(src1, alpha, src2, beta, gamma, ddepth = ...) -> retval:
     @sa  add, sub
     """
 
-def bilateralFilter(src, d, sigmaColor, sigmaSpace, borderType = ...) -> retval:
+def bilateralFilter(src, d, sigmaColor, sigmaSpace, borderType=...) -> retval:
     """
     @brief Applies the bilateral filter to an image.
 
@@ -755,7 +744,7 @@ def bitwise_xor(src1, src2) -> retval:
     @param src2 second input matrix.
     """
 
-def blur(src, ksize, anchor = ..., borderType = ..., borderValue = ...) -> retval:
+def blur(src, ksize, anchor=..., borderType=..., borderValue=...) -> retval:
     """
     @brief Blurs an image using the normalized box filter.
 
@@ -799,7 +788,7 @@ def boundingRect(src) -> retval:
     2D points stored in Mat.
     """
 
-def boxFilter(src, dtype, ksize, anchor = ..., normalize = ..., borderType = ..., borderValue = ...) -> retval:
+def boxFilter(src, dtype, ksize, anchor=..., normalize=..., borderType=..., borderValue=...) -> retval:
     """
     @brief Blurs an image using the box filter.
 
@@ -832,7 +821,7 @@ def boxFilter(src, dtype, ksize, anchor = ..., normalize = ..., borderType = ...
     @sa  sepFilter, gaussianBlur, medianBlur, integral
     """
 
-def cartToPolar(x, y, angleInDegrees = ...) -> retval:
+def cartToPolar(x, y, angleInDegrees=...) -> retval:
     """
     @brief Calculates the magnitude and angle of 2D vectors.
 
@@ -1036,15 +1025,15 @@ def concatHor(src1, src2) -> retval:
 @overload
 def concatHor(src1, src2) -> retval:
     """
-                   2, 5,
-                   3, 6 };
+    2, 5,
+    3, 6 };
     """
 
 @overload
 def concatHor(src1, src2) -> retval:
     """
-                   8, 11,
-                   9, 12 };
+    8, 11,
+    9, 12 };
     """
 
 @overload
@@ -1087,15 +1076,15 @@ def concatVert(src1, src2) -> retval:
 @overload
 def concatVert(src1, src2) -> retval:
     """
-                   2, 8,
-                   3, 9 };
+    2, 8,
+    3, 9 };
     """
 
 @overload
 def concatVert(src1, src2) -> retval:
     """
-                   5, 11,
-                   6, 12 };
+    5, 11,
+    6, 12 };
     """
 
 @overload
@@ -1130,7 +1119,7 @@ def concatVert(src1, src2) -> retval:
     @param v vector of input matrices to be concatenated vertically.
     """
 
-def convertTo(src, rdepth, alpha = ..., beta = ...) -> retval:
+def convertTo(src, rdepth, alpha=..., beta=...) -> retval:
     """
     @brief Converts a matrix to another data depth with optional scaling.
 
@@ -1189,7 +1178,7 @@ def crop(src, rect) -> retval:
     @sa resize
     """
 
-def dilate(src, kernel, anchor = ..., iterations = ..., borderType = ..., borderValue = ...) -> retval:
+def dilate(src, kernel, anchor=..., iterations=..., borderType=..., borderValue=...) -> retval:
     """
     @brief Dilates an image by using a specific structuring element.
 
@@ -1215,7 +1204,7 @@ def dilate(src, kernel, anchor = ..., iterations = ..., borderType = ..., border
     @sa  erode, morphologyEx, getStructuringElement
     """
 
-def dilate3x3(src, iterations = ..., borderType = ..., borderValue = ...) -> retval:
+def dilate3x3(src, iterations=..., borderType=..., borderValue=...) -> retval:
     """
     @brief Dilates an image by using 3 by 3 rectangular structuring element.
 
@@ -1237,7 +1226,7 @@ def dilate3x3(src, iterations = ..., borderType = ..., borderValue = ...) -> ret
     @sa  dilate, erode3x3
     """
 
-def div(src1, src2, scale, ddepth = ...) -> retval:
+def div(src1, src2, scale, ddepth=...) -> retval:
     """
     @brief Performs per-element division of two matrices.
 
@@ -1261,7 +1250,7 @@ def div(src1, src2, scale, ddepth = ...) -> retval:
     @sa  mul, add, sub
     """
 
-def divC(src, divisor, scale, ddepth = ...) -> retval:
+def divC(src, divisor, scale, ddepth=...) -> retval:
     """
     @brief Divides matrix by scalar.
 
@@ -1283,7 +1272,7 @@ def divC(src, divisor, scale, ddepth = ...) -> retval:
     @sa add, sub, div, addWeighted
     """
 
-def divRC(divident, src, scale, ddepth = ...) -> retval:
+def divRC(divident, src, scale, ddepth=...) -> retval:
     """
     @brief Divides scalar by matrix.
 
@@ -1327,7 +1316,7 @@ def equalizeHist(src) -> retval:
     @param src Source 8-bit single channel image.
     """
 
-def erode(src, kernel, anchor = ..., iterations = ..., borderType = ..., borderValue = ...) -> retval:
+def erode(src, kernel, anchor=..., iterations=..., borderType=..., borderValue=...) -> retval:
     """
     @brief Erodes an image by using a specific structuring element.
 
@@ -1354,7 +1343,7 @@ def erode(src, kernel, anchor = ..., iterations = ..., borderType = ..., borderV
     @sa  dilate, morphologyEx
     """
 
-def erode3x3(src, iterations = ..., borderType = ..., borderValue = ...) -> retval:
+def erode3x3(src, iterations=..., borderType=..., borderValue=...) -> retval:
     """
     @brief Erodes an image by using 3 by 3 rectangular structuring element.
 
@@ -1373,7 +1362,7 @@ def erode3x3(src, iterations = ..., borderType = ..., borderValue = ...) -> retv
     @sa  erode, dilate3x3
     """
 
-def filter2D(src, ddepth, kernel, anchor = ..., delta = ..., borderType = ..., borderValue = ...) -> retval:
+def filter2D(src, ddepth, kernel, anchor=..., delta=..., borderType=..., borderValue=...) -> retval:
     """
     @brief Convolves an image with the kernel.
 
@@ -1473,7 +1462,7 @@ def flip(src, flipCode) -> retval:
     @sa remap
     """
 
-def gaussianBlur(src, ksize, sigmaX, sigmaY = ..., borderType = ..., borderValue = ...) -> retval:
+def gaussianBlur(src, ksize, sigmaX, sigmaY=..., borderType=..., borderValue=...) -> retval:
     """
     @brief Blurs an image using a Gaussian filter.
 
@@ -1501,7 +1490,7 @@ def gaussianBlur(src, ksize, sigmaX, sigmaY = ..., borderType = ..., borderValue
     """
 
 @overload
-def goodFeaturesToTrack(image, maxCorners, qualityLevel, minDistance, mask = ..., blockSize = ..., useHarrisDetector = ..., k = ...) -> retval:
+def goodFeaturesToTrack(image, maxCorners, qualityLevel, minDistance, mask=..., blockSize=..., useHarrisDetector=..., k=...) -> retval:
     """
     @brief Determines strong corners on an image.
 
@@ -1514,7 +1503,7 @@ def goodFeaturesToTrack(image, maxCorners, qualityLevel, minDistance, mask = ...
     """
 
 @overload
-def goodFeaturesToTrack(image, maxCorners, qualityLevel, minDistance, mask = ..., blockSize = ..., useHarrisDetector = ..., k = ...) -> retval:
+def goodFeaturesToTrack(image, maxCorners, qualityLevel, minDistance, mask=..., blockSize=..., useHarrisDetector=..., k=...) -> retval:
     """
     -   The corners with the minimal eigenvalue less than
         \f$\texttt{qualityLevel} \cdot \max_{x,y} qualityMeasureMap(x,y)\f$ are rejected.
@@ -1523,7 +1512,7 @@ def goodFeaturesToTrack(image, maxCorners, qualityLevel, minDistance, mask = ...
     """
 
 @overload
-def goodFeaturesToTrack(image, maxCorners, qualityLevel, minDistance, mask = ..., blockSize = ..., useHarrisDetector = ..., k = ...) -> retval:
+def goodFeaturesToTrack(image, maxCorners, qualityLevel, minDistance, mask=..., blockSize=..., useHarrisDetector=..., k=...) -> retval:
     """
 
     The function can be used to initialize a point-based tracker of an object.
@@ -1589,7 +1578,7 @@ def infer(name, inputs) -> retval:
 def infer2(name, in_, inputs) -> retval:
     """"""
 
-def integral(src, sdepth = ..., sqdepth = ...) -> retval:
+def integral(src, sdepth=..., sqdepth=...) -> retval:
     """
     @brief Calculates the integral of an image.
 
@@ -1810,7 +1799,7 @@ def min(src1, src2) -> retval:
     @sa max, cmpEQ, cmpLT, cmpLE
     """
 
-def morphologyEx(src, op, kernel, anchor = ..., iterations = ..., borderType = ..., borderValue = ...) -> retval:
+def morphologyEx(src, op, kernel, anchor=..., iterations=..., borderType=..., borderValue=...) -> retval:
     """
     @brief Performs advanced morphological transformations.
 
@@ -1839,7 +1828,7 @@ def morphologyEx(src, op, kernel, anchor = ..., iterations = ..., borderType = .
     @sa  dilate, erode, getStructuringElement
     """
 
-def mul(src1, src2, scale = ..., ddepth = ...) -> retval:
+def mul(src1, src2, scale=..., ddepth=...) -> retval:
     """
     @brief Calculates the per-element scaled product of two matrices.
 
@@ -1862,7 +1851,7 @@ def mul(src1, src2, scale = ..., ddepth = ...) -> retval:
     """
 
 @overload
-def mulC(src, multiplier, ddepth = ...) -> retval:
+def mulC(src, multiplier, ddepth=...) -> retval:
     """
     @brief Multiplies matrix by scalar.
 
@@ -1882,7 +1871,7 @@ def mulC(src, multiplier, ddepth = ...) -> retval:
     """
 
 @overload
-def mulC(src, multiplier, ddepth = ...) -> retval:
+def mulC(src, multiplier, ddepth=...) -> retval:
     """"""
 
 def normInf(src) -> retval:
@@ -1956,7 +1945,7 @@ def normL2(src) -> retval:
     @sa normL1, normInf
     """
 
-def normalize(src, alpha, beta, norm_type, ddepth = ...) -> retval:
+def normalize(src, alpha, beta, norm_type, ddepth=...) -> retval:
     """
     @brief Normalizes the norm or value range of an array.
 
@@ -1980,7 +1969,7 @@ def normalize(src, alpha, beta, norm_type, ddepth = ...) -> retval:
     """
 
 @overload
-def parseSSD(in_, inSz, confidenceThreshold = ..., filterLabel = ...) -> retval:
+def parseSSD(in_, inSz, confidenceThreshold=..., filterLabel=...) -> retval:
     """
     @brief Parses output of SSD network.
 
@@ -1999,7 +1988,7 @@ def parseSSD(in_, inSz, confidenceThreshold = ..., filterLabel = ...) -> retval:
     """
 
 @overload
-def parseSSD(in_, inSz, confidenceThreshold = ..., filterLabel = ...) -> retval:
+def parseSSD(in_, inSz, confidenceThreshold=..., filterLabel=...) -> retval:
     """
     @brief Parses output of SSD network.
 
@@ -2019,7 +2008,7 @@ def parseSSD(in_, inSz, confidenceThreshold = ..., filterLabel = ...) -> retval:
     @return a vector of detected bounding boxes.
     """
 
-def parseYolo(in_, inSz, confidenceThreshold = ..., nmsThreshold = ..., anchors = ...) -> retval:
+def parseYolo(in_, inSz, confidenceThreshold=..., nmsThreshold=..., anchors=...) -> retval:
     """
     @brief Parses output of Yolo network.
 
@@ -2043,7 +2032,7 @@ def parseYolo(in_, inSz, confidenceThreshold = ..., nmsThreshold = ..., anchors 
     @return a tuple with a vector of detected boxes and a vector of appropriate labels.
     """
 
-def phase(x, y, angleInDegrees = ...) -> retval:
+def phase(x, y, angleInDegrees=...) -> retval:
     """
     @brief Calculates the rotation angle of 2D vectors.
 
@@ -2061,7 +2050,7 @@ def phase(x, y, angleInDegrees = ...) -> retval:
     @return array of vector angles; it has the same size and same type as x.
     """
 
-def polarToCart(magnitude, angle, angleInDegrees = ...) -> retval:
+def polarToCart(magnitude, angle, angleInDegrees=...) -> retval:
     """
     @brief Calculates x and y coordinates of 2D vectors from their magnitude and angle.
 
@@ -2084,7 +2073,7 @@ def polarToCart(magnitude, angle, angleInDegrees = ...) -> retval:
     @sa cartToPolar, exp, log, pow, sqrt
     """
 
-def remap(src, map1, map2, interpolation, borderMode = ..., borderValue = ...) -> retval:
+def remap(src, map1, map2, interpolation, borderMode=..., borderValue=...) -> retval:
     """
     @brief Applies a generic geometrical transformation to an image.
 
@@ -2119,7 +2108,7 @@ def remap(src, map1, map2, interpolation, borderMode = ..., borderValue = ...) -
     """
 
 @overload
-def resize(src, dsize, fx = ..., fy = ..., interpolation = ...) -> retval:
+def resize(src, dsize, fx=..., fy=..., interpolation=...) -> retval:
     """
     @brief Resizes an image.
 
@@ -2135,7 +2124,7 @@ def resize(src, dsize, fx = ..., fy = ..., interpolation = ...) -> retval:
     """
 
 @overload
-def resize(src, dsize, fx = ..., fy = ..., interpolation = ...) -> retval:
+def resize(src, dsize, fx=..., fy=..., interpolation=...) -> retval:
     """
     @endcode
     If you want to decimate the image by factor of 2 in each direction, you can call the function this
@@ -2145,7 +2134,7 @@ def resize(src, dsize, fx = ..., fy = ..., interpolation = ...) -> retval:
     """
 
 @overload
-def resize(src, dsize, fx = ..., fy = ..., interpolation = ...) -> retval:
+def resize(src, dsize, fx=..., fy=..., interpolation=...) -> retval:
     """
     @endcode
     To shrink an image, it will generally look best with cv::INTER_AREA interpolation, whereas to
@@ -2184,7 +2173,7 @@ def select(src1, src2, mask) -> retval:
     @param mask mask input matrix.
     """
 
-def sepFilter(src, ddepth, kernelX, kernelY, anchor, delta, borderType = ..., borderValue = ...) -> retval:
+def sepFilter(src, ddepth, kernelX, kernelY, anchor, delta, borderType=..., borderValue=...) -> retval:
     """
     @brief Applies a separable linear filter to a matrix(image).
 
@@ -2265,7 +2254,7 @@ def sqrt(src) -> retval:
     @return output array of the same size and type as src.
     """
 
-def sub(src1, src2, ddepth = ...) -> retval:
+def sub(src1, src2, ddepth=...) -> retval:
     """
     @brief Calculates the per-element difference between two matrices.
 
@@ -2291,7 +2280,7 @@ def sub(src1, src2, ddepth = ...) -> retval:
     @sa  add, addC
     """
 
-def subC(src, c, ddepth = ...) -> retval:
+def subC(src, c, ddepth=...) -> retval:
     """
     @brief Calculates the per-element difference between matrix and given scalar.
 
@@ -2311,7 +2300,7 @@ def subC(src, c, ddepth = ...) -> retval:
     @sa  add, addC, subRC
     """
 
-def subRC(c, src, ddepth = ...) -> retval:
+def subRC(c, src, ddepth=...) -> retval:
     """
     @brief Calculates the per-element difference between given scalar and the matrix.
 
@@ -2397,7 +2386,7 @@ def transpose(src) -> retval:
     @param src input array.
     """
 
-def warpAffine(src, M, dsize, flags = ..., borderMode = ..., borderValue = ...) -> retval:
+def warpAffine(src, M, dsize, flags=..., borderMode=..., borderValue=...) -> retval:
     """
     @brief Applies an affine transformation to an image.
 
@@ -2422,7 +2411,7 @@ def warpAffine(src, M, dsize, flags = ..., borderMode = ..., borderValue = ...) 
     @sa  warpPerspective, resize, remap, getRectSubPix, transform
     """
 
-def warpPerspective(src, M, dsize, flags = ..., borderMode = ..., borderValue = ...) -> retval:
+def warpPerspective(src, M, dsize, flags=..., borderMode=..., borderValue=...) -> retval:
     """
     @brief Applies a perspective transformation to an image.
 

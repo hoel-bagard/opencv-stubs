@@ -10,7 +10,7 @@ class ExportClassName(builtins.object):
     def getIntParam(self) -> retval:
         """"""
 
-    def create(self, params = ...) -> retval:
+    def create(self, params=...) -> retval:
         """"""
 
     def originalName(self) -> retval:
@@ -26,28 +26,27 @@ class ExportClassName(builtins.object):
         def __repr__(self, /):
             """Return repr(self)."""
 
-
-def ExportClassName_create(params = ...) -> retval:
+def ExportClassName_create(params=...) -> retval:
     """
-        .
+    .
     """
 
 def ExportClassName_originalName() -> retval:
     """
-        .
+    .
     """
 
-def OriginalClassName_create(params = ...) -> retval:
+def OriginalClassName_create(params=...) -> retval:
     """
-        .
+    .
     """
 
 def OriginalClassName_originalName() -> retval:
     """
-        .
+    .
     """
 
 def testEchoBooleanFunction(flag) -> retval:
     """
-        .
+    .
     """

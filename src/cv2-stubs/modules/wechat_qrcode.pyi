@@ -6,7 +6,7 @@ points: TypeAlias = Any
 retval: TypeAlias = Any
 
 class WeChatQRCode(builtins.object):
-    def detectAndDecode(self, img, points = ...) -> tuple[retval, points]:
+    def detectAndDecode(self, img, points=...) -> tuple[retval, points]:
         """
         * @brief  Both detects and decodes QR code.
         * To simplify the usage, there is a only API: detectAndDecode

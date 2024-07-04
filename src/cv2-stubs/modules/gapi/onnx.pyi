@@ -3,13 +3,11 @@ from typing import Any, Final, TypeAlias
 
 retval: TypeAlias = Any
 
-class PyParams(builtins.object):
-    ...
-
+class PyParams(builtins.object): ...
 
 def params(tag, model_path) -> retval:
     """
-        .
+    .
     """
 
 TRAIT_AS_IMAGE: Final[int]

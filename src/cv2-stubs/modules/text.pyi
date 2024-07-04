@@ -13,20 +13,16 @@ Bbox: TypeAlias = Any
 _channels: TypeAlias = Any
 retval: TypeAlias = Any
 
-class BaseOCR(builtins.object):
-    ...
-
+class BaseOCR(builtins.object): ...
 
 class ERFilter(cv2.Algorithm):
     ...
 
-    class Callback(builtins.object):
-        ...
-
+    class Callback(builtins.object): ...
 
 class OCRBeamSearchDecoder(BaseOCR):
     @overload
-    def run(self, image, min_confidence, component_level = ...) -> retval:
+    def run(self, image, min_confidence, component_level=...) -> retval:
         """
         @brief Recognize text using Beam Search.
 
@@ -43,10 +39,10 @@ class OCRBeamSearchDecoder(BaseOCR):
         """
 
     @overload
-    def run(self, image, mask, min_confidence, component_level = ...) -> retval:
+    def run(self, image, mask, min_confidence, component_level=...) -> retval:
         """"""
 
-    def create(self, classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode = ..., beam_size = ...) -> retval:
+    def create(self, classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., beam_size=...) -> retval:
         """
         @brief Creates an instance of the OCRBeamSearchDecoder class. Initializes HMMDecoder.
 
@@ -58,13 +54,11 @@ class OCRBeamSearchDecoder(BaseOCR):
         @param beam_size Size of the beam in Beam Search algorithm.
         """
 
-    class ClassifierCallback(builtins.object):
-        ...
-
+    class ClassifierCallback(builtins.object): ...
 
 class OCRHMMDecoder(BaseOCR):
     @overload
-    def run(self, image, min_confidence, component_level = ...) -> retval:
+    def run(self, image, min_confidence, component_level=...) -> retval:
         """
         @brief Recognize text using HMM.
 
@@ -83,11 +77,11 @@ class OCRHMMDecoder(BaseOCR):
         """
 
     @overload
-    def run(self, image, mask, min_confidence, component_level = ...) -> retval:
+    def run(self, image, mask, min_confidence, component_level=...) -> retval:
         """"""
 
     @overload
-    def create(self, classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode = ...) -> retval:
+    def create(self, classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=...) -> retval:
         """
         @brief Creates an instance of the OCRHMMDecoder class. Initializes HMMDecoder.
 
@@ -99,21 +93,19 @@ class OCRHMMDecoder(BaseOCR):
         """
 
     @overload
-    def create(self, filename, vocabulary, transition_probabilities_table, emission_probabilities_table, mode = ..., classifier = ...) -> retval:
+    def create(self, filename, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., classifier=...) -> retval:
         """
-    @overload
-        @brief Creates an instance of the OCRHMMDecoder class. Loads and initializes HMMDecoder from the specified path
-
         @overload
+            @brief Creates an instance of the OCRHMMDecoder class. Loads and initializes HMMDecoder from the specified path
+
+            @overload
         """
 
-    class ClassifierCallback(builtins.object):
-        ...
-
+    class ClassifierCallback(builtins.object): ...
 
 class OCRTesseract(BaseOCR):
     @overload
-    def run(self, image, min_confidence, component_level = ...) -> retval:
+    def run(self, image, min_confidence, component_level=...) -> retval:
         """
         @brief Recognize text using the tesseract-ocr API.
 
@@ -130,13 +122,13 @@ class OCRTesseract(BaseOCR):
         """
 
     @overload
-    def run(self, image, mask, min_confidence, component_level = ...) -> retval:
+    def run(self, image, mask, min_confidence, component_level=...) -> retval:
         """"""
 
     def setWhiteList(self, char_whitelist) -> None:
         """"""
 
-    def create(self, datapath = ..., language = ..., char_whitelist = ..., oem = ..., psmode = ...) -> retval:
+    def create(self, datapath=..., language=..., char_whitelist=..., oem=..., psmode=...) -> retval:
         """
         @brief Creates an instance of the OCRTesseract class. Initializes Tesseract.
 
@@ -147,7 +139,6 @@ class OCRTesseract(BaseOCR):
         @param psmode tesseract-ocr offers different Page Segmentation Modes (PSM) tesseract::PSM_AUTO (fully automatic layout analysis) is used. See the tesseract-ocr API documentation for other possible values.
         """
 
-
 class TextDetector(builtins.object):
     def detect(self, inputImage) -> tuple[Bbox, confidence]:
         """
@@ -157,7 +148,6 @@ class TextDetector(builtins.object):
         @param Bbox a vector of Rect that will store the detected word bounding box
         @param confidence a vector of float that will be updated with the confidence the classifier has for the selected bounding box
         """
-
 
 class TextDetectorCNN(TextDetector):
     def detect(self, inputImage) -> tuple[Bbox, confidence]:
@@ -174,9 +164,8 @@ class TextDetectorCNN(TextDetector):
         @overload
         """
 
-
 @overload
-def OCRBeamSearchDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode = ..., beam_size = ...) -> retval:
+def OCRBeamSearchDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., beam_size=...) -> retval:
     """
     @brief Creates an instance of the OCRBeamSearchDecoder class. Initializes HMMDecoder.
 
@@ -186,31 +175,31 @@ def OCRBeamSearchDecoder_create(classifier, vocabulary, transition_probabilities
     """
 
 @overload
-def OCRBeamSearchDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode = ..., beam_size = ...) -> retval:
+def OCRBeamSearchDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., beam_size=...) -> retval:
     """
 
-        @param transition_probabilities_table Table with transition probabilities between character
-    """
-
-@overload
-def OCRBeamSearchDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode = ..., beam_size = ...) -> retval:
-    """
-
-        @param emission_probabilities_table Table with observation emission probabilities. cols ==
+    @param transition_probabilities_table Table with transition probabilities between character
     """
 
 @overload
-def OCRBeamSearchDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode = ..., beam_size = ...) -> retval:
+def OCRBeamSearchDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., beam_size=...) -> retval:
     """
 
-        @param mode HMM Decoding algorithm. Only OCR_DECODER_VITERBI is available for the moment
-        (<http://en.wikipedia.org/wiki/Viterbi_algorithm>).
-
-        @param beam_size Size of the beam in Beam Search algorithm.
+    @param emission_probabilities_table Table with observation emission probabilities. cols ==
     """
 
 @overload
-def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode = ...) -> retval:
+def OCRBeamSearchDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., beam_size=...) -> retval:
+    """
+
+    @param mode HMM Decoding algorithm. Only OCR_DECODER_VITERBI is available for the moment
+    (<http://en.wikipedia.org/wiki/Viterbi_algorithm>).
+
+    @param beam_size Size of the beam in Beam Search algorithm.
+    """
+
+@overload
+def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=...) -> retval:
     """
     @brief Creates an instance of the OCRHMMDecoder class. Initializes HMMDecoder.
 
@@ -220,29 +209,29 @@ def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table,
     """
 
 @overload
-def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode = ...) -> retval:
+def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=...) -> retval:
     """
 
-        @param transition_probabilities_table Table with transition probabilities between character
-    """
-
-@overload
-def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode = ...) -> retval:
-    """
-
-        @param emission_probabilities_table Table with observation emission probabilities. cols ==
+    @param transition_probabilities_table Table with transition probabilities between character
     """
 
 @overload
-def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode = ...) -> retval:
+def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=...) -> retval:
     """
 
-        @param mode HMM Decoding algorithm. Only OCR_DECODER_VITERBI is available for the moment
-        (<http://en.wikipedia.org/wiki/Viterbi_algorithm>).
+    @param emission_probabilities_table Table with observation emission probabilities. cols ==
     """
 
 @overload
-def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode = ...) -> retval:
+def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=...) -> retval:
+    """
+
+    @param mode HMM Decoding algorithm. Only OCR_DECODER_VITERBI is available for the moment
+    (<http://en.wikipedia.org/wiki/Viterbi_algorithm>).
+    """
+
+@overload
+def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=...) -> retval:
     """
     @brief Creates an instance of the OCRHMMDecoder class. Loads and initializes HMMDecoder from the specified path
 
@@ -250,7 +239,7 @@ def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table,
     """
 
 @overload
-def OCRTesseract_create(datapath = ..., language = ..., char_whitelist = ..., oem = ..., psmode = ...) -> retval:
+def OCRTesseract_create(datapath=..., language=..., char_whitelist=..., oem=..., psmode=...) -> retval:
     """
     @brief Creates an instance of the OCRTesseract class. Initializes Tesseract.
 
@@ -258,37 +247,35 @@ def OCRTesseract_create(datapath = ..., language = ..., char_whitelist = ..., oe
     """
 
 @overload
-def OCRTesseract_create(datapath = ..., language = ..., char_whitelist = ..., oem = ..., psmode = ...) -> retval:
+def OCRTesseract_create(datapath=..., language=..., char_whitelist=..., oem=..., psmode=...) -> retval:
     """
-        @param language an ISO 639-3 code or NULL will default to "eng".
-        @param char_whitelist specifies the list of characters used for recognition. NULL defaults to
-        "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".
-        @param oem tesseract-ocr offers different OCR Engine Modes (OEM), by default
-    """
-
-@overload
-def OCRTesseract_create(datapath = ..., language = ..., char_whitelist = ..., oem = ..., psmode = ...) -> retval:
-    """
+    @param language an ISO 639-3 code or NULL will default to "eng".
+    @param char_whitelist specifies the list of characters used for recognition. NULL defaults to
+    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".
+    @param oem tesseract-ocr offers different OCR Engine Modes (OEM), by default
     """
 
 @overload
-def OCRTesseract_create(datapath = ..., language = ..., char_whitelist = ..., oem = ..., psmode = ...) -> retval:
+def OCRTesseract_create(datapath=..., language=..., char_whitelist=..., oem=..., psmode=...) -> retval:
+    """ """
+
+@overload
+def OCRTesseract_create(datapath=..., language=..., char_whitelist=..., oem=..., psmode=...) -> retval:
     """
-        @param psmode tesseract-ocr offers different Page Segmentation Modes (PSM) tesseract::PSM_AUTO
-        (fully automatic layout analysis) is used. See the tesseract-ocr API documentation for other
+    @param psmode tesseract-ocr offers different Page Segmentation Modes (PSM) tesseract::PSM_AUTO
+    (fully automatic layout analysis) is used. See the tesseract-ocr API documentation for other
     """
 
 @overload
-def OCRTesseract_create(datapath = ..., language = ..., char_whitelist = ..., oem = ..., psmode = ...) -> retval:
-    """
-    """
+def OCRTesseract_create(datapath=..., language=..., char_whitelist=..., oem=..., psmode=...) -> retval:
+    """ """
 
 def TextDetectorCNN_create(modelArchFilename, modelWeightsFilename) -> retval:
     """
     @overload
     """
 
-def computeNMChannels(_src, _channels = ..., _mode = ...) -> _channels:
+def computeNMChannels(_src, _channels=..., _mode=...) -> _channels:
     """
     @brief Compute the different channels to be processed independently in the N&M algorithm @cite Neumann12.
 
@@ -306,7 +293,7 @@ def computeNMChannels(_src, _channels = ..., _mode = ...) -> _channels:
     """
 
 @overload
-def createERFilterNM1(cb, thresholdDelta = ..., minArea = ..., maxArea = ..., minProbability = ..., nonMaxSuppression = ..., minProbabilityDiff = ...) -> retval:
+def createERFilterNM1(cb, thresholdDelta=..., minArea=..., maxArea=..., minProbability=..., nonMaxSuppression=..., minProbabilityDiff=...) -> retval:
     """
     @brief Create an Extremal Region Filter for the 1st stage classifier of N&M algorithm @cite Neumann12.
 
@@ -330,20 +317,20 @@ def createERFilterNM1(cb, thresholdDelta = ..., minArea = ..., maxArea = ..., mi
     """
 
 @overload
-def createERFilterNM1(cb, thresholdDelta = ..., minArea = ..., maxArea = ..., minProbability = ..., nonMaxSuppression = ..., minProbabilityDiff = ...) -> retval:
+def createERFilterNM1(cb, thresholdDelta=..., minArea=..., maxArea=..., minProbability=..., nonMaxSuppression=..., minProbabilityDiff=...) -> retval:
     """
     @brief Reads an Extremal Region Filter for the 1st stage classifier of N&M algorithm
     """
 
 @overload
-def createERFilterNM1(cb, thresholdDelta = ..., minArea = ..., maxArea = ..., minProbability = ..., nonMaxSuppression = ..., minProbabilityDiff = ...) -> retval:
+def createERFilterNM1(cb, thresholdDelta=..., minArea=..., maxArea=..., minProbability=..., nonMaxSuppression=..., minProbabilityDiff=...) -> retval:
     """
 
     @overload
     """
 
 @overload
-def createERFilterNM2(cb, minProbability = ...) -> retval:
+def createERFilterNM2(cb, minProbability=...) -> retval:
     """
     @brief Create an Extremal Region Filter for the 2nd stage classifier of N&M algorithm @cite Neumann12.
 
@@ -358,13 +345,13 @@ def createERFilterNM2(cb, minProbability = ...) -> retval:
     """
 
 @overload
-def createERFilterNM2(cb, minProbability = ...) -> retval:
+def createERFilterNM2(cb, minProbability=...) -> retval:
     """
     @brief Reads an Extremal Region Filter for the 2nd stage classifier of N&M algorithm
     """
 
 @overload
-def createERFilterNM2(cb, minProbability = ...) -> retval:
+def createERFilterNM2(cb, minProbability=...) -> retval:
     """
 
     @overload
@@ -421,7 +408,7 @@ def detectRegions(image, er_filter1, er_filter2) -> regions:
     @param minProbability The minimum probability for accepting a group. Only to use when grouping method is ERGROUPING_ORIENTATION_ANY.
     """
 
-def detectTextSWT(input, dark_on_light, draw = ..., chainBBs = ...) -> tuple[result, draw, chainBBs]:
+def detectTextSWT(input, dark_on_light, draw=..., chainBBs=...) -> tuple[result, draw, chainBBs]:
     """
     @brief Applies the Stroke Width Transform operator followed by filtering of connected components of similar Stroke Widths to return letter candidates. It also chain them by proximity and size, saving the result in chainBBs.
         @param input the input image with 3 channels.
@@ -431,7 +418,7 @@ def detectTextSWT(input, dark_on_light, draw = ..., chainBBs = ...) -> tuple[res
         @param chainBBs an optional parameter which chains the letter candidates according to heuristics in the paper and returns all possible regions where text is likely to occur.
     """
 
-def erGrouping(image, channel, regions, method = ..., filename = ..., minProbablity = ...) -> groups_rects:
+def erGrouping(image, channel, regions, method=..., filename=..., minProbablity=...) -> groups_rects:
     """
     @brief Find groups of Extremal Regions that are organized as text blocks.
 
