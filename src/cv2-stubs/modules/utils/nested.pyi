@@ -3,7 +3,7 @@ from typing import Any, TypeAlias
 
 retval: TypeAlias = Any
 
-class ExportClassName(builtins.object):
+class ExportClassName:
     def getFloatParam(self) -> retval:
         """"""
 
@@ -16,7 +16,7 @@ class ExportClassName(builtins.object):
     def originalName(self) -> retval:
         """"""
 
-    class Params(builtins.object):
+    class Params:
         float_value: float = 3.5
         int_value: int = 123
 

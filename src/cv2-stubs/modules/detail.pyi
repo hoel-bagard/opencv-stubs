@@ -32,7 +32,7 @@ class BestOf2NearestMatcher(FeaturesMatcher):
 
 class BestOf2NearestRangeMatcher(BestOf2NearestMatcher): ...
 
-class Blender(builtins.object):
+class Blender:
     def blend(self, dst, dst_mask) -> tuple[dst, dst_mask]:
         """
         @brief Blends and returns the final pano.
@@ -144,7 +144,7 @@ class BundleAdjusterBase(Estimator):
 class BundleAdjusterRay(BundleAdjusterBase): ...
 class BundleAdjusterReproj(BundleAdjusterBase): ...
 
-class CameraParams(builtins.object):
+class CameraParams:
     def K(self) -> retval:
         """ """
 
@@ -174,7 +174,7 @@ class DpSeamFinder(SeamFinder):
     def setCostFunction(self, val) -> None:
         """"""
 
-class Estimator(builtins.object):
+class Estimator:
     def apply(self, features, pairwise_matches, cameras) -> tuple[retval, cameras]:
         """
         @brief Estimates camera parameters.
@@ -184,7 +184,7 @@ class Estimator(builtins.object):
         @param cameras Estimated camera parameters @return True in case of success, false otherwise
         """
 
-class ExposureCompensator(builtins.object):
+class ExposureCompensator:
     def apply(self, index, corner, image, mask) -> image:
         """
         @brief Compensate exposure in the specified image.
@@ -236,7 +236,7 @@ class FeatherBlender(Blender):
     def sharpness(self) -> retval:
         """"""
 
-class FeaturesMatcher(builtins.object):
+class FeaturesMatcher:
     def apply(self, features1, features2) -> matches_info:
         """
         @overload
@@ -286,17 +286,17 @@ class GainCompensator(ExposureCompensator):
     def setSimilarityThreshold(self, similarity_threshold) -> None:
         """"""
 
-class GraphCutSeamFinder(builtins.object):
+class GraphCutSeamFinder:
     def find(self, src, corners, masks) -> masks:
         """"""
 
 class HomographyBasedEstimator(Estimator): ...
 
-class ImageFeatures(builtins.object):
+class ImageFeatures:
     def getKeypoints(self) -> retval:
         """"""
 
-class MatchesInfo(builtins.object):
+class MatchesInfo:
     def getInliers(self) -> retval:
         """"""
 
@@ -339,9 +339,9 @@ class PairwiseSeamFinder(SeamFinder):
     def find(self, src, corners, masks) -> masks:
         """"""
 
-class ProjectorBase(builtins.object): ...
+class ProjectorBase: ...
 
-class SeamFinder(builtins.object):
+class SeamFinder:
     def find(self, src, corners, masks) -> masks:
         """
         @brief Estimates seams.
@@ -361,7 +361,7 @@ class SphericalProjector(ProjectorBase):
     def mapForward(self, x, y, u, v) -> None:
         """"""
 
-class Timelapser(builtins.object):
+class Timelapser:
     def getDst(self) -> retval:
         """"""
 

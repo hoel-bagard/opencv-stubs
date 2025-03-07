@@ -3,7 +3,7 @@ from typing import Any, Final, TypeAlias
 
 retval: TypeAlias = Any
 
-class Device(builtins.object):
+class Device:
     def OpenCLVersion(self) -> retval:
         """"""
 
@@ -221,7 +221,7 @@ class Device(builtins.object):
     def getDefault(self) -> retval:
         """"""
 
-class OpenCLExecutionContext(builtins.object): ...
+class OpenCLExecutionContext: ...
 
 def Device_getDefault() -> retval:
     """

@@ -6,7 +6,7 @@ dists: TypeAlias = Any
 
 retval: TypeAlias = Any
 
-class Index(builtins.object):
+class Index:
     def build(self, features, params, distType=...) -> None:
         """"""
 

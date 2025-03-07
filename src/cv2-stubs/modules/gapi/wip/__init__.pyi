@@ -5,7 +5,7 @@ from . import draw, gst
 
 retval: TypeAlias = Any
 
-class GOutputs(builtins.object):
+class GOutputs:
     def getGArray(self, type) -> retval:
         """"""
 
@@ -18,8 +18,8 @@ class GOutputs(builtins.object):
     def getGScalar(self) -> retval:
         """"""
 
-class GStreamerPipeline(builtins.object): ...
-class IStreamSource(builtins.object): ...
+class GStreamerPipeline: ...
+class IStreamSource: ...
 
 def get_streaming_source(pipeline, appsinkName, outputType=...) -> retval:
     """

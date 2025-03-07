@@ -10,7 +10,7 @@ PCNormals: TypeAlias = Any
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 
-class ICP(builtins.object):
+class ICP:
     @overload
     def registerModelToScene(self, srcPC, dstPC) -> tuple[retval, residual, pose]:
         """
@@ -32,7 +32,7 @@ class ICP(builtins.object):
         *  @param [in,out] poses Input poses to start with but also list output of poses. *  \return On successful termination, the function returns 0. * *  \details It is assumed that the model is registered on the scene. Scene remains static, while the model transforms. The output poses transform the models onto the scene. Because of the point to plane minimization, the scene is expected to have the normals available. Expected to have the normals (Nx6).
         """
 
-class PPF3DDetector(builtins.object):
+class PPF3DDetector:
     def match(self, scene, relativeSceneSampleStep=..., relativeSceneDistance=...) -> results:
         """
         *  \brief Matches a trained model across a provided scene.
@@ -50,7 +50,7 @@ class PPF3DDetector(builtins.object):
         *  @param [in] Model The input point cloud with normals (Nx6) * *  \details Uses the parameters set in the constructor to downsample and learn a new model. When the model is learnt, the instance gets ready for calling "match".
         """
 
-class Pose3D(builtins.object):
+class Pose3D:
     def appendPose(self, IncrementalPose) -> None:
         """
         *  \brief Left multiplies the existing pose in order to update the transformation
@@ -78,7 +78,7 @@ class Pose3D(builtins.object):
         *  \brief Updates the pose with the new one, but this time using quaternions to represent rotation
         """
 
-class PoseCluster3D(builtins.object): ...
+class PoseCluster3D: ...
 
 def addNoisePC(pc, scale) -> retval:
     """

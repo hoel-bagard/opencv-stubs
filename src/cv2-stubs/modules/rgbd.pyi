@@ -279,7 +279,7 @@ class OdometryFrame(RgbdFrame):
     def create(self, image=..., depth=..., mask=..., normals=..., ID=...) -> retval:
         """"""
 
-class RgbdFrame(builtins.object):
+class RgbdFrame:
     def release(self) -> None:
         """"""
 

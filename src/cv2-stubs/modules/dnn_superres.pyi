@@ -5,7 +5,7 @@ result: TypeAlias = Any
 
 retval: TypeAlias = Any
 
-class DnnSuperResImpl(builtins.object):
+class DnnSuperResImpl:
     def getAlgorithm(self) -> retval:
         """
         @brief Returns the scale factor of the model:

@@ -700,7 +700,7 @@ class NormalBayesClassifier(StatModel):
         * @param nodeName name of node containing the classifier
         """
 
-class ParamGrid(builtins.object):
+class ParamGrid:
     def create(self, minVal=..., maxVal=..., logstep=...) -> retval:
         """
         @brief Creates a ParamGrid Ptr that can be given to the %SVM::trainAuto method
@@ -1109,7 +1109,7 @@ class StatModel(cv2.Algorithm):
         @param responses vector of responses associated with the training samples.
         """
 
-class TrainData(builtins.object):
+class TrainData:
     def getCatCount(self, vi) -> retval:
         """"""
 

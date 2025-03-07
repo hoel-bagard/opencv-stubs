@@ -114,9 +114,9 @@ class BinaryDescriptorMatcher(cv2.Algorithm):
         @param masks vector of masks to select which input descriptors must be matched to one in dataset (the *i*-th mask in vector indicates whether each input query can be matched with descriptors in dataset relative to *i*-th image)
         """
 
-class DrawLinesMatchesFlags(builtins.object): ...
+class DrawLinesMatchesFlags: ...
 
-class KeyLine(builtins.object):
+class KeyLine:
     def getEndPoint(self) -> retval:
         """
         Returns the end point of the line in the original image
@@ -169,7 +169,7 @@ class LSDDetector(cv2.Algorithm):
     def createLSDDetectorWithParams(self, params) -> retval:
         """"""
 
-class LSDParam(builtins.object): ...
+class LSDParam: ...
 
 def BinaryDescriptor_createBinaryDescriptor() -> retval:
     """

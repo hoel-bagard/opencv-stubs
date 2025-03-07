@@ -88,7 +88,7 @@ class ArucoDetector(cv2.Algorithm):
         @brief simplified API for language bindings
         """
 
-class Board(builtins.object):
+class Board:
     def generateImage(self, outSize, img=..., marginSize=..., borderBits=...) -> img:
         """
         @brief Draw a planar board
@@ -207,9 +207,9 @@ class CharucoDetector(cv2.Algorithm):
     def setRefineParameters(self, refineParameters) -> None:
         """"""
 
-class CharucoParameters(builtins.object): ...
+class CharucoParameters: ...
 
-class DetectorParameters(builtins.object):
+class DetectorParameters:
     def readDetectorParameters(self, fn) -> retval:
         """
         @brief Read a new set of DetectorParameters from FileNode (use FileStorage.root()).
@@ -220,7 +220,7 @@ class DetectorParameters(builtins.object):
         @brief Write a set of DetectorParameters to FileStorage
         """
 
-class Dictionary(builtins.object):
+class Dictionary:
     def generateImageMarker(self, id, sidePixels, _img=..., borderBits=...) -> _img:
         """
         @brief Generate a canonical marker image
@@ -268,7 +268,7 @@ class Dictionary(builtins.object):
         @brief Transform matrix of bits to list of bytes in the 4 rotations
         """
 
-class EstimateParameters(builtins.object): ...
+class EstimateParameters: ...
 
 class GridBoard(Board):
     def getGridSize(self) -> retval:
@@ -280,7 +280,7 @@ class GridBoard(Board):
     def getMarkerSeparation(self) -> retval:
         """"""
 
-class RefineParameters(builtins.object):
+class RefineParameters:
     def readRefineParameters(self, fn) -> retval:
         """
         @brief Read a new set of RefineParameters from FileNode (use FileStorage.root()).

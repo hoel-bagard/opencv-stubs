@@ -3,7 +3,7 @@ from typing import Any, Final, overload, TypeAlias
 
 retval: TypeAlias = Any
 
-class queue_capacity(builtins.object): ...
+class queue_capacity: ...
 
 def desync(g) -> retval:
     """

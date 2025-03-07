@@ -80,7 +80,7 @@ class DetectionModel(Model):
         * @param[in] value The new value for nmsAcrossClasses
         """
 
-class DictValue(builtins.object):
+class DictValue:
     def getIntValue(self, idx=...) -> retval:
         """"""
 
@@ -127,7 +127,7 @@ class Layer(cv2.Algorithm):
         *  @deprecated This method will be removed in the future release.
         """
 
-class Model(builtins.object):
+class Model:
     def predict(self, frame, outs=...) -> outs:
         """
         @brief Given the @p input frame, create input blob, run net and return the output @p blobs.
@@ -190,7 +190,7 @@ class Model(builtins.object):
     def setPreferableTarget(self, targetId) -> retval:
         """"""
 
-class Net(builtins.object):
+class Net:
     def connect(self, outPin, inpPin) -> None:
         """
         @brief Connects output of the first layer to input of the second layer.

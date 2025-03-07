@@ -7,7 +7,7 @@ image: TypeAlias = Any
 
 retval: TypeAlias = Any
 
-class LargeKinfu(builtins.object):
+class LargeKinfu:
     def getCloud(self, points=..., normals=...) -> tuple[points, normals]:
         """"""
 
@@ -34,7 +34,7 @@ class LargeKinfu(builtins.object):
     def create(self, _params) -> retval:
         """"""
 
-class Params(builtins.object):
+class Params:
     def coarseParams(self) -> retval:
         """
         @brief Coarse parameters

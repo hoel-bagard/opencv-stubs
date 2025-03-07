@@ -8,7 +8,7 @@ points: TypeAlias = Any
 image: TypeAlias = Any
 retval: TypeAlias = Any
 
-class KinFu(builtins.object):
+class KinFu:
     def getCloud(self, points=..., normals=...) -> tuple[points, normals]:
         """
         @brief Gets points and normals of current 3d mesh
@@ -79,7 +79,7 @@ class KinFu(builtins.object):
     def create(self, _params) -> retval:
         """"""
 
-class Params(builtins.object):
+class Params:
     @overload
     def setInitialVolumePose(self, R, t) -> None:
         """
@@ -122,9 +122,9 @@ class Params(builtins.object):
         A set of parameters suitable for use with HashTSDFVolume
         """
 
-class Volume(builtins.object): ...
+class Volume: ...
 
-class VolumeParams(builtins.object):
+class VolumeParams:
     def coarseParams(self, _volumeType) -> retval:
         """
         @brief Coarse set of parameters that provides relatively higher performance

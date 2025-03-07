@@ -34,7 +34,7 @@ class DepthNormal(Modality):
         *                             orientations within a distance of extract_threshold.
         """
 
-class Detector(builtins.object):
+class Detector:
     def addSyntheticTemplate(self, templates, class_id) -> retval:
         """
         * \brief Add a new object template computed by external means.
@@ -118,10 +118,10 @@ class Detector(builtins.object):
     def writeClasses(self, format=...) -> None:
         """"""
 
-class Feature(builtins.object): ...
-class Match(builtins.object): ...
+class Feature: ...
+class Match: ...
 
-class Modality(builtins.object):
+class Modality:
     def name(self) -> retval:
         """"""
 
@@ -153,7 +153,7 @@ class Modality(builtins.object):
         * \brief Load a modality from file.
         """
 
-class QuantizedPyramid(builtins.object):
+class QuantizedPyramid:
     def extractTemplate(self) -> tuple[retval, templ]:
         """
         * \brief Extract most discriminant features at current pyramid level to form a new template.
@@ -176,7 +176,7 @@ class QuantizedPyramid(builtins.object):
         *                 representing its classification.
         """
 
-class Template(builtins.object): ...
+class Template: ...
 
 def ColorGradient_create(weak_threshold, num_features, strong_threshold) -> retval:
     """

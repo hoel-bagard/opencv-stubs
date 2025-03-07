@@ -7,7 +7,7 @@ image: TypeAlias = Any
 
 retval: TypeAlias = Any
 
-class DynaFu(builtins.object):
+class DynaFu:
     def getCloud(self, points=..., normals=...) -> tuple[points, normals]:
         """
         @brief Gets points and normals of current 3d mesh

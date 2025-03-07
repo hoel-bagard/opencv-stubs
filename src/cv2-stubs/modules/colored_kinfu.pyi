@@ -8,7 +8,7 @@ colors: TypeAlias = Any
 
 retval: TypeAlias = Any
 
-class ColoredKinFu(builtins.object):
+class ColoredKinFu:
     def getCloud(self, points=..., normals=..., colors=...) -> tuple[points, normals, colors]:
         """
         @brief Gets points, normals and colors of current 3d mesh
@@ -77,7 +77,7 @@ class ColoredKinFu(builtins.object):
     def create(self, _params) -> retval:
         """"""
 
-class Params(builtins.object):
+class Params:
     @overload
     def setInitialVolumePose(self, R, t) -> None:
         """

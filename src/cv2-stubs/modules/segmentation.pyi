@@ -5,7 +5,7 @@ contour: TypeAlias = Any
 
 retval: TypeAlias = Any
 
-class IntelligentScissorsMB(builtins.object):
+class IntelligentScissorsMB:
     def applyImage(self, image) -> retval:
         """
         @brief Specify input image and extract image features

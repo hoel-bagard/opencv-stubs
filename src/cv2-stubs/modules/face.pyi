@@ -287,7 +287,7 @@ class MACE(cv2.Algorithm):
         @param objname (optional) top-level node in the FileStorage
         """
 
-class PredictCollector(builtins.object): ...
+class PredictCollector: ...
 
 class StandardCollector(PredictCollector):
     def getMinDist(self) -> retval:

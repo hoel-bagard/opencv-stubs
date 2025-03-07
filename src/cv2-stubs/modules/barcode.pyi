@@ -6,7 +6,7 @@ points: TypeAlias = Any
 decoded_type: TypeAlias = Any
 retval: TypeAlias = Any
 
-class BarcodeDetector(builtins.object):
+class BarcodeDetector:
     def decode(self, img, points) -> tuple[retval, decoded_info, decoded_type]:
         """
         @brief Decodes barcode in image once it's found by the detect() method.
