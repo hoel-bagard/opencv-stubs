@@ -1,6 +1,6 @@
 import builtins
 from abc import ABC, abstractmethod
-from typing import Any, overload, TypeAlias
+from typing import Any, overload, Sequence, TypeAlias
 
 import numpy as np
 import numpy.typing as npt
@@ -3665,7 +3665,28 @@ class VariationalRefinement(DenseOpticalFlow):
         @brief Creates an instance of VariationalRefinement
         """
 
-class VideoCapture(builtins.object):
+class IStreamReader: ...
+
+class VideoCapture:
+    @overload
+    def __init__(self) -> None: ...
+    """Opens a camera for video capturing. """
+    @overload
+    def __init__(self, filename: str, apiPreference: int = ...) -> None: ...
+    @overload
+    def __init__(self, filename: str, apiPreference: int, params: Sequence[int]) -> None: ...
+    @overload
+    def __init__(self, index: int, apiPreference: int = ...) -> None: ...
+    """Opens a camera for video capturing.
+
+    Args:
+        index: id of the video capturing device to open. To open default camera using default backend just pass 0. (to backward compatibility usage of camera_id + domain_offset (CAP_*) is valid when apiPreference is CAP_ANY)
+        apiPreference: preferred Capture API backends to use. Can be used to enforce a specific reader implementation if multiple are available: e.g. cv::CAP_DSHOW or cv::CAP_MSMF or cv::CAP_V4L2.
+    """
+    @overload
+    def __init__(self, index: int, apiPreference: int, params: Sequence[int]) -> None: ...
+    @overload
+    def __init__(self, source: IStreamReader, apiPreference: int, params: Sequence[int]) -> None: ...
     def get(self, propId) -> retval:
         """
         @brief Returns the specified VideoCapture property
@@ -3818,7 +3839,17 @@ class VideoCapture(builtins.object):
         @param timeoutNs number of nanoseconds (0 - infinite) @return `true` if streamReady is not empty  @throws Exception %Exception on stream errors (check .isOpened() to filter out malformed streams) or VideoCapture type is not supported  The primary use of the function is in multi-camera environments. The method fills the ready state vector, grabs video frame, if camera is ready.  After this call use VideoCapture::retrieve() to decode and fetch frame data.
         """
 
-class VideoWriter(builtins.object):
+class VideoWriter:
+    @overload
+    def __init__(self) -> None: ...
+    @overload
+    def __init__(self, filename: str, fourcc: int, fps: float, frameSize: Sequence[int], isColor: bool = ...) -> None: ...
+    @overload
+    def __init__(self, filename: str, apiPreference: int, fourcc: int, fps: float, frameSize: Sequence[int], isColor: bool = ...) -> None: ...
+    @overload
+    def __init__(self, filename: str, fourcc: int, fps: float, frameSize: Sequence[int], params: Sequence[int]) -> None: ...
+    @overload
+    def __init__(self, filename: str, apiPreference: int, fourcc: int, fps: float, frameSize: Sequence[int], params: Sequence[int]) -> None: ...
     def get(self, propId) -> retval:
         """
         @brief Returns the specified VideoWriter property
