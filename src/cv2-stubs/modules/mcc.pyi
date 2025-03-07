@@ -6,7 +6,7 @@ from .. import functions as cv2
 img: TypeAlias = Any
 retval: TypeAlias = Any
 
-class CChecker(builtins.object):
+class CChecker:
     def getBox(self) -> retval:
         """"""
 
@@ -129,7 +129,7 @@ class CCheckerDetector(cv2.Algorithm):
         *
         """
 
-class CCheckerDraw(builtins.object):
+class CCheckerDraw:
     def draw(self, img) -> img:
         """
         \brief Draws the checker to the given image.
@@ -148,7 +148,7 @@ class CCheckerDraw(builtins.object):
         * \return A pointer to the implementation of the CCheckerDraw
         """
 
-class DetectorParameters(builtins.object):
+class DetectorParameters:
     def create(self) -> retval:
         """"""
 

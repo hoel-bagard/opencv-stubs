@@ -67,6 +67,10 @@ publish_test = "hatch build --clean && hatch publish -r test"
 publish = "hatch build --clean && hatch publish"
 
 [tool.ruff]
+line-length = 20000
+exclude = [".venv"]
+
+[tool.ruff.lint]
 select = [
   "B",
   "C4",
@@ -74,7 +78,6 @@ select = [
   "I",
   "Q",
   "UP",
-  "S",
   "BLE",
   "COM",
   "DTZ",
@@ -88,13 +91,12 @@ select = [
   "RUF",
   # "ANN",
 ]
-ignore = ["D1", "D401", "D204", "D203", "D213", "S101", "PLR2004"]
-line-length = 20000
+ignore = ["COM812", "D1", "D401", "D204", "D203", "D213", "S101", "PLR2004"]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 order-by-type = false
 
-[tool.ruff.flake8-quotes]
+[tool.ruff.lint.flake8-quotes]
 docstring-quotes = "double"
 
 [tool.pyright]

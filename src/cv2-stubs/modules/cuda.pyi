@@ -7,7 +7,7 @@ arr: TypeAlias = Any
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 
-class BufferPool(builtins.object):
+class BufferPool:
     def getAllocator(self) -> retval:
         """"""
 
@@ -19,7 +19,7 @@ class BufferPool(builtins.object):
     def getBuffer(self, size, type) -> retval:
         """"""
 
-class DeviceInfo(builtins.object):
+class DeviceInfo:
     def ECCEnabled(self) -> retval:
         """
 
@@ -199,7 +199,7 @@ class DeviceInfo(builtins.object):
     def warpSize(self) -> retval:
         """"""
 
-class Event(builtins.object):
+class Event:
     def queryIfComplete(self) -> retval:
         """"""
 
@@ -212,12 +212,12 @@ class Event(builtins.object):
     def elapsedTime(self, start, end) -> retval:
         """"""
 
-class GpuData(builtins.object): ...
+class GpuData: ...
 
-class GpuMat(builtins.object):
+class GpuMat:
     step: int = 0
 
-    class Allocator(builtins.object): ...
+    class Allocator: ...
 
     def adjustROI(self, dtop, dbottom, dleft, dright) -> retval:
         """"""
@@ -400,9 +400,9 @@ class GpuMat(builtins.object):
     def setDefaultAllocator(self, allocator) -> None:
         """"""
 
-class GpuMatND(builtins.object): ...
+class GpuMatND: ...
 
-class HostMem(builtins.object):
+class HostMem:
     def channels(self) -> retval:
         """"""
 
@@ -452,7 +452,7 @@ class HostMem(builtins.object):
     def type(self) -> retval:
         """"""
 
-class SURF_CUDA(builtins.object):
+class SURF_CUDA:
     def defaultNorm(self) -> retval:
         """"""
 
@@ -492,7 +492,7 @@ class SURF_CUDA(builtins.object):
         @param _upright Up-right or rotated features flag (true - do not compute orientation of features; false - compute orientation).
         """
 
-class Stream(builtins.object):
+class Stream:
     def cudaPtr(self) -> retval:
         """"""
 
@@ -524,7 +524,7 @@ class Stream(builtins.object):
         See help(type) for accurate signature.
         """
 
-class TargetArchs(builtins.object):
+class TargetArchs:
     def has(self, major, minor) -> retval:
         """
         @brief There is a set of methods to check whether the module contains intermediate (PTX) or binary CUDA

@@ -4,7 +4,7 @@ from typing import Any, Final, TypeAlias
 dst: TypeAlias = Any
 retval: TypeAlias = Any
 
-class ColorCorrectionModel(builtins.object):
+class ColorCorrectionModel:
     def getCCM(self) -> retval:
         """"""
 

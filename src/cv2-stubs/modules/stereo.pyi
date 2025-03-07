@@ -5,13 +5,13 @@ sMatches: TypeAlias = Any
 denseMatches: TypeAlias = Any
 retval: TypeAlias = Any
 
-class MatchQuasiDense(builtins.object):
+class MatchQuasiDense:
     def apply(self, rhs) -> retval:
         """"""
 
-class PropagationParameters(builtins.object): ...
+class PropagationParameters: ...
 
-class QuasiDenseStereo(builtins.object):
+class QuasiDenseStereo:
     def getDenseMatches(self) -> denseMatches:
         """
         * @brief Get The dense corresponding points.

@@ -178,7 +178,7 @@ class BackgroundSubtractorLSBP(cv2.BackgroundSubtractor):
     def getBackgroundImage(self, backgroundImage=...) -> backgroundImage:
         """"""
 
-class BackgroundSubtractorLSBPDesc(builtins.object): ...
+class BackgroundSubtractorLSBPDesc: ...
 
 class BackgroundSubtractorMOG(cv2.BackgroundSubtractor):
     def getBackgroundRatio(self) -> retval:

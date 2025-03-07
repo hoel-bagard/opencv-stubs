@@ -3,7 +3,7 @@ from typing import Any, Final, overload, TypeAlias
 
 retval: TypeAlias = Any
 
-class PyParams(builtins.object):
+class PyParams:
     def cfgBatchSize(self, size) -> retval:
         """"""
 

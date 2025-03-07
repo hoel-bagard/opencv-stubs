@@ -421,7 +421,7 @@ class EdgeDrawing(cv2.Algorithm):
         @param parameters
         """
 
-    class Params(builtins.object):
+    class Params:
         AnchorThresholdValue: int = 0
         EdgeDetectionOperator: int = 0
         GradientThresholdValue: int = 20
@@ -946,7 +946,7 @@ def HoughPoint2Line(houghPoint, srcImgInfo, angleRange=..., makeSkew=..., rules=
     * The function calculates coordinates of line segment corresponded by point in Hough space.
     """
 
-def PeiLinNormalization(I: _npt.NDArray[_np.float64], T: _npt.NDArray[_np.float64] = ...) -> _npt.NDArray[_np.float64]:  # noqa: E741
+def PeiLinNormalization(I: _npt.NDArray[_np.float64], T: _npt.NDArray[_np.float64] = ...) -> _npt.NDArray[_np.float64]:
     """Calculates an affine transformation that normalize given image using Pei&Lin Normalization.
 
     Assume given image I=T(I¯) where I¯ is a normalized image and T is an affine transformation distorting this image by translation, rotation, scaling and skew. The function returns an affine transformation matrix corresponding to the transformation T-1 described in [PeiLin95]. For more details about this implementation, please see [PeiLin95] Soo-Chang Pei and Chao-Nan Lin. Image normalization for pattern recognition. Image and Vision Computing, Vol. 13, N.10, pp. 711-723, 1995.

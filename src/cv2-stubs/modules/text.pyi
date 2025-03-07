@@ -13,12 +13,11 @@ Bbox: TypeAlias = Any
 _channels: TypeAlias = Any
 retval: TypeAlias = Any
 
-class BaseOCR(builtins.object): ...
+class BaseOCR: ...
 
 class ERFilter(cv2.Algorithm):
-    ...
 
-    class Callback(builtins.object): ...
+    class Callback: ...
 
 class OCRBeamSearchDecoder(BaseOCR):
     @overload
@@ -54,7 +53,7 @@ class OCRBeamSearchDecoder(BaseOCR):
         @param beam_size Size of the beam in Beam Search algorithm.
         """
 
-    class ClassifierCallback(builtins.object): ...
+    class ClassifierCallback: ...
 
 class OCRHMMDecoder(BaseOCR):
     @overload
@@ -101,7 +100,7 @@ class OCRHMMDecoder(BaseOCR):
             @overload
         """
 
-    class ClassifierCallback(builtins.object): ...
+    class ClassifierCallback: ...
 
 class OCRTesseract(BaseOCR):
     @overload
@@ -139,7 +138,7 @@ class OCRTesseract(BaseOCR):
         @param psmode tesseract-ocr offers different Page Segmentation Modes (PSM) tesseract::PSM_AUTO (fully automatic layout analysis) is used. See the tesseract-ocr API documentation for other possible values.
         """
 
-class TextDetector(builtins.object):
+class TextDetector:
     def detect(self, inputImage) -> tuple[Bbox, confidence]:
         """
         @brief Method that provides a quick and simple interface to detect text inside an image

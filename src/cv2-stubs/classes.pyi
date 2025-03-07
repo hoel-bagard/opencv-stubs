@@ -194,7 +194,7 @@ class AgastFeatureDetector(Feature2D):
     def create(self, threshold=..., nonmaxSuppression=..., type=...) -> retval:
         """"""
 
-class Algorithm(builtins.object):
+class Algorithm:
     @abstractmethod
     def clear(self) -> None:
         """
@@ -306,7 +306,7 @@ class AlignMTB(AlignExposures):
         @param shift shift value
         """
 
-class AsyncArray(builtins.object):
+class AsyncArray:
     @overload
     def get(self, dst=...) -> dst:
         """
@@ -339,7 +339,7 @@ class BFMatcher(DescriptorMatcher):
         @param crossCheck If it is false, this is will be default BFMatcher behaviour when it finds the k nearest neighbors for each query descriptor. If crossCheck==true, then the knnMatch() method with k=1 will only return pairs (i,j) such that for i-th query descriptor the j-th descriptor in the matcher's collection is the nearest and vice versa, i.e. the BFMatcher will only return consistent pairs. Such technique usually produces best results with minimal number of outliers when there are enough matches. This is alternative to the ratio test, used by D. Lowe in SIFT paper.
         """
 
-class BOWImgDescriptorExtractor(builtins.object):
+class BOWImgDescriptorExtractor:
     def compute(self, image, keypoints, imgDescriptor=...) -> imgDescriptor:
         """
         @overload
@@ -379,7 +379,7 @@ class BOWKMeansTrainer(BOWTrainer):
     def cluster(self, descriptors) -> retval:
         """"""
 
-class BOWTrainer(builtins.object):
+class BOWTrainer:
     def add(self, descriptors) -> None:
         """
         @brief Adds descriptors to a training set.
@@ -820,7 +820,7 @@ class CalibrateRobertson(CalibrateCRF):
     def setThreshold(self, threshold) -> None:
         """"""
 
-class CascadeClassifier(builtins.object):
+class CascadeClassifier:
     def detectMultiScale(self, image, scaleFactor=..., minNeighbors=..., flags=..., minSize=..., maxSize=...) -> objects:
         """
         @brief Detects objects of different sizes in the input image. The detected objects are returned as a list
@@ -900,7 +900,7 @@ class CascadeClassifier(builtins.object):
         """"""
 
 class ChiHistogramCostExtractor(HistogramCostExtractor): ...
-class CirclesGridFinderParameters(builtins.object): ...
+class CirclesGridFinderParameters: ...
 
 class DISOpticalFlow(DenseOpticalFlow):
     def getFinestScale(self) -> retval:
@@ -1032,7 +1032,7 @@ class DISOpticalFlow(DenseOpticalFlow):
         @param preset one of PRESET_ULTRAFAST, PRESET_FAST and PRESET_MEDIUM
         """
 
-class DMatch(builtins.object): ...
+class DMatch: ...
 
 class DenseOpticalFlow(Algorithm):
     def calc(self, I0, I1, flow) -> flow:
@@ -1203,7 +1203,7 @@ class EMDHistogramCostExtractor(HistogramCostExtractor):
 
 class EMDL1HistogramCostExtractor(HistogramCostExtractor): ...
 
-class FaceDetectorYN(builtins.object):
+class FaceDetectorYN:
     def detect(self, image, faces=...) -> tuple[retval, faces]:
         """
         @brief A simple interface to detect face from given image
@@ -1266,7 +1266,7 @@ class FaceDetectorYN(builtins.object):
         *  @param target_id the id of target device
         """
 
-class FaceRecognizerSF(builtins.object):
+class FaceRecognizerSF:
     def alignCrop(self, src_img, face_box, aligned_img=...) -> aligned_img:
         """
         @brief Aligning image to put face on the standard position
@@ -1376,7 +1376,7 @@ class FastFeatureDetector(Feature2D):
     def create(self, threshold=..., nonmaxSuppression=..., type=...) -> retval:
         """"""
 
-class Feature2D(ABC, builtins.object):
+class Feature2D(ABC):
     @overload
     def compute(self, image, keypoints, descriptors=...) -> tuple[keypoints, descriptors]:
         """
@@ -1453,7 +1453,7 @@ class Feature2D(ABC, builtins.object):
     def write(self, fs, name) -> None:
         """"""
 
-class FileNode(builtins.object):
+class FileNode:
     def at(self, i) -> retval:
         """
         @overload
@@ -1523,7 +1523,7 @@ class FileNode(builtins.object):
         @returns Type of the node. See FileNode::Type
         """
 
-class FileStorage(builtins.object):
+class FileStorage:
     def endWriteStruct(self) -> None:
         """
         @brief Finishes writing nested structure (should pair startWriteStruct())
@@ -1616,16 +1616,16 @@ class FlannBasedMatcher(DescriptorMatcher):
     def create(self) -> retval:
         """"""
 
-class GArray(builtins.object): ...
-class GArrayDesc(builtins.object): ...
+class GArray: ...
+class GArrayDesc: ...
 
-class GArrayT(builtins.object):
+class GArrayT:
     def type(self) -> retval:
         """"""
 
-class GCompileArg(builtins.object): ...
+class GCompileArg: ...
 
-class GComputation(builtins.object):
+class GComputation:
     def apply(self, callback, args=...) -> retval:
         """
         * @brief Compile graph on-the-fly and immediately execute it on
@@ -1742,28 +1742,28 @@ class GFTTDetector(Feature2D):
     def create(self, maxCorners, qualityLevel, minDistance, blockSize, gradiantSize, useHarrisDetector=..., k=...) -> retval:
         """"""
 
-class GFrame(builtins.object): ...
+class GFrame: ...
 
-class GInferInputs(builtins.object):
+class GInferInputs:
     def setInput(self, name, value) -> retval:
         """"""
 
-class GInferListInputs(builtins.object):
+class GInferListInputs:
     def setInput(self, name, value) -> retval:
         """"""
 
-class GInferListOutputs(builtins.object):
+class GInferListOutputs:
     def at(self, name) -> retval:
         """"""
 
-class GInferOutputs(builtins.object):
+class GInferOutputs:
     def at(self, name) -> retval:
         """"""
 
-class GKernelPackage(builtins.object): ...
-class GMat(builtins.object): ...
+class GKernelPackage: ...
+class GMat: ...
 
-class GMatDesc(builtins.object):
+class GMatDesc:
     def asInterleaved(self) -> retval:
         """"""
 
@@ -1792,17 +1792,17 @@ class GMatDesc(builtins.object):
     def withType(self, ddepth, dchan) -> retval:
         """"""
 
-class GOpaque(builtins.object): ...
-class GOpaqueDesc(builtins.object): ...
+class GOpaque: ...
+class GOpaqueDesc: ...
 
-class GOpaqueT(builtins.object):
+class GOpaqueT:
     def type(self) -> retval:
         """"""
 
-class GScalar(builtins.object): ...
-class GScalarDesc(builtins.object): ...
+class GScalar: ...
+class GScalarDesc: ...
 
-class GStreamingCompiled(builtins.object):
+class GStreamingCompiled:
     def pull(self) -> retval:
         """
         * @brief Get the next processed frame from the pipeline.
@@ -2036,7 +2036,7 @@ class GeneralizedHoughGuil(GeneralizedHough):
     def setXi(self, xi) -> None:
         """"""
 
-class HOGDescriptor(builtins.object):
+class HOGDescriptor:
     def checkDetectorSize(self) -> retval:
         """
         @brief Checks if detector size equal to descriptor size.
@@ -2220,7 +2220,7 @@ class KAZE(Feature2D):
         @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or DIFF_CHARBONNIER
         """
 
-class KalmanFilter(builtins.object):
+class KalmanFilter:
     def correct(self, measurement) -> retval:
         """
         @brief Updates the predicted state from the measurement.
@@ -2235,7 +2235,7 @@ class KalmanFilter(builtins.object):
         @param control The optional input control
         """
 
-class KeyPoint(builtins.object):
+class KeyPoint:
     @overload
     def convert(self, keypoints, keypointIndexes=...) -> points2f:
         """
@@ -2532,7 +2532,7 @@ class ORB(Feature2D):
         @param fastThreshold the fast threshold
         """
 
-class PyRotationWarper(builtins.object):
+class PyRotationWarper:
     def buildMaps(self, src_size, K, R, xmap=..., ymap=...) -> tuple[retval, xmap, ymap]:
         """
         @brief Builds the projection maps according to the given camera data.
@@ -2600,7 +2600,7 @@ class PyRotationWarper(builtins.object):
         @param R Camera rotation matrix @return Projected image minimum bounding box
         """
 
-class QRCodeDetector(builtins.object):
+class QRCodeDetector:
     def decode(self, img, points, straight_qrcode=...) -> tuple[retval, straight_qrcode]:
         """
         @brief Decodes QR code in image once it's found by the detect() method.
@@ -2690,7 +2690,7 @@ class QRCodeDetector(builtins.object):
         * alignmentMarkers using by default
         """
 
-class QRCodeEncoder(builtins.object):
+class QRCodeEncoder:
     def encode(self, encoded_info, qrcode=...) -> qrcode:
         """
         @brief Generates QR code from input string.
@@ -3161,7 +3161,7 @@ class StereoSGBM(StereoMatcher):
         @param mode Set it to StereoSGBM::MODE_HH to run the full-scale two-pass dynamic programming algorithm. It will consume O(W\*H\*numDisparities) bytes, which is large for 640x480 stereo and huge for HD-size pictures. By default, it is set to false .  The first constructor initializes StereoSGBM with all the default parameters. So, you only have to set StereoSGBM::numDisparities at minimum. The second constructor enables you to set each parameter to a custom value.
         """
 
-class Stitcher(builtins.object):
+class Stitcher:
     @overload
     @overload
     def composePanorama(self, pano=...) -> tuple[retval, pano]:
@@ -3256,7 +3256,7 @@ class Stitcher(builtins.object):
         @param mode Scenario for stitcher operation. This is usually determined by source of images to stitch and their transformation. Default parameters will be chosen for operation in given scenario. @return Stitcher class instance.
         """
 
-class Subdiv2D(builtins.object):
+class Subdiv2D:
     def edgeDst(self, edge) -> tuple[retval, dstpt]:
         """
         @brief Returns the edge destination.
@@ -3389,7 +3389,7 @@ class ThinPlateSplineShapeTransformer(ShapeTransformer):
         @param beta value of the regularization parameter.
         """
 
-class TickMeter(builtins.object):
+class TickMeter:
     def getAvgTimeMilli(self) -> retval:
         """"""
 
@@ -3483,7 +3483,7 @@ class TonemapReinhard(Tonemap):
     def setLightAdaptation(self, light_adapt) -> None:
         """"""
 
-class Tracker(builtins.object):
+class Tracker:
     def init(self, image, boundingBox) -> None:
         """
         @brief Initialize the tracker with a known bounding box that surrounded the target
@@ -3565,7 +3565,7 @@ class TrackerNano(Tracker):
 
 TrackerNano_Params = Params
 
-class UMat(builtins.object):
+class UMat:
     def get(self) -> retval:
         """"""
 
@@ -3584,7 +3584,7 @@ class UMat(builtins.object):
     def queue(self) -> retval:
         """"""
 
-class UsacParams(builtins.object): ...
+class UsacParams: ...
 
 class VariationalRefinement(DenseOpticalFlow):
     def calcUV(self, I0, I1, flow_u, flow_v) -> tuple[flow_u, flow_v]:
@@ -3932,7 +3932,7 @@ class VideoWriter:
         VideoWriter::VideoWriter or VideoWriter::open.
         """
 
-class WarperCreator(builtins.object): ...
+class WarperCreator: ...
 
 aruco_ArucoDetector = aruco.ArucoDetector
 aruco_Board = aruco.Board

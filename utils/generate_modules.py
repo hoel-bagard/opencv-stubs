@@ -21,7 +21,7 @@ def add_module(module_name: str, module: ModuleType, output_path: Path) -> None:
 
     # Add functions
     for (name, member) in inspect.getmembers(module):
-        if inspect.isfunction(member) or inspect.isbuiltin(member) and not name.startswith("_"):
+        if inspect.isfunction(member) or (inspect.isbuiltin(member) and not name.startswith("_")):
             full_name = f"{module_name}.{name}"
             process_function(full_name, stubs)
 

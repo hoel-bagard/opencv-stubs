@@ -8,7 +8,7 @@ projTr: TypeAlias = Any
 
 retval: TypeAlias = Any
 
-class Map(builtins.object):
+class Map:
     def compose(self, map) -> None:
         """"""
 
@@ -78,7 +78,7 @@ class MapShift(Map):
     def scale(self, factor) -> None:
         """"""
 
-class MapTypeCaster(builtins.object):
+class MapTypeCaster:
     def toAffine(self, sourceMap) -> retval:
         """"""
 
@@ -88,7 +88,7 @@ class MapTypeCaster(builtins.object):
     def toShift(self, sourceMap) -> retval:
         """"""
 
-class Mapper(builtins.object):
+class Mapper:
     def calculate(self, img1, img2, init=...) -> retval:
         """"""
 

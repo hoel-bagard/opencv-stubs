@@ -3,7 +3,7 @@ from typing import Any, Final, TypeAlias
 
 retval: TypeAlias = Any
 
-class PyParams(builtins.object): ...
+class PyParams: ...
 
 def params(tag, model_path) -> retval:
     """
