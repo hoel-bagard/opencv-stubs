@@ -1,0 +1,94 @@
+name: Create release
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - "v?[0-9]+.[0-9]+.[0-9]+"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # The create-release job runs purely to initialize the GitHub release itself,
+  # and names the release after the `x.y.z` tag that was pushed.
+  # It's separate from building the release so that we only create the release once.
+  create-release:
+    name: create-release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get the release version from the tag
+        if: env.VERSION == ''
+        run: |
+          echo "GH_RELEASE_TAG=${{ github.ref_name || inputs.tag_name }}" >> $GITHUB_ENV
+          echo "VERSION=$(echo "${{ github.ref_name || inputs.tag_name }}"  | sed 's/^[a-zA-Z]//' )" >> $GITHUB_ENV
+
+      - name: Show the version
+        run: |
+          echo "version is: $VERSION"
+
+      - name: Check that the tag version and the __init__.py version match.
+        shell: bash
+        run: |
+          if ! grep -q "__version__ = \"$VERSION\"" src/cv2-stubs/__init__.pyi; then
+            echo "Tag version does not match the one in src/cv2-stubs/__init__.py" >&2
+            exit 1
+          fi
+
+      - name: Create GitHub release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create $GH_RELEASE_TAG --verify-tag --title $GH_RELEASE_TAG
+
+    outputs:
+      gh_release_tag: ${{ env.GH_RELEASE_TAG }}
+
+  build-release:
+    name: build-release
+    needs: ["create-release"]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - build: linux
+            os: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install hatch
+
+      - name: Build binaries
+        run: |
+          hatch build --clean
+
+      - name: Publish to PyPi
+        env:
+          HATCH_INDEX_USER: "__token__"
+          HATCH_INDEX_AUTH: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          hatch run pypi:publish
+
+      - name: Upload release
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.TOKEN }}
+        run: |
+          set -e
+          version="${{ needs.create-release.outputs.gh_release_tag }}"
+          gh release upload $version ./dist/* --clobber
