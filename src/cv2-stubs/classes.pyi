@@ -1203,6 +1203,14 @@ class EMDHistogramCostExtractor(HistogramCostExtractor):
 
 class EMDL1HistogramCostExtractor(HistogramCostExtractor): ...
 
+class error(builtins.Exception):
+    code: int  # error code
+    err: str  # error description
+    file: str  # source file name where the error has occurred
+    func: str  # function name. Available only when the compiler supports getting it
+    line: int  # line number in the source file where the error has occurred
+    msg: str
+
 class FaceDetectorYN:
     def detect(self, image, faces=...) -> tuple[retval, faces]:
         """
