@@ -1,12 +1,5 @@
 # OpenCV stubs
 
-[![PyPI](https://img.shields.io/pypi/v/opencv-stubs?color=green&style=flat)](https://pypi.org/project/opencv-stubs)
-[![PyPI - Implementation](https://img.shields.io/pypi/implementation/opencv-stubs?style=flat)](https://pypi.org/project/opencv-stubs)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/opencv-stubs?style=flat)](https://pypi.org/project/opencv-stubs)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/opencv-stubs?style=flat-square)](https://pypistats.org/packages/opencv-stubs)
-[![License](https://img.shields.io/pypi/l/opencv-stubs?style=flat)](https://opensource.org/licenses/MIT)
-![Linting](https://github.com/hoel-bagard/opencv-stubs/actions/workflows/pre-commit.yaml/badge.svg)
-
 Unofficial python stubs for the opencv-python package.
 
 Official OpenCV stubs now exist (in OpenCV>=4.8, cf [this issue](https://github.com/opencv/opencv/issues/14590) and [this PR](https://github.com/opencv/opencv/pull/20370)), so this repo was archived from 2023/03/27 to 2024/04/13.\
