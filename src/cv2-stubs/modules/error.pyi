@@ -1,7 +1,5 @@
 from typing import Final
 
-from typing_extensions import TypeAlias
-
 BAD_ALIGN: Final[int]
 BAD_ALPHA_CHANNEL: Final[int]
 BAD_CALL_BACK: Final[int]

@@ -1,7 +1,5 @@
 from typing import Final
 
-from typing_extensions import TypeAlias
-
 CIRCLE: Final[int]
 COMEHERE: Final[int]
 CROSS: Final[int]

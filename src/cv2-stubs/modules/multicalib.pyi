@@ -1,7 +1,5 @@
 from typing import Final
 
-from typing_extensions import TypeAlias
-
 MULTI_CAMERA_CALIBRATION_OMNIDIRECTIONAL: Final[int] = 1
 MULTI_CAMERA_CALIBRATION_PINHOLE: Final[int] = 0
 MultiCameraCalibration_OMNIDIRECTIONAL: Final[int] = 1

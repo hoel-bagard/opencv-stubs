@@ -1,7 +1,4 @@
-import builtins
 from typing import Final
-
-from typing_extensions import TypeAlias
 
 class GStreamerPipeline: ...
 

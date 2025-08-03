@@ -1,4 +1,3 @@
-import builtins
 from typing import Any, Final, overload
 
 from typing_extensions import TypeAlias
