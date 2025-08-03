@@ -50,7 +50,7 @@ class ContourFitting(cv2.Algorithm):
 
         @param src Contour defining first shape.
         @param dst Contour defining second shape (Target).
-        @param alphaPhiST : \f$ \alpha \f$=alphaPhiST(0,0), \f$ \phi \f$=alphaPhiST(0,1) (in radian), s=alphaPhiST(0,2), Tx=alphaPhiST(0,3), Ty=alphaPhiST(0,4) rotation center
+        @param alphaPhiST : \f$ \alpha \f$=alphaPhiST(0,0), \f$ \\phi \f$=alphaPhiST(0,1) (in radian), s=alphaPhiST(0,2), Tx=alphaPhiST(0,3), Ty=alphaPhiST(0,4) rotation center
         @param dist distance between src and dst after matching.
         @param fdContour false then src and dst are contours and true src and dst are fourier descriptors.
         """
@@ -458,7 +458,7 @@ class FastGlobalSmootherFilter(cv2.Algorithm):
 
 class FastLineDetector(cv2.Algorithm):
     def detect(self, image, lines=...) -> lines:
-        """
+        r"""
         @brief Finds lines in the input image.
         This is the output of the default parameters of the algorithm on the above
         shown image.
@@ -1024,15 +1024,15 @@ def anisotropicDiffusion(src, alpha, K, niters, dst=...) -> dst:
 
      The function applies Perona-Malik anisotropic diffusion to an image. This is the solution to the partial differential equation:
 
-     \f[{\frac  {\partial I}{\partial t}}={\mathrm  {div}}\left(c(x,y,t)\nabla I\right)=\nabla c\cdot \nabla I+c(x,y,t)\Delta I\f]
+     \f[{\frac  {\\partial I}{\\partial t}}={\\mathrm  {div}}\\left(c(x,y,t)\nabla I\right)=\nabla c\\cdot \nabla I+c(x,y,t)\\Delta I\f]
 
      Suggested functions for c(x,y,t) are:
 
-     \f[c\left(\|\nabla I\|\right)=e^{{-\left(\|\nabla I\|/K\right)^{2}}}\f]
+     \f[c\\left(\\|\nabla I\\|\right)=e^{{-\\left(\\|\nabla I\\|/K\right)^{2}}}\f]
 
      or
 
-     \f[ c\left(\|\nabla I\|\right)={\frac {1}{1+\left({\frac  {\|\nabla I\|}{K}}\right)^{2}}} \f]
+     \f[ c\\left(\\|\nabla I\\|\right)={\frac {1}{1+\\left({\frac  {\\|\nabla I\\|}{K}}\right)^{2}}} \f]
 
      @param src Source image with 3 channels.
      @param dst Destination image of the same size and the same number of channels as src .
@@ -1162,10 +1162,10 @@ def createDTFilter(guide, sigmaSpatial, sigmaColor, mode=..., numIters=...) -> r
     @param guide guided image (used to build transformed distance, which describes edge structure of
     guided image).
 
-    @param sigmaSpatial \f${\sigma}_H\f$ parameter in the original article, it's similar to the sigma in the
+    @param sigmaSpatial \f${\\sigma}_H\f$ parameter in the original article, it's similar to the sigma in the
     coordinate space into bilateralFilter.
 
-    @param sigmaColor \f${\sigma}_r\f$ parameter in the original article, it's similar to the sigma in the
+    @param sigmaColor \f${\\sigma}_r\f$ parameter in the original article, it's similar to the sigma in the
     color space into bilateralFilter.
 
     @param mode one form three modes DTF_NC, DTF_RF and DTF_IC which corresponds to three modes for
@@ -1366,7 +1366,7 @@ def createSuperpixelLSC(image, region_size=..., ratio=...) -> retval:
     """
 
 def createSuperpixelSEEDS(image_width, image_height, image_channels, num_superpixels, num_levels, prior=..., histogram_bins=..., double_step=...) -> retval:
-    """
+    r"""
     @brief Initializes a SuperpixelSEEDS object.
 
     @param image_width Image width.
@@ -1426,9 +1426,9 @@ def dtFilter(guide, src, sigmaSpatial, sigmaColor, dst=..., mode=..., numIters=.
     depth and up to 4 channels.
     @param src filtering image with unsigned 8-bit or floating-point 32-bit depth and up to 4 channels.
     @param dst destination image
-    @param sigmaSpatial \f${\sigma}_H\f$ parameter in the original article, it's similar to the sigma in the
+    @param sigmaSpatial \f${\\sigma}_H\f$ parameter in the original article, it's similar to the sigma in the
     coordinate space into bilateralFilter.
-    @param sigmaColor \f${\sigma}_r\f$ parameter in the original article, it's similar to the sigma in the
+    @param sigmaColor \f${\\sigma}_r\f$ parameter in the original article, it's similar to the sigma in the
     color space into bilateralFilter.
     @param mode one form three modes DTF_NC, DTF_RF and DTF_IC which corresponds to three modes for
     filtering 2D signals in the article.
@@ -1566,7 +1566,7 @@ def guidedFilter(guide, src, radius, eps, dst=..., dDepth=...) -> dst:
     """
 
 def jointBilateralFilter(joint, src, d, sigmaColor, sigmaSpace, dst=..., borderType=...) -> dst:
-    """
+    r"""
     @brief Applies the joint bilateral filter to an image.
 
     @param joint Joint 8-bit or floating-point, 1-channel or 3-channel image.
@@ -1617,9 +1617,9 @@ def niBlackThreshold(_src, maxValue, type, blockSize, k, _dst=..., binarizationM
 
     The function transforms a grayscale image to a binary image according to the formulae:
     -   **THRESH_BINARY**
-        \f[dst(x,y) =  \fork{\texttt{maxValue}}{if \(src(x,y) > T(x,y)\)}{0}{otherwise}\f]
+        \f[dst(x,y) =  \fork{\texttt{maxValue}}{if \\(src(x,y) > T(x,y)\\)}{0}{otherwise}\f]
     -   **THRESH_BINARY_INV**
-        \f[dst(x,y) =  \fork{0}{if \(src(x,y) > T(x,y)\)}{\texttt{maxValue}}{otherwise}\f]
+        \f[dst(x,y) =  \fork{0}{if \\(src(x,y) > T(x,y)\\)}{\texttt{maxValue}}{otherwise}\f]
     where \f$T(x,y)\f$ is a threshold calculated individually for each pixel.
 
     The threshold value \f$T(x, y)\f$ is determined based on the binarization method chosen. For
@@ -1693,7 +1693,7 @@ def readGT(src_path, dst=...) -> tuple[retval, dst]:
     """
 
 def rollingGuidanceFilter(src, dst=..., d=..., sigmaColor=..., sigmaSpace=..., numOfIter=..., borderType=...) -> dst:
-    """
+    r"""
     @brief Applies the rolling guidance filter to an image.
 
     For more details, please see @cite zhang2014rolling

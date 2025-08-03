@@ -75,14 +75,14 @@ class CCheckerDetector(cv2.Algorithm):
         * The found charts are not returned but instead stored in the
         * detector, these can be accessed later on using getBestColorChecker()
         * and getListColorChecker()
-        * \param image image in color space BGR
-        * \param chartType type of the chart to detect
-        * \param nc number of charts in the image, if you don't know the exact
+        * \\param image image in color space BGR
+        * \\param chartType type of the chart to detect
+        * \\param nc number of charts in the image, if you don't know the exact
         *           then keeping this number high helps.
-        * \param useNet if it is true the network provided using the setNet()
+        * \\param useNet if it is true the network provided using the setNet()
         *               is used for preliminary search for regions where chart
         *               could be present, inside the regionsOfInterest provided.
-        * \param params parameters of the detection system. More information
+        * \\param params parameters of the detection system. More information
         *               about them can be found in the struct DetectorParameters.
         * \return true if at least one chart is detected otherwise false
         """
@@ -94,17 +94,17 @@ class CCheckerDetector(cv2.Algorithm):
         * The found charts are not returned but instead stored in the
         * detector, these can be accessed later on using getBestColorChecker()
         * and getListColorChecker()
-        * \param image image in color space BGR
-        * \param chartType type of the chart to detect
-        * \param regionsOfInterest regions of image to look for the chart, if
+        * \\param image image in color space BGR
+        * \\param chartType type of the chart to detect
+        * \\param regionsOfInterest regions of image to look for the chart, if
         *                          it is empty, charts are looked for in the
         *                          entire image
-        * \param nc number of charts in the image, if you don't know the exact
+        * \\param nc number of charts in the image, if you don't know the exact
         *           then keeping this number high helps.
-        * \param useNet if it is true the network provided using the setNet()
+        * \\param useNet if it is true the network provided using the setNet()
         *               is used for preliminary search for regions where chart
         *               could be present, inside the regionsOfInterest provided.
-        * \param params parameters of the detection system. More information
+        * \\param params parameters of the detection system. More information
         *               about them can be found in the struct DetectorParameters.
         * \return true if at least one chart is detected otherwise false
         """
@@ -117,7 +117,7 @@ class CCheckerDetector(cv2.Algorithm):
         * It is not necessary to use this, but this usually results in
         * better detection rate.
         *
-        * \param net the neural network, if the network in empty, then
+        * \\param net the neural network, if the network in empty, then
         *            the function will return false.
         * \return true if it was able to set the detector's network,
         *         false otherwise.
@@ -133,17 +133,17 @@ class CCheckerDraw:
     def draw(self, img) -> img:
         """
         \brief Draws the checker to the given image.
-        * \param img image in color space BGR
+        * \\param img image in color space BGR
         * \return void
         """
 
     def create(self, pChecker, color=..., thickness=...) -> retval:
         """
         \brief Create a new CCheckerDraw object.
-        * \param pChecker The checker which will be drawn by this object.
-        * \param color The color by with which the squares of the checker
+        * \\param pChecker The checker which will be drawn by this object.
+        * \\param color The color by with which the squares of the checker
         *              will be drawn
-        * \param thickness The thickness with which the squares will be
+        * \\param thickness The thickness with which the squares will be
         *                  drawn
         * \return A pointer to the implementation of the CCheckerDraw
         """
@@ -161,10 +161,10 @@ def CCheckerDetector_create() -> retval:
 def CCheckerDraw_create(pChecker, color=..., thickness=...) -> retval:
     """
     \brief Create a new CCheckerDraw object.
-        * \param pChecker The checker which will be drawn by this object.
-        * \param color The color by with which the squares of the checker
+        * \\param pChecker The checker which will be drawn by this object.
+        * \\param color The color by with which the squares of the checker
         *              will be drawn
-        * \param thickness The thickness with which the squares will be
+        * \\param thickness The thickness with which the squares will be
         *                  drawn
         * \return A pointer to the implementation of the CCheckerDraw
     """

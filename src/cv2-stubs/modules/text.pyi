@@ -274,7 +274,7 @@ def TextDetectorCNN_create(modelArchFilename, modelWeightsFilename) -> retval:
     """
 
 def computeNMChannels(_src, _channels=..., _mode=...) -> _channels:
-    """
+    r"""
     @brief Compute the different channels to be processed independently in the N&M algorithm @cite Neumann12.
 
     @param _src Source image. Must be RGB CV_8UC3.
@@ -374,7 +374,7 @@ def createOCRHMMTransitionsTable(vocabulary, lexicon) -> retval:
 
 @overload
 def detectRegions(image, er_filter1, er_filter2) -> regions:
-    """
+    r"""
     @brief Converts MSER contours (vector\<Point\>) to ERStat regions.
 
     @param image Source image CV_8UC1 from which the MSERs where extracted.

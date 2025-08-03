@@ -652,7 +652,7 @@ def NMSBoxes(bboxes, scores, score_threshold, nms_threshold, eta=..., top_k=...)
          * @param score_threshold a threshold used to filter boxes by score.
          * @param nms_threshold a threshold used in non maximum suppression.
          * @param indices the kept indices of bboxes after NMS.
-         * @param eta a coefficient in adaptive threshold formula: \f$nms\_threshold_{i+1}=eta\cdot nms\_threshold_i\f$.
+         * @param eta a coefficient in adaptive threshold formula: \f$nms\\_threshold_{i+1}=eta\\cdot nms\\_threshold_i\f$.
          * @param top_k if `>0`, keep at most @p top_k picked indices.
     """
 
@@ -666,7 +666,7 @@ def NMSBoxesBatched(bboxes, scores, class_ids, score_threshold, nms_threshold, e
          * @param score_threshold a threshold used to filter boxes by score.
          * @param nms_threshold a threshold used in non maximum suppression.
          * @param indices the kept indices of bboxes after NMS.
-         * @param eta a coefficient in adaptive threshold formula: \f$nms\_threshold_{i+1}=eta\cdot nms\_threshold_i\f$.
+         * @param eta a coefficient in adaptive threshold formula: \f$nms\\_threshold_{i+1}=eta\\cdot nms\\_threshold_i\f$.
          * @param top_k if `>0`, keep at most @p top_k picked indices.
     """
 

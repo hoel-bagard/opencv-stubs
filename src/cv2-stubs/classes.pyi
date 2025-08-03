@@ -129,7 +129,7 @@ class AKAZE(Feature2D):
         """"""
 
     def create(self, descriptor_type=..., descriptor_size=..., descriptor_channels=..., threshold=..., nOctaves=..., nOctaveLayers=..., diffusivity=...) -> retval:
-        """
+        r"""
         @brief The AKAZE constructor
 
         @param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE, DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
@@ -156,7 +156,7 @@ class AffineFeature(Feature2D):
         @param backend The detector/extractor you want to use as backend.
         @param maxTilt The highest power index of tilt factor. 5 is used in the paper as tilt sampling range n.
         @param minTilt The lowest power index of tilt factor. 0 is used in the paper.
-        @param tiltStep Tilt sampling step \f$\delta_t\f$ in Algorithm 1 in the paper.
+        @param tiltStep Tilt sampling step \f$\\delta_t\f$ in Algorithm 1 in the paper.
         @param rotateStepBase Rotation sampling step factor b in Algorithm 1 in the paper.
         """
 
@@ -597,7 +597,7 @@ class BackgroundSubtractorMOG2(BackgroundSubtractor):
         """
 
     def getBackgroundRatio(self) -> retval:
-        """
+        r"""
         @brief Returns the "background ratio" parameter of the algorithm
 
         If a foreground pixel keeps semi-constant value for about backgroundRatio\*history frames, it's
@@ -670,7 +670,7 @@ class BackgroundSubtractorMOG2(BackgroundSubtractor):
         """
 
     def getVarThresholdGen(self) -> retval:
-        """
+        r"""
         @brief Returns the variance threshold for the pixel-model match used for new mixture component generation
 
         Threshold for the squared Mahalanobis distance that helps decide when a sample is close to the
@@ -1111,7 +1111,7 @@ class DescriptorMatcher(Algorithm, ABC):
 
     @overload
     def match(self, queryDescriptors, trainDescriptors, mask=...) -> matches:
-        """
+        r"""
         @brief Finds the best match for each descriptor from a query set.
 
         @param queryDescriptors Query set of descriptors.
@@ -2278,7 +2278,7 @@ class LineSegmentDetector(Algorithm):
         """
 
     def detect(self, image, lines=..., width=..., prec=..., nfa=...) -> tuple[lines, width, prec, nfa]:
-        """
+        r"""
         @brief Finds lines in the input image.
 
         This is the output of the default parameters of the algorithm on the above shown image.
@@ -2747,7 +2747,7 @@ class SIFT(Feature2D):
 
     @overload
     def create(self, nfeatures=..., nOctaveLayers=..., contrastThreshold=..., edgeThreshold=..., sigma=...) -> retval:
-        """
+        r"""
         @param nfeatures The number of best features to retain. The features are ranked by their scores (measured in SIFT algorithm as the local contrast)
         @param nOctaveLayers The number of layers in each octave. 3 is the value used in D. Lowe paper. The number of octaves is computed automatically from the image resolution.
         @param contrastThreshold The contrast threshold used to filter out weak features in semi-uniform (low-contrast) regions. The larger the threshold, the less features are produced by the detector.  @note The contrast threshold will be divided by nOctaveLayers when the filtering is applied. When nOctaveLayers is set to default and if you want to use the value used in D. Lowe paper, 0.03, set this argument to 0.09.
@@ -2757,7 +2757,7 @@ class SIFT(Feature2D):
 
     @overload
     def create(self, nfeatures, nOctaveLayers, contrastThreshold, edgeThreshold, sigma, descriptorType) -> retval:
-        """
+        r"""
         @brief Create SIFT with specified descriptorType.
         @param nfeatures The number of best features to retain. The features are ranked by their scores (measured in SIFT algorithm as the local contrast)
         @param nOctaveLayers The number of layers in each octave. 3 is the value used in D. Lowe paper. The number of octaves is computed automatically from the image resolution.
@@ -3143,7 +3143,7 @@ class StereoSGBM(StereoMatcher):
         """"""
 
     def create(self, minDisparity=..., numDisparities=..., blockSize=..., P1=..., P2=..., disp12MaxDiff=..., preFilterCap=..., uniquenessRatio=..., speckleWindowSize=..., speckleRange=..., mode=...) -> retval:
-        """
+        r"""
         @brief Creates StereoSGBM object
 
         @param minDisparity Minimum possible disparity value. Normally, it is zero but sometimes rectification algorithms can shift images, so this parameter needs to be adjusted accordingly.
@@ -3796,7 +3796,7 @@ class VideoCapture:
         """
 
     def release(self) -> None:
-        """
+        r"""
         @brief Closes video file or capturing device.
 
         The method is automatically called by subsequent VideoCapture::open and by VideoCapture

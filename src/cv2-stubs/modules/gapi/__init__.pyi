@@ -121,7 +121,7 @@ def Canny(image, threshold1, threshold2, apertureSize=..., L2gradient=...) -> re
     @param threshold2 second threshold for the hysteresis procedure.
     @param apertureSize aperture size for the Sobel operator.
     @param L2gradient a flag, indicating whether a more accurate \f$L_2\f$ norm
-    \f$=\sqrt{(dI/dx)^2 + (dI/dy)^2}\f$ should be used to calculate the image gradient magnitude (
+    \f$=\\sqrt{(dI/dx)^2 + (dI/dy)^2}\f$ should be used to calculate the image gradient magnitude (
     L2gradient=true ), or whether the default \f$L_1\f$ norm \f$=|dI/dx|+|dI/dy|\f$ is enough (
     L2gradient=false ).
     """
@@ -166,7 +166,7 @@ def LUT(src, lut) -> retval:
 
     The function LUT fills the output matrix with values from the look-up table. Indices of the entries
     are taken from the input matrix. That is, the function processes each element of src as follows:
-    \f[\texttt{dst} (I)  \leftarrow \texttt{lut(src(I))}\f]
+    \f[\texttt{dst} (I)  \\leftarrow \texttt{lut(src(I))}\f]
 
     Supported matrix data types are @ref CV_8UC1.
     Output is a matrix of the same size and number of channels as src, and the same depth as lut.
@@ -201,7 +201,7 @@ def Laplacian(src, ddepth, ksize=..., scale=..., delta=..., borderType=...) -> r
     The function calculates the Laplacian of the source image by adding up the second x and y
     derivatives calculated using the Sobel operator:
 
-    \f[\texttt{dst} =  \Delta \texttt{src} =  \frac{\partial^2 \texttt{src}}{\partial x^2} +  \frac{\partial^2 \texttt{src}}{\partial y^2}\f]
+    \f[\texttt{dst} =  \\Delta \texttt{src} =  \frac{\\partial^2 \texttt{src}}{\\partial x^2} +  \frac{\\partial^2 \texttt{src}}{\\partial y^2}\f]
 
     This is done when `ksize > 1`. When `ksize == 1`, the Laplacian is computed by filtering the image
     with the following \f$3 \times 3\f$ aperture:
@@ -357,7 +357,7 @@ def RGB2YUV(src) -> retval:
 
     In case of linear transformations, the range does not matter. But in case of a non-linear
     transformation, an input RGB image should be normalized to the proper value range to get the correct
-    results, like here, at RGB \f$\rightarrow\f$ Y\*u\*v\* transformation.
+    results, like here, at RGB \f$\rightarrow\f$ Y\\*u\\*v\\* transformation.
     Output image must be 8-bit unsigned 3-channel image @ref CV_8UC3.
 
     @note Function textual ID is "org.opencv.imgproc.colorconvert.rgb2yuv"
@@ -399,7 +399,7 @@ def Sobel(src, ddepth, dx, dy, ksize=..., scale=..., delta=..., borderType=..., 
 
     The function calculates an image derivative by convolving the image with the appropriate kernel:
 
-    \f[\texttt{dst} =  \frac{\partial^{xorder+yorder} \texttt{src}}{\partial x^{xorder} \partial y^{yorder}}\f]
+    \f[\texttt{dst} =  \frac{\\partial^{xorder+yorder} \texttt{src}}{\\partial x^{xorder} \\partial y^{yorder}}\f]
 
     The Sobel operators combine Gaussian smoothing and differentiation, so the result is more or less
     resistant to the noise. Most often, the function is called with ( xorder = 1, yorder = 0, ksize = 3)
@@ -448,7 +448,7 @@ def SobelXY(src, ddepth, order, ksize=..., scale=..., delta=..., borderType=...,
 
     The function calculates an image derivative by convolving the image with the appropriate kernel:
 
-    \f[\texttt{dst} =  \frac{\partial^{xorder+yorder} \texttt{src}}{\partial x^{xorder} \partial y^{yorder}}\f]
+    \f[\texttt{dst} =  \frac{\\partial^{xorder+yorder} \texttt{src}}{\\partial x^{xorder} \\partial y^{yorder}}\f]
 
     The Sobel operators combine Gaussian smoothing and differentiation, so the result is more or less
     resistant to the noise. Most often, the function is called with ( xorder = 1, yorder = 0, ksize = 3)
@@ -563,7 +563,7 @@ def add(src1, src2, ddepth=...) -> retval:
     @brief Calculates the per-element sum of two matrices.
 
     The function add calculates sum of two matrices of the same size and the same number of channels:
-    \f[\texttt{dst}(I) =  \texttt{saturate} ( \texttt{src1}(I) +  \texttt{src2}(I)) \quad \texttt{if mask}(I) \ne0\f]
+    \f[\texttt{dst}(I) =  \texttt{saturate} ( \texttt{src1}(I) +  \texttt{src2}(I)) \\quad \texttt{if mask}(I) \ne0\f]
 
     The function can be replaced with matrix expressions:
         \f[\texttt{dst} =  \texttt{src1} + \texttt{src2}\f]
@@ -635,7 +635,7 @@ def addWeighted(src1, alpha, src2, beta, gamma, ddepth=...) -> retval:
     """
 
 def bilateralFilter(src, d, sigmaColor, sigmaSpace, borderType=...) -> retval:
-    """
+    r"""
     @brief Applies the bilateral filter to an image.
 
     The function applies bilateral filtering to the input image, as described in
@@ -752,7 +752,7 @@ def blur(src, ksize, anchor=..., borderType=..., borderValue=...) -> retval:
 
     The function smooths an image using the kernel:
 
-    \f[\texttt{K} =  \frac{1}{\texttt{ksize.width*ksize.height}} \begin{bmatrix} 1 & 1 & 1 &  \cdots & 1 & 1  \\ 1 & 1 & 1 &  \cdots & 1 & 1  \\ \hdotsfor{6} \\ 1 & 1 & 1 &  \cdots & 1 & 1  \\ \end{bmatrix}\f]
+    \f[\texttt{K} =  \frac{1}{\texttt{ksize.width*ksize.height}} \begin{bmatrix} 1 & 1 & 1 &  \\cdots & 1 & 1  \\ 1 & 1 & 1 &  \\cdots & 1 & 1  \\ \\hdotsfor{6} \\ 1 & 1 & 1 &  \\cdots & 1 & 1  \\ \\end{bmatrix}\f]
 
     The call `blur(src, ksize, anchor, borderType)` is equivalent to `boxFilter(src, src.type(), ksize, anchor,
     true, borderType)`.
@@ -796,11 +796,11 @@ def boxFilter(src, dtype, ksize, anchor=..., normalize=..., borderType=..., bord
 
     The function smooths an image using the kernel:
 
-    \f[\texttt{K} =  \alpha \begin{bmatrix} 1 & 1 & 1 &  \cdots & 1 & 1  \\ 1 & 1 & 1 &  \cdots & 1 & 1  \\ \hdotsfor{6} \\ 1 & 1 & 1 &  \cdots & 1 & 1 \end{bmatrix}\f]
+    \f[\texttt{K} =  \alpha \begin{bmatrix} 1 & 1 & 1 &  \\cdots & 1 & 1  \\ 1 & 1 & 1 &  \\cdots & 1 & 1  \\ \\hdotsfor{6} \\ 1 & 1 & 1 &  \\cdots & 1 & 1 \\end{bmatrix}\f]
 
     where
 
-    \f[\alpha = \begin{cases} \frac{1}{\texttt{ksize.width*ksize.height}} & \texttt{when } \texttt{normalize=true}  \\1 & \texttt{otherwise} \end{cases}\f]
+    \f[\alpha = \begin{cases} \frac{1}{\texttt{ksize.width*ksize.height}} & \texttt{when } \texttt{normalize=true}  \\1 & \texttt{otherwise} \\end{cases}\f]
 
     Unnormalized box filter is useful for computing various integral characteristics over each pixel
     neighborhood, such as covariance matrices of image derivatives (used in dense optical flow
@@ -829,14 +829,14 @@ def cartToPolar(x, y, angleInDegrees=...) -> retval:
 
     The function cartToPolar calculates either the magnitude, angle, or both
     for every 2D vector (x(I),y(I)):
-    \f[\begin{array}{l} \texttt{magnitude} (I)= \sqrt{\texttt{x}(I)^2+\texttt{y}(I)^2} , \\ \texttt{angle} (I)= \texttt{atan2} ( \texttt{y} (I), \texttt{x} (I))[ \cdot180 / \pi ] \end{array}\f]
+    \f[\begin{array}{l} \texttt{magnitude} (I)= \\sqrt{\texttt{x}(I)^2+\texttt{y}(I)^2} , \\ \texttt{angle} (I)= \texttt{atan2} ( \texttt{y} (I), \texttt{x} (I))[ \\cdot180 / \\pi ] \\end{array}\f]
 
     The angles are calculated with accuracy about 0.3 degrees. For the point
     (0,0), the angle is set to 0.
 
     First output is a matrix of magnitudes of the same size and depth as input x.
     Second output is a matrix of angles that has the same size and depth as
-    x; the angles are measured in radians (from 0 to 2\*Pi) or in degrees (0 to 360 degrees).
+    x; the angles are measured in radians (from 0 to 2\\*Pi) or in degrees (0 to 360 degrees).
 
     @note Function textual ID is "org.opencv.core.math.cartToPolar"
 
@@ -1125,10 +1125,10 @@ def convertTo(src, rdepth, alpha=..., beta=...) -> retval:
     """
     @brief Converts a matrix to another data depth with optional scaling.
 
-    The method converts source pixel values to the target data depth. saturate_cast\<\> is applied at
+    The method converts source pixel values to the target data depth. saturate_cast\\<\\> is applied at
     the end to avoid possible overflows:
 
-    \f[m(x,y) = saturate \_ cast<rType>( \alpha (*this)(x,y) +  \beta )\f]
+    \f[m(x,y) = saturate \\_ cast<rType>( \alpha (*this)(x,y) +  \beta )\f]
     Output matrix must be of the same size as input one.
 
     @note Function textual ID is "org.opencv.core.transform.convertTo"
@@ -1156,7 +1156,7 @@ def countNonZero(src) -> retval:
     @brief Counts non-zero array elements.
 
     The function returns the number of non-zero elements in src :
-    \f[\sum _{I: \; \texttt{src} (I) \ne0 } 1\f]
+    \f[\\sum _{I: \\; \texttt{src} (I) \ne0 } 1\f]
 
     Supported matrix data types are @ref CV_8UC1, @ref CV_16UC1, @ref CV_16SC1, @ref CV_32FC1.
 
@@ -1186,7 +1186,7 @@ def dilate(src, kernel, anchor=..., iterations=..., borderType=..., borderValue=
 
     The function dilates the source image using the specified structuring element that determines the
     shape of a pixel neighborhood over which the maximum is taken:
-    \f[\texttt{dst} (x,y) =  \max _{(x',y'):  \, \texttt{element} (x',y') \ne0 } \texttt{src} (x+x',y+y')\f]
+    \f[\texttt{dst} (x,y) =  \\max _{(x',y'):  \\, \texttt{element} (x',y') \ne0 } \texttt{src} (x+x',y+y')\f]
 
     Dilation can be applied several (iterations) times. In case of multi-channel images, each channel is processed independently.
     Supported input matrix data types are @ref CV_8UC1, @ref CV_8UC3, @ref CV_16UC1, @ref CV_16SC1, and @ref CV_32FC1.
@@ -1212,7 +1212,7 @@ def dilate3x3(src, iterations=..., borderType=..., borderValue=...) -> retval:
 
     The function dilates the source image using the specified structuring element that determines the
     shape of a pixel neighborhood over which the maximum is taken:
-    \f[\texttt{dst} (x,y) =  \max _{(x',y'):  \, \texttt{element} (x',y') \ne0 } \texttt{src} (x+x',y+y')\f]
+    \f[\texttt{dst} (x,y) =  \\max _{(x',y'):  \\, \texttt{element} (x',y') \ne0 } \texttt{src} (x+x',y+y')\f]
 
     Dilation can be applied several (iterations) times. In case of multi-channel images, each channel is processed independently.
     Supported input matrix data types are @ref CV_8UC1, @ref CV_8UC3, @ref CV_16UC1, @ref CV_16SC1, and @ref CV_32FC1.
@@ -1307,7 +1307,7 @@ def equalizeHist(src) -> retval:
     - Calculate the histogram \f$H\f$ for src .
     - Normalize the histogram so that the sum of histogram bins is 255.
     - Compute the integral of the histogram:
-    \f[H'_i =  \sum _{0  \le j < i} H(j)\f]
+    \f[H'_i =  \\sum _{0  \\le j < i} H(j)\f]
     - Transform the image using \f$H'\f$ as a look-up table: \f$\texttt{dst}(x,y) = H'(\texttt{src}(x,y))\f$
 
     The algorithm normalizes the brightness and increases the contrast of the image.
@@ -1325,7 +1325,7 @@ def erode(src, kernel, anchor=..., iterations=..., borderType=..., borderValue=.
     The function erodes the source image using the specified structuring element that determines the
     shape of a pixel neighborhood over which the minimum is taken:
 
-    \f[\texttt{dst} (x,y) =  \min _{(x',y'):  \, \texttt{element} (x',y') \ne0 } \texttt{src} (x+x',y+y')\f]
+    \f[\texttt{dst} (x,y) =  \\min _{(x',y'):  \\, \texttt{element} (x',y') \ne0 } \texttt{src} (x+x',y+y')\f]
 
     Erosion can be applied several (iterations) times. In case of multi-channel images, each channel is processed independently.
     Supported input matrix data types are @ref CV_8UC1, @ref CV_8UC3, @ref CV_16UC1, @ref CV_16SC1, and @ref CV_32FC1.
@@ -1374,7 +1374,7 @@ def filter2D(src, ddepth, kernel, anchor=..., delta=..., borderType=..., borderV
 
     The function does actually compute correlation, not the convolution:
 
-    \f[\texttt{dst} (x,y) =  \sum _{ \substack{0\leq x' < \texttt{kernel.cols}\\{0\leq y' < \texttt{kernel.rows}}}}  \texttt{kernel} (x',y')* \texttt{src} (x+x'- \texttt{anchor.x} ,y+y'- \texttt{anchor.y} )\f]
+    \f[\texttt{dst} (x,y) =  \\sum _{ \\substack{0\\leq x' < \texttt{kernel.cols}\\{0\\leq y' < \texttt{kernel.rows}}}}  \texttt{kernel} (x',y')* \texttt{src} (x+x'- \texttt{anchor.x} ,y+y'- \texttt{anchor.y} )\f]
 
     That is, the kernel is not mirrored around the anchor point. If you need a real convolution, flip
     the kernel using flip and set the new anchor to `(kernel.cols - anchor.x - 1, kernel.rows -
@@ -1408,12 +1408,12 @@ def flip(src, flipCode) -> retval:
     The function flips the matrix in one of three different ways (row
     and column indices are 0-based):
     \f[\texttt{dst} _{ij} =
-    \left\{
+    \\left\\{
     \begin{array}{l l}
-    \texttt{src} _{\texttt{src.rows}-i-1,j} & if\;  \texttt{flipCode} = 0 \\
-    \texttt{src} _{i, \texttt{src.cols} -j-1} & if\;  \texttt{flipCode} > 0 \\
-    \texttt{src} _{ \texttt{src.rows} -i-1, \texttt{src.cols} -j-1} & if\; \texttt{flipCode} < 0 \\
-    \end{array}
+    \texttt{src} _{\texttt{src.rows}-i-1,j} & if\\;  \texttt{flipCode} = 0 \\
+    \texttt{src} _{i, \texttt{src.cols} -j-1} & if\\;  \texttt{flipCode} > 0 \\
+    \texttt{src} _{ \texttt{src.rows} -i-1, \texttt{src.cols} -j-1} & if\\; \texttt{flipCode} < 0 \\
+    \\end{array}
     \right.\f]
     The example scenarios of using the function are the following:
     *   Vertical flipping of the image (flipCode == 0) to switch between
@@ -1445,7 +1445,7 @@ def flip(src, flipCode) -> retval:
 
 @overload
 def flip(src, flipCode) -> retval:
-    """
+    r"""
     *   Reversing the order of point arrays (flipCode \> 0 or
     """
 
@@ -1508,14 +1508,14 @@ def goodFeaturesToTrack(image, maxCorners, qualityLevel, minDistance, mask=..., 
 def goodFeaturesToTrack(image, maxCorners, qualityLevel, minDistance, mask=..., blockSize=..., useHarrisDetector=..., k=...) -> retval:
     """
     -   The corners with the minimal eigenvalue less than
-        \f$\texttt{qualityLevel} \cdot \max_{x,y} qualityMeasureMap(x,y)\f$ are rejected.
+        \f$\texttt{qualityLevel} \\cdot \\max_{x,y} qualityMeasureMap(x,y)\f$ are rejected.
     -   The remaining corners are sorted by the quality measure in the descending order.
     -   Function throws away each corner for which there is a stronger corner at a distance less than
     """
 
 @overload
 def goodFeaturesToTrack(image, maxCorners, qualityLevel, minDistance, mask=..., blockSize=..., useHarrisDetector=..., k=...) -> retval:
-    """
+    r"""
 
     The function can be used to initialize a point-based tracker of an object.
 
@@ -1586,9 +1586,9 @@ def integral(src, sdepth=..., sqdepth=...) -> retval:
 
     The function calculates one or more integral images for the source image as follows:
 
-    \f[\texttt{sum} (X,Y) =  \sum _{x<X,y<Y}  \texttt{image} (x,y)\f]
+    \f[\texttt{sum} (X,Y) =  \\sum _{x<X,y<Y}  \texttt{image} (x,y)\f]
 
-    \f[\texttt{sqsum} (X,Y) =  \sum _{x<X,y<Y}  \texttt{image} (x,y)^2\f]
+    \f[\texttt{sqsum} (X,Y) =  \\sum _{x<X,y<Y}  \texttt{image} (x,y)^2\f]
 
     The function return integral image as \f$(W+1)\times (H+1)\f$ , 32-bit integer or floating-point (32f or 64f) and
      integral image for squared pixel values; it is \f$(W+1)\times (H+)\f$, double-precision floating-point (64f) array.
@@ -1647,7 +1647,7 @@ def kmeans(data, K, bestLabels, criteria, attempts, flags) -> retval:
 
     @return
      - Compactness measure that is computed as
-    \f[\sum _i  \| \texttt{samples} _i -  \texttt{centers} _{ \texttt{labels} _i} \| ^2\f]
+    \f[\\sum _i  \\| \texttt{samples} _i -  \texttt{centers} _{ \texttt{labels} _i} \\| ^2\f]
     after every attempt. The best (minimum) value is chosen and the corresponding labels and the
     compactness value are returned by the function.
      - Integer array that stores the cluster indices for every sample.
@@ -1683,7 +1683,7 @@ def max(src1, src2) -> retval:
     @brief Calculates per-element maximum of two matrices.
 
     The function max calculates the per-element maximum of two matrices of the same size, number of channels and depth:
-    \f[\texttt{dst} (I)= \max ( \texttt{src1} (I), \texttt{src2} (I))\f]
+    \f[\texttt{dst} (I)= \\max ( \texttt{src1} (I), \texttt{src2} (I))\f]
     """
 
 @overload
@@ -1781,7 +1781,7 @@ def min(src1, src2) -> retval:
     @brief Calculates per-element minimum of two matrices.
 
     The function min calculates the per-element minimum of two matrices of the same size, number of channels and depth:
-    \f[\texttt{dst} (I)= \min ( \texttt{src1} (I), \texttt{src2} (I))\f]
+    \f[\texttt{dst} (I)= \\min ( \texttt{src1} (I), \texttt{src2} (I))\f]
     """
 
 @overload
@@ -1836,7 +1836,7 @@ def mul(src1, src2, scale=..., ddepth=...) -> retval:
 
     The function mul calculates the per-element product of two matrices:
 
-    \f[\texttt{dst} (I)= \texttt{saturate} ( \texttt{scale} \cdot \texttt{src1} (I)  \cdot \texttt{src2} (I))\f]
+    \f[\texttt{dst} (I)= \texttt{saturate} ( \texttt{scale} \\cdot \texttt{src1} (I)  \\cdot \texttt{src2} (I))\f]
 
     If src1.depth() == src2.depth(), ddepth can be set to the default -1. In this case, the output matrix will have
     the same depth as the input matrices. The matrices can be single or multi channel.
@@ -1859,7 +1859,7 @@ def mulC(src, multiplier, ddepth=...) -> retval:
 
     The function mulC multiplies each element of matrix src by given scalar value:
 
-    \f[\texttt{dst} (I)= \texttt{saturate} (  \texttt{src1} (I)  \cdot \texttt{multiplier} )\f]
+    \f[\texttt{dst} (I)= \texttt{saturate} (  \texttt{src1} (I)  \\cdot \texttt{multiplier} )\f]
 
     The matrices can be single or multi channel. Output matrix must have the same size as src.
 
@@ -1882,15 +1882,15 @@ def normInf(src) -> retval:
 
     This version of normInf calculates the absolute infinite norm of src.
 
-    As example for one array consider the function \f$r(x)= \begin{pmatrix} x \\ 1-x \end{pmatrix}, x \in [-1;1]\f$.
-    The \f$ L_{\infty} \f$ norm for the sample value \f$r(-1) = \begin{pmatrix} -1 \\ 2 \end{pmatrix}\f$
+    As example for one array consider the function \f$r(x)= \begin{pmatrix} x \\ 1-x \\end{pmatrix}, x \\in [-1;1]\f$.
+    The \f$ L_{\\infty} \f$ norm for the sample value \f$r(-1) = \begin{pmatrix} -1 \\ 2 \\end{pmatrix}\f$
     is calculated as follows
     \f{align*}
-        \| r(-1) \|_{L_\infty} &= \max(|-1|,|2|) = 2
+        \\| r(-1) \\|_{L_\\infty} &= \\max(|-1|,|2|) = 2
     \f}
-    and for \f$r(0.5) = \begin{pmatrix} 0.5 \\ 0.5 \end{pmatrix}\f$ the calculation is
+    and for \f$r(0.5) = \begin{pmatrix} 0.5 \\ 0.5 \\end{pmatrix}\f$ the calculation is
     \f{align*}
-        \| r(0.5) \|_{L_\infty} &= \max(|0.5|,|0.5|) = 0.5.
+        \\| r(0.5) \\|_{L_\\infty} &= \\max(|0.5|,|0.5|) = 0.5.
     \f}
 
     Supported matrix data types are @ref CV_8UC1, @ref CV_8UC3, @ref CV_16UC1, @ref CV_16SC1, @ref CV_32FC1.
@@ -1906,15 +1906,15 @@ def normL1(src) -> retval:
 
     This version of normL1 calculates the absolute L1 norm of src.
 
-    As example for one array consider the function \f$r(x)= \begin{pmatrix} x \\ 1-x \end{pmatrix}, x \in [-1;1]\f$.
-    The \f$ L_{1} \f$ norm for the sample value \f$r(-1) = \begin{pmatrix} -1 \\ 2 \end{pmatrix}\f$
+    As example for one array consider the function \f$r(x)= \begin{pmatrix} x \\ 1-x \\end{pmatrix}, x \\in [-1;1]\f$.
+    The \f$ L_{1} \f$ norm for the sample value \f$r(-1) = \begin{pmatrix} -1 \\ 2 \\end{pmatrix}\f$
     is calculated as follows
     \f{align*}
-        \| r(-1) \|_{L_1} &= |-1| + |2| = 3 \\
+        \\| r(-1) \\|_{L_1} &= |-1| + |2| = 3 \\
     \f}
-    and for \f$r(0.5) = \begin{pmatrix} 0.5 \\ 0.5 \end{pmatrix}\f$ the calculation is
+    and for \f$r(0.5) = \begin{pmatrix} 0.5 \\ 0.5 \\end{pmatrix}\f$ the calculation is
     \f{align*}
-        \| r(0.5) \|_{L_1} &= |0.5| + |0.5| = 1 \\
+        \\| r(0.5) \\|_{L_1} &= |0.5| + |0.5| = 1 \\
     \f}
 
     Supported matrix data types are @ref CV_8UC1, @ref CV_8UC3, @ref CV_16UC1, @ref CV_16SC1, @ref CV_32FC1.
@@ -1930,15 +1930,15 @@ def normL2(src) -> retval:
 
     This version of normL2 calculates the absolute L2 norm of src.
 
-    As example for one array consider the function \f$r(x)= \begin{pmatrix} x \\ 1-x \end{pmatrix}, x \in [-1;1]\f$.
-    The \f$ L_{2} \f$  norm for the sample value \f$r(-1) = \begin{pmatrix} -1 \\ 2 \end{pmatrix}\f$
+    As example for one array consider the function \f$r(x)= \begin{pmatrix} x \\ 1-x \\end{pmatrix}, x \\in [-1;1]\f$.
+    The \f$ L_{2} \f$  norm for the sample value \f$r(-1) = \begin{pmatrix} -1 \\ 2 \\end{pmatrix}\f$
     is calculated as follows
     \f{align*}
-        \| r(-1) \|_{L_2} &= \sqrt{(-1)^{2} + (2)^{2}} = \sqrt{5} \\
+        \\| r(-1) \\|_{L_2} &= \\sqrt{(-1)^{2} + (2)^{2}} = \\sqrt{5} \\
     \f}
-    and for \f$r(0.5) = \begin{pmatrix} 0.5 \\ 0.5 \end{pmatrix}\f$ the calculation is
+    and for \f$r(0.5) = \begin{pmatrix} 0.5 \\ 0.5 \\end{pmatrix}\f$ the calculation is
     \f{align*}
-        \| r(0.5) \|_{L_2} &= \sqrt{(0.5)^{2} + (0.5)^{2}} = \sqrt{0.5} \\
+        \\| r(0.5) \\|_{L_2} &= \\sqrt{(0.5)^{2} + (0.5)^{2}} = \\sqrt{0.5} \\
     \f}
 
     Supported matrix data types are @ref CV_8UC1, @ref CV_8UC3, @ref CV_16UC1, @ref CV_16SC1, @ref CV_32FC1.
@@ -1952,9 +1952,9 @@ def normalize(src, alpha, beta, norm_type, ddepth=...) -> retval:
     @brief Normalizes the norm or value range of an array.
 
     The function normalizes scale and shift the input array elements so that
-    \f[\| \texttt{dst} \| _{L_p}= \texttt{alpha}\f]
+    \f[\\| \texttt{dst} \\| _{L_p}= \texttt{alpha}\f]
     (where p=Inf, 1 or 2) when normType=NORM_INF, NORM_L1, or NORM_L2, respectively; or so that
-    \f[\min _I  \texttt{dst} (I)= \texttt{alpha} , \, \, \max _I  \texttt{dst} (I)= \texttt{beta}\f]
+    \f[\\min _I  \texttt{dst} (I)= \texttt{alpha} , \\, \\, \\max _I  \texttt{dst} (I)= \texttt{beta}\f]
     when normType=NORM_MINMAX (for dense arrays only).
 
     @note Function textual ID is "org.opencv.core.normalize"
@@ -2058,7 +2058,7 @@ def polarToCart(magnitude, angle, angleInDegrees=...) -> retval:
 
     The function polarToCart calculates the Cartesian coordinates of each 2D
     vector represented by the corresponding elements of magnitude and angle:
-    \f[\begin{array}{l} \texttt{x} (I) =  \texttt{magnitude} (I) \cos ( \texttt{angle} (I)) \\ \texttt{y} (I) =  \texttt{magnitude} (I) \sin ( \texttt{angle} (I)) \\ \end{array}\f]
+    \f[\begin{array}{l} \texttt{x} (I) =  \texttt{magnitude} (I) \\cos ( \texttt{angle} (I)) \\ \texttt{y} (I) =  \texttt{magnitude} (I) \\sin ( \texttt{angle} (I)) \\ \\end{array}\f]
 
     The relative accuracy of the estimated coordinates is about 1e-6.
 
@@ -2088,7 +2088,7 @@ def remap(src, map1, map2, interpolation, borderMode=..., borderValue=...) -> re
     in \f$map_1\f$ and \f$map_2\f$ respectively, or interleaved floating-point maps of \f$(x,y)\f$ in
     \f$map_1\f$, or fixed-point maps created by using convertMaps. The reason you might want to
     convert from floating to fixed-point representations of a map is that they can yield much faster
-    (\~2x) remapping operations. In the converted case, \f$map_1\f$ contains pairs (cvFloor(x),
+    (\\~2x) remapping operations. In the converted case, \f$map_1\f$ contains pairs (cvFloor(x),
     cvFloor(y)) and \f$map_2\f$ contains indices in a table of interpolation coefficients.
     Output image must be of the same size and depth as input one.
 
@@ -2419,7 +2419,7 @@ def warpPerspective(src, M, dsize, flags=..., borderMode=..., borderValue=...) -
 
     The function warpPerspective transforms the source image using the specified matrix:
 
-    \f[\texttt{dst} (x,y) =  \texttt{src} \left ( \frac{M_{11} x + M_{12} y + M_{13}}{M_{31} x + M_{32} y + M_{33}} ,
+    \f[\texttt{dst} (x,y) =  \texttt{src} \\left ( \frac{M_{11} x + M_{12} y + M_{13}}{M_{31} x + M_{32} y + M_{33}} ,
          \frac{M_{21} x + M_{22} y + M_{23}}{M_{31} x + M_{32} y + M_{33}} \right )\f]
 
     when the flag #WARP_INVERSE_MAP is set. Otherwise, the transformation is first inverted with invert

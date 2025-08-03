@@ -25,7 +25,7 @@ class Retina(cv2.Algorithm):
         """
 
     def applyFastToneMapping(self, inputImage, outputToneMappedImage=...) -> outputToneMappedImage:
-        """
+        r"""
         @brief Method which processes an image in the aim to correct its luminance correct
         backlight problems, enhance details in shadows.
 
@@ -124,7 +124,7 @@ class Retina(cv2.Algorithm):
         """
 
     def setColorSaturation(self, saturateColors=..., colorSaturationValue=...) -> None:
-        """
+        r"""
         @brief Activate color saturation as the final step of the color demultiplexing process -\> this
         saturation is a sigmoide function applied to each channel of the demultiplexed image.
         @param saturateColors boolean that activates color saturation (if true) or deactivate (if false)

@@ -125,7 +125,7 @@ class DenseRLOFOpticalFlow(cv2.DenseOpticalFlow):
 
     def setForwardBackward(self, val) -> None:
         """
-        For each grid point \f$ \mathbf{x} \f$ a motion vector \f$ d_{I0,I1}(\mathbf{x}) \f$ is computed.
+        For each grid point \f$ \\mathbf{x} \f$ a motion vector \f$ d_{I0,I1}(\\mathbf{x}) \f$ is computed.
         *     If the forward backward error \f[ EP_{FB} = || d_{I0,I1} + d_{I1,I0} || \f]
         *     is larger than threshold given by this function then the motion vector will not be used by the following
         *    vector field interpolation. \f$ d_{I1,I0} \f$ denotes the backward flow. Note, the forward backward test
@@ -437,7 +437,7 @@ class SparseRLOFOpticalFlow(cv2.SparseOpticalFlow):
 
     def setForwardBackward(self, val) -> None:
         """
-        For each feature point a motion vector \f$ d_{I0,I1}(\mathbf{x}) \f$ is computed.
+        For each feature point a motion vector \f$ d_{I0,I1}(\\mathbf{x}) \f$ is computed.
         *     If the forward backward error \f[ EP_{FB} = || d_{I0,I1} + d_{I1,I0} || \f]
         *     is larger than threshold given by this function then the status  will not be used by the following
         *    vector field interpolation. \f$ d_{I1,I0} \f$ denotes the backward flow. Note, the forward backward test
@@ -513,7 +513,7 @@ def calcOpticalFlowDenseRLOF(I0, I1, flow, rlofParam=..., forwardBackwardThresho
     @param flow computed flow image that has the same size as I0 and type CV_32FC2.
     @param rlofParam see optflow::RLOFOpticalFlowParameter
     @param forwardBackwardThreshold Threshold for the forward backward confidence check.
-    For each grid point \f$ \mathbf{x} \f$ a motion vector \f$ d_{I0,I1}(\mathbf{x}) \f$ is computed.
+    For each grid point \f$ \\mathbf{x} \f$ a motion vector \f$ d_{I0,I1}(\\mathbf{x}) \f$ is computed.
     If the forward backward error \f[ EP_{FB} = || d_{I0,I1} + d_{I1,I0} || \f]
     is larger than threshold given by this function then the motion vector will not be used by the following
     vector field interpolation. \f$ d_{I1,I0} \f$ denotes the backward flow. Note, the forward backward test
@@ -635,7 +635,7 @@ def calcOpticalFlowSparseToDense(from_, to, flow=..., grid_step=..., k=..., sigm
     """
 
 def createOptFlow_DeepFlow() -> retval:
-    """
+    r"""
     @brief DeepFlow optical flow algorithm implementation.
 
     The class implements the DeepFlow optical flow algorithm described in @cite Weinzaepfel2013 . See

@@ -20,7 +20,7 @@ class ICP:
         *  @param [in] srcPC The input point cloud for the model. Expected to have the normals (Nx6). Currently, *  CV_32F is the only supported data type.
         *  @param [in] dstPC The input point cloud for the scene. It is assumed that the model is registered on the scene. Scene remains static. Expected to have the normals (Nx6). Currently, CV_32F is the only supported data type.
         *  @param [out] residual The output registration error.
-        *  @param [out] pose Transformation between srcPC and dstPC. *  \return On successful termination, the function returns 0. * *  \details It is assumed that the model is registered on the scene. Scene remains static, while the model transforms. The output poses transform the models onto the scene. Because of the point to plane minimization, the scene is expected to have the normals available. Expected to have the normals (Nx6).
+        *  @param [out] pose Transformation between srcPC and dstPC. *  \return On successful termination, the function returns 0. * *  \\details It is assumed that the model is registered on the scene. Scene remains static, while the model transforms. The output poses transform the models onto the scene. Because of the point to plane minimization, the scene is expected to have the normals available. Expected to have the normals (Nx6).
         """
 
     @overload
@@ -30,7 +30,7 @@ class ICP:
         *
         *  @param [in] srcPC The input point cloud for the model. Expected to have the normals (Nx6). Currently, *  CV_32F is the only supported data type.
         *  @param [in] dstPC The input point cloud for the scene. Currently, CV_32F is the only supported data type.
-        *  @param [in,out] poses Input poses to start with but also list output of poses. *  \return On successful termination, the function returns 0. * *  \details It is assumed that the model is registered on the scene. Scene remains static, while the model transforms. The output poses transform the models onto the scene. Because of the point to plane minimization, the scene is expected to have the normals available. Expected to have the normals (Nx6).
+        *  @param [in,out] poses Input poses to start with but also list output of poses. *  \return On successful termination, the function returns 0. * *  \\details It is assumed that the model is registered on the scene. Scene remains static, while the model transforms. The output poses transform the models onto the scene. Because of the point to plane minimization, the scene is expected to have the normals available. Expected to have the normals (Nx6).
         """
 
 class PPF3DDetector:
@@ -48,14 +48,14 @@ class PPF3DDetector:
         """
         *  \brief Trains a new model.
         *
-        *  @param [in] Model The input point cloud with normals (Nx6) * *  \details Uses the parameters set in the constructor to downsample and learn a new model. When the model is learnt, the instance gets ready for calling "match".
+        *  @param [in] Model The input point cloud with normals (Nx6) * *  \\details Uses the parameters set in the constructor to downsample and learn a new model. When the model is learnt, the instance gets ready for calling "match".
         """
 
 class Pose3D:
     def appendPose(self, IncrementalPose) -> None:
         """
         *  \brief Left multiplies the existing pose in order to update the transformation
-        *  \param [in] IncrementalPose New pose to apply
+        *  \\param [in] IncrementalPose New pose to apply
         """
 
     def printPose(self) -> None:
@@ -65,7 +65,7 @@ class Pose3D:
     def updatePose(self, NewPose) -> None:
         """
         *  \brief Updates the pose with the new one
-        *  \param [in] NewPose New pose to overwrite
+        *  \\param [in] NewPose New pose to overwrite
         """
 
     @overload

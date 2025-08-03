@@ -137,7 +137,7 @@ class FaceRecognizer(cv2.Algorithm):
         """
 
     def train(self, src, labels) -> None:
-        """
+        r"""
         @brief Trains a FaceRecognizer with given data and associated labels.
 
         @param src The training images, that means the faces you want to learn. The data has to be given as a vector\<Mat\>.
@@ -145,7 +145,7 @@ class FaceRecognizer(cv2.Algorithm):
         """
 
     def update(self, src, labels) -> None:
-        """
+        r"""
         @brief Updates a FaceRecognizer with given data and associated labels.
 
         @param src The training images, that means the faces you want to learn. The data has to be given as a vector\<Mat\>.
