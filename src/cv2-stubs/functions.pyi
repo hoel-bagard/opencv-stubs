@@ -4,16 +4,17 @@ from typing import Any, Literal, overload, TypeVar
 import numpy as np
 import numpy.typing as npt
 from cv2.constants import INTER_LINEAR, LINE_8, NORM_L2
+from typing_extensions import TypeAlias
 
 from .classes import *
 
 _TImg = TypeVar("_TImg", np.uint8, np.float64)
 _TMapS = TypeVar("_TMapS", np.int16, np.float32)
 _TMapU = TypeVar("_TMapU", np.uint16, np.float32)
-_TMask = npt.NDArray[np.uint8]  # 8-bit single channel array
+_TMask: TypeAlias = npt.NDArray[np.uint8]  # 8-bit single channel array
 _TColor = TypeVar("_TColor", tuple[int, int, int], int, tuple[float, float, float], float)
-_TPoint = tuple[int, int]
-_TSize = tuple[int, int]
+_TPoint: TypeAlias = tuple[int, int]
+_TSize: TypeAlias = tuple[int, int]
 
 def AKAZE_create(descriptor_type=..., descriptor_size=..., descriptor_channels=..., threshold: float = ..., nOctaves=..., nOctaveLayers=..., diffusivity=...) -> Any:
     "AKAZE_create([, descriptor_type[, descriptor_size[, descriptor_channels[, threshold[, nOctaves[, nOctaveLayers[, diffusivity]]]]]]]) -> retval\n.   @brief The AKAZE constructor\n.   \n.       @param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,\n.       DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.\n.       @param descriptor_size Size of the descriptor in bits. 0 -\\> Full size\n.       @param descriptor_channels Number of channels in the descriptor (1, 2, 3)\n.       @param threshold Detector response threshold to accept point\n.       @param nOctaves Maximum octave evolution of the image\n.       @param nOctaveLayers Default number of sublevels per scale level\n.       @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or\n.       DIFF_CHARBONNIER"
