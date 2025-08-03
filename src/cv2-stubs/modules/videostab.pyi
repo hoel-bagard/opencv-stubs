@@ -1,5 +1,7 @@
 from typing import Final
 
+from typing_extensions import TypeAlias
+
 MM_AFFINE: Final[int]
 MM_HOMOGRAPHY: Final[int]
 MM_RIGID: Final[int]

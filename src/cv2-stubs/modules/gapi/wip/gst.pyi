@@ -1,6 +1,8 @@
 import builtins
 from typing import Final
 
+from typing_extensions import TypeAlias
+
 class GStreamerPipeline: ...
 
 GSTREAMER_SOURCE_OUTPUT_TYPE_FRAME: Final[int]

@@ -1,10 +1,10 @@
 import builtins
 from abc import ABC, abstractmethod
-from typing import Any, overload, Sequence, TypeAlias
+from typing import Any, overload, Sequence
 
 import numpy as np
 import numpy.typing as npt
-from typing_extensions import Self
+from typing_extensions import Self, TypeAlias
 
 from .modules import *
 

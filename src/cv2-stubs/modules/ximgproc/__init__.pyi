@@ -1,8 +1,9 @@
 import builtins
-from typing import Any, Final, TypeAlias
+from typing import Any, Final
 
 import numpy as _np
 import numpy.typing as _npt
+from typing_extensions import TypeAlias
 
 from ... import functions as cv2
 from . import segmentation

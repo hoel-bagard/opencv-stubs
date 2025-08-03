@@ -1,5 +1,7 @@
 import builtins
-from typing import Any, Final, overload, TypeAlias
+from typing import Any, Final, overload
+
+from typing_extensions import TypeAlias
 
 keypoints: TypeAlias = Any
 descriptors: TypeAlias = Any

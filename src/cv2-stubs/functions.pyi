@@ -3,6 +3,7 @@ from typing import Any, Literal, overload, TypeVar
 
 import numpy as np
 import numpy.typing as npt
+from typing_extensions import TypeAlias
 
 from .classes import *
 from .constants import *

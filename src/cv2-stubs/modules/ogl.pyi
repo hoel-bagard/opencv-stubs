@@ -1,5 +1,7 @@
 from typing import Final
 
+from typing_extensions import TypeAlias
+
 BUFFER_ARRAY_BUFFER: Final[int]
 BUFFER_ELEMENT_ARRAY_BUFFER: Final[int]
 BUFFER_PIXEL_PACK_BUFFER: Final[int]

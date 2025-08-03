@@ -1,4 +1,6 @@
-from typing import Any, Final, overload, TypeAlias
+from typing import Any, Final, overload
+
+from typing_extensions import TypeAlias
 
 rvecs: TypeAlias = Any
 K2: TypeAlias = Any

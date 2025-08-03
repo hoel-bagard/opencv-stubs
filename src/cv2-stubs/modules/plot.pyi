@@ -1,4 +1,6 @@
-from typing import Any, overload, TypeAlias
+from typing import Any, overload
+
+from typing_extensions import TypeAlias
 
 from .. import functions as cv2
 

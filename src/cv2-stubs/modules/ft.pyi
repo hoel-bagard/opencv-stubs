@@ -1,4 +1,6 @@
-from typing import Any, Final, overload, TypeAlias
+from typing import Any, Final, overload
+
+from typing_extensions import TypeAlias
 
 c01: TypeAlias = Any
 components: TypeAlias = Any

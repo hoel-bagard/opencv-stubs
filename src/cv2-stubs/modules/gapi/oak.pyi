@@ -1,5 +1,7 @@
 from typing import Final
 
+from typing_extensions import TypeAlias
+
 COLOR_CAMERA_PARAMS_BOARD_SOCKET_BGR: Final[int]
 COLOR_CAMERA_PARAMS_BOARD_SOCKET_RGB: Final[int]
 COLOR_CAMERA_PARAMS_RESOLUTION_THE_1080_P: int
