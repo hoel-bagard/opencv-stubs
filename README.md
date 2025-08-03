@@ -21,7 +21,7 @@ The stubs include the docstrings as they are otherwise not available in IDEs (as
 
 The package is available on pypi [here](https://pypi.org/project/opencv-stubs/), you can install it with:
 
-```
+```bash
 pip install opencv-stubs
 ```
 
