@@ -124,7 +124,6 @@ reportMissingParameterType = false
 reportUnknownParameterType = false
 reportOverlappingOverload = false
 reportIncompatibleMethodOverride = false
-reportMissingTypeArgument = false
 reportUnusedImport = false               # Because there are no __all__ in the __init__.pyi
 
 [tool.codespell]

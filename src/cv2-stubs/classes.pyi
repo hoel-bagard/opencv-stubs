@@ -2387,7 +2387,7 @@ class MSER(Feature2D):
         @param edge_blur_size for color image, the aperture size for edge blur
         """
 
-class Mat(np.ndarray): ...
+class Mat(np.ndarray): ...  # pyright: ignore[reportMissingTypeArgument]
 
 class MergeDebevec(MergeExposures):
     @overload
