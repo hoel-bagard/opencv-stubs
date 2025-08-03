@@ -1,0 +1,53 @@
+name: Lint Spelling
+
+on:
+  workflow_dispatch:
+  push:
+    branches: master
+    paths:
+      - "**.py"
+      - "**.md"
+      - "**.toml"
+      - "**.yaml"
+      - .github/workflows/lint-spelling.yaml
+      - pyproject.toml
+      - uv.lock
+  pull_request:
+    paths:
+      - "**.py"
+      - "**.md"
+      - "**.toml"
+      - "**.yaml"
+      - .github/workflows/lint-spelling.yaml
+      - pyproject.toml
+      - uv.lock
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+env:
+  UV_FROZEN: 1
+
+jobs:
+  spelling-lint:
+    name: Check spelling
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+          version: "0.7.5"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: "pyproject.toml"
+
+      - name: Run codespell
+        run: uv run --group lint codespell README.md docs src tests
