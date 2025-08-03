@@ -16,7 +16,6 @@ retval: TypeAlias = Any
 class BaseOCR: ...
 
 class ERFilter(cv2.Algorithm):
-
     class Callback: ...
 
 class OCRBeamSearchDecoder(BaseOCR):

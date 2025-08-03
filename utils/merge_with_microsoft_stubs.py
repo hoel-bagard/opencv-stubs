@@ -3,12 +3,9 @@ from pathlib import Path
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Script to merge stubs with the Microsoft opencv stubs.",
-                                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument("--microsoft_stubs_path", "-m", type=Path, default=Path("./microst_stubs.pyi"),
-                        help="Path to pre-existing stubs.")
-    parser.add_argument("--new_stubs_path", "-n", type=Path, default=Path("src/cv2-stubs/__init__.pyi"),
-                        help="Path to my stubs.")
+    parser = argparse.ArgumentParser(description="Script to merge stubs with the Microsoft opencv stubs.", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument("--microsoft_stubs_path", "-m", type=Path, default=Path("./microst_stubs.pyi"), help="Path to pre-existing stubs.")
+    parser.add_argument("--new_stubs_path", "-n", type=Path, default=Path("src/cv2-stubs/__init__.pyi"), help="Path to my stubs.")
     args = parser.parse_args()
 
     microsoft_stubs: Path = args.microsoft_stubs_path
@@ -24,7 +21,7 @@ def main() -> None:
         if stub_lines[i][:3] == "def":
             function_name = stub_lines[i][4:].split("(")[0]
             done_functions_names.add(function_name)
-            functions[stub_lines[i]] = stub_lines[i+1]
+            functions[stub_lines[i]] = stub_lines[i + 1]
 
         if len(done_functions_names) == 0:
             head.append(stub_lines[i])
@@ -35,7 +32,7 @@ def main() -> None:
         stub_lines = stubs.readlines()
     for i in range(len(stub_lines)):
         if stub_lines[i][:3] == "def" and stub_lines[i][4:].split("(")[0] not in done_functions_names:
-            functions[stub_lines[i]] = stub_lines[i+1]
+            functions[stub_lines[i]] = stub_lines[i + 1]
 
     print("Writing new stubs")
     with my_stubs.open("w", encoding="utf-8") as new_file:

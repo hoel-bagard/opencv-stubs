@@ -99,6 +99,11 @@ select = [
 ]
 ignore = ["COM812", "D1", "D401", "D204", "D203", "D213", "S101", "PLR2004"]
 
+[tool.ruff.lint.per-file-ignores]
+"src/**.pyi" = [
+  "PT028", # Test function parameter  has default argument. These are OpenCV functions, we cannot change that.
+]
+
 [tool.ruff.lint.isort]
 order-by-type = false
 

@@ -32,7 +32,7 @@ def process_default_args(function_signature: str) -> str:
         "imreadmulti(filename, mats = ..., flags = ...) -> retval, mats""
     """
     parts = function_signature.split("[")
-    for i in range(1, len(parts)-1):
+    for i in range(1, len(parts) - 1):
         parts[i] = parts[i] + " = ..."
     if len(parts) > 1:
         parts[-1] = re.sub("]+", " = ...", parts[-1])
@@ -110,19 +110,17 @@ def process_class(name: str, stubs: list[str]) -> None:
             line_idx += 1
             # Add docstring.
             stubs.append('        """')
-            while (line_idx < len(help_text_lines)
-                    and "(...)" not in help_text_lines[line_idx]
-                    and " |  --" not in help_text_lines[line_idx]):
+            while line_idx < len(help_text_lines) and "(...)" not in help_text_lines[line_idx] and " |  --" not in help_text_lines[line_idx]:
                 if "." in help_text_lines[line_idx]:
                     line = help_text_lines[line_idx].split(".", maxsplit=1)[1].lstrip()
                     if line == "@overload":
-                        stubs.insert(-2, 4*" " + line)
+                        stubs.insert(-2, 4 * " " + line)
                     if line == "* @overload":
-                        stubs.insert(-2, 4*" " + "@overload")
+                        stubs.insert(-2, 4 * " " + "@overload")
                     elif "@param" in stubs[-1] and "@param" not in line:
                         stubs[-1] = stubs[-1] + " " + line  # pyright: ignore
                     else:
-                        stubs.append(8*" " + line)
+                        stubs.append(8 * " " + line)
                 elif re.match(r" \|      [a-zA-Z]", help_text_lines[line_idx][:9]):
                     stubs.append('        """')
                     stubs.append("")  # New line
