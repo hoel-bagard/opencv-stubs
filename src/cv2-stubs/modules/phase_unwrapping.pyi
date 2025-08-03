@@ -1,6 +1,7 @@
-from typing import Any, TypeAlias
+from typing import Any
 
-from .. import functions as cv2
+import cv2
+from typing_extensions import TypeAlias
 
 unwrappedPhaseMap: TypeAlias = Any
 reliabilityMap: TypeAlias = Any

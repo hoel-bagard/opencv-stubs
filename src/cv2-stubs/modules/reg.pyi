@@ -1,5 +1,6 @@
-import builtins
-from typing import Any, TypeAlias
+from typing import Any
+
+from typing_extensions import TypeAlias
 
 linTr: TypeAlias = Any
 img2: TypeAlias = Any

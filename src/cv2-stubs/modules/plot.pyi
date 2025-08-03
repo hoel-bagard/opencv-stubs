@@ -1,6 +1,7 @@
-from typing import Any, overload, TypeAlias
+from typing import Any, overload
 
-from .. import functions as cv2
+import cv2
+from typing_extensions import TypeAlias
 
 _plotResult: TypeAlias = Any
 
@@ -74,7 +75,7 @@ class Plot2d(cv2.Algorithm):
         """
         * @brief Creates Plot2d object
         *
-        * @param data \f$1xN\f$ or \f$Nx1\f$ matrix containing \f$Y\f$ values of points to plot. \f$X\f$ values * will be equal to indexes of correspondind elements in data matrix.
+        * @param data \f$1xN\f$ or \f$Nx1\f$ matrix containing \f$Y\f$ values of points to plot. \f$X\f$ values * will be equal to indexes of corresponding elements in data matrix.
         """
 
     @overload
@@ -92,7 +93,7 @@ def Plot2d_create(data) -> retval:
     * @brief Creates Plot2d object
                  *
                  * @param data \f$1xN\f$ or \f$Nx1\f$ matrix containing \f$Y\f$ values of points to plot. \f$X\f$ values
-                 * will be equal to indexes of correspondind elements in data matrix.
+                 * will be equal to indexes of corresponding elements in data matrix.
     """
 
 @overload

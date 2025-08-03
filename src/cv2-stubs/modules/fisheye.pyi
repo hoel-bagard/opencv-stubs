@@ -1,4 +1,6 @@
-from typing import Any, Final, overload, TypeAlias
+from typing import Any, Final, overload
+
+from typing_extensions import TypeAlias
 
 rvecs: TypeAlias = Any
 K2: TypeAlias = Any
@@ -48,14 +50,14 @@ def calibrate(objectPoints, imagePoints, image_size, K, D, rvecs=..., tvecs=...,
     """
     @param image_size Size of the image used only to initialize the camera intrinsic matrix.
     @param K Output 3x3 floating-point camera intrinsic matrix
-    \f$\cameramatrix{A}\f$ . If
+    \f$\\cameramatrix{A}\f$ . If
     @ref fisheye::CALIB_USE_INTRINSIC_GUESS is specified, some or all of fx, fy, cx, cy must be
     """
 
 @overload
 def calibrate(objectPoints, imagePoints, image_size, K, D, rvecs=..., tvecs=..., flags=..., criteria=...) -> tuple[retval, K, D, rvecs, tvecs]:
     """
-    @param D Output vector of distortion coefficients \f$\distcoeffsfisheye\f$.
+    @param D Output vector of distortion coefficients \f$\\distcoeffsfisheye\f$.
     @param rvecs Output vector of rotation vectors (see Rodrigues ) estimated for each pattern view.
     """
 
@@ -103,13 +105,13 @@ def calibrate(objectPoints, imagePoints, image_size, K, D, rvecs=..., tvecs=...,
         -    @ref fisheye::CALIB_FIX_PRINCIPAL_POINT  The principal point is not changed during the global
     optimization. It stays at the center or at a different location specified when @ref fisheye::CALIB_USE_INTRINSIC_GUESS is set too.
         -    @ref fisheye::CALIB_FIX_FOCAL_LENGTH The focal length is not changed during the global
-    optimization. It is the \f$max(width,height)/\pi\f$ or the provided \f$f_x\f$, \f$f_y\f$ when @ref fisheye::CALIB_USE_INTRINSIC_GUESS is set too.
+    optimization. It is the \f$max(width,height)/\\pi\f$ or the provided \f$f_x\f$, \f$f_y\f$ when @ref fisheye::CALIB_USE_INTRINSIC_GUESS is set too.
         @param criteria Termination criteria for the iterative optimization algorithm.
     """
 
 @overload
 def distortPoints(undistorted, K, D, distorted=..., alpha=...) -> distorted:
-    """
+    r"""
     @brief Distorts 2D points using fisheye model.
 
         @param undistorted Array of object points, 1xN/Nx1 2-channel (or vector\<Point2f\> ), where N is
@@ -119,9 +121,9 @@ def distortPoints(undistorted, K, D, distorted=..., alpha=...) -> distorted:
 def distortPoints(undistorted, K, D, distorted=..., alpha=...) -> distorted:
     """
     @param K Camera intrinsic matrix \f$cameramatrix{K}\f$.
-    @param D Input vector of distortion coefficients \f$\distcoeffsfisheye\f$.
+    @param D Input vector of distortion coefficients \f$\\distcoeffsfisheye\f$.
     @param alpha The skew coefficient.
-    @param distorted Output array of image points, 1xN/Nx1 2-channel, or vector\<Point2f\> .
+    @param distorted Output array of image points, 1xN/Nx1 2-channel, or vector\\<Point2f\\> .
     """
 
 @overload
@@ -139,7 +141,7 @@ def estimateNewCameraMatrixForUndistortRectify(K, D, image_size, R, P=..., balan
 
         @param K Camera intrinsic matrix \f$cameramatrix{K}\f$.
         @param image_size Size of the image
-        @param D Input vector of distortion coefficients \f$\distcoeffsfisheye\f$.
+        @param D Input vector of distortion coefficients \f$\\distcoeffsfisheye\f$.
         @param R Rectification transformation in the object space: 3x3 1-channel, or vector: 3x1/1x3
         1-channel or 1x1 3-channel
         @param P New camera intrinsic matrix (3x3) or new projection matrix (3x4)
@@ -164,7 +166,7 @@ def initUndistortRectifyMap(K, D, R, P, size, m1type, map1=..., map2=...) -> tup
     """
 
     @param K Camera intrinsic matrix \f$cameramatrix{K}\f$.
-    @param D Input vector of distortion coefficients \f$\distcoeffsfisheye\f$.
+    @param D Input vector of distortion coefficients \f$\\distcoeffsfisheye\f$.
     @param R Rectification transformation in the object space: 3x3 1-channel, or vector: 3x1/1x3
     1-channel or 1x1 3-channel
     @param P New camera intrinsic matrix (3x3) or new projection matrix (3x4)
@@ -203,7 +205,7 @@ def stereoCalibrate(objectPoints, imagePoints1, imagePoints2, K1, D1, K2, D2, im
 def stereoCalibrate(objectPoints, imagePoints1, imagePoints2, K1, D1, K2, D2, imageSize, R=..., T=..., rvecs=..., tvecs=..., flags=..., criteria=...) -> tuple[retval, K1, D1, K2, D2, R, T, rvecs, tvecs]:
     """
     @param K1 Input/output first camera intrinsic matrix:
-    \f$\vecthreethree{f_x^{(j)}}{0}{c_x^{(j)}}{0}{f_y^{(j)}}{c_y^{(j)}}{0}{0}{1}\f$ , \f$j = 0,\, 1\f$ . If
+    \f$\vecthreethree{f_x^{(j)}}{0}{c_x^{(j)}}{0}{f_y^{(j)}}{c_y^{(j)}}{0}{0}{1}\f$ , \f$j = 0,\\, 1\f$ . If
     """
 
 @overload
@@ -213,7 +215,7 @@ def stereoCalibrate(objectPoints, imagePoints1, imagePoints2, K1, D1, K2, D2, im
 @overload
 def stereoCalibrate(objectPoints, imagePoints1, imagePoints2, K1, D1, K2, D2, imageSize, R=..., T=..., rvecs=..., tvecs=..., flags=..., criteria=...) -> tuple[retval, K1, D1, K2, D2, R, T, rvecs, tvecs]:
     """
-    @param D1 Input/output vector of distortion coefficients \f$\distcoeffsfisheye\f$ of 4 elements.
+    @param D1 Input/output vector of distortion coefficients \f$\\distcoeffsfisheye\f$ of 4 elements.
     @param K2 Input/output second camera intrinsic matrix. The parameter is similar to K1 .
     @param D2 Input/output lens distortion coefficients for the second camera. The parameter is
     """
@@ -374,7 +376,7 @@ def undistortImage(distorted, K, D, undistorted=..., Knew=..., new_size=...) -> 
         @param distorted image with fisheye lens distortion.
         @param undistorted Output image with compensated fisheye lens distortion.
         @param K Camera intrinsic matrix \f$cameramatrix{K}\f$.
-        @param D Input vector of distortion coefficients \f$\distcoeffsfisheye\f$.
+        @param D Input vector of distortion coefficients \f$\\distcoeffsfisheye\f$.
         @param Knew Camera intrinsic matrix of the distorted image. By default, it is the identity matrix but you
     """
 
@@ -400,7 +402,7 @@ def undistortImage(distorted, K, D, undistorted=..., Knew=..., new_size=...) -> 
 
 @overload
 def undistortImage(distorted, K, D, undistorted=..., Knew=..., new_size=...) -> undistorted:
-    """
+    r"""
     -   a\) result of undistort of perspective camera model (all possible coefficients (k_1, k_2, k_3,
          k_4, k_5, k_6) of distortion were optimized under calibration)
      -   b\) result of #fisheye::undistortImage of fisheye camera model (all possible coefficients (k_1, k_2,
@@ -421,7 +423,7 @@ def undistortImage(distorted, K, D, undistorted=..., Knew=..., new_size=...) -> 
 
 @overload
 def undistortPoints(distorted, K, D, undistorted=..., R=..., P=..., criteria=...) -> undistorted:
-    """
+    r"""
     @brief Undistorts 2D points using fisheye model
 
         @param distorted Array of object points, 1xN/Nx1 2-channel (or vector\<Point2f\> ), where N is the
@@ -431,12 +433,12 @@ def undistortPoints(distorted, K, D, undistorted=..., R=..., P=..., criteria=...
 def undistortPoints(distorted, K, D, undistorted=..., R=..., P=..., criteria=...) -> undistorted:
     """
     @param K Camera intrinsic matrix \f$cameramatrix{K}\f$.
-    @param D Input vector of distortion coefficients \f$\distcoeffsfisheye\f$.
+    @param D Input vector of distortion coefficients \f$\\distcoeffsfisheye\f$.
     @param R Rectification transformation in the object space: 3x3 1-channel, or vector: 3x1/1x3
     1-channel or 1x1 3-channel
     @param P New camera intrinsic matrix (3x3) or new projection matrix (3x4)
     @param criteria Termination criteria
-    @param undistorted Output array of image points, 1xN/Nx1 2-channel, or vector\<Point2f\> .
+    @param undistorted Output array of image points, 1xN/Nx1 2-channel, or vector\\<Point2f\\> .
     """
 
 CALIB_CHECK_COND: Final[int]

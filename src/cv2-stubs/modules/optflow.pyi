@@ -1,7 +1,7 @@
-import builtins
-from typing import Any, Final, overload, TypeAlias
+from typing import Any, Final, overload
 
-from .. import functions as cv2
+import cv2
+from typing_extensions import TypeAlias
 
 status: TypeAlias = Any
 nextPts: TypeAlias = Any
@@ -125,7 +125,7 @@ class DenseRLOFOpticalFlow(cv2.DenseOpticalFlow):
 
     def setForwardBackward(self, val) -> None:
         """
-        For each grid point \f$ \mathbf{x} \f$ a motion vector \f$ d_{I0,I1}(\mathbf{x}) \f$ is computed.
+        For each grid point \f$ \\mathbf{x} \f$ a motion vector \f$ d_{I0,I1}(\\mathbf{x}) \f$ is computed.
         *     If the forward backward error \f[ EP_{FB} = || d_{I0,I1} + d_{I1,I0} || \f]
         *     is larger than threshold given by this function then the motion vector will not be used by the following
         *    vector field interpolation. \f$ d_{I1,I0} \f$ denotes the backward flow. Note, the forward backward test
@@ -437,7 +437,7 @@ class SparseRLOFOpticalFlow(cv2.SparseOpticalFlow):
 
     def setForwardBackward(self, val) -> None:
         """
-        For each feature point a motion vector \f$ d_{I0,I1}(\mathbf{x}) \f$ is computed.
+        For each feature point a motion vector \f$ d_{I0,I1}(\\mathbf{x}) \f$ is computed.
         *     If the forward backward error \f[ EP_{FB} = || d_{I0,I1} + d_{I1,I0} || \f]
         *     is larger than threshold given by this function then the status  will not be used by the following
         *    vector field interpolation. \f$ d_{I1,I0} \f$ denotes the backward flow. Note, the forward backward test
@@ -501,7 +501,7 @@ def calcOpticalFlowDenseRLOF(I0, I1, flow, rlofParam=..., forwardBackwardThresho
     The sparse-to-dense interpolation scheme allows for fast computation of dense optical flow using RLOF (see @cite Geistert2016).
     For this scheme the following steps are applied:
     -# motion vector seeded at a regular sampled grid are computed. The sparsity of this grid can be configured with setGridStep
-    -# (optinally) errornous motion vectors are filter based on the forward backward confidence. The threshold can be configured
+    -# (optionally) erroneous motion vectors are filter based on the forward backward confidence. The threshold can be configured
     with setForwardBackward. The filter is only applied if the threshold >0 but than the runtime is doubled due to the estimation
     of the backward flow.
     -# Vector field interpolation is applied to the motion vector set to obtain a dense vector field.
@@ -513,7 +513,7 @@ def calcOpticalFlowDenseRLOF(I0, I1, flow, rlofParam=..., forwardBackwardThresho
     @param flow computed flow image that has the same size as I0 and type CV_32FC2.
     @param rlofParam see optflow::RLOFOpticalFlowParameter
     @param forwardBackwardThreshold Threshold for the forward backward confidence check.
-    For each grid point \f$ \mathbf{x} \f$ a motion vector \f$ d_{I0,I1}(\mathbf{x}) \f$ is computed.
+    For each grid point \f$ \\mathbf{x} \f$ a motion vector \f$ d_{I0,I1}(\\mathbf{x}) \f$ is computed.
     If the forward backward error \f[ EP_{FB} = || d_{I0,I1} + d_{I1,I0} || \f]
     is larger than threshold given by this function then the motion vector will not be used by the following
     vector field interpolation. \f$ d_{I1,I0} \f$ denotes the backward flow. Note, the forward backward test
@@ -635,7 +635,7 @@ def calcOpticalFlowSparseToDense(from_, to, flow=..., grid_step=..., k=..., sigm
     """
 
 def createOptFlow_DeepFlow() -> retval:
-    """
+    r"""
     @brief DeepFlow optical flow algorithm implementation.
 
     The class implements the DeepFlow optical flow algorithm described in @cite Weinzaepfel2013 . See
@@ -657,7 +657,7 @@ def createOptFlow_DeepFlow() -> retval:
     -   member int fixedPointIterations
     How many iterations on each level of the pyramid
     -   member int sorIterations
-    Iterations of Succesive Over-Relaxation (solver)
+    Iterations of Successive Over-Relaxation (solver)
     -   member float omega
     Relaxation factor in SOR
     """

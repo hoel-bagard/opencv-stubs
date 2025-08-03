@@ -1,4 +1,5 @@
 """Script to set every undefined type as an alias of Any."""
+
 import argparse
 import subprocess
 from collections import defaultdict
@@ -6,11 +7,10 @@ from pathlib import Path
 
 
 def main() -> None:
-    argparse.ArgumentParser(description="Script to set every undefined type as an alias of Any.",
-                            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    argparse.ArgumentParser(description="Script to set every undefined type as an alias of Any.", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     print("Running pyright")
-    pyright_result = subprocess.run(["pyright", "."], stdout=subprocess.PIPE).stdout.decode().splitlines()
+    pyright_result = subprocess.run(["pyright", "."], check=False, stdout=subprocess.PIPE).stdout.decode().splitlines()
 
     aliases_to_add: dict[Path, set[str]] = defaultdict(set)
     for line in pyright_result:
@@ -34,8 +34,8 @@ def main() -> None:
 
         write_line = max(1, write_line)
         for name in names:
-            subprocess.run(["sed", "-i", f"{write_line}i{name}: TypeAlias = Any\n", path], stdout=subprocess.PIPE)
-        subprocess.run(["sed", "-i", f"{write_line}i\n", path], stdout=subprocess.PIPE)
+            subprocess.run(["sed", "-i", f"{write_line}i{name}: TypeAlias = Any\n", path], check=False, stdout=subprocess.PIPE)
+        subprocess.run(["sed", "-i", f"{write_line}i\n", path], check=False, stdout=subprocess.PIPE)
 
     print("Finished")
 

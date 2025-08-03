@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import re
 import subprocess
 
@@ -32,7 +34,7 @@ def process_default_args(function_signature: str) -> str:
         "imreadmulti(filename, mats = ..., flags = ...) -> retval, mats""
     """
     parts = function_signature.split("[")
-    for i in range(1, len(parts)-1):
+    for i in range(1, len(parts) - 1):
         parts[i] = parts[i] + " = ..."
     if len(parts) > 1:
         parts[-1] = re.sub("]+", " = ...", parts[-1])
@@ -80,10 +82,10 @@ def add_self(method_signature: str) -> str:
     return "(".join(parts)
 
 
-def process_class(name: str, stubs: list[str]) -> None:
+def process_class(name: str, stubs: list[str]) -> None:  # noqa: C901, PLR0912
     """Adds the methods of `name` to the stubs."""
     print(f"    Adding class: {name}")
-    result = subprocess.run(["python", "-m", "pydoc", f"cv2.{name}"], stdout=subprocess.PIPE)
+    result = subprocess.run(["python", "-m", "pydoc", f"cv2.{name}"], check=False, stdout=subprocess.PIPE)
     help_text = result.stdout.split(b"\n\n", maxsplit=1)[1].decode()
     help_text_lines = help_text.splitlines()
 
@@ -110,19 +112,17 @@ def process_class(name: str, stubs: list[str]) -> None:
             line_idx += 1
             # Add docstring.
             stubs.append('        """')
-            while (line_idx < len(help_text_lines)
-                    and "(...)" not in help_text_lines[line_idx]
-                    and " |  --" not in help_text_lines[line_idx]):
+            while line_idx < len(help_text_lines) and "(...)" not in help_text_lines[line_idx] and " |  --" not in help_text_lines[line_idx]:
                 if "." in help_text_lines[line_idx]:
                     line = help_text_lines[line_idx].split(".", maxsplit=1)[1].lstrip()
                     if line == "@overload":
-                        stubs.insert(-2, 4*" " + line)
+                        stubs.insert(-2, 4 * " " + line)
                     if line == "* @overload":
-                        stubs.insert(-2, 4*" " + "@overload")
+                        stubs.insert(-2, 4 * " " + "@overload")
                     elif "@param" in stubs[-1] and "@param" not in line:
-                        stubs[-1] = stubs[-1] + " " + line  # pyright: ignore
+                        stubs[-1] = stubs[-1] + " " + line
                     else:
-                        stubs.append(8*" " + line)
+                        stubs.append(8 * " " + line)
                 elif re.match(r" \|      [a-zA-Z]", help_text_lines[line_idx][:9]):
                     stubs.append('        """')
                     stubs.append("")  # New line
@@ -143,7 +143,7 @@ def process_class(name: str, stubs: list[str]) -> None:
 
 def process_function(name: str, stubs: list[str]) -> None:
     print(f"    Adding function: {name}")
-    result = subprocess.run(["python", "-m", "pydoc", f"cv2.{name}"], stdout=subprocess.PIPE)
+    result = subprocess.run(["python", "-m", "pydoc", f"cv2.{name}"], check=False, stdout=subprocess.PIPE)
     help_text_lines = result.stdout.decode().splitlines()
 
     if not len(help_text_lines) >= 4:
@@ -172,11 +172,10 @@ def process_function(name: str, stubs: list[str]) -> None:
                 function_stubs.insert(1, "@overload")
             function_stubs.append(f"def {process_function_signature(help_text_lines[3].lstrip())}:")
             function_stubs.append('    """')
+        elif line == "":
+            function_stubs.append("")
         else:
-            if line == "":
-                function_stubs.append("")
-            else:
-                function_stubs.append("    " + line)
+            function_stubs.append("    " + line)
 
     # Remove any blank lines at the end of the docstring.
     while function_stubs[-1].strip() == "":

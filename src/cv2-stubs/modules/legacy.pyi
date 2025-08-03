@@ -1,6 +1,7 @@
-from typing import Any, TypeAlias
+from typing import Any
 
-from .. import functions as cv2
+import cv2
+from typing_extensions import TypeAlias
 
 boundingBox: TypeAlias = Any
 
@@ -38,7 +39,7 @@ class Tracker(cv2.Algorithm):
         """
         @brief Initialize the tracker with a known bounding box that surrounded the target
         @param image The initial frame
-        @param boundingBox The initial bounding box  @return True if initialization went succesfully, false otherwise
+        @param boundingBox The initial bounding box  @return True if initialization went successfully, false otherwise
         """
 
     def update(self, image) -> tuple[retval, boundingBox]:

@@ -1,5 +1,6 @@
-import builtins
-from typing import Any, TypeAlias
+from typing import Any
+
+from typing_extensions import TypeAlias
 
 points: TypeAlias = Any
 
@@ -28,6 +29,6 @@ class WeChatQRCode:
         * width = scaleFactor*width
         * height = scaleFactor*width
         *
-        * scaleFactor valuse must be > 0 and <= 1, otherwise the scaleFactor value is set to -1
+        * scaleFactor values must be > 0 and <= 1, otherwise the scaleFactor value is set to -1
         * and use default scaled to an image with an area of 160000 pixels.
         """

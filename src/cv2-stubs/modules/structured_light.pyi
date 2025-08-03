@@ -1,6 +1,7 @@
-from typing import Any, Final, TypeAlias
+from typing import Any, Final
 
-from .. import functions as cv2
+import cv2
+from typing_extensions import TypeAlias
 
 wrappedPhaseMap: TypeAlias = Any
 whiteImage: TypeAlias = Any

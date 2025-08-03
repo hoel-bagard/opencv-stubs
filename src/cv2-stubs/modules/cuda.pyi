@@ -1,5 +1,6 @@
-import builtins
-from typing import Any, Final, overload, TypeAlias
+from typing import Any, Final, overload
+
+from typing_extensions import TypeAlias
 
 keypoints: TypeAlias = Any
 descriptors: TypeAlias = Any
@@ -301,7 +302,7 @@ class GpuMat:
 
     @overload
     def download(self, stream, dst=...) -> dst:
-        """
+        r"""
         @brief Performs data download from GpuMat (Non-Blocking call)
 
         This function copies data from device memory to host memory. As being a non-blocking call, this
@@ -384,7 +385,7 @@ class GpuMat:
 
     @overload
     def upload(self, arr, stream) -> None:
-        """
+        r"""
         @brief Performs data upload to GpuMat (Non-Blocking call)
 
         This function copies data from host memory to device memory. As being a non-blocking call, this

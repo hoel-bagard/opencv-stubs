@@ -1,4 +1,3 @@
-import builtins
 from typing import Final
 
 class GStreamerPipeline: ...

@@ -1,6 +1,7 @@
-from typing import Any, Final, overload, TypeAlias
+from typing import Any, Final, overload
 
-from .. import functions as cv2
+import cv2
+from typing_extensions import TypeAlias
 
 outputArr: TypeAlias = Any
 retval: TypeAlias = Any

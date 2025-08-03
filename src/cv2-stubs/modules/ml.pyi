@@ -1,7 +1,7 @@
-import builtins
-from typing import Any, Final, overload, TypeAlias
+from typing import Any, Final, overload
 
-from .. import functions as cv2
+import cv2
+from typing_extensions import TypeAlias
 
 outputs: TypeAlias = Any
 svidx: TypeAlias = Any
@@ -180,7 +180,7 @@ class ANN_MLP(StatModel):
         """
 
     def create(self) -> retval:
-        """
+        r"""
         @brief Creates empty model
 
         Use StatModel::train to train the model, Algorithm::load\<ANN_MLP\>(filename) to load the pre-trained model.
@@ -229,7 +229,7 @@ class Boost(DTrees):
         """
 
     def create(self) -> retval:
-        """
+        r"""
         Creates the empty model.
         Use StatModel::train to train the model, Algorithm::load\<Boost\>(filename) to load the pre-trained model.
         """
@@ -338,7 +338,7 @@ class DTrees(StatModel):
         """
 
     def create(self) -> retval:
-        """
+        r"""
         @brief Creates the empty model
 
         The static method creates empty decision tree with the specified parameters. It should be then
@@ -435,13 +435,13 @@ class EM(StatModel):
         @brief Estimate the Gaussian mixture parameters from a samples set.
 
         This variation starts with Expectation step. You need to provide initial means \f$a_k\f$ of
-        mixture components. Optionally you can pass initial weights \f$\pi_k\f$ and covariance matrices
+        mixture components. Optionally you can pass initial weights \f$\\pi_k\f$ and covariance matrices
         \f$S_k\f$ of mixture components.
 
         @param samples Samples from which the Gaussian mixture model will be estimated. It should be a one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type it will be converted to the inner matrix of such type for the further computing.
         @param means0 Initial means \f$a_k\f$ of mixture components. It is a one-channel matrix of \f$nclusters \times dims\f$ size. If the matrix does not have CV_64F type it will be converted to the inner matrix of such type for the further computing.
         @param covs0 The vector of initial covariance matrices \f$S_k\f$ of mixture components. Each of covariance matrices is a one-channel matrix of \f$dims \times dims\f$ size. If the matrices do not have CV_64F type they will be converted to the inner matrices of such type for the further computing.
-        @param weights0 Initial weights \f$\pi_k\f$ of mixture components. It should be a one-channel floating-point matrix with \f$1 \times nclusters\f$ or \f$nclusters \times 1\f$ size.
+        @param weights0 Initial weights \f$\\pi_k\f$ of mixture components. It should be a one-channel floating-point matrix with \f$1 \times nclusters\f$ or \f$nclusters \times 1\f$ size.
         @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
         @param labels The optional output "class label" for each sample: \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
         @param probs The optional output matrix that contains posterior probabilities of each Gaussian mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and CV_64FC1 type.
@@ -458,7 +458,7 @@ class EM(StatModel):
         responses (class labels or function values) as input. Instead, it computes the *Maximum
         Likelihood Estimate* of the Gaussian mixture parameters from an input sample set, stores all the
         parameters inside the structure: \f$p_{i,k}\f$ in probs, \f$a_k\f$ in means , \f$S_k\f$ in
-        covs[k], \f$\pi_k\f$ in weights , and optionally computes the output "class label" for each
+        covs[k], \f$\\pi_k\f$ in weights , and optionally computes the output "class label" for each
         sample: \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most
         probable mixture component for each sample).
 
@@ -486,7 +486,7 @@ class EM(StatModel):
         """
 
     def create(self) -> retval:
-        """
+        r"""
         Creates empty %EM model.
         The model should be trained then using StatModel::train(traindata, flags) method. Alternatively, you
         can use one of the EM::train\* methods or load it from file using Algorithm::load\<EM\>(filename).
@@ -1241,7 +1241,7 @@ class TrainData:
         """
 
     def setTrainTestSplitRatio(self, ratio, shuffle=...) -> None:
-        """
+        r"""
         @brief Splits the training data into the training and test parts
 
         The function selects a subset of specified relative size and then returns it as the training
@@ -1307,7 +1307,7 @@ def ANN_MLP_load(filepath) -> retval:
     """
 
 def Boost_create() -> retval:
-    """
+    r"""
     Creates the empty model.
     Use StatModel::train to train the model, Algorithm::load\<Boost\>(filename) to load the pre-trained model.
     """

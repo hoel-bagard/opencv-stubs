@@ -1,5 +1,6 @@
-import builtins
-from typing import Any, overload, TypeAlias
+from typing import Any, overload
+
+from typing_extensions import TypeAlias
 
 normals: TypeAlias = Any
 points: TypeAlias = Any
@@ -92,7 +93,7 @@ class Params:
         """
         * @brief Set Initial Volume Pose
         * Sets the initial pose of the TSDF volume.
-        * @param homogen_tf 4 by 4 Homogeneous Transform matrix to set the intial pose of TSDF volume
+        * @param homogen_tf 4 by 4 Homogeneous Transform matrix to set the initial pose of TSDF volume
         """
 
     def coarseParams(self) -> retval:

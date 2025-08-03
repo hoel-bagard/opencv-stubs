@@ -1,4 +1,6 @@
-from typing import Any, TypeAlias
+from typing import Any
+
+from typing_extensions import TypeAlias
 
 mask: TypeAlias = Any
 boundingRects: TypeAlias = Any
@@ -40,7 +42,7 @@ def calcMotionGradient(mhi, delta1, delta2, mask=..., orientation=..., apertureS
     neighborhood. That is, the function finds the minimum ( \f$m(x,y)\f$ ) and maximum ( \f$M(x,y)\f$ ) mhi
     values over \f$3 \times 3\f$ neighborhood of each pixel and marks the motion orientation at \f$(x, y)\f$
     as valid only if
-    \f[\min ( \texttt{delta1}  ,  \texttt{delta2}  )  \le  M(x,y)-m(x,y)  \le   \max ( \texttt{delta1}  , \texttt{delta2} ).\f]
+    \f[\\min ( \texttt{delta1}  ,  \texttt{delta2}  )  \\le  M(x,y)-m(x,y)  \\le   \\max ( \texttt{delta1}  , \texttt{delta2} ).\f]
     @param apertureSize Aperture size of the Sobel operator.
 
     The function calculates a gradient orientation at each pixel \f$(x, y)\f$ as:
@@ -86,7 +88,7 @@ def updateMotionHistory(silhouette, mhi, timestamp, duration) -> mhi:
 
     The function updates the motion history image as follows:
 
-    \f[\texttt{mhi} (x,y)= \forkthree{\texttt{timestamp}}{if \(\texttt{silhouette}(x,y) \ne 0\)}{0}{if \(\texttt{silhouette}(x,y) = 0\) and \(\texttt{mhi} < (\texttt{timestamp} - \texttt{duration})\)}{\texttt{mhi}(x,y)}{otherwise}\f]
+    \f[\texttt{mhi} (x,y)= \forkthree{\texttt{timestamp}}{if \\(\texttt{silhouette}(x,y) \ne 0\\)}{0}{if \\(\texttt{silhouette}(x,y) = 0\\) and \\(\texttt{mhi} < (\texttt{timestamp} - \texttt{duration})\\)}{\texttt{mhi}(x,y)}{otherwise}\f]
 
     That is, MHI pixels where the motion occurs are set to the current timestamp , while the pixels
     where the motion happened last time a long time ago are cleared.

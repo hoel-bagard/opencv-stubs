@@ -1,6 +1,7 @@
-from typing import Any, TypeAlias
+from typing import Any
 
-from .. import functions as cv2
+import cv2
+from typing_extensions import TypeAlias
 
 tvec: TypeAlias = Any
 img: TypeAlias = Any

@@ -1,5 +1,7 @@
 import builtins
-from typing import Any, overload, TypeAlias
+from typing import Any, overload
+
+from typing_extensions import TypeAlias
 
 from . import fs, nested
 
@@ -9,7 +11,7 @@ vec: TypeAlias = Any
 retval: TypeAlias = Any
 
 class ClassWithKeywordProperties: ...
-class NativeMethodPatchedResult(builtins.tuple): ...
+class NativeMethodPatchedResult(builtins.tuple): ...  # pyright: ignore[reportMissingTypeArgument]
 
 def dumpBool(argument) -> retval: ...
 def dumpCString(argument) -> retval: ...

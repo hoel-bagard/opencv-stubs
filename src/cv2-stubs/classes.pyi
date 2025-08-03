@@ -1,10 +1,10 @@
-import builtins
 from abc import ABC, abstractmethod
-from typing import Any, overload, Sequence, TypeAlias
+from typing import Any, overload, Sequence
 
 import numpy as np
 import numpy.typing as npt
-from typing_extensions import Self
+from cv2.modules import colored_kinfu, img_hash, large_kinfu, phase_unwrapping, structured_light, wechat_qrcode, ximgproc
+from typing_extensions import TypeAlias
 
 from .modules import *
 
@@ -19,7 +19,6 @@ straight_qrcode: TypeAlias = Any
 nearestPt: TypeAlias = Any
 msers: TypeAlias = Any
 votes: TypeAlias = Any
-phase: TypeAlias = Any
 bboxes: TypeAlias = Any
 ymap: TypeAlias = Any
 flow_v: TypeAlias = Any
@@ -67,7 +66,6 @@ readyIndex: TypeAlias = Any
 facetCenters: TypeAlias = Any
 faces: TypeAlias = Any
 tb: TypeAlias = Any
-line: TypeAlias = Any
 img: TypeAlias = Any
 matches: TypeAlias = Any
 err: TypeAlias = Any
@@ -131,7 +129,7 @@ class AKAZE(Feature2D):
         """"""
 
     def create(self, descriptor_type=..., descriptor_size=..., descriptor_channels=..., threshold=..., nOctaves=..., nOctaveLayers=..., diffusivity=...) -> retval:
-        """
+        r"""
         @brief The AKAZE constructor
 
         @param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE, DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
@@ -158,7 +156,7 @@ class AffineFeature(Feature2D):
         @param backend The detector/extractor you want to use as backend.
         @param maxTilt The highest power index of tilt factor. 5 is used in the paper as tilt sampling range n.
         @param minTilt The lowest power index of tilt factor. 0 is used in the paper.
-        @param tiltStep Tilt sampling step \f$\delta_t\f$ in Algorithm 1 in the paper.
+        @param tiltStep Tilt sampling step \f$\\delta_t\f$ in Algorithm 1 in the paper.
         @param rotateStepBase Rotation sampling step factor b in Algorithm 1 in the paper.
         """
 
@@ -570,7 +568,7 @@ class BackgroundSubtractorKNN(BackgroundSubtractor):
         """
         @brief Sets the number of data samples in the background model.
 
-        The model needs to be reinitalized to reserve memory.
+        The model needs to be reinitialized to reserve memory.
         """
 
     def setShadowThreshold(self, threshold) -> None:
@@ -599,7 +597,7 @@ class BackgroundSubtractorMOG2(BackgroundSubtractor):
         """
 
     def getBackgroundRatio(self) -> retval:
-        """
+        r"""
         @brief Returns the "background ratio" parameter of the algorithm
 
         If a foreground pixel keeps semi-constant value for about backgroundRatio\*history frames, it's
@@ -672,7 +670,7 @@ class BackgroundSubtractorMOG2(BackgroundSubtractor):
         """
 
     def getVarThresholdGen(self) -> retval:
-        """
+        r"""
         @brief Returns the variance threshold for the pixel-model match used for new mixture component generation
 
         Threshold for the squared Mahalanobis distance that helps decide when a sample is close to the
@@ -1113,7 +1111,7 @@ class DescriptorMatcher(Algorithm, ABC):
 
     @overload
     def match(self, queryDescriptors, trainDescriptors, mask=...) -> matches:
-        """
+        r"""
         @brief Finds the best match for each descriptor from a query set.
 
         @param queryDescriptors Query set of descriptors.
@@ -1257,7 +1255,7 @@ class FaceDetectorYN:
         @brief Creates an instance of this class with given parameters
         *
         *  @param model the path to the requested model
-        *  @param config the path to the config file for compability, which is not requested for ONNX models
+        *  @param config the path to the config file for compatibility, which is not requested for ONNX models
         *  @param input_size the size of the input image
         *  @param score_threshold the threshold to filter out bounding boxes of score smaller than the given value
         *  @param nms_threshold the threshold to suppress bounding boxes of IoU bigger than the given value
@@ -1294,7 +1292,7 @@ class FaceRecognizerSF:
         """
         @brief Creates an instance of this class with given parameters
         *  @param model the path of the onnx model used for face recognition
-        *  @param config the path to the config file for compability, which is not requested for ONNX models
+        *  @param config the path to the config file for compatibility, which is not requested for ONNX models
         *  @param backend_id the id of backend
         *  @param target_id the id of target device
         """
@@ -2280,7 +2278,7 @@ class LineSegmentDetector(Algorithm):
         """
 
     def detect(self, image, lines=..., width=..., prec=..., nfa=...) -> tuple[lines, width, prec, nfa]:
-        """
+        r"""
         @brief Finds lines in the input image.
 
         This is the output of the default parameters of the algorithm on the above shown image.
@@ -2389,7 +2387,7 @@ class MSER(Feature2D):
         @param edge_blur_size for color image, the aperture size for edge blur
         """
 
-class Mat(numpy.ndarray): ...
+class Mat(np.ndarray): ...  # pyright: ignore[reportMissingTypeArgument]
 
 class MergeDebevec(MergeExposures):
     @overload
@@ -2749,7 +2747,7 @@ class SIFT(Feature2D):
 
     @overload
     def create(self, nfeatures=..., nOctaveLayers=..., contrastThreshold=..., edgeThreshold=..., sigma=...) -> retval:
-        """
+        r"""
         @param nfeatures The number of best features to retain. The features are ranked by their scores (measured in SIFT algorithm as the local contrast)
         @param nOctaveLayers The number of layers in each octave. 3 is the value used in D. Lowe paper. The number of octaves is computed automatically from the image resolution.
         @param contrastThreshold The contrast threshold used to filter out weak features in semi-uniform (low-contrast) regions. The larger the threshold, the less features are produced by the detector.  @note The contrast threshold will be divided by nOctaveLayers when the filtering is applied. When nOctaveLayers is set to default and if you want to use the value used in D. Lowe paper, 0.03, set this argument to 0.09.
@@ -2759,7 +2757,7 @@ class SIFT(Feature2D):
 
     @overload
     def create(self, nfeatures, nOctaveLayers, contrastThreshold, edgeThreshold, sigma, descriptorType) -> retval:
-        """
+        r"""
         @brief Create SIFT with specified descriptorType.
         @param nfeatures The number of best features to retain. The features are ranked by their scores (measured in SIFT algorithm as the local contrast)
         @param nOctaveLayers The number of layers in each octave. 3 is the value used in D. Lowe paper. The number of octaves is computed automatically from the image resolution.
@@ -3145,7 +3143,7 @@ class StereoSGBM(StereoMatcher):
         """"""
 
     def create(self, minDisparity=..., numDisparities=..., blockSize=..., P1=..., P2=..., disp12MaxDiff=..., preFilterCap=..., uniquenessRatio=..., speckleWindowSize=..., speckleRange=..., mode=...) -> retval:
-        """
+        r"""
         @brief Creates StereoSGBM object
 
         @param minDisparity Minimum possible disparity value. Normally, it is zero but sometimes rectification algorithms can shift images, so this parameter needs to be adjusted accordingly.
@@ -3798,7 +3796,7 @@ class VideoCapture:
         """
 
     def release(self) -> None:
-        """
+        r"""
         @brief Closes video file or capturing device.
 
         The method is automatically called by subsequent VideoCapture::open and by VideoCapture
@@ -3956,8 +3954,8 @@ bioinspired_Retina = bioinspired.Retina
 bioinspired_RetinaFastToneMapping = bioinspired.RetinaFastToneMapping
 bioinspired_TransientAreasSegmentationModule = bioinspired.TransientAreasSegmentationModule
 ccm_ColorCorrectionModel = ccm.ColorCorrectionModel
-colored_kinfu_ColoredKinFu = colored.ColoredKinFu
-colored_kinfu_Params = colored.Params
+colored_kinfu_ColoredKinFu = colored_kinfu.ColoredKinFu
+colored_kinfu_Params = colored_kinfu.Params
 cuda_BufferPool = cuda.BufferPool
 cuda_DeviceInfo = cuda.DeviceInfo
 cuda_Event = cuda.Event
@@ -4052,20 +4050,20 @@ gapi_wip_draw_Rect = gapi.wip.draw.Rect
 gapi_wip_draw_Text = gapi.wip.draw.Text
 gapi_wip_gst_GStreamerPipeline = gapi.wip.gst.GStreamerPipeline
 hfs_HfsSegment = hfs.HfsSegment
-img_hash_AverageHash = img.AverageHash
-img_hash_BlockMeanHash = img.BlockMeanHash
-img_hash_ColorMomentHash = img.ColorMomentHash
-img_hash_ImgHashBase = img.ImgHashBase
-img_hash_MarrHildrethHash = img.MarrHildrethHash
-img_hash_PHash = img.PHash
-img_hash_RadialVarianceHash = img.RadialVarianceHash
+img_hash_AverageHash = img_hash.AverageHash
+img_hash_BlockMeanHash = img_hash.BlockMeanHash
+img_hash_ColorMomentHash = img_hash.ColorMomentHash
+img_hash_ImgHashBase = img_hash.ImgHashBase
+img_hash_MarrHildrethHash = img_hash.MarrHildrethHash
+img_hash_PHash = img_hash.PHash
+img_hash_RadialVarianceHash = img_hash.RadialVarianceHash
 kinfu_KinFu = kinfu.KinFu
 kinfu_Params = kinfu.Params
 kinfu_Volume = kinfu.Volume
 kinfu_VolumeParams = kinfu.VolumeParams
 kinfu_detail_PoseGraph = kinfu.detail.PoseGraph
-large_kinfu_LargeKinfu = large.LargeKinfu
-large_kinfu_Params = large.Params
+large_kinfu_LargeKinfu = large_kinfu.LargeKinfu
+large_kinfu_Params = large_kinfu.Params
 legacy_MultiTracker = legacy.MultiTracker
 legacy_Tracker = legacy.Tracker
 legacy_TrackerBoosting = legacy.TrackerBoosting
@@ -4075,12 +4073,12 @@ legacy_TrackerMIL = legacy.TrackerMIL
 legacy_TrackerMOSSE = legacy.TrackerMOSSE
 legacy_TrackerMedianFlow = legacy.TrackerMedianFlow
 legacy_TrackerTLD = legacy.TrackerTLD
-line_descriptor_BinaryDescriptor = line.BinaryDescriptor
-line_descriptor_BinaryDescriptorMatcher = line.BinaryDescriptorMatcher
-line_descriptor_DrawLinesMatchesFlags = line.DrawLinesMatchesFlags
-line_descriptor_KeyLine = line.KeyLine
-line_descriptor_LSDDetector = line.LSDDetector
-line_descriptor_LSDParam = line.LSDParam
+line_descriptor_BinaryDescriptor = line_descriptor.BinaryDescriptor
+line_descriptor_BinaryDescriptorMatcher = line_descriptor.BinaryDescriptorMatcher
+line_descriptor_DrawLinesMatchesFlags = line_descriptor.DrawLinesMatchesFlags
+line_descriptor_KeyLine = line_descriptor.KeyLine
+line_descriptor_LSDDetector = line_descriptor.LSDDetector
+line_descriptor_LSDParam = line_descriptor.LSDParam
 linemod_ColorGradient = linemod.ColorGradient
 linemod_DepthNormal = linemod.DepthNormal
 linemod_Detector = linemod.Detector
@@ -4119,14 +4117,14 @@ optflow_OpticalFlowPCAFlow = optflow.OpticalFlowPCAFlow
 optflow_PCAPrior = optflow.PCAPrior
 optflow_RLOFOpticalFlowParameter = optflow.RLOFOpticalFlowParameter
 optflow_SparseRLOFOpticalFlow = optflow.SparseRLOFOpticalFlow
-phase_unwrapping_HistogramPhaseUnwrapping = phase.HistogramPhaseUnwrapping
-phase_unwrapping_HistogramPhaseUnwrapping_Params = phase.Params
-phase_unwrapping_PhaseUnwrapping = phase.PhaseUnwrapping
+phase_unwrapping_HistogramPhaseUnwrapping = phase_unwrapping.HistogramPhaseUnwrapping
+phase_unwrapping_HistogramPhaseUnwrapping_Params = Params
+phase_unwrapping_PhaseUnwrapping = phase_unwrapping.PhaseUnwrapping
 plot_Plot2d = plot.Plot2d
-ppf_match_3d_ICP = ppf.ICP
-ppf_match_3d_PPF3DDetector = ppf.PPF3DDetector
-ppf_match_3d_Pose3D = ppf.Pose3D
-ppf_match_3d_PoseCluster3D = ppf.PoseCluster3D
+ppf_match_3d_ICP = ppf_match_3d.ICP
+ppf_match_3d_PPF3DDetector = ppf_match_3d.PPF3DDetector
+ppf_match_3d_Pose3D = ppf_match_3d.Pose3D
+ppf_match_3d_PoseCluster3D = ppf_match_3d.PoseCluster3D
 quality_QualityBRISQUE = quality.QualityBRISQUE
 quality_QualityBase = quality.QualityBase
 quality_QualityGMSD = quality.QualityGMSD
@@ -4171,10 +4169,10 @@ segmentation_IntelligentScissorsMB = segmentation.IntelligentScissorsMB
 stereo_MatchQuasiDense = stereo.MatchQuasiDense
 stereo_PropagationParameters = stereo.PropagationParameters
 stereo_QuasiDenseStereo = stereo.QuasiDenseStereo
-structured_light_GrayCodePattern = structured.GrayCodePattern
-structured_light_SinusoidalPattern = structured.SinusoidalPattern
-structured_light_SinusoidalPattern_Params = structured.Params
-structured_light_StructuredLightPattern = structured.StructuredLightPattern
+structured_light_GrayCodePattern = structured_light.GrayCodePattern
+structured_light_SinusoidalPattern = structured_light.SinusoidalPattern
+structured_light_SinusoidalPattern_Params = Params
+structured_light_StructuredLightPattern = structured_light.StructuredLightPattern
 text_BaseOCR = text.BaseOCR
 text_ERFilter = text.ERFilter
 text_ERFilter_Callback = text.ERFilter.Callback
@@ -4188,7 +4186,7 @@ text_TextDetectorCNN = text.TextDetectorCNN
 utils_ClassWithKeywordProperties = utils.ClassWithKeywordProperties
 utils_nested_ExportClassName = utils.nested.ExportClassName
 utils_nested_ExportClassName_Params = utils.nested.ExportClassName.Params
-wechat_qrcode_WeChatQRCode = wechat.WeChatQRCode
+wechat_qrcode_WeChatQRCode = wechat_qrcode.WeChatQRCode
 xfeatures2d_AffineFeature2D = xfeatures2d.AffineFeature2D
 xfeatures2d_BEBLID = xfeatures2d.BEBLID
 xfeatures2d_BoostDesc = xfeatures2d.BoostDesc

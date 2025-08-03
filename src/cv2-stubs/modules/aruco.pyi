@@ -1,7 +1,7 @@
-import builtins
-from typing import Any, Final, TypeAlias
+from typing import Any, Final
 
-from .. import functions as cv2
+import cv2
+from typing_extensions import TypeAlias
 
 rvecs: TypeAlias = Any
 detectedCorners: TypeAlias = Any
@@ -43,7 +43,7 @@ class ArucoDetector(cv2.Algorithm):
         * @param image input image
         * @param corners vector of detected marker corners. For each marker, its four corners * are provided, (e.g std::vector<std::vector<cv::Point2f> > ). For N detected markers, * the dimensions of this array is Nx4. The order of the corners is clockwise.
         * @param ids vector of identifiers of the detected markers. The identifier is of type int * (e.g. std::vector<int>). For N detected markers, the size of ids is also N. * The identifiers have the same order than the markers in the imgPoints array.
-        * @param rejectedImgPoints contains the imgPoints of those squares whose inner code has not a * correct codification. Useful for debugging purposes. * * Performs marker detection in the input image. Only markers included in the specific dictionary * are searched. For each detected marker, it returns the 2D position of its corner in the image * and its corresponding identifier. * Note that this function does not perform pose estimation. * @note The function does not correct lens distortion or takes it into account. It's recommended to undistort * input image with corresponging camera model, if camera parameters are known * @sa undistort, estimatePoseSingleMarkers,  estimatePoseBoard
+        * @param rejectedImgPoints contains the imgPoints of those squares whose inner code has not a * correct codification. Useful for debugging purposes. * * Performs marker detection in the input image. Only markers included in the specific dictionary * are searched. For each detected marker, it returns the 2D position of its corner in the image * and its corresponding identifier. * Note that this function does not perform pose estimation. * @note The function does not correct lens distortion or takes it into account. It's recommended to undistort * input image with corresponding camera model, if camera parameters are known * @sa undistort, estimatePoseSingleMarkers,  estimatePoseBoard
         """
 
     def getDetectorParameters(self) -> retval:
@@ -165,7 +165,7 @@ class CharucoDetector(cv2.Algorithm):
     def detectBoard(self, image, charucoCorners=..., charucoIds=..., markerCorners=..., markerIds=...) -> tuple[charucoCorners, charucoIds, markerCorners, markerIds]:
         """
         * @brief detect aruco markers and interpolate position of ChArUco board corners
-        * @param image input image necesary for corner refinement. Note that markers are not detected and * should be sent in corners and ids parameters.
+        * @param image input image necessary for corner refinement. Note that markers are not detected and * should be sent in corners and ids parameters.
         * @param charucoCorners interpolated chessboard corners.
         * @param charucoIds interpolated chessboard corners identifiers.
         * @param markerCorners vector of already detected markers corners. For each marker, its four * corners are provided, (e.g std::vector<std::vector<cv::Point2f> > ). For N detected markers, the * dimensions of this array should be Nx4. The order of the corners should be clockwise. * If markerCorners and markerCorners are empty, the function detect aruco markers and ids.
@@ -230,7 +230,7 @@ class Dictionary:
         """
         @brief Returns the distance of the input bits to the specific id.
         *
-        * If allRotations is true, the four posible bits rotation are considered
+        * If allRotations is true, the four possible bits rotation are considered
         """
 
     def identify(self, onlyBits, maxCorrectionRate) -> tuple[retval, idx, rotation]:
@@ -318,7 +318,7 @@ def calibrateCameraArucoExtended(corners, ids, counter, board, imageSize, camera
     @param board Marker Board layout
     @param imageSize Size of the image used only to initialize the intrinsic camera matrix.
     @param cameraMatrix Output 3x3 floating-point camera matrix
-    \f$A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\f$ . If CV\_CALIB\_USE\_INTRINSIC\_GUESS
+    \f$A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\f$ . If CV\\_CALIB\\_USE\\_INTRINSIC\\_GUESS
     and/or CV_CALIB_FIX_ASPECT_RATIO are specified, some or all of fx, fy, cx, cy must be
     initialized before calling the function.
     @param distCoeffs Output vector of distortion coefficients
@@ -334,7 +334,7 @@ def calibrateCameraArucoExtended(corners, ids, counter, board, imageSize, camera
     \f$(f_x, f_y, c_x, c_y, k_1, k_2, p_1, p_2, k_3, k_4, k_5, k_6 , s_1, s_2, s_3,
     s_4, \tau_x, \tau_y)\f$ If one of parameters is not estimated, it's deviation is equals to zero.
     @param stdDeviationsExtrinsics Output vector of standard deviations estimated for extrinsic parameters.
-    Order of deviations values: \f$(R_1, T_1, \dotsc , R_M, T_M)\f$ where M is number of pattern views,
+    Order of deviations values: \f$(R_1, T_1, \\dotsc , R_M, T_M)\f$ where M is number of pattern views,
     \f$R_i, T_i\f$ are concatenated 1x3 vectors.
     @param perViewErrors Output vector of average re-projection errors estimated for each pattern view.
     @param flags flags Different flags  for the calibration process (see #calibrateCamera for details).
@@ -359,7 +359,7 @@ def calibrateCameraCharucoExtended(charucoCorners, charucoIds, board, imageSize,
     @param board Marker Board layout
     @param imageSize input image size
     @param cameraMatrix Output 3x3 floating-point camera matrix
-    \f$A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\f$ . If CV\_CALIB\_USE\_INTRINSIC\_GUESS
+    \f$A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\f$ . If CV\\_CALIB\\_USE\\_INTRINSIC\\_GUESS
     and/or CV_CALIB_FIX_ASPECT_RATIO are specified, some or all of fx, fy, cx, cy must be
     initialized before calling the function.
     @param distCoeffs Output vector of distortion coefficients
@@ -375,7 +375,7 @@ def calibrateCameraCharucoExtended(charucoCorners, charucoIds, board, imageSize,
     \f$(f_x, f_y, c_x, c_y, k_1, k_2, p_1, p_2, k_3, k_4, k_5, k_6 , s_1, s_2, s_3,
     s_4, \tau_x, \tau_y)\f$ If one of parameters is not estimated, it's deviation is equals to zero.
     @param stdDeviationsExtrinsics Output vector of standard deviations estimated for extrinsic parameters.
-    Order of deviations values: \f$(R_1, T_1, \dotsc , R_M, T_M)\f$ where M is number of pattern views,
+    Order of deviations values: \f$(R_1, T_1, \\dotsc , R_M, T_M)\f$ where M is number of pattern views,
     \f$R_i, T_i\f$ are concatenated 1x3 vectors.
     @param perViewErrors Output vector of average re-projection errors estimated for each pattern view.
     @param flags flags Different flags  for the calibration process (see #calibrateCamera for details).
@@ -569,7 +569,7 @@ def interpolateCornersCharuco(markerCorners, markerIds, image, board, charucoCor
     corners are provided, (e.g std::vector<std::vector<cv::Point2f> > ). For N detected markers, the
     dimensions of this array should be Nx4. The order of the corners should be clockwise.
     @param markerIds list of identifiers for each marker in corners
-    @param image input image necesary for corner refinement. Note that markers are not detected and
+    @param image input image necessary for corner refinement. Note that markers are not detected and
     should be sent in corners and ids parameters.
     @param board layout of ChArUco board.
     @param charucoCorners interpolated chessboard corners

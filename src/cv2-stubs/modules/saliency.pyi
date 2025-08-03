@@ -1,6 +1,7 @@
-from typing import Any, TypeAlias
+from typing import Any
 
-from .. import functions as cv2
+import cv2
+from typing_extensions import TypeAlias
 
 _binaryMap: TypeAlias = Any
 saliencyMap: TypeAlias = Any
@@ -58,7 +59,7 @@ class ObjectnessBING(Objectness):
         """"""
 
     def getobjectnessValues(self) -> retval:
-        """
+        r"""
         @brief Return the list of the rectangles' objectness value,
 
         in the same order as the *vector\<Vec4i\> objectnessBoundingBox* returned by the algorithm (in
@@ -105,8 +106,8 @@ class Saliency(cv2.Algorithm):
     def computeSaliency(self, image, saliencyMap=...) -> tuple[retval, saliencyMap]:
         """
         * \brief Compute the saliency
-        * \param image        The image.
-        * \param saliencyMap      The computed saliency map.
+        * \\param image        The image.
+        * \\param saliencyMap      The computed saliency map.
         * \return true if the saliency map is computed, false otherwise
         """
 

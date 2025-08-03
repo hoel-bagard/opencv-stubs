@@ -1,4 +1,6 @@
-from typing import Any, Final, TypeAlias
+from typing import Any, Final
+
+from typing_extensions import TypeAlias
 
 dst: TypeAlias = Any
 # BorderTypes
@@ -460,7 +462,7 @@ WARP_POLAR_LOG: Final[int]
 
 # WindowFlags
 WINDOW_NORMAL: Final[int]  # The user can resize the window (no constraint) / also use to switch a fullscreen window to a normal size.
-WINDOW_AUTOSIZE: Final[int]  # The user cannot resize the window, the size is constrainted by the image displayed.
+WINDOW_AUTOSIZE: Final[int]  # The user cannot resize the window, the size is constrained by the image displayed.
 WINDOW_OPENGL: Final[int]  # Window with opengl support.
 WINDOW_FULLSCREEN: Final[int]  # Change the window to fullscreen.
 WINDOW_FREERATIO: Final[int]  # The image expends as much as it can (no ratio constraint).

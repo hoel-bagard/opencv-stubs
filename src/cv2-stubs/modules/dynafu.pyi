@@ -1,5 +1,6 @@
-import builtins
-from typing import Any, TypeAlias
+from typing import Any
+
+from typing_extensions import TypeAlias
 
 normals: TypeAlias = Any
 points: TypeAlias = Any

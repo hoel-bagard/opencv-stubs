@@ -1,9 +1,6 @@
-[build-system]
-requires = ["hatchling>=1.10.0"]
-build-backend = "hatchling.build"
-
 [project]
 name = "opencv-stubs"
+dynamic = ["version"]
 authors = [{ name = "Bagard Hoel" }]
 description = "Unofficial stubs for the opencv-python package."
 keywords = ["OpenCV", "stubs"]
@@ -11,7 +8,6 @@ readme = "README.md"
 classifiers = [
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
@@ -23,36 +19,45 @@ classifiers = [
   "Intended Audience :: Developers",
 ]
 license = { text = "MIT" }
-dynamic = ["version"]
-dependencies = ["numpy>=1.21"]
-requires-python = ">=3.7"
-packages = [{ "include" = "cv2-stubs" }]
+requires-python = ">=3.8"
 
 [project.urls]
 "Homepage" = "https://github.com/hoel-bagard/opencv-stubs"
 "Bug Tracker" = "https://github.com/hoel-bagard/opencv-stubs/issues"
 
 [project.optional-dependencies]
-dev = ["pre-commit", "pip-tools", "ruff", "pyright"]
-build = ["hatch"]
-flake8 = [
-  "flake8",
-  "flake8-bugbear",
-  "flake8-comprehensions",
-  "flake8-docstrings",
-  "flake8-builtins",
-  "flake8-quotes",
-  "pep8-naming",
-  "flake8-import-order",
-  "flake8-noqa",
-  "flake8-broken-line",
-  "flake8-commas",
-  "Flake8-pyproject",
-]
-# I couldn't figure out how to have "opencv or opencv-headless" as dependency, so they are both optional.
 opencv = ["opencv-python>=4.7.0"]
 opencv-contrib = ["opencv-contrib-python>=4.7.0"]
 opencv-headless = ["opencv-python-headless>=4.7.0"]
+
+[dependency-groups]
+dev = ["ipython>=8.12.3; python_version >= '3.9'"]
+lint = [
+  # Typing
+  "pyright>=1.1.389",
+  "numpy>=1.21,<2.0",
+  # Python formatting
+  "ruff>=0.11.9",
+  # Spelling
+  "codespell>=2.3.0; python_version >= '3.9'",
+  # Markdown
+  "mdformat>=0.7.22; python_version >= '3.9'",
+  # To support GitHub's Markdown
+  "mdformat-footnote>=0.1.1",
+  "mdformat-frontmatter>=2.0.8; python_version >= '3.9'",
+  "mdformat-gfm>=0.3.6; python_version >= '3.9'",
+  "mdformat-gfm-alerts>=1.0.1; python_version >= '3.9'",
+  # Format python, bash (requires shfmt to be present), JSON, TOML and YAML code blocks.
+  "markdown-format-ruff>=1.0.0",
+  "mdformat-shfmt>=0.1.0",
+  "mdformat-taplo>=0.9.3",
+  "mdformat-yamlfmt>=0.0.1",
+  "mdformat-json>=1.0.0",
+]
+
+[build-system]
+requires = ["hatchling>=1.10.0"]
+build-backend = "hatchling.build"
 
 [tool.hatch.version]
 path = "src/cv2-stubs/__init__.pyi"
@@ -73,27 +78,36 @@ line-length = 20000
 exclude = [".venv"]
 
 [tool.ruff.lint]
-select = [
-  "B",
-  "C4",
-  "E",
-  "I",
-  "Q",
-  "UP",
-  "BLE",
-  "COM",
-  "DTZ",
-  "PIE",
-  "PT",
-  "RSE",
-  "SIM",
-  "PTH",
-  "TRY",
-  "NPY",
-  "RUF",
-  # "ANN",
+select = ["ALL"]
+ignore = [
+  "A001",   # Rule checking for variables shadowing a Python builtin. Not something we can control here.
+  "A002",   # Rule checking for function argument shadowing a Python builtin. Not something we can control here.
+  "ANN",    # Rule checking for type annotations. There are too many missing ones.
+  "COM812", # Rule checking for missing trailing comma. Conflicts with the formatter.
+  "D",      # Do not check for docstrings.
+  "F403",   # Rule checking for * imports. Fix them if possible.
+  "F405",   # Rule checking for variables that are undefined, or defined from star imports. Fix them if possible.
+  "N",      # Rule checking for naming conventions. Not something we can control here.
+  "ICN001", # Rule checking how numpy/numpy.typing are imported. Do not use it since they are sometimes imported as _np/_npt.
+  "PYI021", # Rule checking for docstrings included in stubs. Here we explicitly want the docstrings.
+  "PYI042", # Rule checking for naming conventions. Not something we can control here.
+  "PYI011", # Rule checking for default values. Some constants are used as default values.
 ]
-ignore = ["COM812", "D1", "D401", "D204", "D203", "D213", "S101", "PLR2004"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/**/__init__.pyi" = [
+  "F401", # Unused imports error.
+]
+"src/**.pyi" = [
+  "PT028", # Test function parameter  has default argument. These are OpenCV functions, we cannot change that.
+]
+"utils/**.py" = [
+  "INP001",  # Rule checking for missing `__init__.py`. Not relevant for scripts.
+  "PLR2004",
+  "RET504",  # Rule checking for unnecessary assignment before `return` statement. Ignored in favor of better readability.
+  "S",       # Security rules, not relevant here.
+  "T201",    # Rule checking for print statements. Prints are ok for small scripts.
+]
 
 [tool.ruff.lint.isort]
 order-by-type = false
@@ -103,39 +117,14 @@ docstring-quotes = "double"
 
 [tool.pyright]
 include = ["src/cv2-stubs"]
-
-strictListInference = true
-strictDictionaryInference = true
-strictSetInference = true
-
-reportMissingModuleSource = false
-reportMissingImports = true
-reportMissingTypeStubs = false
-reportUnusedImport = false
-reportUnusedClass = "warning"
-reportUnusedFunction = "warning"
-reportUnusedVariable = "warning"
-reportDuplicateImport = "warning"
-reportUntypedNamedTuple = "warning"
-reportUntypedFunctionDecorator = "warning"
-reportUntypedClassDecorator = "warning"
-reportMissingSuperCall = false
-reportUnknownArgumentType = "warning"
-reportUnknownLambdaType = "warning"
-reportUnknownVariableType = "warning"
-reportUnknownMemberType = false
-# reportMissingParameterType = "warning"
-# reportMissingTypeArgument = "warning"
-reportCallInDefaultInitializer = false
-reportUnnecessaryIsInstance = "warning"
-reportUnnecessaryCast = "warning"
-reportUnnecessaryComparison = "warning"
-reportImplicitStringConcatenation = false
-reportUnusedCallResult = false
-reportUnusedExpression = "warning"
-reportUnnecessaryTypeIgnoreComment = "warning"
-reportMatchNotExhaustive = "warning"
-reportInvalidStringEscapeSequence = false
-
-pythonVersion = "3.10"
+pythonVersion = "3.8"
 pythonPlatform = "Linux"
+typeCheckingMode = "strict"
+reportMissingParameterType = false
+reportUnknownParameterType = false
+reportOverlappingOverload = false
+reportIncompatibleMethodOverride = false
+reportUnusedImport = false               # Because there are no __all__ in the __init__.pyi
+
+[tool.codespell]
+ignore-words-list = "ist"

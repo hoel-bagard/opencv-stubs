@@ -1,5 +1,6 @@
-import builtins
-from typing import Any, Final, TypeAlias
+from typing import Any, Final
+
+from typing_extensions import TypeAlias
 
 decoded_info: TypeAlias = Any
 points: TypeAlias = Any

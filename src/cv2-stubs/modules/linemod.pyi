@@ -1,5 +1,6 @@
-import builtins
-from typing import Any, overload, TypeAlias
+from typing import Any, overload
+
+from typing_extensions import TypeAlias
 
 img: TypeAlias = Any
 bounding_box: TypeAlias = Any
@@ -15,9 +16,9 @@ class ColorGradient(Modality):
         """
         * \brief Constructor.
         *
-        * \param weak_threshold   When quantizing, discard gradients with magnitude less than this.
-        * \param num_features     How many features a template must contain.
-        * \param strong_threshold Consider as candidate features only gradients whose norms are
+        * \\param weak_threshold   When quantizing, discard gradients with magnitude less than this.
+        * \\param num_features     How many features a template must contain.
+        * \\param strong_threshold Consider as candidate features only gradients whose norms are
         *                         larger than this.
         """
 
@@ -26,11 +27,11 @@ class DepthNormal(Modality):
         """
         * \brief Constructor.
         *
-        * \param distance_threshold   Ignore pixels beyond this distance.
-        * \param difference_threshold When computing normals, ignore contributions of pixels whose
+        * \\param distance_threshold   Ignore pixels beyond this distance.
+        * \\param difference_threshold When computing normals, ignore contributions of pixels whose
         *                             depth difference with the central pixel is above this threshold.
-        * \param num_features         How many features a template must contain.
-        * \param extract_threshold    Consider as candidate feature only if there are no differing
+        * \\param num_features         How many features a template must contain.
+        * \\param extract_threshold    Consider as candidate feature only if there are no differing
         *                             orientations within a distance of extract_threshold.
         """
 
@@ -44,10 +45,10 @@ class Detector:
         """
         * \brief Add new object template.
         *
-        * \param      sources      Source images, one for each modality.
-        * \param      class_id     Object class ID.
-        * \param      object_mask  Mask separating object from background.
-        * \param[out] bounding_box Optionally return bounding box of the extracted features.
+        * \\param      sources      Source images, one for each modality.
+        * \\param      class_id     Object class ID.
+        * \\param      object_mask  Mask separating object from background.
+        * \\param[out] bounding_box Optionally return bounding box of the extracted features.
         *
         * \return Template ID, or -1 if failed to extract a valid template.
         """
@@ -82,12 +83,12 @@ class Detector:
         *
         * Matches globally at the lowest pyramid level, then refines locally stepping up the pyramid.
         *
-        * \param      sources   Source images, one for each modality.
-        * \param      threshold Similarity threshold, a percentage between 0 and 100.
-        * \param[out] matches   Template matches, sorted by similarity score.
-        * \param      class_ids If non-empty, only search for the desired object classes.
-        * \param[out] quantized_images Optionally return vector<Mat> of quantized images.
-        * \param      masks     The masks for consideration during matching. The masks should be CV_8UC1
+        * \\param      sources   Source images, one for each modality.
+        * \\param      threshold Similarity threshold, a percentage between 0 and 100.
+        * \\param[out] matches   Template matches, sorted by similarity score.
+        * \\param      class_ids If non-empty, only search for the desired object classes.
+        * \\param[out] quantized_images Optionally return vector<Mat> of quantized images.
+        * \\param      masks     The masks for consideration during matching. The masks should be CV_8UC1
         *                       where 255 represents a valid pixel.  If non-empty, the vector must be
         *                       the same size as sources.  Each element must be
         *                       empty or the same size as its corresponding source.
@@ -129,8 +130,8 @@ class Modality:
         """
         * \brief Form a quantized image pyramid from a source image.
         *
-        * \param[in] src  The source image. Type depends on the modality.
-        * \param[in] mask Optional mask. If not empty, unmasked pixels are set to zero
+        * \\param[in] src  The source image. Type depends on the modality.
+        * \\param[in] mask Optional mask. If not empty, unmasked pixels are set to zero
         *                 in quantized image and cannot be extracted as features.
         """
 
@@ -158,7 +159,7 @@ class QuantizedPyramid:
         """
         * \brief Extract most discriminant features at current pyramid level to form a new template.
         *
-        * \param[out] templ The new template.
+        * \\param[out] templ The new template.
         """
 
     def pyrDown(self) -> None:
@@ -172,7 +173,7 @@ class QuantizedPyramid:
         """
         * \brief Compute quantized image at current pyramid level for online detection.
         *
-        * \param[out] dst The destination 8-bit image. For each pixel at most one bit is set,
+        * \\param[out] dst The destination 8-bit image. For each pixel at most one bit is set,
         *                 representing its classification.
         """
 
@@ -182,9 +183,9 @@ def ColorGradient_create(weak_threshold, num_features, strong_threshold) -> retv
     """
     * \brief Constructor.
        *
-       * \param weak_threshold   When quantizing, discard gradients with magnitude less than this.
-       * \param num_features     How many features a template must contain.
-       * \param strong_threshold Consider as candidate features only gradients whose norms are
+       * \\param weak_threshold   When quantizing, discard gradients with magnitude less than this.
+       * \\param num_features     How many features a template must contain.
+       * \\param strong_threshold Consider as candidate features only gradients whose norms are
        *                         larger than this.
     """
 
@@ -192,11 +193,11 @@ def DepthNormal_create(distance_threshold, difference_threshold, num_features, e
     """
     * \brief Constructor.
        *
-       * \param distance_threshold   Ignore pixels beyond this distance.
-       * \param difference_threshold When computing normals, ignore contributions of pixels whose
+       * \\param distance_threshold   Ignore pixels beyond this distance.
+       * \\param difference_threshold When computing normals, ignore contributions of pixels whose
        *                             depth difference with the central pixel is above this threshold.
-       * \param num_features         How many features a template must contain.
-       * \param extract_threshold    Consider as candidate feature only if there are no differing
+       * \\param num_features         How many features a template must contain.
+       * \\param extract_threshold    Consider as candidate feature only if there are no differing
        *                             orientations within a distance of extract_threshold.
     """
 

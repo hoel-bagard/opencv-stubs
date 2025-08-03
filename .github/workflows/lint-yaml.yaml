@@ -1,0 +1,45 @@
+# We could use prettier for formatting yaml, however I went with a more lightweight tool, that is also easy to configure.
+name: Lint YAML
+
+on:
+  workflow_dispatch:
+  push:
+    branches: master
+    paths:
+      - "**.yaml"
+      - ".github/workflows/lint-yaml.yaml"
+  pull_request:
+    paths:
+      - "**.yaml"
+      - ".github/workflows/lint-yaml.yaml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  yaml-lint:
+    name: Check yaml formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+        # Note:
+        # We could get the yamlfmt binary directly from the releases, and avoid setting up go, but that would
+        # lead to a "dirty" workspace (yamlfmt binary, its README, etc...), hence the go setup.
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+          cache: false
+
+      - name: Install yamlfmt
+        run: |
+          go install github.com/google/yamlfmt/cmd/yamlfmt@v0.16.0
+          echo "Installed yamlfmt version $(yamlfmt -version)"
+
+      - name: Run yamlfmt
+        run: |
+          yamlfmt .
+          git diff --exit-code

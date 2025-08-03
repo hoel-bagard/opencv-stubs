@@ -1,6 +1,7 @@
-from typing import Any, TypeAlias
+from typing import Any
 
-from .. import functions as cv2
+import cv2
+from typing_extensions import TypeAlias
 
 retval: TypeAlias = Any
 
@@ -30,7 +31,7 @@ class HfsSegment(cv2.Algorithm):
         """
         @brief do segmentation with cpu
         * This method is only implemented for reference.
-        * It is highly NOT recommanded to use it.
+        * It is highly NOT recommended to use it.
         """
 
     def performSegmentGpu(self, src, ifDraw=...) -> retval:

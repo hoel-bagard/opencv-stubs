@@ -1,0 +1,52 @@
+name: Lint Markdown
+
+on:
+  workflow_dispatch:
+  push:
+    branches: master
+    paths:
+      - "**.md"
+      - ".github/workflows/lint-markdown.yaml"
+  pull_request:
+    paths:
+      - "**.md"
+      - ".github/workflows/lint-markdown.yaml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+env:
+  UV_FROZEN: 1
+
+jobs:
+  markdown-lint:
+    name: Check markdown formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      # mdformat-shfmt requires shfmt to be present
+      - name: Install shfmt
+        run: |
+          go install mvdan.cc/sh/v3/cmd/shfmt@latest
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.7.5"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+          python-version: 3.13
+
+      - name: Run mdformat
+        run: |
+          uv run --group lint mdformat . --exclude ".venv/**"
+          # Do not use the --check option of mdformat in order to get a more informative error message.
+          git diff --exit-code

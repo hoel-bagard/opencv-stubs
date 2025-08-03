@@ -1,4 +1,4 @@
-name: Create release
+name: Release CI
 
 permissions:
   contents: write
@@ -17,7 +17,7 @@ jobs:
   # and names the release after the `x.y.z` tag that was pushed.
   # It's separate from building the release so that we only create the release once.
   create-release:
-    name: create-release
+    name: Create release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,11 +33,11 @@ jobs:
         run: |
           echo "version is: $VERSION"
 
-      - name: Check that the tag version and the __init__.py version match.
+      - name: Check that the tag version and the project version match.
         shell: bash
         run: |
           if ! grep -q "__version__ = \"$VERSION\"" src/cv2-stubs/__init__.pyi; then
-            echo "Tag version does not match the one in src/cv2-stubs/__init__.py" >&2
+            echo "Tag version does not match the one in src/cv2-stubs/__init__.pyi" >&2
             exit 1
           fi
 
@@ -50,42 +50,37 @@ jobs:
       gh_release_tag: ${{ env.GH_RELEASE_TAG }}
 
   build-release:
-    name: build-release
+    name: publish-release
     needs: ["create-release"]
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - build: linux
-            os: ubuntu-latest
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+      contents: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+          version: "0.8.4"
+          python-version: "3.12"
+
       - name: Setup
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
 
-      - name: Install dependencies
+      - name: Build and publish to PyPi
         run: |
-          pip install hatch
-
-      - name: Build binaries
-        run: |
-          hatch build --clean
-
-      - name: Publish to PyPi
-        env:
-          HATCH_INDEX_USER: "__token__"
-          HATCH_INDEX_AUTH: ${{ secrets.PYPI_API_TOKEN }}
-        run: |
-          hatch run pypi:publish
+          uv build
+          uv publish
 
       - name: Upload release
-        shell: bash
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |

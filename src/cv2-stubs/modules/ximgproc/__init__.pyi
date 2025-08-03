@@ -1,11 +1,11 @@
-import builtins
-from typing import Any, Final, TypeAlias
+from typing import Any, Final
 
+import cv2
 import numpy as _np
 import numpy.typing as _npt
+from typing_extensions import TypeAlias
 
-from ... import functions as cv2
-from . import segmentation
+from .segmentation import *
 
 lines: TypeAlias = Any
 qnimg: TypeAlias = Any
@@ -23,8 +23,6 @@ qimg: TypeAlias = Any
 result: TypeAlias = Any
 qcimg: TypeAlias = Any
 _dst: TypeAlias = Any
-dst: TypeAlias = Any
-retval: TypeAlias = Any
 
 class AdaptiveManifoldFilter(cv2.Algorithm):
     def collectGarbage(self) -> None:
@@ -49,7 +47,7 @@ class ContourFitting(cv2.Algorithm):
 
         @param src Contour defining first shape.
         @param dst Contour defining second shape (Target).
-        @param alphaPhiST : \f$ \alpha \f$=alphaPhiST(0,0), \f$ \phi \f$=alphaPhiST(0,1) (in radian), s=alphaPhiST(0,2), Tx=alphaPhiST(0,3), Ty=alphaPhiST(0,4) rotation center
+        @param alphaPhiST : \f$ \alpha \f$=alphaPhiST(0,0), \f$ \\phi \f$=alphaPhiST(0,1) (in radian), s=alphaPhiST(0,2), Tx=alphaPhiST(0,3), Ty=alphaPhiST(0,4) rotation center
         @param dist distance between src and dst after matching.
         @param fdContour false then src and dst are contours and true src and dst are fourier descriptors.
         """
@@ -457,7 +455,7 @@ class FastGlobalSmootherFilter(cv2.Algorithm):
 
 class FastLineDetector(cv2.Algorithm):
     def detect(self, image, lines=...) -> lines:
-        """
+        r"""
         @brief Finds lines in the input image.
         This is the output of the default parameters of the algorithm on the above
         shown image.
@@ -606,7 +604,7 @@ class RICInterpolator(SparseMatchInterpolator):
     def setMaxFlow(self, maxFlow=...) -> None:
         """
         @brief MaxFlow is a threshold to validate the predictions using a certain piece-wise affine model.
-        * If the prediction exceeds the treshold the translational model will be applied instead.
+        * If the prediction exceeds the threshold the translational model will be applied instead.
         """
 
     def setModelIter(self, modelIter=...) -> None:
@@ -616,7 +614,7 @@ class RICInterpolator(SparseMatchInterpolator):
 
     def setRefineModels(self, refineModles=...) -> None:
         """
-        @brief Parameter to choose wether additional refinement of the piece-wise affine models is employed.
+        @brief Parameter to choose whether additional refinement of the piece-wise affine models is employed.
         """
 
     def setSuperpixelMode(self, mode=...) -> None:
@@ -653,7 +651,7 @@ class RICInterpolator(SparseMatchInterpolator):
 
     def setUseVariationalRefinement(self, use_variational_refinement=...) -> None:
         """
-        @brief Parameter to choose wether the VariationalRefinement post-processing  is employed.
+        @brief Parameter to choose whether the VariationalRefinement post-processing  is employed.
         """
 
 class RidgeDetectionFilter(cv2.Algorithm):
@@ -667,7 +665,7 @@ class RidgeDetectionFilter(cv2.Algorithm):
     def create(self, ddepth=..., dx=..., dy=..., ksize=..., out_dtype=..., scale=..., delta=..., borderType=...) -> retval:
         """
         @brief Create pointer to the Ridge detection filter.
-        @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+        @param ddepth  Specifies output image depth. Default is CV_32FC1
         @param dx Order of derivative x, default is 1
         @param dy  Order of derivative y, default is 1
         @param ksize Sobel kernel size , default is 3
@@ -983,7 +981,7 @@ def RadonTransform(src, dst=..., theta=..., start_angle=..., end_angle=..., crop
 def RidgeDetectionFilter_create(ddepth=..., dx=..., dy=..., ksize=..., out_dtype=..., scale=..., delta=..., borderType=...) -> retval:
     """
     @brief Create pointer to the Ridge detection filter.
-        @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+        @param ddepth  Specifies output image depth. Default is CV_32FC1
         @param dx Order of derivative x, default is 1
         @param dy  Order of derivative y, default is 1
         @param ksize Sobel kernel size , default is 3
@@ -1023,15 +1021,15 @@ def anisotropicDiffusion(src, alpha, K, niters, dst=...) -> dst:
 
      The function applies Perona-Malik anisotropic diffusion to an image. This is the solution to the partial differential equation:
 
-     \f[{\frac  {\partial I}{\partial t}}={\mathrm  {div}}\left(c(x,y,t)\nabla I\right)=\nabla c\cdot \nabla I+c(x,y,t)\Delta I\f]
+     \f[{\frac  {\\partial I}{\\partial t}}={\\mathrm  {div}}\\left(c(x,y,t)\nabla I\right)=\nabla c\\cdot \nabla I+c(x,y,t)\\Delta I\f]
 
      Suggested functions for c(x,y,t) are:
 
-     \f[c\left(\|\nabla I\|\right)=e^{{-\left(\|\nabla I\|/K\right)^{2}}}\f]
+     \f[c\\left(\\|\nabla I\\|\right)=e^{{-\\left(\\|\nabla I\\|/K\right)^{2}}}\f]
 
      or
 
-     \f[ c\left(\|\nabla I\|\right)={\frac {1}{1+\left({\frac  {\|\nabla I\|}{K}}\right)^{2}}} \f]
+     \f[ c\\left(\\|\nabla I\\|\right)={\frac {1}{1+\\left({\frac  {\\|\nabla I\\|}{K}}\right)^{2}}} \f]
 
      @param src Source image with 3 channels.
      @param dst Destination image of the same size and the same number of channels as src .
@@ -1161,10 +1159,10 @@ def createDTFilter(guide, sigmaSpatial, sigmaColor, mode=..., numIters=...) -> r
     @param guide guided image (used to build transformed distance, which describes edge structure of
     guided image).
 
-    @param sigmaSpatial \f${\sigma}_H\f$ parameter in the original article, it's similar to the sigma in the
+    @param sigmaSpatial \f${\\sigma}_H\f$ parameter in the original article, it's similar to the sigma in the
     coordinate space into bilateralFilter.
 
-    @param sigmaColor \f${\sigma}_r\f$ parameter in the original article, it's similar to the sigma in the
+    @param sigmaColor \f${\\sigma}_r\f$ parameter in the original article, it's similar to the sigma in the
     color space into bilateralFilter.
 
     @param mode one form three modes DTF_NC, DTF_RF and DTF_IC which corresponds to three modes for
@@ -1301,7 +1299,7 @@ def createQuaternionImage(img, qimg=...) -> qimg:
     * @brief   creates a quaternion image.
     *
     * @param   img         Source 8-bit, 32-bit or 64-bit image, with 3-channel image.
-    * @param   qimg        result CV_64FC4 a quaternion image( 4 chanels zero channel and B,G,R).
+    * @param   qimg        result CV_64FC4 a quaternion image( 4 channels zero channel and B,G,R).
     """
 
 def createRFFeatureGetter() -> retval:
@@ -1357,7 +1355,7 @@ def createSuperpixelLSC(image, region_size=..., ratio=...) -> retval:
 
     The function initializes a SuperpixelLSC object for the input image. It sets the parameters of
     superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
-    computing iterations over the given image. An example of LSC is ilustrated in the following picture.
+    computing iterations over the given image. An example of LSC is illustrated in the following picture.
     For enanched results it is recommended for color images to preprocess image with little gaussian blur
     with a small 3 x 3 kernel and additional conversion into CieLAB color space.
 
@@ -1365,7 +1363,7 @@ def createSuperpixelLSC(image, region_size=..., ratio=...) -> retval:
     """
 
 def createSuperpixelSEEDS(image_width, image_height, image_channels, num_superpixels, num_levels, prior=..., histogram_bins=..., double_step=...) -> retval:
-    """
+    r"""
     @brief Initializes a SuperpixelSEEDS object.
 
     @param image_width Image width.
@@ -1407,11 +1405,11 @@ def createSuperpixelSLIC(image, algorithm=..., region_size=..., ruler=...) -> re
     @param region_size Chooses an average superpixel size measured in pixels
     @param ruler Chooses the enforcement of superpixel smoothness factor of superpixel
 
-    The function initializes a SuperpixelSLIC object for the input image. It sets the parameters of choosed
+    The function initializes a SuperpixelSLIC object for the input image. It sets the parameters of chosen
     superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
     computing iterations over the given image. For enanched results it is recommended for color images to
     preprocess image with little gaussian blur using a small 3 x 3 kernel and additional conversion into
-    CieLAB color space. An example of SLIC versus SLICO and MSLIC is ilustrated in the following picture.
+    CieLAB color space. An example of SLIC versus SLICO and MSLIC is illustrated in the following picture.
 
     ![image](pics/superpixels_slic.png)
     """
@@ -1425,9 +1423,9 @@ def dtFilter(guide, src, sigmaSpatial, sigmaColor, dst=..., mode=..., numIters=.
     depth and up to 4 channels.
     @param src filtering image with unsigned 8-bit or floating-point 32-bit depth and up to 4 channels.
     @param dst destination image
-    @param sigmaSpatial \f${\sigma}_H\f$ parameter in the original article, it's similar to the sigma in the
+    @param sigmaSpatial \f${\\sigma}_H\f$ parameter in the original article, it's similar to the sigma in the
     coordinate space into bilateralFilter.
-    @param sigmaColor \f${\sigma}_r\f$ parameter in the original article, it's similar to the sigma in the
+    @param sigmaColor \f${\\sigma}_r\f$ parameter in the original article, it's similar to the sigma in the
     color space into bilateralFilter.
     @param mode one form three modes DTF_NC, DTF_RF and DTF_IC which corresponds to three modes for
     filtering 2D signals in the article.
@@ -1518,7 +1516,7 @@ def findEllipses(image, ellipses=..., scoreThreshold=..., reliabilityThreshold=.
 
 def fourierDescriptor(src, dst=..., nbElt=..., nbFD=...) -> dst:
     """
-    * @brief   Fourier descriptors for planed closed curves
+    * @brief   Fourier descriptors for planned closed curves
         *
         * For more details about this implementation, please see @cite PersoonFu1977
         *
@@ -1565,7 +1563,7 @@ def guidedFilter(guide, src, radius, eps, dst=..., dDepth=...) -> dst:
     """
 
 def jointBilateralFilter(joint, src, d, sigmaColor, sigmaSpace, dst=..., borderType=...) -> dst:
-    """
+    r"""
     @brief Applies the joint bilateral filter to an image.
 
     @param joint Joint 8-bit or floating-point, 1-channel or 3-channel image.
@@ -1616,9 +1614,9 @@ def niBlackThreshold(_src, maxValue, type, blockSize, k, _dst=..., binarizationM
 
     The function transforms a grayscale image to a binary image according to the formulae:
     -   **THRESH_BINARY**
-        \f[dst(x,y) =  \fork{\texttt{maxValue}}{if \(src(x,y) > T(x,y)\)}{0}{otherwise}\f]
+        \f[dst(x,y) =  \fork{\texttt{maxValue}}{if \\(src(x,y) > T(x,y)\\)}{0}{otherwise}\f]
     -   **THRESH_BINARY_INV**
-        \f[dst(x,y) =  \fork{0}{if \(src(x,y) > T(x,y)\)}{\texttt{maxValue}}{otherwise}\f]
+        \f[dst(x,y) =  \fork{0}{if \\(src(x,y) > T(x,y)\\)}{\texttt{maxValue}}{otherwise}\f]
     where \f$T(x,y)\f$ is a threshold calculated individually for each pixel.
 
     The threshold value \f$T(x, y)\f$ is determined based on the binarization method chosen. For
@@ -1692,7 +1690,7 @@ def readGT(src_path, dst=...) -> tuple[retval, dst]:
     """
 
 def rollingGuidanceFilter(src, dst=..., d=..., sigmaColor=..., sigmaSpace=..., numOfIter=..., borderType=...) -> dst:
-    """
+    r"""
     @brief Applies the rolling guidance filter to an image.
 
     For more details, please see @cite zhang2014rolling
