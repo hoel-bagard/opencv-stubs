@@ -1,4 +1,3 @@
-import builtins
 from typing import Any, Final
 
 import cv2
@@ -6,7 +5,7 @@ import numpy as _np
 import numpy.typing as _npt
 from typing_extensions import TypeAlias
 
-from . import segmentation
+from .segmentation import *
 
 lines: TypeAlias = Any
 qnimg: TypeAlias = Any
@@ -24,8 +23,6 @@ qimg: TypeAlias = Any
 result: TypeAlias = Any
 qcimg: TypeAlias = Any
 _dst: TypeAlias = Any
-dst: TypeAlias = Any
-retval: TypeAlias = Any
 
 class AdaptiveManifoldFilter(cv2.Algorithm):
     def collectGarbage(self) -> None:

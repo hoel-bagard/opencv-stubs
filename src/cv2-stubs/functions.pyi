@@ -156,7 +156,6 @@ def StereoSGBM_create(minDisparity=..., numDisparities=..., blockSize=..., P1=..
 def Stitcher_create(mode=...) -> Any:
     "Stitcher_create([, mode]) -> retval\n.   @brief Creates a Stitcher configured in one of the stitching modes.\n.   \n.       @param mode Scenario for stitcher operation. This is usually determined by source of images\n.       to stitch and their transformation. Default parameters will be chosen for operation in given\n.       scenario.\n.       @return Stitcher class instance."
 
-def UMat(img: npt.NDArray[_TImg]) -> npt.NDArray[_TImg]: ...
 def UMat_context() -> Any:
     "UMat_context() -> retval\n."
 
