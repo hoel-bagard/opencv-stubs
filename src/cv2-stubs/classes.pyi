@@ -1192,6 +1192,15 @@ class DescriptorMatcher(Algorithm, ABC):
     def create(self, matcherType) -> retval:
         """"""
 
+class error(Exception):
+    __weakref__: Any
+    code: int | None = None
+    err: str | None = None
+    file: TypeAlias | None = None
+    func: str | None = None
+    line: int | None = None
+    msg: str | None = None
+
 class EMDHistogramCostExtractor(HistogramCostExtractor):
     def getNormFlag(self) -> retval:
         """"""
