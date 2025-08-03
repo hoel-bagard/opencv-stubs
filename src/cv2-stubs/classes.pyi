@@ -1,7 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import Any, overload, Sequence
 
+import numpy as np
 import numpy.typing as npt
+from cv2.modules import colored_kinfu, img_hash, large_kinfu, phase_unwrapping, structured_light, wechat_qrcode, ximgproc
 from typing_extensions import TypeAlias
 
 from .modules import *
@@ -568,7 +570,7 @@ class BackgroundSubtractorKNN(BackgroundSubtractor):
         """
         @brief Sets the number of data samples in the background model.
 
-        The model needs to be reinitalized to reserve memory.
+        The model needs to be reinitialized to reserve memory.
         """
 
     def setShadowThreshold(self, threshold) -> None:
@@ -2387,7 +2389,7 @@ class MSER(Feature2D):
         @param edge_blur_size for color image, the aperture size for edge blur
         """
 
-class Mat(numpy.ndarray): ...
+class Mat(np.ndarray): ...
 
 class MergeDebevec(MergeExposures):
     @overload
@@ -3954,8 +3956,8 @@ bioinspired_Retina = bioinspired.Retina
 bioinspired_RetinaFastToneMapping = bioinspired.RetinaFastToneMapping
 bioinspired_TransientAreasSegmentationModule = bioinspired.TransientAreasSegmentationModule
 ccm_ColorCorrectionModel = ccm.ColorCorrectionModel
-colored_kinfu_ColoredKinFu = colored.ColoredKinFu
-colored_kinfu_Params = colored.Params
+colored_kinfu_ColoredKinFu = colored_kinfu.ColoredKinFu
+colored_kinfu_Params = colored_kinfu.Params
 cuda_BufferPool = cuda.BufferPool
 cuda_DeviceInfo = cuda.DeviceInfo
 cuda_Event = cuda.Event
@@ -4050,20 +4052,20 @@ gapi_wip_draw_Rect = gapi.wip.draw.Rect
 gapi_wip_draw_Text = gapi.wip.draw.Text
 gapi_wip_gst_GStreamerPipeline = gapi.wip.gst.GStreamerPipeline
 hfs_HfsSegment = hfs.HfsSegment
-img_hash_AverageHash = img.AverageHash
-img_hash_BlockMeanHash = img.BlockMeanHash
-img_hash_ColorMomentHash = img.ColorMomentHash
-img_hash_ImgHashBase = img.ImgHashBase
-img_hash_MarrHildrethHash = img.MarrHildrethHash
-img_hash_PHash = img.PHash
-img_hash_RadialVarianceHash = img.RadialVarianceHash
+img_hash_AverageHash = img_hash.AverageHash
+img_hash_BlockMeanHash = img_hash.BlockMeanHash
+img_hash_ColorMomentHash = img_hash.ColorMomentHash
+img_hash_ImgHashBase = img_hash.ImgHashBase
+img_hash_MarrHildrethHash = img_hash.MarrHildrethHash
+img_hash_PHash = img_hash.PHash
+img_hash_RadialVarianceHash = img_hash.RadialVarianceHash
 kinfu_KinFu = kinfu.KinFu
 kinfu_Params = kinfu.Params
 kinfu_Volume = kinfu.Volume
 kinfu_VolumeParams = kinfu.VolumeParams
 kinfu_detail_PoseGraph = kinfu.detail.PoseGraph
-large_kinfu_LargeKinfu = large.LargeKinfu
-large_kinfu_Params = large.Params
+large_kinfu_LargeKinfu = large_kinfu.LargeKinfu
+large_kinfu_Params = large_kinfu.Params
 legacy_MultiTracker = legacy.MultiTracker
 legacy_Tracker = legacy.Tracker
 legacy_TrackerBoosting = legacy.TrackerBoosting
@@ -4073,12 +4075,12 @@ legacy_TrackerMIL = legacy.TrackerMIL
 legacy_TrackerMOSSE = legacy.TrackerMOSSE
 legacy_TrackerMedianFlow = legacy.TrackerMedianFlow
 legacy_TrackerTLD = legacy.TrackerTLD
-line_descriptor_BinaryDescriptor = line.BinaryDescriptor
-line_descriptor_BinaryDescriptorMatcher = line.BinaryDescriptorMatcher
-line_descriptor_DrawLinesMatchesFlags = line.DrawLinesMatchesFlags
-line_descriptor_KeyLine = line.KeyLine
-line_descriptor_LSDDetector = line.LSDDetector
-line_descriptor_LSDParam = line.LSDParam
+line_descriptor_BinaryDescriptor = line_descriptor.BinaryDescriptor
+line_descriptor_BinaryDescriptorMatcher = line_descriptor.BinaryDescriptorMatcher
+line_descriptor_DrawLinesMatchesFlags = line_descriptor.DrawLinesMatchesFlags
+line_descriptor_KeyLine = line_descriptor.KeyLine
+line_descriptor_LSDDetector = line_descriptor.LSDDetector
+line_descriptor_LSDParam = line_descriptor.LSDParam
 linemod_ColorGradient = linemod.ColorGradient
 linemod_DepthNormal = linemod.DepthNormal
 linemod_Detector = linemod.Detector
@@ -4117,14 +4119,14 @@ optflow_OpticalFlowPCAFlow = optflow.OpticalFlowPCAFlow
 optflow_PCAPrior = optflow.PCAPrior
 optflow_RLOFOpticalFlowParameter = optflow.RLOFOpticalFlowParameter
 optflow_SparseRLOFOpticalFlow = optflow.SparseRLOFOpticalFlow
-phase_unwrapping_HistogramPhaseUnwrapping = phase.HistogramPhaseUnwrapping
-phase_unwrapping_HistogramPhaseUnwrapping_Params = phase.Params
-phase_unwrapping_PhaseUnwrapping = phase.PhaseUnwrapping
+phase_unwrapping_HistogramPhaseUnwrapping = phase_unwrapping.HistogramPhaseUnwrapping
+phase_unwrapping_HistogramPhaseUnwrapping_Params = Params
+phase_unwrapping_PhaseUnwrapping = phase_unwrapping.PhaseUnwrapping
 plot_Plot2d = plot.Plot2d
-ppf_match_3d_ICP = ppf.ICP
-ppf_match_3d_PPF3DDetector = ppf.PPF3DDetector
-ppf_match_3d_Pose3D = ppf.Pose3D
-ppf_match_3d_PoseCluster3D = ppf.PoseCluster3D
+ppf_match_3d_ICP = ppf_match_3d.ICP
+ppf_match_3d_PPF3DDetector = ppf_match_3d.PPF3DDetector
+ppf_match_3d_Pose3D = ppf_match_3d.Pose3D
+ppf_match_3d_PoseCluster3D = ppf_match_3d.PoseCluster3D
 quality_QualityBRISQUE = quality.QualityBRISQUE
 quality_QualityBase = quality.QualityBase
 quality_QualityGMSD = quality.QualityGMSD
@@ -4169,10 +4171,10 @@ segmentation_IntelligentScissorsMB = segmentation.IntelligentScissorsMB
 stereo_MatchQuasiDense = stereo.MatchQuasiDense
 stereo_PropagationParameters = stereo.PropagationParameters
 stereo_QuasiDenseStereo = stereo.QuasiDenseStereo
-structured_light_GrayCodePattern = structured.GrayCodePattern
-structured_light_SinusoidalPattern = structured.SinusoidalPattern
-structured_light_SinusoidalPattern_Params = structured.Params
-structured_light_StructuredLightPattern = structured.StructuredLightPattern
+structured_light_GrayCodePattern = structured_light.GrayCodePattern
+structured_light_SinusoidalPattern = structured_light.SinusoidalPattern
+structured_light_SinusoidalPattern_Params = Params
+structured_light_StructuredLightPattern = structured_light.StructuredLightPattern
 text_BaseOCR = text.BaseOCR
 text_ERFilter = text.ERFilter
 text_ERFilter_Callback = text.ERFilter.Callback
@@ -4186,7 +4188,7 @@ text_TextDetectorCNN = text.TextDetectorCNN
 utils_ClassWithKeywordProperties = utils.ClassWithKeywordProperties
 utils_nested_ExportClassName = utils.nested.ExportClassName
 utils_nested_ExportClassName_Params = utils.nested.ExportClassName.Params
-wechat_qrcode_WeChatQRCode = wechat.WeChatQRCode
+wechat_qrcode_WeChatQRCode = wechat_qrcode.WeChatQRCode
 xfeatures2d_AffineFeature2D = xfeatures2d.AffineFeature2D
 xfeatures2d_BEBLID = xfeatures2d.BEBLID
 xfeatures2d_BoostDesc = xfeatures2d.BoostDesc
