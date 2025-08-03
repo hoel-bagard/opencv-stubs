@@ -83,6 +83,7 @@ ignore = [
   "A001",   # Rule checking for variables shadowing a Python builtin. Not something we can control here.
   "A002",   # Rule checking for function argument shadowing a Python builtin. Not something we can control here.
   "ANN",    # Rule checking for type annotations. There are too many missing ones.
+  "COM812", # Rule checking for missing trailing comma. Conflicts with the formatter.
   "D",      # Do not check for docstrings.
   "F403",   # Rule checking for * imports. Fix them if possible.
   "F405",   # Rule checking for variables that are undefined, or defined from star imports. Fix them if possible.
@@ -101,7 +102,11 @@ ignore = [
   "PT028", # Test function parameter  has default argument. These are OpenCV functions, we cannot change that.
 ]
 "utils/**.py" = [
-  "T201", # Rule checking for print statements. Prints are ok for small scripts.
+  "INP001",  # Rule checking for missing `__init__.py`. Not relevant for scripts.
+  "PLR2004",
+  "RET504",  # Rule checking for unnecessary assignment before `return` statement. Ignored in favor of better readability.
+  "S",       # Security rules, not relevant here.
+  "T201",    # Rule checking for print statements. Prints are ok for small scripts.
 ]
 
 [tool.ruff.lint.isort]

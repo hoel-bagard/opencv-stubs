@@ -75,7 +75,7 @@ def main() -> None:
             stub_path = output_path / "modules" / module_name / "__init__.pyi"
             for name, member in inspect.getmembers(module):
                 if inspect.ismodule(member) and not name.startswith("_"):
-                    subprocess.run(["sed", "-i", f"1ifrom . import {name}", stub_path], stdout=subprocess.PIPE)
+                    subprocess.run(["sed", "-i", f"1ifrom . import {name}", stub_path], check=False, stdout=subprocess.PIPE)
 
     print("Finished")
 
