@@ -8,7 +8,6 @@ readme = "README.md"
 classifiers = [
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
@@ -21,7 +20,7 @@ classifiers = [
 ]
 license = { text = "MIT" }
 dependencies = ["numpy>=1.21"]
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 
 [project.urls]
 "Homepage" = "https://github.com/hoel-bagard/opencv-stubs"
@@ -49,11 +48,11 @@ lint = [
   "mdformat-gfm>=0.3.6; python_version >= '3.9'",
   "mdformat-gfm-alerts>=1.0.1; python_version >= '3.9'",
   # Format python, bash (requires shfmt to be present), JSON, TOML and YAML code blocks.
-  "markdown-format-ruff>=1.0.0; python_version >= '3.9'",
-  "mdformat-shfmt>=0.1.0; python_version >= '3.9'",
-  "mdformat-taplo>=0.9.3; python_version >= '3.9'",
-  "mdformat-yamlfmt>=0.0.1; python_version >= '3.9'",
-  "mdformat-json>=1.0.0; python_version >= '3.9'",
+  "markdown-format-ruff>=1.0.0",
+  "mdformat-shfmt>=0.1.0",
+  "mdformat-taplo>=0.9.3",
+  "mdformat-yamlfmt>=0.0.1",
+  "mdformat-json>=1.0.0",
 ]
 
 [build-system]
