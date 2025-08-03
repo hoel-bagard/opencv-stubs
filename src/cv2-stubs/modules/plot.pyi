@@ -1,8 +1,7 @@
 from typing import Any, overload
 
+import cv2
 from typing_extensions import TypeAlias
-
-from .. import functions as cv2
 
 _plotResult: TypeAlias = Any
 

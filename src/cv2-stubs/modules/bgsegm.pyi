@@ -1,8 +1,7 @@
 from typing import Any, Final
 
+import cv2
 from typing_extensions import TypeAlias
-
-from .. import functions as cv2
 
 gtMask: TypeAlias = Any
 fgmask: TypeAlias = Any

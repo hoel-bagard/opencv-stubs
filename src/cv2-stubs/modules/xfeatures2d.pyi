@@ -1,8 +1,7 @@
 from typing import Any, Final, overload
 
+import cv2
 from typing_extensions import TypeAlias
-
-from .. import functions as cv2
 
 result: TypeAlias = Any
 signature: TypeAlias = Any

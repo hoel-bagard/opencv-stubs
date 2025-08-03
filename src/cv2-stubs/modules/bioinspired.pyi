@@ -1,8 +1,7 @@
 from typing import Any, Final, overload
 
+import cv2
 from typing_extensions import TypeAlias
-
-from .. import functions as cv2
 
 outputToneMappedImage: TypeAlias = Any
 retinaOutput_parvo: TypeAlias = Any
