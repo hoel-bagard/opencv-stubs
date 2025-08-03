@@ -11,7 +11,7 @@ ci:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
+    rev: v5.0.0
     hooks:
       - id: check-docstring-first
       - id: end-of-file-fixer
@@ -26,7 +26,7 @@ repos:
       - id: ruff
 
   - repo: https://github.com/RobertCraigie/pyright-python
-    rev: v1.1.300
+    rev: v1.1.403
     hooks:
       - id: pyright
         additional_dependencies: ["numpy>=1.21", "opencv-python"]
