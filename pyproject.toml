@@ -19,7 +19,6 @@ classifiers = [
   "Intended Audience :: Developers",
 ]
 license = { text = "MIT" }
-dependencies = ["numpy>=1.21"]
 requires-python = ">=3.8"
 
 [project.urls]
@@ -36,6 +35,7 @@ dev = ["ipython>=8.12.3; python_version >= '3.9'"]
 lint = [
   # Typing
   "pyright>=1.1.389",
+  "numpy>=1.21,<2.0",
   # Python formatting
   "ruff>=0.11.9",
   # Spelling
