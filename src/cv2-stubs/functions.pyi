@@ -3,9 +3,9 @@ from typing import Any, Literal, overload, TypeVar
 
 import numpy as np
 import numpy.typing as npt
+from cv2.constants import INTER_LINEAR, LINE_8, NORM_L2
 
 from .classes import *
-from .constants import *
 
 _TImg = TypeVar("_TImg", np.uint8, np.float64)
 _TMapS = TypeVar("_TMapS", np.int16, np.float32)
