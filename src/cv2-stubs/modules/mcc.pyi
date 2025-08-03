@@ -54,7 +54,7 @@ class CCheckerDetector(cv2.Algorithm):
         """
         \brief Get the best color checker. By the best it means the one
         *         detected with the highest confidence.
-        * \return checker A single colorchecker, if atleast one colorchecker
+        * \return checker A single colorchecker, if at least one colorchecker
         *                 was detected, 'nullptr' otherwise.
         """
 
@@ -81,10 +81,10 @@ class CCheckerDetector(cv2.Algorithm):
         *           then keeping this number high helps.
         * \param useNet if it is true the network provided using the setNet()
         *               is used for preliminary search for regions where chart
-        *               could be present, inside the regionsOfInterest provied.
+        *               could be present, inside the regionsOfInterest provided.
         * \param params parameters of the detection system. More information
         *               about them can be found in the struct DetectorParameters.
-        * \return true if atleast one chart is detected otherwise false
+        * \return true if at least one chart is detected otherwise false
         """
 
     def processWithROI(self, image, chartType, regionsOfInterest, nc=..., useNet=..., params=...) -> retval:
@@ -103,10 +103,10 @@ class CCheckerDetector(cv2.Algorithm):
         *           then keeping this number high helps.
         * \param useNet if it is true the network provided using the setNet()
         *               is used for preliminary search for regions where chart
-        *               could be present, inside the regionsOfInterest provied.
+        *               could be present, inside the regionsOfInterest provided.
         * \param params parameters of the detection system. More information
         *               about them can be found in the struct DetectorParameters.
-        * \return true if atleast one chart is detected otherwise false
+        * \return true if at least one chart is detected otherwise false
         """
 
     def setNet(self, net) -> retval:
@@ -143,7 +143,7 @@ class CCheckerDraw:
         * \param pChecker The checker which will be drawn by this object.
         * \param color The color by with which the squares of the checker
         *              will be drawn
-        * \param thickness The thickness with which the sqaures will be
+        * \param thickness The thickness with which the squares will be
         *                  drawn
         * \return A pointer to the implementation of the CCheckerDraw
         """
@@ -164,7 +164,7 @@ def CCheckerDraw_create(pChecker, color=..., thickness=...) -> retval:
         * \param pChecker The checker which will be drawn by this object.
         * \param color The color by with which the squares of the checker
         *              will be drawn
-        * \param thickness The thickness with which the sqaures will be
+        * \param thickness The thickness with which the squares will be
         *                  drawn
         * \return A pointer to the implementation of the CCheckerDraw
     """

@@ -145,3 +145,6 @@ reportUnusedExpression = "warning"
 reportUnnecessaryTypeIgnoreComment = "warning"
 reportMatchNotExhaustive = "warning"
 reportInvalidStringEscapeSequence = false
+
+[tool.codespell]
+ignore-words-list = "ist"

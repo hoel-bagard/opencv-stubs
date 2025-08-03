@@ -13,7 +13,7 @@ retval: TypeAlias = Any
 @overload
 def FT02D_FL_process(matrix, radius, output=...) -> output:
     """
-    @brief Sligtly less accurate version of \f$F^0\f$-transfrom computation optimized for higher speed. The methods counts with linear basic function.
+    @brief Slightly less accurate version of \f$F^0\f$-transfrom computation optimized for higher speed. The methods counts with linear basic function.
         @param matrix Input 3 channels matrix.
         @param radius Radius of the `ft::LINEAR` basic function.
         @param output Output array.
@@ -26,7 +26,7 @@ def FT02D_FL_process(matrix, radius, output=...) -> output:
 @overload
 def FT02D_FL_process_float(matrix, radius, output=...) -> output:
     """
-    @brief Sligtly less accurate version of \f$F^0\f$-transfrom computation optimized for higher speed. The methods counts with linear basic function.
+    @brief Slightly less accurate version of \f$F^0\f$-transfrom computation optimized for higher speed. The methods counts with linear basic function.
         @param matrix Input 3 channels matrix.
         @param radius Radius of the `ft::LINEAR` basic function.
         @param output Output array.
@@ -181,7 +181,7 @@ def FT12D_process(matrix, kernel, output=..., mask=...) -> output:
     """
 
     @note
-        F-transform technique of first degreee is described in paper @cite Vlas:FT.
+        F-transform technique of first degree is described in paper @cite Vlas:FT.
     """
 
 @overload
@@ -238,7 +238,7 @@ def inpaint(image, mask, radius, function, algorithm, output=...) -> output:
             -   `ft::LINEAR` Linear basic function.
         @param algorithm Algorithm could be one of the following:
             -   `ft::ONE_STEP` One step algorithm.
-            -   `ft::MULTI_STEP` This algorithm automaticaly increases radius of the basic function.
+            -   `ft::MULTI_STEP` This algorithm automatically increases radius of the basic function.
             -   `ft::ITERATIVE` Iterative algorithm running in more steps using partial computations.
     """
 

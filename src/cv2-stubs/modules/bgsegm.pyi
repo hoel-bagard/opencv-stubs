@@ -245,8 +245,8 @@ def createBackgroundSubtractorGSOC(mc=..., nSamples=..., replaceRate=..., propag
     @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
     @param alpha Scale coefficient for threshold.
     @param beta Bias coefficient for threshold.
-    @param blinkingSupressionDecay Blinking supression decay factor.
-    @param blinkingSupressionMultiplier Blinking supression multiplier.
+    @param blinkingSupressionDecay Blinking suppression decay factor.
+    @param blinkingSupressionMultiplier Blinking suppression multiplier.
     @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
     @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
     """

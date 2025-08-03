@@ -113,7 +113,7 @@ def loadPLYSimple(fileName, withNormals=...) -> retval:
     """
     *  @brief Load a PLY file
      @param [in] fileName The PLY model to read
-     @param [in] withNormals Flag wheather the input PLY contains normal information,
+     @param [in] withNormals Flag whether the input PLY contains normal information,
      and whether it should be loaded or not
      @return Returns the matrix on successful load
     """
@@ -152,7 +152,7 @@ def writePLY(PC, fileName) -> None:
 
 def writePLYVisibleNormals(PC, fileName) -> None:
     """
-    *  @brief Used for debbuging pruposes, writes a point cloud to a PLY file with the tip
+    *  @brief Used for debugging pruposes, writes a point cloud to a PLY file with the tip
     *  of the normal vectors as visible red points
     *  @param [in] PC Input point cloud
     *  @param [in] fileName The PLY model file to write

@@ -36,7 +36,7 @@ class GraphSegmentation(cv2.Algorithm):
 class SelectiveSearchSegmentation(cv2.Algorithm):
     def addGraphSegmentation(self, g) -> None:
         """
-        @brief Add a new graph segmentation in the list of graph segementations to process.
+        @brief Add a new graph segmentation in the list of graph segmentations to process.
         @param g The graph segmentation
         """
 
@@ -149,7 +149,7 @@ def createGraphSegmentation(sigma=..., k=..., min_size=...) -> retval:
     """
     @brief Creates a graph based segmentor
                             @param sigma The sigma parameter, used to smooth image
-                            @param k The k parameter of the algorythm
+                            @param k The k parameter of the algorithm
                             @param min_size The minimum size of segments
     """
 

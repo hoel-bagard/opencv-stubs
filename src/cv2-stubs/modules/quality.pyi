@@ -57,7 +57,7 @@ class QualityBase(cv2.Algorithm):
     def compute(self, img) -> retval:
         """
         @brief Compute quality score per channel with the per-channel score in each element of the resulting cv::Scalar.  See specific algorithm for interpreting result scores
-        @param img comparison image, or image to evalute for no-reference quality algorithms
+        @param img comparison image, or image to evaluate for no-reference quality algorithms
         """
 
     def empty(self) -> retval:

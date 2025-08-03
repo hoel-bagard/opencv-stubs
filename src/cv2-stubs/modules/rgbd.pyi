@@ -191,7 +191,7 @@ class ICPOdometry(Odometry):
         * @param maxDepthDiff Correspondences between pixels of two given frames will be filtered out *                     if their depth difference is larger than maxDepthDiff
         * @param maxPointsPart The method uses a random pixels subset of size frameWidth x frameHeight x pointsPart
         * @param iterCounts Count of iterations on each pyramid level.
-        * @param transformType Class of trasformation
+        * @param transformType Class of transformation
         """
 
 class Odometry(cv2.Algorithm):
@@ -363,7 +363,7 @@ class RgbdICPOdometry(Odometry):
         * @param maxPointsPart The method uses a random pixels subset of size frameWidth x frameHeight x pointsPart
         * @param iterCounts Count of iterations on each pyramid level.
         * @param minGradientMagnitudes For each pyramid level the pixels will be filtered out *                              if they have gradient magnitude less than minGradientMagnitudes[level].
-        * @param transformType Class of trasformation
+        * @param transformType Class of transformation
         """
 
 class RgbdNormals(cv2.Algorithm):
@@ -610,7 +610,7 @@ def ICPOdometry_create(cameraMatrix=..., minDepth=..., maxDepth=..., maxDepthDif
          *                     if their depth difference is larger than maxDepthDiff
          * @param maxPointsPart The method uses a random pixels subset of size frameWidth x frameHeight x pointsPart
          * @param iterCounts Count of iterations on each pyramid level.
-         * @param transformType Class of trasformation
+         * @param transformType Class of transformation
     """
 
 def OdometryFrame_create(image=..., depth=..., mask=..., normals=..., ID=...) -> retval:
@@ -640,7 +640,7 @@ def RgbdICPOdometry_create(cameraMatrix=..., minDepth=..., maxDepth=..., maxDept
          * @param iterCounts Count of iterations on each pyramid level.
          * @param minGradientMagnitudes For each pyramid level the pixels will be filtered out
          *                              if they have gradient magnitude less than minGradientMagnitudes[level].
-         * @param transformType Class of trasformation
+         * @param transformType Class of transformation
     """
 
 def RgbdNormals_create(rows, cols, depth, K, window_size=..., method=...) -> retval:
@@ -740,7 +740,7 @@ def warpFrame(image, depth, mask, Rt, cameraMatrix, distCoeff, warpedImage=..., 
        * then project color point cloud to an image plane.
        * This function can be used to visualize results of the Odometry algorithm.
        * @param image The image (of CV_8UC1 or CV_8UC3 type)
-       * @param depth The depth (of type used in depthTo3d fuction)
+       * @param depth The depth (of type used in depthTo3d function)
        * @param mask The mask of used pixels (of CV_8UC1), it can be empty
        * @param Rt The transformation that will be applied to the 3d points computed from the depth
        * @param cameraMatrix Camera matrix

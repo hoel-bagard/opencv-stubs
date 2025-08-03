@@ -194,7 +194,7 @@ def drawKeylines(image, keylines, outImage=..., color=..., flags=...) -> outImag
     @param image input image
     @param keylines keylines to be drawn
     @param outImage output image to draw on
-    @param color color of lines to be drawn (if set to defaul value, color is chosen randomly)
+    @param color color of lines to be drawn (if set to default value, color is chosen randomly)
     @param flags drawing flags
     """
 

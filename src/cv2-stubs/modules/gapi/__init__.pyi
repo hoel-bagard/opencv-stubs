@@ -460,7 +460,7 @@ def SobelXY(src, ddepth, order, ksize=..., scale=..., delta=..., borderType=...,
     \f[\vecthreethree{-1}{-2}{-1}{0}{0}{0}{1}{2}{1}\f]
 
     @note
-     - First returned matrix correspons to dx derivative while the second one to dy.
+     - First returned matrix corresponds to dx derivative while the second one to dy.
      - Rounding to nearest even is procedeed if hardware supports it, if not - to nearest.
      - Function textual ID is "org.opencv.imgproc.filters.sobelxy"
 
@@ -539,7 +539,7 @@ def absDiffC(src, c) -> retval:
     @brief Calculates absolute value of matrix elements.
 
     The function abs calculates absolute difference between matrix elements and given scalar value:
-        \f[\texttt{dst}(I) =  \texttt{saturate} (| \texttt{src1}(I) -  \texttt{matC}(I)|)\f]
+        \f[\texttt{dst}(I) =  \texttt{saturate} (| \texttt{src1}(I) -  \texttt{match}(I)|)\f]
     """
 
 @overload
@@ -1623,7 +1623,7 @@ def kmeans(data, K, bestLabels, criteria, attempts, flags) -> retval:
     width = 1, height = A, where A is samples amount, or width = bestLabels.width,
     height = bestLabels.height if bestLabels given;
          - the cluster centers are returned as 1-channel GMat with sizes
-    width = n, height = K, where n is samples' dimentionality and K is clusters' amount.
+    width = n, height = K, where n is samples' dimensionality and K is clusters' amount.
      - As one of possible usages, if you want to control the initial labels for each attempt
     by yourself, you can utilize just the core of the function. To do that, set the number
     of attempts to 1, initialize labels each time using a custom algorithm, pass them with the
@@ -1631,7 +1631,7 @@ def kmeans(data, K, bestLabels, criteria, attempts, flags) -> retval:
 
     @param data Data for clustering. An array of N-Dimensional points with float coordinates is needed.
     Function can take GArray<Point2f>, GArray<Point3f> for 2D and 3D cases or GMat for any
-    dimentionality and channels.
+    dimensionality and channels.
     @param K Number of clusters to split the set by.
     @param bestLabels Optional input integer array that can store the supposed initial cluster indices
     for every sample. Used when ( flags = #KMEANS_USE_INITIAL_LABELS ) flag is set.
@@ -2162,7 +2162,7 @@ def select(src1, src2, mask) -> retval:
     The function set to the output matrix either the value from the first input matrix if corresponding value of mask matrix is 255,
      or value from the second input matrix (if value of mask matrix set to 0).
 
-    Input mask matrix must be of @ref CV_8UC1 type, two other inout matrices and output matrix should be of the same type. The size should
+    Input mask matrix must be of @ref CV_8UC1 type, two other input matrices and output matrix should be of the same type. The size should
     be the same for all input and output matrices.
     Supported input matrix data types are @ref CV_8UC1, @ref CV_8UC3, @ref CV_16UC1, @ref CV_16SC1, @ref CV_32FC1.
 

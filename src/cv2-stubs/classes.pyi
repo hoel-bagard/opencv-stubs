@@ -1257,7 +1257,7 @@ class FaceDetectorYN:
         @brief Creates an instance of this class with given parameters
         *
         *  @param model the path to the requested model
-        *  @param config the path to the config file for compability, which is not requested for ONNX models
+        *  @param config the path to the config file for compatibility, which is not requested for ONNX models
         *  @param input_size the size of the input image
         *  @param score_threshold the threshold to filter out bounding boxes of score smaller than the given value
         *  @param nms_threshold the threshold to suppress bounding boxes of IoU bigger than the given value
@@ -1294,7 +1294,7 @@ class FaceRecognizerSF:
         """
         @brief Creates an instance of this class with given parameters
         *  @param model the path of the onnx model used for face recognition
-        *  @param config the path to the config file for compability, which is not requested for ONNX models
+        *  @param config the path to the config file for compatibility, which is not requested for ONNX models
         *  @param backend_id the id of backend
         *  @param target_id the id of target device
         """

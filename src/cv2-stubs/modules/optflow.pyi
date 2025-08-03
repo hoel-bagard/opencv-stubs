@@ -501,7 +501,7 @@ def calcOpticalFlowDenseRLOF(I0, I1, flow, rlofParam=..., forwardBackwardThresho
     The sparse-to-dense interpolation scheme allows for fast computation of dense optical flow using RLOF (see @cite Geistert2016).
     For this scheme the following steps are applied:
     -# motion vector seeded at a regular sampled grid are computed. The sparsity of this grid can be configured with setGridStep
-    -# (optinally) errornous motion vectors are filter based on the forward backward confidence. The threshold can be configured
+    -# (optionally) erroneous motion vectors are filter based on the forward backward confidence. The threshold can be configured
     with setForwardBackward. The filter is only applied if the threshold >0 but than the runtime is doubled due to the estimation
     of the backward flow.
     -# Vector field interpolation is applied to the motion vector set to obtain a dense vector field.
@@ -657,7 +657,7 @@ def createOptFlow_DeepFlow() -> retval:
     -   member int fixedPointIterations
     How many iterations on each level of the pyramid
     -   member int sorIterations
-    Iterations of Succesive Over-Relaxation (solver)
+    Iterations of Successive Over-Relaxation (solver)
     -   member float omega
     Relaxation factor in SOR
     """

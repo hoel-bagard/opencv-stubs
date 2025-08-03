@@ -11,14 +11,14 @@ retval: TypeAlias = Any
 class Retina(cv2.Algorithm):
     def activateContoursProcessing(self, activate) -> None:
         """
-        @brief Activate/desactivate the Parvocellular pathway processing (contours information extraction), by
+        @brief Activate/deactivate the Parvocellular pathway processing (contours information extraction), by
         default, it is activated
         @param activate true if Parvocellular (contours information extraction) output should be activated, false if not... if activated, the Parvocellular output can be retrieved using the Retina::getParvo methods
         """
 
     def activateMovingContoursProcessing(self, activate) -> None:
         """
-        @brief Activate/desactivate the Magnocellular pathway processing (motion information extraction), by
+        @brief Activate/deactivate the Magnocellular pathway processing (motion information extraction), by
         default, it is activated
         @param activate true if Magnocellular output should be activated, false if not... if activated, the Magnocellular output can be retrieved using the **getMagno** methods
         """
@@ -46,12 +46,12 @@ class Retina(cv2.Algorithm):
         @brief Clears all retina buffers
 
         (equivalent to opening the eyes after a long period of eye close ;o) whatchout the temporal
-        transition occuring just after this method call.
+        transition occurring just after this method call.
         """
 
     def getInputSize(self) -> retval:
         """
-        @brief Retreive retina input buffer size
+        @brief Retrieve retina input buffer size
         @return the retina input buffer size
         """
 
@@ -79,7 +79,7 @@ class Retina(cv2.Algorithm):
 
     def getOutputSize(self) -> retval:
         """
-        @brief Retreive retina output buffer size that can be different from the input if a spatial log
+        @brief Retrieve retina output buffer size that can be different from the input if a spatial log
         transformation is applied
         @return the retina output buffer size
         """
@@ -110,7 +110,7 @@ class Retina(cv2.Algorithm):
     def printSetup(self) -> retval:
         """
         @brief Outputs a string showing the used parameters setup
-        @return a string which contains formated parameters information
+        @return a string which contains formatted parameters information
         """
 
     def run(self, inputImage) -> None:
@@ -118,7 +118,7 @@ class Retina(cv2.Algorithm):
         @brief Method which allows retina to be applied on an input image,
 
         after run, encapsulated retina module is ready to deliver its outputs using dedicated
-        acccessors, see getParvo and getMagno methods
+        accessors, see getParvo and getMagno methods
         @param inputImage the input Mat image to be processed, can be gray level or BGR coded in any format (from 8bit to 16bits)
         """
 
@@ -126,7 +126,7 @@ class Retina(cv2.Algorithm):
         """
         @brief Activate color saturation as the final step of the color demultiplexing process -\> this
         saturation is a sigmoide function applied to each channel of the demultiplexed image.
-        @param saturateColors boolean that activates color saturation (if true) or desactivate (if false)
+        @param saturateColors boolean that activates color saturation (if true) or deactivate (if false)
         @param colorSaturationValue the saturation factor : a simple factor applied on the chrominance buffers
         """
 
@@ -152,8 +152,8 @@ class Retina(cv2.Algorithm):
         @param parasolCells_beta the low pass filter gain used for local contrast adaptation at the IPL level of the retina (for ganglion cells local adaptation), typical value is 0
         @param parasolCells_tau the low pass filter time constant used for local contrast adaptation at the IPL level of the retina (for ganglion cells local adaptation), unit is frame, typical value is 0 (immediate response)
         @param parasolCells_k the low pass filter spatial constant used for local contrast adaptation at the IPL level of the retina (for ganglion cells local adaptation), unit is pixels, typical value is 5
-        @param amacrinCellsTemporalCutFrequency the time constant of the first order high pass fiter of the magnocellular way (motion information channel), unit is frames, typical value is 1.2
-        @param V0CompressionParameter the compression strengh of the ganglion cells local adaptation output, set a value between 0.6 and 1 for best results, a high value increases more the low value sensitivity... and the output saturates faster, recommended value: 0.95
+        @param amacrinCellsTemporalCutFrequency the time constant of the first order high pass filter of the magnocellular way (motion information channel), unit is frames, typical value is 1.2
+        @param V0CompressionParameter the compression strength of the ganglion cells local adaptation output, set a value between 0.6 and 1 for best results, a high value increases more the low value sensitivity... and the output saturates faster, recommended value: 0.95
         @param localAdaptintegration_tau specifies the temporal constant of the low pas filter involved in the computation of the local "motion mean" for the local adaptation computation
         @param localAdaptintegration_k specifies the spatial constant of the low pas filter involved in the computation of the local "motion mean" for the local adaptation computation
         """
@@ -166,23 +166,23 @@ class Retina(cv2.Algorithm):
         which withens the spectrum and reduces spatio-temporal noise while attenuating global luminance
         (low frequency energy) IPL parvo is the OPL next processing stage, it refers to a part of the
         Inner Plexiform layer of the retina, it allows high contours sensitivity in foveal vision. See
-        reference papers for more informations.
-        for more informations, please have a look at the paper Benoit A., Caplier A., Durette B., Herault, J., "USING HUMAN VISUAL SYSTEM MODELING FOR BIO-INSPIRED LOW LEVEL IMAGE PROCESSING", Elsevier, Computer Vision and Image Understanding 114 (2010), pp. 758-773, DOI: http://dx.doi.org/10.1016/j.cviu.2010.01.011
+        reference papers for more information.
+        for more information, please have a look at the paper Benoit A., Caplier A., Durette B., Herault, J., "USING HUMAN VISUAL SYSTEM MODELING FOR BIO-INSPIRED LOW LEVEL IMAGE PROCESSING", Elsevier, Computer Vision and Image Understanding 114 (2010), pp. 758-773, DOI: http://dx.doi.org/10.1016/j.cviu.2010.01.011
         @param colorMode specifies if (true) color is processed of not (false) to then processing gray level image
         @param normaliseOutput specifies if (true) output is rescaled between 0 and 255 of not (false)
         @param photoreceptorsLocalAdaptationSensitivity the photoreceptors sensitivity renage is 0-1 (more log compression effect when value increases)
         @param photoreceptorsTemporalConstant the time constant of the first order low pass filter of the photoreceptors, use it to cut high temporal frequencies (noise or fast motion), unit is frames, typical value is 1 frame
         @param photoreceptorsSpatialConstant the spatial constant of the first order low pass filter of the photoreceptors, use it to cut high spatial frequencies (noise or thick contours), unit is pixels, typical value is 1 pixel
-        @param horizontalCellsGain gain of the horizontal cells network, if 0, then the mean value of the output is zero, if the parameter is near 1, then, the luminance is not filtered and is still reachable at the output, typicall value is 0
+        @param horizontalCellsGain gain of the horizontal cells network, if 0, then the mean value of the output is zero, if the parameter is near 1, then, the luminance is not filtered and is still reachable at the output, typical value is 0
         @param HcellsTemporalConstant the time constant of the first order low pass filter of the horizontal cells, use it to cut low temporal frequencies (local luminance variations), unit is frames, typical value is 1 frame, as the photoreceptors
         @param HcellsSpatialConstant the spatial constant of the first order low pass filter of the horizontal cells, use it to cut low spatial frequencies (local luminance), unit is pixels, typical value is 5 pixel, this value is also used for local contrast computing when computing the local contrast adaptation at the ganglion cells level (Inner Plexiform Layer parvocellular channel model)
-        @param ganglionCellsSensitivity the compression strengh of the ganglion cells local adaptation output, set a value between 0.6 and 1 for best results, a high value increases more the low value sensitivity... and the output saturates faster, recommended value: 0.7
+        @param ganglionCellsSensitivity the compression strength of the ganglion cells local adaptation output, set a value between 0.6 and 1 for best results, a high value increases more the low value sensitivity... and the output saturates faster, recommended value: 0.7
         """
 
     def write(self, fs) -> None:
         """
-        @brief Write xml/yml formated parameters information
-        @param fs the filename of the xml file that will be open and writen with formatted parameters information
+        @brief Write xml/yml formatted parameters information
+        @param fs the filename of the xml file that will be open and written with formatted parameters information
         """
 
     @overload
@@ -194,14 +194,14 @@ class Retina(cv2.Algorithm):
     @overload
     def create(self, inputSize, colorMode, colorSamplingMethod=..., useRetinaLogSampling=..., reductionFactor=..., samplingStrength=...) -> retval:
         """
-        @brief Constructors from standardized interfaces : retreive a smart pointer to a Retina instance
+        @brief Constructors from standardized interfaces : retrieve a smart pointer to a Retina instance
 
         @param inputSize the input frame size
         @param colorMode the chosen processing mode : with or without color processing
         @param colorSamplingMethod specifies which kind of color sampling will be used : -   cv::bioinspired::RETINA_COLOR_RANDOM: each pixel position is either R, G or B in a random choice -   cv::bioinspired::RETINA_COLOR_DIAGONAL: color sampling is RGBRGBRGB..., line 2 BRGBRGBRG..., line 3, GBRGBRGBR... -   cv::bioinspired::RETINA_COLOR_BAYER: standard bayer sampling
         @param useRetinaLogSampling activate retina log sampling, if true, the 2 following parameters can be used
-        @param reductionFactor only usefull if param useRetinaLogSampling=true, specifies the reduction factor of the output frame (as the center (fovea) is high resolution and corners can be underscaled, then a reduction of the output is allowed without precision leak
-        @param samplingStrength only usefull if param useRetinaLogSampling=true, specifies the strength of the log scale that is applied
+        @param reductionFactor only useful if param useRetinaLogSampling=true, specifies the reduction factor of the output frame (as the center (fovea) is high resolution and corners can be underscaled, then a reduction of the output is allowed without precision leak
+        @param samplingStrength only useful if param useRetinaLogSampling=true, specifies the strength of the log scale that is applied
         """
 
 class RetinaFastToneMapping(cv2.Algorithm):
@@ -278,8 +278,8 @@ class TransientAreasSegmentationModule(cv2.Algorithm):
 
     def write(self, fs) -> None:
         """
-        @brief write xml/yml formated parameters information
-        @param fs : the filename of the xml file that will be open and writen with formatted parameters information
+        @brief write xml/yml formatted parameters information
+        @param fs : the filename of the xml file that will be open and written with formatted parameters information
         """
 
     def create(self, inputSize) -> retval:
@@ -302,7 +302,7 @@ def Retina_create(inputSize) -> retval:
 @overload
 def Retina_create(inputSize) -> retval:
     """
-    @brief Constructors from standardized interfaces : retreive a smart pointer to a Retina instance
+    @brief Constructors from standardized interfaces : retrieve a smart pointer to a Retina instance
 
         @param inputSize the input frame size
         @param colorMode the chosen processing mode : with or without color processing
@@ -316,7 +316,7 @@ def Retina_create(inputSize) -> retval:
 @overload
 def Retina_create(inputSize) -> retval:
     """
-    @param reductionFactor only usefull if param useRetinaLogSampling=true, specifies the reduction
+    @param reductionFactor only useful if param useRetinaLogSampling=true, specifies the reduction
     """
 
 @overload
@@ -326,7 +326,7 @@ def Retina_create(inputSize) -> retval:
 @overload
 def Retina_create(inputSize) -> retval:
     """
-    @param samplingStrength only usefull if param useRetinaLogSampling=true, specifies the strength of
+    @param samplingStrength only useful if param useRetinaLogSampling=true, specifies the strength of
     """
 
 @overload

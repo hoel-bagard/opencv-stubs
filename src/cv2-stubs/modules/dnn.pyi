@@ -936,7 +936,7 @@ def shrinkCaffeModel(src, dst, layersTypes=...) -> None:
          *                    By default, converts only Convolutional and Fully-Connected layers'
          *                    weights.
          *
-         * @note Shrinked model has no origin float32 weights so it can't be used
+         * @note Shrunk model has no origin float32 weights so it can't be used
          *       in origin Caffe framework anymore. However the structure of data
          *       is taken from NVidia's Caffe fork: https://github.com/NVIDIA/caffe.
          *       So the resulting model may be used there.

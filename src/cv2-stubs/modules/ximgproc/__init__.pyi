@@ -606,7 +606,7 @@ class RICInterpolator(SparseMatchInterpolator):
     def setMaxFlow(self, maxFlow=...) -> None:
         """
         @brief MaxFlow is a threshold to validate the predictions using a certain piece-wise affine model.
-        * If the prediction exceeds the treshold the translational model will be applied instead.
+        * If the prediction exceeds the threshold the translational model will be applied instead.
         """
 
     def setModelIter(self, modelIter=...) -> None:
@@ -616,7 +616,7 @@ class RICInterpolator(SparseMatchInterpolator):
 
     def setRefineModels(self, refineModles=...) -> None:
         """
-        @brief Parameter to choose wether additional refinement of the piece-wise affine models is employed.
+        @brief Parameter to choose whether additional refinement of the piece-wise affine models is employed.
         """
 
     def setSuperpixelMode(self, mode=...) -> None:
@@ -653,7 +653,7 @@ class RICInterpolator(SparseMatchInterpolator):
 
     def setUseVariationalRefinement(self, use_variational_refinement=...) -> None:
         """
-        @brief Parameter to choose wether the VariationalRefinement post-processing  is employed.
+        @brief Parameter to choose whether the VariationalRefinement post-processing  is employed.
         """
 
 class RidgeDetectionFilter(cv2.Algorithm):
@@ -667,7 +667,7 @@ class RidgeDetectionFilter(cv2.Algorithm):
     def create(self, ddepth=..., dx=..., dy=..., ksize=..., out_dtype=..., scale=..., delta=..., borderType=...) -> retval:
         """
         @brief Create pointer to the Ridge detection filter.
-        @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+        @param ddepth  Specifies output image depth. Default is CV_32FC1
         @param dx Order of derivative x, default is 1
         @param dy  Order of derivative y, default is 1
         @param ksize Sobel kernel size , default is 3
@@ -983,7 +983,7 @@ def RadonTransform(src, dst=..., theta=..., start_angle=..., end_angle=..., crop
 def RidgeDetectionFilter_create(ddepth=..., dx=..., dy=..., ksize=..., out_dtype=..., scale=..., delta=..., borderType=...) -> retval:
     """
     @brief Create pointer to the Ridge detection filter.
-        @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+        @param ddepth  Specifies output image depth. Default is CV_32FC1
         @param dx Order of derivative x, default is 1
         @param dy  Order of derivative y, default is 1
         @param ksize Sobel kernel size , default is 3
@@ -1301,7 +1301,7 @@ def createQuaternionImage(img, qimg=...) -> qimg:
     * @brief   creates a quaternion image.
     *
     * @param   img         Source 8-bit, 32-bit or 64-bit image, with 3-channel image.
-    * @param   qimg        result CV_64FC4 a quaternion image( 4 chanels zero channel and B,G,R).
+    * @param   qimg        result CV_64FC4 a quaternion image( 4 channels zero channel and B,G,R).
     """
 
 def createRFFeatureGetter() -> retval:
@@ -1357,7 +1357,7 @@ def createSuperpixelLSC(image, region_size=..., ratio=...) -> retval:
 
     The function initializes a SuperpixelLSC object for the input image. It sets the parameters of
     superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
-    computing iterations over the given image. An example of LSC is ilustrated in the following picture.
+    computing iterations over the given image. An example of LSC is illustrated in the following picture.
     For enanched results it is recommended for color images to preprocess image with little gaussian blur
     with a small 3 x 3 kernel and additional conversion into CieLAB color space.
 
@@ -1407,11 +1407,11 @@ def createSuperpixelSLIC(image, algorithm=..., region_size=..., ruler=...) -> re
     @param region_size Chooses an average superpixel size measured in pixels
     @param ruler Chooses the enforcement of superpixel smoothness factor of superpixel
 
-    The function initializes a SuperpixelSLIC object for the input image. It sets the parameters of choosed
+    The function initializes a SuperpixelSLIC object for the input image. It sets the parameters of chosen
     superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
     computing iterations over the given image. For enanched results it is recommended for color images to
     preprocess image with little gaussian blur using a small 3 x 3 kernel and additional conversion into
-    CieLAB color space. An example of SLIC versus SLICO and MSLIC is ilustrated in the following picture.
+    CieLAB color space. An example of SLIC versus SLICO and MSLIC is illustrated in the following picture.
 
     ![image](pics/superpixels_slic.png)
     """
@@ -1518,7 +1518,7 @@ def findEllipses(image, ellipses=..., scoreThreshold=..., reliabilityThreshold=.
 
 def fourierDescriptor(src, dst=..., nbElt=..., nbFD=...) -> dst:
     """
-    * @brief   Fourier descriptors for planed closed curves
+    * @brief   Fourier descriptors for planned closed curves
         *
         * For more details about this implementation, please see @cite PersoonFu1977
         *

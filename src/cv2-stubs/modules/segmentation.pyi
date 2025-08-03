@@ -42,7 +42,7 @@ class IntelligentScissorsMB:
         *
         * @param targetPt The target point
         * @param[out] contour The list of pixels which contains optimal path between the source and the target points of the image. Type is CV_32SC2 (compatible with `std::vector<Point>`)
-        * @param backward Flag to indicate reverse order of retrived pixels (use "true" value to fetch points from the target to the source point)
+        * @param backward Flag to indicate reverse order of retrieved pixels (use "true" value to fetch points from the target to the source point)
         """
 
     def setEdgeFeatureCannyParameters(self, threshold1, threshold2, apertureSize=..., L2gradient=...) -> retval:
@@ -75,7 +75,7 @@ class IntelligentScissorsMB:
         @brief Specify gradient magnitude max value threshold
         *
         * Zero limit value is used to disable gradient magnitude thresholding (default behavior, as described in original article).
-        * Otherwize pixels with `gradient magnitude >= threshold` have zero cost.
+        * Otherwise pixels with `gradient magnitude >= threshold` have zero cost.
         *
         * @note Thresholding should be used for images with irregular regions (to avoid stuck on parameters from high-contract areas, like embedded logos).
         *

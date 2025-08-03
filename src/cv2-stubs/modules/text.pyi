@@ -298,9 +298,9 @@ def createERFilterNM1(cb, thresholdDelta=..., minArea=..., maxArea=..., minProba
     @param  cb :   Callback with the classifier. Default classifier can be implicitly load with function
     loadClassifierNM1, e.g. from file in samples/cpp/trained_classifierNM1.xml
     @param  thresholdDelta :   Threshold step in subsequent thresholds when extracting the component tree
-    @param  minArea :   The minimum area (% of image size) allowed for retreived ER's
-    @param  maxArea :   The maximum area (% of image size) allowed for retreived ER's
-    @param  minProbability :   The minimum probability P(er|character) allowed for retreived ER's
+    @param  minArea :   The minimum area (% of image size) allowed for retrieved ER's
+    @param  maxArea :   The maximum area (% of image size) allowed for retrieved ER's
+    @param  minProbability :   The minimum probability P(er|character) allowed for retrieved ER's
     @param  nonMaxSuppression :   Whenever non-maximum suppression is done over the branch probabilities
     @param  minProbabilityDiff :   The minimum probability difference between local maxima and local minima ERs
 
@@ -334,7 +334,7 @@ def createERFilterNM2(cb, minProbability=...) -> retval:
 
     @param  cb :   Callback with the classifier. Default classifier can be implicitly load with function
     loadClassifierNM2, e.g. from file in samples/cpp/trained_classifierNM2.xml
-    @param  minProbability :   The minimum probability P(er|character) allowed for retreived ER's
+    @param  minProbability :   The minimum probability P(er|character) allowed for retrieved ER's
 
     In the second stage, the ERs that passed the first stage are classified into character and
     non-character classes using more informative but also more computationally expensive features. The
@@ -420,9 +420,9 @@ def erGrouping(image, channel, regions, method=..., filename=..., minProbablity=
     """
     @brief Find groups of Extremal Regions that are organized as text blocks.
 
-    @param img Original RGB or Greyscale image from wich the regions were extracted.
+    @param img Original RGB or Greyscale image from which the regions were extracted.
 
-    @param channels Vector of single channel images CV_8UC1 from wich the regions were extracted.
+    @param channels Vector of single channel images CV_8UC1 from which the regions were extracted.
 
     @param regions Vector of ER's retrieved from the ERFilter algorithm from each channel.
 

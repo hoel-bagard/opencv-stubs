@@ -469,7 +469,7 @@ def leaveBiggestComponent(features, pairwise_matches, conf_threshold) -> retval:
     .
     """
 
-def matchesGraphAsString(pathes, pairwise_matches, conf_threshold) -> retval:
+def matchesGraphAsString(paths, pairwise_matches, conf_threshold) -> retval:
     """
     .
     """
