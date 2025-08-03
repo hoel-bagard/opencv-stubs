@@ -1,9 +1,6 @@
-[build-system]
-requires = ["hatchling>=1.10.0"]
-build-backend = "hatchling.build"
-
 [project]
 name = "opencv-stubs"
+dynamic = ["version"]
 authors = [{ name = "Bagard Hoel" }]
 description = "Unofficial stubs for the opencv-python package."
 keywords = ["OpenCV", "stubs"]
@@ -23,36 +20,45 @@ classifiers = [
   "Intended Audience :: Developers",
 ]
 license = { text = "MIT" }
-dynamic = ["version"]
 dependencies = ["numpy>=1.21"]
 requires-python = ">=3.7"
-packages = [{ "include" = "cv2-stubs" }]
 
 [project.urls]
 "Homepage" = "https://github.com/hoel-bagard/opencv-stubs"
 "Bug Tracker" = "https://github.com/hoel-bagard/opencv-stubs/issues"
 
 [project.optional-dependencies]
-dev = ["pre-commit", "pip-tools", "ruff", "pyright"]
-build = ["hatch"]
-flake8 = [
-  "flake8",
-  "flake8-bugbear",
-  "flake8-comprehensions",
-  "flake8-docstrings",
-  "flake8-builtins",
-  "flake8-quotes",
-  "pep8-naming",
-  "flake8-import-order",
-  "flake8-noqa",
-  "flake8-broken-line",
-  "flake8-commas",
-  "Flake8-pyproject",
-]
-# I couldn't figure out how to have "opencv or opencv-headless" as dependency, so they are both optional.
 opencv = ["opencv-python>=4.7.0"]
 opencv-contrib = ["opencv-contrib-python>=4.7.0"]
 opencv-headless = ["opencv-python-headless>=4.7.0"]
+
+[dependency-groups]
+dev = ["ipython>=8.12.3; python_version >= '3.9'"]
+lint = [
+  # Typing
+  "pyright>=1.1.389",
+  # Python formatting
+  "ruff>=0.11.9",
+  # Spelling
+  "codespell>=2.3.0; python_version >= '3.9'",
+  # Markdown
+  "mdformat>=0.7.22; python_version >= '3.9'",
+  # To support GitHub's Markdown
+  "mdformat-footnote>=0.1.1",
+  "mdformat-frontmatter>=2.0.8; python_version >= '3.9'",
+  "mdformat-gfm>=0.3.6; python_version >= '3.9'",
+  "mdformat-gfm-alerts>=1.0.1; python_version >= '3.9'",
+  # Format python, bash (requires shfmt to be present), JSON, TOML and YAML code blocks.
+  "markdown-format-ruff>=1.0.0; python_version >= '3.9'",
+  "mdformat-shfmt>=0.1.0; python_version >= '3.9'",
+  "mdformat-taplo>=0.9.3; python_version >= '3.9'",
+  "mdformat-yamlfmt>=0.0.1; python_version >= '3.9'",
+  "mdformat-json>=1.0.0; python_version >= '3.9'",
+]
+
+[build-system]
+requires = ["hatchling>=1.10.0"]
+build-backend = "hatchling.build"
 
 [tool.hatch.version]
 path = "src/cv2-stubs/__init__.pyi"
@@ -91,7 +97,6 @@ select = [
   "TRY",
   "NPY",
   "RUF",
-  # "ANN",
 ]
 ignore = ["COM812", "D1", "D401", "D204", "D203", "D213", "S101", "PLR2004"]
 
@@ -103,11 +108,11 @@ docstring-quotes = "double"
 
 [tool.pyright]
 include = ["src/cv2-stubs"]
-
+pythonVersion = "3.10"
+pythonPlatform = "Linux"
 strictListInference = true
 strictDictionaryInference = true
 strictSetInference = true
-
 reportMissingModuleSource = false
 reportMissingImports = true
 reportMissingTypeStubs = false
@@ -136,6 +141,3 @@ reportUnusedExpression = "warning"
 reportUnnecessaryTypeIgnoreComment = "warning"
 reportMatchNotExhaustive = "warning"
 reportInvalidStringEscapeSequence = false
-
-pythonVersion = "3.10"
-pythonPlatform = "Linux"
