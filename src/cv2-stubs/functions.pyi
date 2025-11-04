@@ -3,6 +3,7 @@ from typing import Any, Literal, overload, TypeVar
 
 import numpy as np
 import numpy.typing as npt
+from cv2._stubs_utils import COLORMAP_TYPES
 from cv2.constants import INTER_LINEAR, LINE_8, NORM_L2
 from typing_extensions import TypeAlias
 
@@ -196,7 +197,7 @@ def addText(img: Mat, text, org, nameFont, pointSize=..., color=..., weight=...,
 def addWeighted(src1: npt.NDArray[_TImg], alpha: float, src2: npt.NDArray[_TImg], beta: float, gamma: float, dst: npt.NDArray[_TImg] = ..., dtype: int = ...) -> npt.NDArray[_TImg]:
     "addWeighted(src1, alpha, src2, beta, gamma[, dst[, dtype]]) -> dst\n.   @brief Calculates the weighted sum of two arrays.\n.   \n.   The function addWeighted calculates the weighted sum of two arrays as follows:\n.   \\f[\\texttt{dst} (I)= \\texttt{saturate} ( \\texttt{src1} (I)* \\texttt{alpha} +  \\texttt{src2} (I)* \\texttt{beta} +  \\texttt{gamma} )\\f]\n.   where I is a multi-dimensional index of array elements. In case of multi-channel arrays, each\n.   channel is processed independently.\n.   The function can be replaced with a matrix expression:\n.   @code{.cpp}\n.       dst = src1*alpha + src2*beta + gamma;\n.   @endcode\n.   @note Saturation is not applied when the output array has the depth CV_32S. You may even get\n.   result of an incorrect sign in the case of overflow.\n.   @param src1 first input array.\n.   @param alpha weight of the first array elements.\n.   @param src2 second input array of the same size and channel number as src1.\n.   @param beta weight of the second array elements.\n.   @param gamma scalar added to each sum.\n.   @param dst output array that has the same size and number of channels as the input arrays.\n.   @param dtype optional depth of the output array; when both input arrays have the same depth, dtype\n.   can be set to -1, which will be equivalent to src1.depth().\n.   @sa  add, subtract, scaleAdd, Mat::convertTo."
 
-def applyColorMap(src: npt.NDArray[_TImg], colormap, dst: npt.NDArray[_TImg] = ...) -> npt.NDArray[_TImg]:
+def applyColorMap(src: npt.NDArray[_TImg], colormap: COLORMAP_TYPES, dst: npt.NDArray[_TImg] = ...) -> npt.NDArray[_TImg]:
     "applyColorMap(src, colormap[, dst]) -> dst\n.   @brief Applies a GNU Octave/MATLAB equivalent colormap on a given image.\n.   \n.   @param src The source image, grayscale or colored of type CV_8UC1 or CV_8UC3.\n.   @param dst The result is the colormapped source image. Note: Mat::create is called on dst.\n.   @param colormap The colormap to apply, see #ColormapTypes\n\n\n\napplyColorMap(src, userColor[, dst]) -> dst\n.   @brief Applies a user colormap on a given image.\n.   \n.   @param src The source image, grayscale or colored of type CV_8UC1 or CV_8UC3.\n.   @param dst The result is the colormapped source image. Note: Mat::create is called on dst.\n.   @param userColor The colormap to apply of type CV_8UC1 or CV_8UC3 and size 256"
 
 def approxPolyDP(curve, epsilon, closed, approxCurve=...) -> Any:
