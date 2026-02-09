@@ -1,4 +1,4 @@
-__version__ = "0.1.1"  # noqa: PYI052
+__version__ = "0.1.2"  # noqa: PYI052
 
 from .classes import *
 from .constants import *

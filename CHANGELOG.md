@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.2] - 2026-02-09
+
+- Add missing return types for \_create factory functions
+
 ## [0.1.1] - 2025-11-04
 
 - Complete `cv2.applyColorMap` signature (add `COLORMAP_TYPES`)
