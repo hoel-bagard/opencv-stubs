@@ -4,17 +4,10 @@ on:
   workflow_dispatch:
   push:
     branches: master
-    paths:
-      - "**.py"
-      - "**.md"
-      - "**.toml"
-      - "**.yaml"
-      - .github/workflows/lint-spelling.yaml
-      - pyproject.toml
-      - uv.lock
   pull_request:
     paths:
       - "**.py"
+      - "**.pyi"
       - "**.md"
       - "**.toml"
       - "**.yaml"

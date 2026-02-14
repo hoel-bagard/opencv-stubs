@@ -3,15 +3,11 @@ name: Lint Python
 on:
   workflow_dispatch:
   push:
-    branches: [main, master]
-    paths:
-      - "**.py"
-      - .github/workflows/lint-python.yaml
-      - pyproject.toml
-      - uv.lock
+    branches: master
   pull_request:
     paths:
       - "**.py"
+      - "**.pyi"
       - .github/workflows/lint-python.yaml
       - pyproject.toml
       - uv.lock
@@ -68,7 +64,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version-file: "pyproject.toml"
+          python-version: "3.13"
 
       - name: Run Pyright
-        run: PYGOBJECT_STUB_CONFIG=Gtk3,Gdk3,Soup2 uv run --all-groups pyright
+        run: PYGOBJECT_STUB_CONFIG=Gtk3,Gdk3,Soup2 uv run --group lint pyright src
