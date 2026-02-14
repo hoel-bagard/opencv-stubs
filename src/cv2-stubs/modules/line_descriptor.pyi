@@ -198,7 +198,9 @@ def drawKeylines(image, keylines, outImage=..., color=..., flags=...) -> outImag
     @param flags drawing flags
     """
 
-def drawLineMatches(img1, keylines1, img2, keylines2, matches1to2, outImg=..., matchColor=..., singleLineColor=..., matchesMask=..., flags=...) -> outImg:
+def drawLineMatches(
+    img1, keylines1, img2, keylines2, matches1to2, outImg=..., matchColor=..., singleLineColor=..., matchesMask=..., flags=...
+) -> outImg:
     """
     @brief Draws the found matches of keylines from two images.
 

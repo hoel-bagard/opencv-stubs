@@ -176,7 +176,22 @@ class DenseRLOFOpticalFlow(cv2.DenseOpticalFlow):
         * @see getUseVariationalRefinement
         """
 
-    def create(self, rlofParam=..., forwardBackwardThreshold=..., gridStep=..., interp_type=..., epicK=..., epicSigma=..., epicLambda=..., ricSPSize=..., ricSLICType=..., use_post_proc=..., fgsLambda=..., fgsSigma=..., use_variational_refinement=...) -> retval:
+    def create(
+        self,
+        rlofParam=...,
+        forwardBackwardThreshold=...,
+        gridStep=...,
+        interp_type=...,
+        epicK=...,
+        epicSigma=...,
+        epicLambda=...,
+        ricSPSize=...,
+        ricSLICType=...,
+        use_post_proc=...,
+        fgsLambda=...,
+        fgsSigma=...,
+        use_variational_refinement=...,
+    ) -> retval:
         """
         *    @param rlofParam see optflow::RLOFOpticalFlowParameter
         *    @param forwardBackwardThreshold see setForwardBackward
@@ -314,7 +329,21 @@ class DualTVL1OpticalFlow(cv2.DenseOpticalFlow):
         @copybrief getWarpingsNumber @see getWarpingsNumber
         """
 
-    def create(self, tau=..., lambda_=..., theta=..., nscales=..., warps=..., epsilon=..., innnerIterations=..., outerIterations=..., scaleStep=..., gamma=..., medianFiltering=..., useInitialFlow=...) -> retval:
+    def create(
+        self,
+        tau=...,
+        lambda_=...,
+        theta=...,
+        nscales=...,
+        warps=...,
+        epsilon=...,
+        innnerIterations=...,
+        outerIterations=...,
+        scaleStep=...,
+        gamma=...,
+        medianFiltering=...,
+        useInitialFlow=...,
+    ) -> retval:
         """
         @brief Creates instance of cv::DualTVL1OpticalFlow
         """
@@ -456,7 +485,21 @@ class SparseRLOFOpticalFlow(cv2.SparseOpticalFlow):
         *    @param forwardBackwardThreshold see setForwardBackward
         """
 
-def DenseRLOFOpticalFlow_create(rlofParam=..., forwardBackwardThreshold=..., gridStep=..., interp_type=..., epicK=..., epicSigma=..., epicLambda=..., ricSPSize=..., ricSLICType=..., use_post_proc=..., fgsLambda=..., fgsSigma=..., use_variational_refinement=...) -> retval:
+def DenseRLOFOpticalFlow_create(
+    rlofParam=...,
+    forwardBackwardThreshold=...,
+    gridStep=...,
+    interp_type=...,
+    epicK=...,
+    epicSigma=...,
+    epicLambda=...,
+    ricSPSize=...,
+    ricSLICType=...,
+    use_post_proc=...,
+    fgsLambda=...,
+    fgsSigma=...,
+    use_variational_refinement=...,
+) -> retval:
     """
     *    @param rlofParam see optflow::RLOFOpticalFlowParameter
          *    @param forwardBackwardThreshold see setForwardBackward
@@ -473,7 +516,20 @@ def DenseRLOFOpticalFlow_create(rlofParam=..., forwardBackwardThreshold=..., gri
          *    @param use_variational_refinement see setUseVariationalRefinement
     """
 
-def DualTVL1OpticalFlow_create(tau=..., lambda_=..., theta=..., nscales=..., warps=..., epsilon=..., innnerIterations=..., outerIterations=..., scaleStep=..., gamma=..., medianFiltering=..., useInitialFlow=...) -> retval:
+def DualTVL1OpticalFlow_create(
+    tau=...,
+    lambda_=...,
+    theta=...,
+    nscales=...,
+    warps=...,
+    epsilon=...,
+    innnerIterations=...,
+    outerIterations=...,
+    scaleStep=...,
+    gamma=...,
+    medianFiltering=...,
+    useInitialFlow=...,
+) -> retval:
     """
     @brief Creates instance of cv::DualTVL1OpticalFlow
     """
@@ -489,7 +545,24 @@ def SparseRLOFOpticalFlow_create(rlofParam=..., forwardBackwardThreshold=...) ->
          *    @param forwardBackwardThreshold see setForwardBackward
     """
 
-def calcOpticalFlowDenseRLOF(I0, I1, flow, rlofParam=..., forwardBackwardThreshold=..., gridStep=..., interp_type=..., epicK=..., epicSigma=..., epicLambda=..., ricSPSize=..., ricSLICType=..., use_post_proc=..., fgsLambda=..., fgsSigma=..., use_variational_refinement=...) -> flow:
+def calcOpticalFlowDenseRLOF(
+    I0,
+    I1,
+    flow,
+    rlofParam=...,
+    forwardBackwardThreshold=...,
+    gridStep=...,
+    interp_type=...,
+    epicK=...,
+    epicSigma=...,
+    epicLambda=...,
+    ricSPSize=...,
+    ricSLICType=...,
+    use_post_proc=...,
+    fgsLambda=...,
+    fgsSigma=...,
+    use_variational_refinement=...,
+) -> flow:
     """
     @brief Fast dense optical flow computation based on robust local optical flow (RLOF) algorithms and sparse-to-dense interpolation scheme.
 
@@ -582,7 +655,9 @@ def calcOpticalFlowSF(from_, to, layers, averaging_block_size, max_flow, flow=..
        -   An example using the simpleFlow algorithm can be found at samples/simpleflow_demo.cpp
     """
 
-def calcOpticalFlowSparseRLOF(prevImg, nextImg, prevPts, nextPts, status=..., err=..., rlofParam=..., forwardBackwardThreshold=...) -> tuple[nextPts, status, err]:
+def calcOpticalFlowSparseRLOF(
+    prevImg, nextImg, prevPts, nextPts, status=..., err=..., rlofParam=..., forwardBackwardThreshold=...
+) -> tuple[nextPts, status, err]:
     """
     @brief Calculates fast optical flow for a sparse feature set using the robust local optical flow (RLOF) similar
     * to optflow::calcOpticalFlowPyrLK().
@@ -613,7 +688,9 @@ def calcOpticalFlowSparseRLOF(prevImg, nextImg, prevPts, nextPts, status=..., er
     * For the RLOF configuration see optflow::RLOFOpticalFlowParameter for further details.
     """
 
-def calcOpticalFlowSparseToDense(from_, to, flow=..., grid_step=..., k=..., sigma=..., use_post_proc=..., fgs_lambda=..., fgs_sigma=...) -> flow:
+def calcOpticalFlowSparseToDense(
+    from_, to, flow=..., grid_step=..., k=..., sigma=..., use_post_proc=..., fgs_lambda=..., fgs_sigma=...
+) -> flow:
     """
     @brief Fast dense optical flow based on PyrLK sparse matches interpolation.
 

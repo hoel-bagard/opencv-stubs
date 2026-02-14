@@ -232,7 +232,19 @@ def createBackgroundSubtractorGMG(initializationFrames=..., decisionThreshold=..
     @param decisionThreshold Threshold value, above which it is marked foreground, else background.
     """
 
-def createBackgroundSubtractorGSOC(mc=..., nSamples=..., replaceRate=..., propagationRate=..., hitsThreshold=..., alpha=..., beta=..., blinkingSupressionDecay=..., blinkingSupressionMultiplier=..., noiseRemovalThresholdFacBG=..., noiseRemovalThresholdFacFG=...) -> retval:
+def createBackgroundSubtractorGSOC(
+    mc=...,
+    nSamples=...,
+    replaceRate=...,
+    propagationRate=...,
+    hitsThreshold=...,
+    alpha=...,
+    beta=...,
+    blinkingSupressionDecay=...,
+    blinkingSupressionMultiplier=...,
+    noiseRemovalThresholdFacBG=...,
+    noiseRemovalThresholdFacFG=...,
+) -> retval:
     """
     @brief Creates an instance of BackgroundSubtractorGSOC algorithm.
 
@@ -251,7 +263,21 @@ def createBackgroundSubtractorGSOC(mc=..., nSamples=..., replaceRate=..., propag
     @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
     """
 
-def createBackgroundSubtractorLSBP(mc=..., nSamples=..., LSBPRadius=..., Tlower=..., Tupper=..., Tinc=..., Tdec=..., Rscale=..., Rincdec=..., noiseRemovalThresholdFacBG=..., noiseRemovalThresholdFacFG=..., LSBPthreshold=..., minCount=...) -> retval:
+def createBackgroundSubtractorLSBP(
+    mc=...,
+    nSamples=...,
+    LSBPRadius=...,
+    Tlower=...,
+    Tupper=...,
+    Tinc=...,
+    Tdec=...,
+    Rscale=...,
+    Rincdec=...,
+    noiseRemovalThresholdFacBG=...,
+    noiseRemovalThresholdFacFG=...,
+    LSBPthreshold=...,
+    minCount=...,
+) -> retval:
     """
     @brief Creates an instance of BackgroundSubtractorLSBP algorithm.
 

@@ -188,7 +188,9 @@ def VolumeParams_defaultParams(_volumeType) -> retval:
             at the cost of slow performance.
     """
 
-def makeVolume(_volumeType, _voxelSize, _pose, _raycastStepFactor, _truncDist, _maxWeight, _truncateThreshold, _resolution) -> retval:
+def makeVolume(
+    _volumeType, _voxelSize, _pose, _raycastStepFactor, _truncDist, _maxWeight, _truncateThreshold, _resolution
+) -> retval:
     """
     .
     """

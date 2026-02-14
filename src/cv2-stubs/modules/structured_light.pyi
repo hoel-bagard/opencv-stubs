@@ -82,7 +82,9 @@ class SinusoidalPattern(StructuredLightPattern):
         * @param shadowMask Mask used to discard shadow regions.
         """
 
-    def computePhaseMap(self, patternImages, wrappedPhaseMap=..., shadowMask=..., fundamental=...) -> tuple[wrappedPhaseMap, shadowMask]:
+    def computePhaseMap(
+        self, patternImages, wrappedPhaseMap=..., shadowMask=..., fundamental=...
+    ) -> tuple[wrappedPhaseMap, shadowMask]:
         """
         * @brief Compute a wrapped phase map from sinusoidal patterns.
         * @param patternImages Input data to compute the wrapped phase map.

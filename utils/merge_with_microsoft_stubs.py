@@ -3,8 +3,13 @@ from pathlib import Path
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Script to merge stubs with the Microsoft opencv stubs.", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument("--microsoft_stubs_path", "-m", type=Path, default=Path("./microst_stubs.pyi"), help="Path to pre-existing stubs.")
+    parser = argparse.ArgumentParser(
+        description="Script to merge stubs with the Microsoft opencv stubs.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--microsoft_stubs_path", "-m", type=Path, default=Path("./microst_stubs.pyi"), help="Path to pre-existing stubs."
+    )
     parser.add_argument("--new_stubs_path", "-n", type=Path, default=Path("src/cv2-stubs/__init__.pyi"), help="Path to my stubs.")
     args = parser.parse_args()
 

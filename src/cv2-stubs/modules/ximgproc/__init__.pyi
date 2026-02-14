@@ -87,7 +87,9 @@ class DTFilter(cv2.Algorithm):
         """
 
 class DisparityFilter(cv2.Algorithm):
-    def filter(self, disparity_map_left, left_view, filtered_disparity_map=..., disparity_map_right=..., ROI=..., right_view=...) -> filtered_disparity_map:
+    def filter(
+        self, disparity_map_left, left_view, filtered_disparity_map=..., disparity_map_right=..., ROI=..., right_view=...
+    ) -> filtered_disparity_map:
         """
         @brief Apply filtering to the disparity map.
 
@@ -978,7 +980,9 @@ def RadonTransform(src, dst=..., theta=..., start_angle=..., end_angle=..., crop
     *
     """
 
-def RidgeDetectionFilter_create(ddepth=..., dx=..., dy=..., ksize=..., out_dtype=..., scale=..., delta=..., borderType=...) -> retval:
+def RidgeDetectionFilter_create(
+    ddepth=..., dx=..., dy=..., ksize=..., out_dtype=..., scale=..., delta=..., borderType=...
+) -> retval:
     """
     @brief Create pointer to the Ridge detection filter.
         @param ddepth  Specifies output image depth. Default is CV_32FC1
@@ -1198,7 +1202,20 @@ def createEdgeAwareInterpolator() -> retval:
     EdgeAwareInterpolator.
     """
 
-def createEdgeBoxes(alpha=..., beta=..., eta=..., minScore=..., maxBoxes=..., edgeMinMag=..., edgeMergeThr=..., clusterMinMag=..., maxAspectRatio=..., minBoxArea=..., gamma=..., kappa=...) -> retval:
+def createEdgeBoxes(
+    alpha=...,
+    beta=...,
+    eta=...,
+    minScore=...,
+    maxBoxes=...,
+    edgeMinMag=...,
+    edgeMergeThr=...,
+    clusterMinMag=...,
+    maxAspectRatio=...,
+    minBoxArea=...,
+    gamma=...,
+    kappa=...,
+) -> retval:
     """
     @brief Creates a Edgeboxes
 
@@ -1221,7 +1238,9 @@ def createEdgeDrawing() -> retval:
     @brief Creates a smart pointer to a EdgeDrawing object and initializes it
     """
 
-def createFastBilateralSolverFilter(guide, sigma_spatial, sigma_luma, sigma_chroma, lambda_=..., num_iter=..., max_tol=...) -> retval:
+def createFastBilateralSolverFilter(
+    guide, sigma_spatial, sigma_luma, sigma_chroma, lambda_=..., num_iter=..., max_tol=...
+) -> retval:
     """
     @brief Factory method, create instance of FastBilateralSolverFilter and execute the initialization routines.
 
@@ -1265,7 +1284,9 @@ def createFastGlobalSmootherFilter(guide, lambda_, sigma_color, lambda_attenuati
     was not implemented here.
     """
 
-def createFastLineDetector(length_threshold=..., distance_threshold=..., canny_th1=..., canny_th2=..., canny_aperture_size=..., do_merge=...) -> retval:
+def createFastLineDetector(
+    length_threshold=..., distance_threshold=..., canny_th1=..., canny_th2=..., canny_aperture_size=..., do_merge=...
+) -> retval:
     """
     @brief Creates a smart pointer to a FastLineDetector object and initializes it
 
@@ -1362,7 +1383,9 @@ def createSuperpixelLSC(image, region_size=..., ratio=...) -> retval:
     ![image](pics/superpixels_lsc.png)
     """
 
-def createSuperpixelSEEDS(image_width, image_height, image_channels, num_superpixels, num_levels, prior=..., histogram_bins=..., double_step=...) -> retval:
+def createSuperpixelSEEDS(
+    image_width, image_height, image_channels, num_superpixels, num_levels, prior=..., histogram_bins=..., double_step=...
+) -> retval:
     r"""
     @brief Initializes a SuperpixelSEEDS object.
 
@@ -1447,7 +1470,9 @@ def edgePreservingFilter(src, d, threshold, dst=...) -> dst:
         * @param threshold Threshold, which distinguishes between noise, outliers, and data.
     """
 
-def fastBilateralSolverFilter(guide, src, confidence, dst=..., sigma_spatial=..., sigma_luma=..., sigma_chroma=..., lambda_=..., num_iter=..., max_tol=...) -> dst:
+def fastBilateralSolverFilter(
+    guide, src, confidence, dst=..., sigma_spatial=..., sigma_luma=..., sigma_chroma=..., lambda_=..., num_iter=..., max_tol=...
+) -> dst:
     """
     @brief Simple one-line Fast Bilateral Solver filter call. If you have multiple images to filter with the same
     guide then use FastBilateralSolverFilter interface to avoid extra computations.

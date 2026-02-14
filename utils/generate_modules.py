@@ -28,7 +28,13 @@ def add_module(module_name: str, module: ModuleType, output_path: Path) -> None:
     stubs.append("")
     # Add constants
     for name, member in inspect.getmembers(module):
-        if not inspect.isfunction(member) and not inspect.isclass(member) and not inspect.isbuiltin(member) and not inspect.ismodule(member) and not name.startswith("_"):
+        if (
+            not inspect.isfunction(member)
+            and not inspect.isclass(member)
+            and not inspect.isbuiltin(member)
+            and not inspect.ismodule(member)
+            and not name.startswith("_")
+        ):
             print(f"    Adding constant: {name}")
             stubs.append(f"{name}: int")
 
@@ -42,20 +48,30 @@ def add_module(module_name: str, module: ModuleType, output_path: Path) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Script to generate the stubs for the opencv classes.", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description="Script to generate the stubs for the opencv classes.", formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
     parser.add_argument("--output-path", "-o", type=Path, default=Path("src/cv2-stubs"), help="Output path.")
     args = parser.parse_args()
 
     output_path: Path = args.output_path
 
-    modules = [(name, member) for (name, member) in inspect.getmembers(cv2) if inspect.ismodule(member) and name[0] != "_" and name not in ("Error", "cv", "numpy", "np", "os", "importlib", "sys")]
+    modules = [
+        (name, member)
+        for (name, member) in inspect.getmembers(cv2)
+        if inspect.ismodule(member) and name[0] != "_" and name not in ("Error", "cv", "numpy", "np", "os", "importlib", "sys")
+    ]
 
     for module_name, module in modules:
         print(f"Processing module {module_name}")
 
         has_submodule = False
         for name, member in inspect.getmembers(module):
-            if inspect.ismodule(member) and not name.startswith("_") and name not in ("cv", "cv2", "numpy", "np", "os", "sys", "builtins"):
+            if (
+                inspect.ismodule(member)
+                and not name.startswith("_")
+                and name not in ("cv", "cv2", "numpy", "np", "os", "sys", "builtins")
+            ):
                 print(f"    Adding submodule: {name}")
                 has_submodule = True
                 (output_path / "modules" / module_name).mkdir(parents=True, exist_ok=True)

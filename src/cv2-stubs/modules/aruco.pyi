@@ -60,7 +60,9 @@ class ArucoDetector(cv2.Algorithm):
         @brief Reads algorithm parameters from a file storage
         """
 
-    def refineDetectedMarkers(self, image, board, detectedCorners, detectedIds, rejectedCorners, cameraMatrix=..., distCoeffs=..., recoveredIdxs=...) -> tuple[detectedCorners, detectedIds, rejectedCorners, recoveredIdxs]:
+    def refineDetectedMarkers(
+        self, image, board, detectedCorners, detectedIds, rejectedCorners, cameraMatrix=..., distCoeffs=..., recoveredIdxs=...
+    ) -> tuple[detectedCorners, detectedIds, rejectedCorners, recoveredIdxs]:
         """
         @brief Refind not detected markers based on the already detected and the board layout
         *
@@ -162,7 +164,9 @@ class CharucoBoard(Board):
         """"""
 
 class CharucoDetector(cv2.Algorithm):
-    def detectBoard(self, image, charucoCorners=..., charucoIds=..., markerCorners=..., markerIds=...) -> tuple[charucoCorners, charucoIds, markerCorners, markerIds]:
+    def detectBoard(
+        self, image, charucoCorners=..., charucoIds=..., markerCorners=..., markerIds=...
+    ) -> tuple[charucoCorners, charucoIds, markerCorners, markerIds]:
         """
         * @brief detect aruco markers and interpolate position of ChArUco board corners
         * @param image input image necessary for corner refinement. Note that markers are not detected and * should be sent in corners and ids parameters.
@@ -172,7 +176,9 @@ class CharucoDetector(cv2.Algorithm):
         * @param markerIds list of identifiers for each marker in corners. *  If markerCorners and markerCorners are empty, the function detect aruco markers and ids. * * This function receives the detected markers and returns the 2D position of the chessboard corners * from a ChArUco board using the detected Aruco markers. * * If markerCorners and markerCorners are empty, the detectMarkers() will run and detect aruco markers and ids. * * If camera parameters are provided, the process is based in an approximated pose estimation, else it is based on local homography. * Only visible corners are returned. For each corner, its corresponding identifier is also returned in charucoIds. * @sa findChessboardCorners
         """
 
-    def detectDiamonds(self, image, diamondCorners=..., diamondIds=..., markerCorners=..., markerIds=...) -> tuple[diamondCorners, diamondIds, markerCorners, markerIds]:
+    def detectDiamonds(
+        self, image, diamondCorners=..., diamondIds=..., markerCorners=..., markerIds=...
+    ) -> tuple[diamondCorners, diamondIds, markerCorners, markerIds]:
         """
         * @brief Detect ChArUco Diamond markers
         *
@@ -301,13 +307,30 @@ def Dictionary_getByteListFromBits(bits) -> retval:
     @brief Transform matrix of bits to list of bytes in the 4 rotations
     """
 
-def calibrateCameraAruco(corners, ids, counter, board, imageSize, cameraMatrix, distCoeffs, rvecs=..., tvecs=..., flags=..., criteria=...) -> tuple[retval, cameraMatrix, distCoeffs, rvecs, tvecs]:
+def calibrateCameraAruco(
+    corners, ids, counter, board, imageSize, cameraMatrix, distCoeffs, rvecs=..., tvecs=..., flags=..., criteria=...
+) -> tuple[retval, cameraMatrix, distCoeffs, rvecs, tvecs]:
     """
     @overload
     @brief It's the same function as #calibrateCameraAruco but without calibration error estimation.
     """
 
-def calibrateCameraArucoExtended(corners, ids, counter, board, imageSize, cameraMatrix, distCoeffs, rvecs=..., tvecs=..., stdDeviationsIntrinsics=..., stdDeviationsExtrinsics=..., perViewErrors=..., flags=..., criteria=...) -> tuple[retval, cameraMatrix, distCoeffs, rvecs, tvecs, stdDeviationsIntrinsics, stdDeviationsExtrinsics, perViewErrors]:
+def calibrateCameraArucoExtended(
+    corners,
+    ids,
+    counter,
+    board,
+    imageSize,
+    cameraMatrix,
+    distCoeffs,
+    rvecs=...,
+    tvecs=...,
+    stdDeviationsIntrinsics=...,
+    stdDeviationsExtrinsics=...,
+    perViewErrors=...,
+    flags=...,
+    criteria=...,
+) -> tuple[retval, cameraMatrix, distCoeffs, rvecs, tvecs, stdDeviationsIntrinsics, stdDeviationsExtrinsics, perViewErrors]:
     """
     * @brief Calibrate a camera using aruco markers
 
@@ -345,12 +368,28 @@ def calibrateCameraArucoExtended(corners, ids, counter, board, imageSize, camera
     calibration in calibrateCamera(). The function returns the final re-projection error.
     """
 
-def calibrateCameraCharuco(charucoCorners, charucoIds, board, imageSize, cameraMatrix, distCoeffs, rvecs=..., tvecs=..., flags=..., criteria=...) -> tuple[retval, cameraMatrix, distCoeffs, rvecs, tvecs]:
+def calibrateCameraCharuco(
+    charucoCorners, charucoIds, board, imageSize, cameraMatrix, distCoeffs, rvecs=..., tvecs=..., flags=..., criteria=...
+) -> tuple[retval, cameraMatrix, distCoeffs, rvecs, tvecs]:
     """
     * @brief It's the same function as #calibrateCameraCharuco but without calibration error estimation.
     """
 
-def calibrateCameraCharucoExtended(charucoCorners, charucoIds, board, imageSize, cameraMatrix, distCoeffs, rvecs=..., tvecs=..., stdDeviationsIntrinsics=..., stdDeviationsExtrinsics=..., perViewErrors=..., flags=..., criteria=...) -> tuple[retval, cameraMatrix, distCoeffs, rvecs, tvecs, stdDeviationsIntrinsics, stdDeviationsExtrinsics, perViewErrors]:
+def calibrateCameraCharucoExtended(
+    charucoCorners,
+    charucoIds,
+    board,
+    imageSize,
+    cameraMatrix,
+    distCoeffs,
+    rvecs=...,
+    tvecs=...,
+    stdDeviationsIntrinsics=...,
+    stdDeviationsExtrinsics=...,
+    perViewErrors=...,
+    flags=...,
+    criteria=...,
+) -> tuple[retval, cameraMatrix, distCoeffs, rvecs, tvecs, stdDeviationsIntrinsics, stdDeviationsExtrinsics, perViewErrors]:
     """
     * @brief Calibrate a camera using Charuco corners
 
@@ -386,7 +425,17 @@ def calibrateCameraCharucoExtended(charucoCorners, charucoIds, board, imageSize,
     The function returns the final re-projection error.
     """
 
-def detectCharucoDiamond(image, markerCorners, markerIds, squareMarkerLengthRate, diamondCorners=..., diamondIds=..., cameraMatrix=..., distCoeffs=..., dictionary=...) -> tuple[diamondCorners, diamondIds]:
+def detectCharucoDiamond(
+    image,
+    markerCorners,
+    markerIds,
+    squareMarkerLengthRate,
+    diamondCorners=...,
+    diamondIds=...,
+    cameraMatrix=...,
+    distCoeffs=...,
+    dictionary=...,
+) -> tuple[diamondCorners, diamondIds]:
     """
     * @brief Detect ChArUco Diamond markers
 
@@ -413,7 +462,9 @@ def detectCharucoDiamond(image, markerCorners, markerIds, squareMarkerLengthRate
     @deprecated Use CharucoDetector::detectDiamonds
     """
 
-def detectMarkers(image, dictionary, corners=..., ids=..., parameters=..., rejectedImgPoints=...) -> tuple[corners, ids, rejectedImgPoints]:
+def detectMarkers(
+    image, dictionary, corners=..., ids=..., parameters=..., rejectedImgPoints=...
+) -> tuple[corners, ids, rejectedImgPoints]:
     """
     @brief detect markers
     @deprecated Use class ArucoDetector::detectMarkers
@@ -492,12 +543,16 @@ def drawPlanarBoard(board, outSize, marginSize, borderBits, img=...) -> img:
     @deprecated Use Board::generateImage
     """
 
-def estimatePoseBoard(corners, ids, board, cameraMatrix, distCoeffs, rvec, tvec, useExtrinsicGuess=...) -> tuple[retval, rvec, tvec]:
+def estimatePoseBoard(
+    corners, ids, board, cameraMatrix, distCoeffs, rvec, tvec, useExtrinsicGuess=...
+) -> tuple[retval, rvec, tvec]:
     """
     @deprecated Use cv::solvePnP
     """
 
-def estimatePoseCharucoBoard(charucoCorners, charucoIds, board, cameraMatrix, distCoeffs, rvec, tvec, useExtrinsicGuess=...) -> tuple[retval, rvec, tvec]:
+def estimatePoseCharucoBoard(
+    charucoCorners, charucoIds, board, cameraMatrix, distCoeffs, rvec, tvec, useExtrinsicGuess=...
+) -> tuple[retval, rvec, tvec]:
     """
     * @brief Pose estimation for a ChArUco board given some of their corners
     @param charucoCorners vector of detected charuco corners
@@ -518,7 +573,9 @@ def estimatePoseCharucoBoard(charucoCorners, charucoIds, board, cameraMatrix, di
     @sa use cv::drawFrameAxes to get world coordinate system axis for object points
     """
 
-def estimatePoseSingleMarkers(corners, markerLength, cameraMatrix, distCoeffs, rvecs=..., tvecs=..., objPoints=..., estimateParameters=...) -> tuple[rvecs, tvecs, objPoints]:
+def estimatePoseSingleMarkers(
+    corners, markerLength, cameraMatrix, distCoeffs, rvecs=..., tvecs=..., objPoints=..., estimateParameters=...
+) -> tuple[rvecs, tvecs, objPoints]:
     """
     @deprecated Use cv::solvePnP
     """
@@ -551,7 +608,9 @@ def generateImageMarker(dictionary, id, sidePixels, img=..., borderBits=...) -> 
     This function returns a marker image in its canonical form (i.e. ready to be printed)
     """
 
-def getBoardObjectAndImagePoints(board, detectedCorners, detectedIds, objPoints=..., imgPoints=...) -> tuple[objPoints, imgPoints]:
+def getBoardObjectAndImagePoints(
+    board, detectedCorners, detectedIds, objPoints=..., imgPoints=...
+) -> tuple[objPoints, imgPoints]:
     """
     @brief get board object and image points
     @deprecated Use Board::matchImagePoints
@@ -562,7 +621,9 @@ def getPredefinedDictionary(dict) -> retval:
     @brief Returns one of the predefined dictionaries referenced by DICT_*.
     """
 
-def interpolateCornersCharuco(markerCorners, markerIds, image, board, charucoCorners=..., charucoIds=..., cameraMatrix=..., distCoeffs=..., minMarkers=...) -> tuple[retval, charucoCorners, charucoIds]:
+def interpolateCornersCharuco(
+    markerCorners, markerIds, image, board, charucoCorners=..., charucoIds=..., cameraMatrix=..., distCoeffs=..., minMarkers=...
+) -> tuple[retval, charucoCorners, charucoIds]:
     """
     * @brief Interpolate position of ChArUco board corners
     @param markerCorners vector of already detected markers corners. For each marker, its four
@@ -590,7 +651,20 @@ def interpolateCornersCharuco(markerCorners, markerIds, image, board, charucoCor
     @deprecated Use CharucoDetector::detectBoard
     """
 
-def refineDetectedMarkers(image, board, detectedCorners, detectedIds, rejectedCorners, cameraMatrix=..., distCoeffs=..., minRepDistance=..., errorCorrectionRate=..., checkAllOrders=..., recoveredIdxs=..., parameters=...) -> tuple[detectedCorners, detectedIds, rejectedCorners, recoveredIdxs]:
+def refineDetectedMarkers(
+    image,
+    board,
+    detectedCorners,
+    detectedIds,
+    rejectedCorners,
+    cameraMatrix=...,
+    distCoeffs=...,
+    minRepDistance=...,
+    errorCorrectionRate=...,
+    checkAllOrders=...,
+    recoveredIdxs=...,
+    parameters=...,
+) -> tuple[detectedCorners, detectedIds, rejectedCorners, recoveredIdxs]:
     """
     @brief refine detected markers
     @deprecated Use class ArucoDetector::refineDetectedMarkers

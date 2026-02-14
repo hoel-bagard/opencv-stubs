@@ -128,7 +128,16 @@ class AKAZE(Feature2D):
     def setThreshold(self, threshold) -> None:
         """"""
 
-    def create(self, descriptor_type=..., descriptor_size=..., descriptor_channels=..., threshold=..., nOctaves=..., nOctaveLayers=..., diffusivity=...) -> retval:
+    def create(
+        self,
+        descriptor_type=...,
+        descriptor_size=...,
+        descriptor_channels=...,
+        threshold=...,
+        nOctaves=...,
+        nOctaveLayers=...,
+        diffusivity=...,
+    ) -> retval:
         r"""
         @brief The AKAZE constructor
 
@@ -599,7 +608,7 @@ class BackgroundSubtractorMOG2(BackgroundSubtractor):
         """
 
     @overload
-    def apply(self,image,knownForegroundMask,fgmask=..., learningRate=...) -> fgmask:
+    def apply(self, image, knownForegroundMask, fgmask=..., learningRate=...) -> fgmask:
         """"""
 
     def getBackgroundRatio(self) -> retval:
@@ -767,7 +776,7 @@ class CLAHE(Algorithm):
     def getTilesGridSize(self) -> retval:
         """"""
 
-    def setBitShift(self,bitShift) -> None:
+    def setBitShift(self, bitShift) -> None:
         """"""
 
     def setClipLimit(self, clipLimit) -> None:
@@ -834,7 +843,7 @@ class CascadeClassifier:
     @overload
     def __init__(self) -> None:
         """"""
-    
+
     @overload
     def __init__(self, filename) -> None:
         """"""
@@ -853,7 +862,9 @@ class CascadeClassifier:
         @param maxSize Maximum possible object size. Objects larger than that are ignored. If `maxSize == minSize` model is evaluated on single scale.
         """
 
-    def detectMultiScale2(self, image, scaleFactor=..., minNeighbors=..., flags=..., minSize=..., maxSize=...) -> tuple[objects, numDetections]:
+    def detectMultiScale2(
+        self, image, scaleFactor=..., minNeighbors=..., flags=..., minSize=..., maxSize=...
+    ) -> tuple[objects, numDetections]:
         """
         @overload
         @param image Matrix of the type CV_8U containing an image where objects are detected.
@@ -866,7 +877,9 @@ class CascadeClassifier:
         @param maxSize Maximum possible object size. Objects larger than that are ignored. If `maxSize == minSize` model is evaluated on single scale.
         """
 
-    def detectMultiScale3(self, image, scaleFactor=..., minNeighbors=..., flags=..., minSize=..., maxSize=..., outputRejectLevels=...) -> tuple[objects, rejectLevels, levelWeights]:
+    def detectMultiScale3(
+        self, image, scaleFactor=..., minNeighbors=..., flags=..., minSize=..., maxSize=..., outputRejectLevels=...
+    ) -> tuple[objects, rejectLevels, levelWeights]:
         """
         @overload
         This function allows you to retrieve the final stage decision certainty of classification.
@@ -1059,19 +1072,18 @@ class DISOpticalFlow(DenseOpticalFlow):
     def setCoarsestScale(self, val) -> None:
         """"""
 
-    def setVariationalRefinementEpsilon(self,val) -> None:
+    def setVariationalRefinementEpsilon(self, val) -> None:
         """"""
 
-class DMatch: 
+class DMatch:
     @overload
     def __init__(self) -> None: ...
-
     @overload
     def __init__(self, _queryIdx, _trainIdx, _distance) -> None:
         """"""
 
     @overload
-    def __init__(self, _queryIdx, _trainIdx, _imgIdx, _distance ) -> None:
+    def __init__(self, _queryIdx, _trainIdx, _imgIdx, _distance) -> None:
         """"""
 
 class DenseOpticalFlow(Algorithm):
@@ -1303,7 +1315,9 @@ class FaceDetectorYN:
 
     @overload
     @staticmethod
-    def create(model, config, input_size, score_threshold=..., nms_threshold=..., top_k=..., backend_id=..., target_id=...) -> retval:
+    def create(
+        model, config, input_size, score_threshold=..., nms_threshold=..., top_k=..., backend_id=..., target_id=...
+    ) -> retval:
         """
         @brief Creates an instance of this class with given parameters
         *
@@ -1319,7 +1333,17 @@ class FaceDetectorYN:
 
     @overload
     @staticmethod
-    def create(framework, bufferModel, bufferConfig, input_size, score_threshold=..., nms_threshold=..., top_k=..., backend_id=..., target_id=...) -> retval:
+    def create(
+        framework,
+        bufferModel,
+        bufferConfig,
+        input_size,
+        score_threshold=...,
+        nms_threshold=...,
+        top_k=...,
+        backend_id=...,
+        target_id=...,
+    ) -> retval:
         """"""
 
 class FaceRecognizerSF:
@@ -1411,7 +1435,9 @@ class FarnebackOpticalFlow(DenseOpticalFlow):
     def setWinSize(self, winSize) -> None:
         """"""
 
-    def create(self, numLevels=..., pyrScale=..., fastPyramids=..., winSize=..., numIters=..., polyN=..., polySigma=..., flags=...) -> retval:
+    def create(
+        self, numLevels=..., pyrScale=..., fastPyramids=..., winSize=..., numIters=..., polyN=..., polySigma=..., flags=...
+    ) -> retval:
         """"""
 
 class FastFeatureDetector(Feature2D):
@@ -2137,7 +2163,9 @@ class HOGDescriptor:
         @param searchLocations Vector of Point includes set of requested locations to be evaluated.
         """
 
-    def detectMultiScale(self, img, hitThreshold=..., winStride=..., padding=..., scale=..., groupThreshold=..., useMeanshiftGrouping=...) -> tuple[foundLocations, foundWeights]:
+    def detectMultiScale(
+        self, img, hitThreshold=..., winStride=..., padding=..., scale=..., groupThreshold=..., useMeanshiftGrouping=...
+    ) -> tuple[foundLocations, foundWeights]:
         """
         @brief Detects objects of different sizes in the input image. The detected objects are returned as a list
         of rectangles.
@@ -2437,7 +2465,18 @@ class MSER(Feature2D):
     def setPass2Only(self, f) -> None:
         """"""
 
-    def create(self, delta=..., min_area=..., max_area=..., max_variation=..., min_diversity=..., max_evolution=..., area_threshold=..., min_margin=..., edge_blur_size=...) -> retval:
+    def create(
+        self,
+        delta=...,
+        min_area=...,
+        max_area=...,
+        max_variation=...,
+        min_diversity=...,
+        max_evolution=...,
+        area_threshold=...,
+        min_margin=...,
+        edge_blur_size=...,
+    ) -> retval:
         """
         @brief Full constructor for %MSER detector
 
@@ -2580,7 +2619,18 @@ class ORB(Feature2D):
     def setWTA_K(self, wta_k) -> None:
         """"""
 
-    def create(self, nfeatures=..., scaleFactor=..., nlevels=..., edgeThreshold=..., firstLevel=..., WTA_K=..., scoreType=..., patchSize=..., fastThreshold=...) -> retval:
+    def create(
+        self,
+        nfeatures=...,
+        scaleFactor=...,
+        nlevels=...,
+        edgeThreshold=...,
+        firstLevel=...,
+        WTA_K=...,
+        scoreType=...,
+        patchSize=...,
+        fastThreshold=...,
+    ) -> retval:
         """
         @brief The ORB constructor
 
@@ -3207,7 +3257,20 @@ class StereoSGBM(StereoMatcher):
     def setUniquenessRatio(self, uniquenessRatio) -> None:
         """"""
 
-    def create(self, minDisparity=..., numDisparities=..., blockSize=..., P1=..., P2=..., disp12MaxDiff=..., preFilterCap=..., uniquenessRatio=..., speckleWindowSize=..., speckleRange=..., mode=...) -> retval:
+    def create(
+        self,
+        minDisparity=...,
+        numDisparities=...,
+        blockSize=...,
+        P1=...,
+        P2=...,
+        disp12MaxDiff=...,
+        preFilterCap=...,
+        uniquenessRatio=...,
+        speckleWindowSize=...,
+        speckleRange=...,
+        mode=...,
+    ) -> retval:
         r"""
         @brief Creates StereoSGBM object
 
@@ -3908,11 +3971,15 @@ class VideoWriter:
     @overload
     def __init__(self, filename: str, fourcc: int, fps: float, frameSize: Sequence[int], isColor: bool = ...) -> None: ...
     @overload
-    def __init__(self, filename: str, apiPreference: int, fourcc: int, fps: float, frameSize: Sequence[int], isColor: bool = ...) -> None: ...
+    def __init__(
+        self, filename: str, apiPreference: int, fourcc: int, fps: float, frameSize: Sequence[int], isColor: bool = ...
+    ) -> None: ...
     @overload
     def __init__(self, filename: str, fourcc: int, fps: float, frameSize: Sequence[int], params: Sequence[int]) -> None: ...
     @overload
-    def __init__(self, filename: str, apiPreference: int, fourcc: int, fps: float, frameSize: Sequence[int], params: Sequence[int]) -> None: ...
+    def __init__(
+        self, filename: str, apiPreference: int, fourcc: int, fps: float, frameSize: Sequence[int], params: Sequence[int]
+    ) -> None: ...
     def get(self, propId) -> retval:
         """
         @brief Returns the specified VideoWriter property
@@ -4296,9 +4363,13 @@ ximgproc_segmentation_SelectiveSearchSegmentation = ximgproc.segmentation.Select
 ximgproc_segmentation_SelectiveSearchSegmentationStrategy = ximgproc.segmentation.SelectiveSearchSegmentationStrategy
 ximgproc_segmentation_SelectiveSearchSegmentationStrategyColor = ximgproc.segmentation.SelectiveSearchSegmentationStrategyColor
 ximgproc_segmentation_SelectiveSearchSegmentationStrategyFill = ximgproc.segmentation.SelectiveSearchSegmentationStrategyFill
-ximgproc_segmentation_SelectiveSearchSegmentationStrategyMultiple = ximgproc.segmentation.SelectiveSearchSegmentationStrategyMultiple
+ximgproc_segmentation_SelectiveSearchSegmentationStrategyMultiple = (
+    ximgproc.segmentation.SelectiveSearchSegmentationStrategyMultiple
+)
 ximgproc_segmentation_SelectiveSearchSegmentationStrategySize = ximgproc.segmentation.SelectiveSearchSegmentationStrategySize
-ximgproc_segmentation_SelectiveSearchSegmentationStrategyTexture = ximgproc.segmentation.SelectiveSearchSegmentationStrategyTexture
+ximgproc_segmentation_SelectiveSearchSegmentationStrategyTexture = (
+    ximgproc.segmentation.SelectiveSearchSegmentationStrategyTexture
+)
 xphoto_GrayworldWB = xphoto.GrayworldWB
 xphoto_LearningBasedWB = xphoto.LearningBasedWB
 xphoto_SimpleWB = xphoto.SimpleWB

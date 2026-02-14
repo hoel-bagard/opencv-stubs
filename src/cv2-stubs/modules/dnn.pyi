@@ -942,7 +942,9 @@ def shrinkCaffeModel(src, dst, layersTypes=...) -> None:
          *       So the resulting model may be used there.
     """
 
-def softNMSBoxes(bboxes, scores, score_threshold, nms_threshold, top_k=..., sigma=..., method=...) -> tuple[updated_scores, indices]:
+def softNMSBoxes(
+    bboxes, scores, score_threshold, nms_threshold, top_k=..., sigma=..., method=...
+) -> tuple[updated_scores, indices]:
     """
     @brief Performs soft non maximum suppression given boxes and corresponding scores.
          * Reference: https://arxiv.org/abs/1704.04503

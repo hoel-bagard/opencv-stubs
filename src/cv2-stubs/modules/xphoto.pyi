@@ -184,7 +184,22 @@ def applyChannelGains(src, gainB, gainG, gainR, dst=...) -> dst:
     """
 
 @overload
-def bm3dDenoising(src, dstStep1, dstStep2=..., h=..., templateWindowSize=..., searchWindowSize=..., blockMatchingStep1=..., blockMatchingStep2=..., groupSize=..., slidingStep=..., beta=..., normType=..., step=..., transformType=...) -> tuple[dstStep1, dstStep2]:
+def bm3dDenoising(
+    src,
+    dstStep1,
+    dstStep2=...,
+    h=...,
+    templateWindowSize=...,
+    searchWindowSize=...,
+    blockMatchingStep1=...,
+    blockMatchingStep2=...,
+    groupSize=...,
+    slidingStep=...,
+    beta=...,
+    normType=...,
+    step=...,
+    transformType=...,
+) -> tuple[dstStep1, dstStep2]:
     """
     @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
             <http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf> with several computational
@@ -225,7 +240,22 @@ def bm3dDenoising(src, dstStep1, dstStep2=..., h=..., templateWindowSize=..., se
     """
 
 @overload
-def bm3dDenoising(src, dstStep1, dstStep2=..., h=..., templateWindowSize=..., searchWindowSize=..., blockMatchingStep1=..., blockMatchingStep2=..., groupSize=..., slidingStep=..., beta=..., normType=..., step=..., transformType=...) -> tuple[dstStep1, dstStep2]:
+def bm3dDenoising(
+    src,
+    dstStep1,
+    dstStep2=...,
+    h=...,
+    templateWindowSize=...,
+    searchWindowSize=...,
+    blockMatchingStep1=...,
+    blockMatchingStep2=...,
+    groupSize=...,
+    slidingStep=...,
+    beta=...,
+    normType=...,
+    step=...,
+    transformType=...,
+) -> tuple[dstStep1, dstStep2]:
     """
     @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
             <http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf> with several computational

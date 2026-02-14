@@ -141,7 +141,17 @@ class Retina(cv2.Algorithm):
         @param applyDefaultSetupOnFailure set to true if an error must be thrown on error  You can retrieve the current parameters structure using the method Retina::getParameters and update it before running method Retina::setup.
         """
 
-    def setupIPLMagnoChannel(self, normaliseOutput=..., parasolCells_beta=..., parasolCells_tau=..., parasolCells_k=..., amacrinCellsTemporalCutFrequency=..., V0CompressionParameter=..., localAdaptintegration_tau=..., localAdaptintegration_k=...) -> None:
+    def setupIPLMagnoChannel(
+        self,
+        normaliseOutput=...,
+        parasolCells_beta=...,
+        parasolCells_tau=...,
+        parasolCells_k=...,
+        amacrinCellsTemporalCutFrequency=...,
+        V0CompressionParameter=...,
+        localAdaptintegration_tau=...,
+        localAdaptintegration_k=...,
+    ) -> None:
         """
         @brief Set parameters values for the Inner Plexiform Layer (IPL) magnocellular channel
 
@@ -159,7 +169,18 @@ class Retina(cv2.Algorithm):
         @param localAdaptintegration_k specifies the spatial constant of the low pas filter involved in the computation of the local "motion mean" for the local adaptation computation
         """
 
-    def setupOPLandIPLParvoChannel(self, colorMode=..., normaliseOutput=..., photoreceptorsLocalAdaptationSensitivity=..., photoreceptorsTemporalConstant=..., photoreceptorsSpatialConstant=..., horizontalCellsGain=..., HcellsTemporalConstant=..., HcellsSpatialConstant=..., ganglionCellsSensitivity=...) -> None:
+    def setupOPLandIPLParvoChannel(
+        self,
+        colorMode=...,
+        normaliseOutput=...,
+        photoreceptorsLocalAdaptationSensitivity=...,
+        photoreceptorsTemporalConstant=...,
+        photoreceptorsSpatialConstant=...,
+        horizontalCellsGain=...,
+        HcellsTemporalConstant=...,
+        HcellsSpatialConstant=...,
+        ganglionCellsSensitivity=...,
+    ) -> None:
         """
         @brief Setup the OPL and IPL parvo channels (see biologocal model)
 
@@ -193,7 +214,9 @@ class Retina(cv2.Algorithm):
         """
 
     @overload
-    def create(self, inputSize, colorMode, colorSamplingMethod=..., useRetinaLogSampling=..., reductionFactor=..., samplingStrength=...) -> retval:
+    def create(
+        self, inputSize, colorMode, colorSamplingMethod=..., useRetinaLogSampling=..., reductionFactor=..., samplingStrength=...
+    ) -> retval:
         """
         @brief Constructors from standardized interfaces : retrieve a smart pointer to a Retina instance
 
@@ -225,7 +248,9 @@ class RetinaFastToneMapping(cv2.Algorithm):
         @param outputToneMappedImage the output tone mapped image
         """
 
-    def setup(self, photoreceptorsNeighborhoodRadius=..., ganglioncellsNeighborhoodRadius=..., meanLuminanceModulatorK=...) -> None:
+    def setup(
+        self, photoreceptorsNeighborhoodRadius=..., ganglioncellsNeighborhoodRadius=..., meanLuminanceModulatorK=...
+    ) -> None:
         """
         @brief updates tone mapping behaviors by adjusing the local luminance computation area
 

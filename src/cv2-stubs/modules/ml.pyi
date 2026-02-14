@@ -430,7 +430,9 @@ class EM(StatModel):
         @copybrief getTermCriteria @see getTermCriteria
         """
 
-    def trainE(self, samples, means0, covs0=..., weights0=..., logLikelihoods=..., labels=..., probs=...) -> tuple[retval, logLikelihoods, labels, probs]:
+    def trainE(
+        self, samples, means0, covs0=..., weights0=..., logLikelihoods=..., labels=..., probs=...
+    ) -> tuple[retval, logLikelihoods, labels, probs]:
         """
         @brief Estimate the Gaussian mixture parameters from a samples set.
 
@@ -505,7 +507,9 @@ class EM(StatModel):
         """
 
 class KNearest(StatModel):
-    def findNearest(self, samples, k, results=..., neighborResponses=..., dist=...) -> tuple[retval, results, neighborResponses, dist]:
+    def findNearest(
+        self, samples, k, results=..., neighborResponses=..., dist=...
+    ) -> tuple[retval, results, neighborResponses, dist]:
         """
         @brief Finds the neighbors and predicts responses for input vectors.
 
@@ -915,7 +919,20 @@ class SVM(StatModel):
         @copybrief getType @see getType
         """
 
-    def trainAuto(self, samples, layout, responses, kFold=..., Cgrid=..., gammaGrid=..., pGrid=..., nuGrid=..., coeffGrid=..., degreeGrid=..., balanced=...) -> retval:
+    def trainAuto(
+        self,
+        samples,
+        layout,
+        responses,
+        kFold=...,
+        Cgrid=...,
+        gammaGrid=...,
+        pGrid=...,
+        nuGrid=...,
+        coeffGrid=...,
+        degreeGrid=...,
+        balanced=...,
+    ) -> retval:
         """
         @brief Trains an %SVM with optimal parameters
 

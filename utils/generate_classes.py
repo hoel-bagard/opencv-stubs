@@ -9,7 +9,9 @@ from .processing_utils import process_class
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Script to generate the stubs for the opencv classes.", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description="Script to generate the stubs for the opencv classes.", formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
     parser.add_argument("--output-path", "-o", type=Path, default=Path("cv2_classes.pyi"), help="Output path.")
     args = parser.parse_args()
 

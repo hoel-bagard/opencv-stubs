@@ -7,7 +7,10 @@ from pathlib import Path
 
 
 def main() -> None:
-    argparse.ArgumentParser(description="Script to set every undefined type as an alias of Any.", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    argparse.ArgumentParser(
+        description="Script to set every undefined type as an alias of Any.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
 
     print("Running pyright")
     pyright_result = subprocess.run(["pyright", "."], check=False, stdout=subprocess.PIPE).stdout.decode().splitlines()

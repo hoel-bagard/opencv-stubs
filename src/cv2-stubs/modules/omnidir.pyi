@@ -35,7 +35,9 @@ undistorted: TypeAlias = Any
 retval: TypeAlias = Any
 
 @overload
-def calibrate(objectPoints, imagePoints, size, K, xi, D, flags, criteria, rvecs=..., tvecs=..., idx=...) -> tuple[retval, K, xi, D, rvecs, tvecs, idx]:
+def calibrate(
+    objectPoints, imagePoints, size, K, xi, D, flags, criteria, rvecs=..., tvecs=..., idx=...
+) -> tuple[retval, K, xi, D, rvecs, tvecs, idx]:
     """
     @brief Perform omnidirectional camera calibration, the default depth of outputs is CV_64F.
 
@@ -43,13 +45,17 @@ def calibrate(objectPoints, imagePoints, size, K, xi, D, flags, criteria, rvecs=
     """
 
 @overload
-def calibrate(objectPoints, imagePoints, size, K, xi, D, flags, criteria, rvecs=..., tvecs=..., idx=...) -> tuple[retval, K, xi, D, rvecs, tvecs, idx]:
+def calibrate(
+    objectPoints, imagePoints, size, K, xi, D, flags, criteria, rvecs=..., tvecs=..., idx=...
+) -> tuple[retval, K, xi, D, rvecs, tvecs, idx]:
     """
     @param imagePoints Vector of vector of Vec2f corresponding image points of objectPoints. It must be the same
     """
 
 @overload
-def calibrate(objectPoints, imagePoints, size, K, xi, D, flags, criteria, rvecs=..., tvecs=..., idx=...) -> tuple[retval, K, xi, D, rvecs, tvecs, idx]:
+def calibrate(
+    objectPoints, imagePoints, size, K, xi, D, flags, criteria, rvecs=..., tvecs=..., idx=...
+) -> tuple[retval, K, xi, D, rvecs, tvecs, idx]:
     """
     @param size Image size of calibration images.
     @param K Output calibrated camera matrix.
@@ -63,7 +69,9 @@ def calibrate(objectPoints, imagePoints, size, K, xi, D, flags, criteria, rvecs=
     """
 
 @overload
-def calibrate(objectPoints, imagePoints, size, K, xi, D, flags, criteria, rvecs=..., tvecs=..., idx=...) -> tuple[retval, K, xi, D, rvecs, tvecs, idx]:
+def calibrate(
+    objectPoints, imagePoints, size, K, xi, D, flags, criteria, rvecs=..., tvecs=..., idx=...
+) -> tuple[retval, K, xi, D, rvecs, tvecs, idx]:
     """ """
 
 @overload
@@ -139,32 +147,127 @@ def projectPoints(objectPoints, rvec, tvec, K, xi, D, imagePoints=..., jacobian=
     """ """
 
 @overload
-def stereoCalibrate(objectPoints, imagePoints1, imagePoints2, imageSize1, imageSize2, K1, xi1, D1, K2, xi2, D2, flags, criteria, rvec=..., tvec=..., rvecsL=..., tvecsL=..., idx=...) -> tuple[retval, objectPoints, imagePoints1, imagePoints2, K1, xi1, D1, K2, xi2, D2, rvec, tvec, rvecsL, tvecsL, idx]:
+def stereoCalibrate(
+    objectPoints,
+    imagePoints1,
+    imagePoints2,
+    imageSize1,
+    imageSize2,
+    K1,
+    xi1,
+    D1,
+    K2,
+    xi2,
+    D2,
+    flags,
+    criteria,
+    rvec=...,
+    tvec=...,
+    rvecsL=...,
+    tvecsL=...,
+    idx=...,
+) -> tuple[retval, objectPoints, imagePoints1, imagePoints2, K1, xi1, D1, K2, xi2, D2, rvec, tvec, rvecsL, tvecsL, idx]:
     """
     @brief Stereo calibration for omnidirectional camera model. It computes the intrinsic parameters for two
     """
 
 @overload
-def stereoCalibrate(objectPoints, imagePoints1, imagePoints2, imageSize1, imageSize2, K1, xi1, D1, K2, xi2, D2, flags, criteria, rvec=..., tvec=..., rvecsL=..., tvecsL=..., idx=...) -> tuple[retval, objectPoints, imagePoints1, imagePoints2, K1, xi1, D1, K2, xi2, D2, rvec, tvec, rvecsL, tvecsL, idx]:
+def stereoCalibrate(
+    objectPoints,
+    imagePoints1,
+    imagePoints2,
+    imageSize1,
+    imageSize2,
+    K1,
+    xi1,
+    D1,
+    K2,
+    xi2,
+    D2,
+    flags,
+    criteria,
+    rvec=...,
+    tvec=...,
+    rvecsL=...,
+    tvecsL=...,
+    idx=...,
+) -> tuple[retval, objectPoints, imagePoints1, imagePoints2, K1, xi1, D1, K2, xi2, D2, rvec, tvec, rvecsL, tvecsL, idx]:
     """
 
     @param objectPoints Object points in world (pattern) coordinate. Its type is vector<vector<Vec3f> >.
     """
 
 @overload
-def stereoCalibrate(objectPoints, imagePoints1, imagePoints2, imageSize1, imageSize2, K1, xi1, D1, K2, xi2, D2, flags, criteria, rvec=..., tvec=..., rvecsL=..., tvecsL=..., idx=...) -> tuple[retval, objectPoints, imagePoints1, imagePoints2, K1, xi1, D1, K2, xi2, D2, rvec, tvec, rvecsL, tvecsL, idx]:
+def stereoCalibrate(
+    objectPoints,
+    imagePoints1,
+    imagePoints2,
+    imageSize1,
+    imageSize2,
+    K1,
+    xi1,
+    D1,
+    K2,
+    xi2,
+    D2,
+    flags,
+    criteria,
+    rvec=...,
+    tvec=...,
+    rvecsL=...,
+    tvecsL=...,
+    idx=...,
+) -> tuple[retval, objectPoints, imagePoints1, imagePoints2, K1, xi1, D1, K2, xi2, D2, rvec, tvec, rvecsL, tvecsL, idx]:
     """
     @param imagePoints1 The corresponding image points of the first camera, with type vector<vector<Vec2f> >.
     """
 
 @overload
-def stereoCalibrate(objectPoints, imagePoints1, imagePoints2, imageSize1, imageSize2, K1, xi1, D1, K2, xi2, D2, flags, criteria, rvec=..., tvec=..., rvecsL=..., tvecsL=..., idx=...) -> tuple[retval, objectPoints, imagePoints1, imagePoints2, K1, xi1, D1, K2, xi2, D2, rvec, tvec, rvecsL, tvecsL, idx]:
+def stereoCalibrate(
+    objectPoints,
+    imagePoints1,
+    imagePoints2,
+    imageSize1,
+    imageSize2,
+    K1,
+    xi1,
+    D1,
+    K2,
+    xi2,
+    D2,
+    flags,
+    criteria,
+    rvec=...,
+    tvec=...,
+    rvecsL=...,
+    tvecsL=...,
+    idx=...,
+) -> tuple[retval, objectPoints, imagePoints1, imagePoints2, K1, xi1, D1, K2, xi2, D2, rvec, tvec, rvecsL, tvecsL, idx]:
     """
     @param imagePoints2 The corresponding image points of the second camera, with type vector<vector<Vec2f> >.
     """
 
 @overload
-def stereoCalibrate(objectPoints, imagePoints1, imagePoints2, imageSize1, imageSize2, K1, xi1, D1, K2, xi2, D2, flags, criteria, rvec=..., tvec=..., rvecsL=..., tvecsL=..., idx=...) -> tuple[retval, objectPoints, imagePoints1, imagePoints2, K1, xi1, D1, K2, xi2, D2, rvec, tvec, rvecsL, tvecsL, idx]:
+def stereoCalibrate(
+    objectPoints,
+    imagePoints1,
+    imagePoints2,
+    imageSize1,
+    imageSize2,
+    K1,
+    xi1,
+    D1,
+    K2,
+    xi2,
+    D2,
+    flags,
+    criteria,
+    rvec=...,
+    tvec=...,
+    rvecsL=...,
+    tvecsL=...,
+    idx=...,
+) -> tuple[retval, objectPoints, imagePoints1, imagePoints2, K1, xi1, D1, K2, xi2, D2, rvec, tvec, rvecsL, tvecsL, idx]:
     """
     @param imageSize1 Image size of calibration images of the first camera.
     @param imageSize2 Image size of calibration images of the second camera.
@@ -184,12 +287,52 @@ def stereoCalibrate(objectPoints, imagePoints1, imagePoints2, imageSize1, imageS
     """
 
 @overload
-def stereoCalibrate(objectPoints, imagePoints1, imagePoints2, imageSize1, imageSize2, K1, xi1, D1, K2, xi2, D2, flags, criteria, rvec=..., tvec=..., rvecsL=..., tvecsL=..., idx=...) -> tuple[retval, objectPoints, imagePoints1, imagePoints2, K1, xi1, D1, K2, xi2, D2, rvec, tvec, rvecsL, tvecsL, idx]:
+def stereoCalibrate(
+    objectPoints,
+    imagePoints1,
+    imagePoints2,
+    imageSize1,
+    imageSize2,
+    K1,
+    xi1,
+    D1,
+    K2,
+    xi2,
+    D2,
+    flags,
+    criteria,
+    rvec=...,
+    tvec=...,
+    rvecsL=...,
+    tvecsL=...,
+    idx=...,
+) -> tuple[retval, objectPoints, imagePoints1, imagePoints2, K1, xi1, D1, K2, xi2, D2, rvec, tvec, rvecsL, tvecsL, idx]:
     """
     @
     """
 
-def stereoReconstruct(image1, image2, K1, D1, xi1, K2, D2, xi2, R, T, flag, numDisparities, SADWindowSize, disparity=..., image1Rec=..., image2Rec=..., newSize=..., Knew=..., pointCloud=..., pointType=...) -> tuple[disparity, image1Rec, image2Rec, pointCloud]:
+def stereoReconstruct(
+    image1,
+    image2,
+    K1,
+    D1,
+    xi1,
+    K2,
+    D2,
+    xi2,
+    R,
+    T,
+    flag,
+    numDisparities,
+    SADWindowSize,
+    disparity=...,
+    image1Rec=...,
+    image2Rec=...,
+    newSize=...,
+    Knew=...,
+    pointCloud=...,
+    pointType=...,
+) -> tuple[disparity, image1Rec, image2Rec, pointCloud]:
     """
     @brief Stereo 3D reconstruction from a pair of images
 

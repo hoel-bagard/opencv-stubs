@@ -75,7 +75,9 @@ COLOR_BGR2Lab: Final[int]  # Convert RGB/BGR to CIE Lab, color conversions
 COLOR_RGB2Lab: Final[int]
 COLOR_BGR2Luv: Final[int]  # Convert RGB/BGR to CIE Luv, color conversions
 COLOR_RGB2Luv: Final[int]
-COLOR_BGR2HLS: Final[int]  # Convert RGB/BGR to HLS (hue lightness saturation) with H range 0..180 if 8 bit image, color conversions
+COLOR_BGR2HLS: Final[
+    int
+]  # Convert RGB/BGR to HLS (hue lightness saturation) with H range 0..180 if 8 bit image, color conversions
 COLOR_RGB2HLS: Final[int]
 COLOR_HSV2BGR: Final[int]  # backward conversions HSV to RGB/BGR with H range 0..180 if 8 bit image
 COLOR_HSV2RGB: Final[int]
@@ -85,9 +87,13 @@ COLOR_Luv2BGR: Final[int]
 COLOR_Luv2RGB: Final[int]
 COLOR_HLS2BGR: Final[int]  # backward conversions HLS to RGB/BGR with H range 0..180 if 8 bit image
 COLOR_HLS2RGB: Final[int]
-COLOR_BGR2HSV_FULL: Final[int]  # Convert RGB/BGR to HSV (hue saturation value) with H range 0..255 if 8 bit image, color conversions
+COLOR_BGR2HSV_FULL: Final[
+    int
+]  # Convert RGB/BGR to HSV (hue saturation value) with H range 0..255 if 8 bit image, color conversions
 COLOR_RGB2HSV_FULL: Final[int]
-COLOR_BGR2HLS_FULL: Final[int]  # Convert RGB/BGR to HLS (hue lightness saturation) with H range 0..255 if 8 bit image, color conversions
+COLOR_BGR2HLS_FULL: Final[
+    int
+]  # Convert RGB/BGR to HLS (hue lightness saturation) with H range 0..255 if 8 bit image, color conversions
 COLOR_RGB2HLS_FULL: Final[int]
 COLOR_HSV2BGR_FULL: Final[int]  # Backward conversions HSV to RGB/BGR with H range 0..255 if 8 bit image
 COLOR_HSV2RGB_FULL: Final[int]
@@ -190,7 +196,9 @@ COLOR_RGB2YUV_YV12: Final[int]
 COLOR_BGR2YUV_YV12: Final[int]
 COLOR_RGBA2YUV_YV12: Final[int]
 COLOR_BGRA2YUV_YV12: Final[int]
-COLOR_BayerBG2BGR: Final[int]  # Demosaicing, see color conversions (https://docs.opencv.org/4.x/de/d25/imgproc_color_conversions.html#color_convert_bayer) for additional information. Equivalent to RGGB Bayer pattern.
+COLOR_BayerBG2BGR: Final[
+    int
+]  # Demosaicing, see color conversions (https://docs.opencv.org/4.x/de/d25/imgproc_color_conversions.html#color_convert_bayer) for additional information. Equivalent to RGGB Bayer pattern.
 COLOR_BayerGB2BGR: Final[int]  # Equivalent to GRBG Bayer pattern
 COLOR_BayerRG2BGR: Final[int]  # Equivalent to BGGR Bayer pattern
 COLOR_BayerGR2BGR: Final[int]  # Equivalent to GBRG Bayer pattern
@@ -266,7 +274,9 @@ COLOR_COLORCVT_MAX: Final[int]
 
 # ConnectedComponentsTypes
 # https://docs.opencv.org/3.4/d3/dc0/group__imgproc__shape.html#gac7099124c0390051c6970a987e7dc5c5
-CC_STAT_LEFT: Final[int]  # The leftmost (x) coordinate which is the inclusive start of the bounding box in the horizontal direction.
+CC_STAT_LEFT: Final[
+    int
+]  # The leftmost (x) coordinate which is the inclusive start of the bounding box in the horizontal direction.
 CC_STAT_TOP: Final[int]  # The topmost (y) coordinate which is the inclusive start of the bounding box in the vertical direction.
 CC_STAT_WIDTH: Final[int]  # The horizontal size of the bounding box.
 CC_STAT_HEIGHT: Final[int]  # The vertical size of the bounding box.
@@ -357,18 +367,34 @@ CV_8UC3: Final[int]
 CV_8UC4: Final[int]
 
 # ImreadModes
-IMREAD_UNCHANGED: Final[int]  # If set, return the loaded image as is (with alpha channel, otherwise it gets cropped). Ignore EXIF orientation.
+IMREAD_UNCHANGED: Final[
+    int
+]  # If set, return the loaded image as is (with alpha channel, otherwise it gets cropped). Ignore EXIF orientation.
 IMREAD_GRAYSCALE: Final[int]  # If set, always convert image to the single channel grayscale image (codec internal conversion).
 IMREAD_COLOR: Final[int]  # If set, always convert image to the 3 channel BGR color image.
-IMREAD_ANYDEPTH: Final[int]  # If set, return 16-bit/32-bit image when the input has the corresponding depth, otherwise convert it to 8-bit.
+IMREAD_ANYDEPTH: Final[
+    int
+]  # If set, return 16-bit/32-bit image when the input has the corresponding depth, otherwise convert it to 8-bit.
 IMREAD_ANYCOLOR: Final[int]  # If set, the image is read in any possible color format.
 IMREAD_LOAD_GDAL: Final[int]  # If set, use the gdal driver for loading the image.
-IMREAD_REDUCED_GRAYSCALE_2: Final[int]  # If set, always convert image to the single channel grayscale image and the image size reduced 1/2.
-IMREAD_REDUCED_COLOR_2: Final[int]  # If set, always convert image to the 3 channel BGR color image and the image size reduced 1/2.
-IMREAD_REDUCED_GRAYSCALE_4: Final[int]  # If set, always convert image to the single channel grayscale image and the image size reduced 1/4.
-IMREAD_REDUCED_COLOR_4: Final[int]  # If set, always convert image to the 3 channel BGR color image and the image size reduced 1/4.
-IMREAD_REDUCED_GRAYSCALE_8: Final[int]  # If set, always convert image to the single channel grayscale image and the image size reduced 1/8.
-IMREAD_REDUCED_COLOR_8: Final[int]  # If set, always convert image to the 3 channel BGR color image and the image size reduced 1/8.
+IMREAD_REDUCED_GRAYSCALE_2: Final[
+    int
+]  # If set, always convert image to the single channel grayscale image and the image size reduced 1/2.
+IMREAD_REDUCED_COLOR_2: Final[
+    int
+]  # If set, always convert image to the 3 channel BGR color image and the image size reduced 1/2.
+IMREAD_REDUCED_GRAYSCALE_4: Final[
+    int
+]  # If set, always convert image to the single channel grayscale image and the image size reduced 1/4.
+IMREAD_REDUCED_COLOR_4: Final[
+    int
+]  # If set, always convert image to the 3 channel BGR color image and the image size reduced 1/4.
+IMREAD_REDUCED_GRAYSCALE_8: Final[
+    int
+]  # If set, always convert image to the single channel grayscale image and the image size reduced 1/8.
+IMREAD_REDUCED_COLOR_8: Final[
+    int
+]  # If set, always convert image to the 3 channel BGR color image and the image size reduced 1/8.
 IMREAD_IGNORE_ORIENTATION: Final[int]  # If set, do not rotate the image according to EXIF's orientation flag.
 
 # Imwrite flags.
@@ -379,18 +405,28 @@ IMWRITE_JPEG_RST_INTERVAL: Final[int]  # JPEG restart interval, 0 - 65535, defau
 IMWRITE_JPEG_LUMA_QUALITY: Final[int]  # Separate luma quality level, 0 - 100, default is -1 - don't use.
 IMWRITE_JPEG_CHROMA_QUALITY: Final[int]  # Separate chroma quality level, 0 - 100, default is -1 - don't use.
 IMWRITE_JPEG_SAMPLING_FACTOR: Final[int]  # For JPEG, set sampling factor. See cv::ImwriteJPEGSamplingFactorParams.
-IMWRITE_PNG_COMPRESSION: Final[int]  # For PNG, it can be the compression level from 0 to 9. A higher value means a smaller size and longer compression time. If specified, strategy is changed to IMWRITE_PNG_STRATEGY_DEFAULT (Z_DEFAULT_STRATEGY). Default value is 1 (best speed setting).
+IMWRITE_PNG_COMPRESSION: Final[
+    int
+]  # For PNG, it can be the compression level from 0 to 9. A higher value means a smaller size and longer compression time. If specified, strategy is changed to IMWRITE_PNG_STRATEGY_DEFAULT (Z_DEFAULT_STRATEGY). Default value is 1 (best speed setting).
 IMWRITE_PNG_STRATEGY: Final[int]  # One of cv::ImwritePNGFlags, default is IMWRITE_PNG_STRATEGY_RLE.
 IMWRITE_PNG_BILEVEL: Final[int]  # Binary level PNG, 0 or 1, default is 0.
 IMWRITE_PXM_BINARY: Final[int]  # For PPM, PGM, or PBM, it can be a binary format flag, 0 or 1. Default value is 1.
 IMWRITE_EXR_TYPE: Final[int]
-IMWRITE_WEBP_QUALITY: Final[int]  # override EXR storage type (FLOAT (FP32) is default). For WEBP, it can be a quality from 1 to 100 (the higher is the better). By default (without any parameter) and for quality above 100 the lossless compression is used.
+IMWRITE_WEBP_QUALITY: Final[
+    int
+]  # override EXR storage type (FLOAT (FP32) is default). For WEBP, it can be a quality from 1 to 100 (the higher is the better). By default (without any parameter) and for quality above 100 the lossless compression is used.
 IMWRITE_HDR_COMPRESSION: Final[int]
-IMWRITE_PAM_TUPLETYPE: Final[int]  # specify HDR compression. For PAM, sets the TUPLETYPE field to the corresponding string value that is defined for the format
-IMWRITE_TIFF_RESUNIT: Final[int]  # For TIFF, use to specify which DPI resolution unit to set; see libtiff documentation for valid values.
+IMWRITE_PAM_TUPLETYPE: Final[
+    int
+]  # specify HDR compression. For PAM, sets the TUPLETYPE field to the corresponding string value that is defined for the format
+IMWRITE_TIFF_RESUNIT: Final[
+    int
+]  # For TIFF, use to specify which DPI resolution unit to set; see libtiff documentation for valid values.
 IMWRITE_TIFF_XDPI: Final[int]  # For TIFF, use to specify the X direction DPI.
 IMWRITE_TIFF_YDPI: Final[int]  # For TIFF, use to specify the Y direction DPI.
-IMWRITE_TIFF_COMPRESSION: Final[int]  # For TIFF, use to specify the image compression scheme. See libtiff for integer constants corresponding to compression formats. Note, for images whose depth is CV_32F, only libtiff's SGILOG compression scheme is used. For other supported depths, the compression scheme can be specified by this flag; LZW compression is the default.
+IMWRITE_TIFF_COMPRESSION: Final[
+    int
+]  # For TIFF, use to specify the image compression scheme. See libtiff for integer constants corresponding to compression formats. Note, for images whose depth is CV_32F, only libtiff's SGILOG compression scheme is used. For other supported depths, the compression scheme can be specified by this flag; LZW compression is the default.
 
 # ImwritePAMFlags
 IMWRITE_PAM_FORMAT_NULL: Final[int]
@@ -404,13 +440,21 @@ IMWRITE_PAM_FORMAT_RGB_ALPHA: Final[int]
 INTER_NEAREST: Final[int]  # Nearest neighbor interpolation.
 INTER_LINEAR: Final[int]  # Bilinear interpolation.
 INTER_CUBIC: Final[int]  # Bicubic interpolation.
-INTER_AREA: Final[int]  # Resampling using pixel area relation. It may be a preferred method for image decimation, as it gives moire'-free results. But when the image is zoomed, it is similar to the INTER_NEAREST method.
+INTER_AREA: Final[
+    int
+]  # Resampling using pixel area relation. It may be a preferred method for image decimation, as it gives moire'-free results. But when the image is zoomed, it is similar to the INTER_NEAREST method.
 INTER_LANCZOS4: Final[int]  # Lanczos interpolation over 8x8 neighborhood.
 INTER_LINEAR_EXACT: Final[int]  # Bit exact bilinear interpolation.
-INTER_NEAREST_EXACT: Final[int]  # Bit exact nearest neighbor interpolation. This will produce same results as the nearest neighbor method in PIL, scikit-image or Matlab.
+INTER_NEAREST_EXACT: Final[
+    int
+]  # Bit exact nearest neighbor interpolation. This will produce same results as the nearest neighbor method in PIL, scikit-image or Matlab.
 INTER_MAX: Final[int]  # Mask for interpolation codes.
-WARP_FILL_OUTLIERS: Final[int]  # Flag, fills all of the destination image pixels. If some of them correspond to outliers in the source image, they are set to zero.
-WARP_INVERSE_MAP: Final[int]  # Flag, inverse transformation. For example, linearPolar or logPolar transforms: flag is not set: dst(ρ,ϕ)=src(x,y) and flag is set: dst(x,y)=src(ρ,ϕ).  # noqa: RUF003
+WARP_FILL_OUTLIERS: Final[
+    int
+]  # Flag, fills all of the destination image pixels. If some of them correspond to outliers in the source image, they are set to zero.
+WARP_INVERSE_MAP: Final[
+    int
+]  # Flag, inverse transformation. For example, linearPolar or logPolar transforms: flag is not set: dst(ρ,ϕ)=src(x,y) and flag is set: dst(x,y)=src(ρ,ϕ).  # noqa: RUF003
 
 # InterpolationMasks
 INTER_BITS: Final[int]
@@ -442,9 +486,13 @@ RETR_FLOODFILL: Final[int]
 
 # seamlessClone algorithm flags
 # https://docs.opencv.org/3.4/df/da0/group__photo__clone.html#ga19386064a1bd4e1153262844e6875bcc
-NORMAL_CLONE: Final[int]  # The power of the method is fully expressed when inserting objects with complex outlines into a new background
+NORMAL_CLONE: Final[
+    int
+]  # The power of the method is fully expressed when inserting objects with complex outlines into a new background
 MIXED_CLONE: int  # The classic method, color-based selection and alpha masking might be time consuming and often leaves an undesirable halo. Seamless cloning, even averaged with the original image, is not effective. Mixed seamless cloning based on a loose selection proves effective.
-MONOCHROME_TRANSFER: Final[int]  # Monochrome transfer allows the user to easily replace certain features of one object by alternative features.
+MONOCHROME_TRANSFER: Final[
+    int
+]  # Monochrome transfer allows the user to easily replace certain features of one object by alternative features.
 
 # ThresholdTypes
 THRESH_BINARY: Final[int]
@@ -461,7 +509,9 @@ WARP_POLAR_LINEAR: Final[int]
 WARP_POLAR_LOG: Final[int]
 
 # WindowFlags
-WINDOW_NORMAL: Final[int]  # The user can resize the window (no constraint) / also use to switch a fullscreen window to a normal size.
+WINDOW_NORMAL: Final[
+    int
+]  # The user can resize the window (no constraint) / also use to switch a fullscreen window to a normal size.
 WINDOW_AUTOSIZE: Final[int]  # The user cannot resize the window, the size is constrained by the image displayed.
 WINDOW_OPENGL: Final[int]  # Window with opengl support.
 WINDOW_FULLSCREEN: Final[int]  # Change the window to fullscreen.

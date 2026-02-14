@@ -1491,7 +1491,9 @@ def gaussianBlur(src, ksize, sigmaX, sigmaY=..., borderType=..., borderValue=...
     """
 
 @overload
-def goodFeaturesToTrack(image, maxCorners, qualityLevel, minDistance, mask=..., blockSize=..., useHarrisDetector=..., k=...) -> retval:
+def goodFeaturesToTrack(
+    image, maxCorners, qualityLevel, minDistance, mask=..., blockSize=..., useHarrisDetector=..., k=...
+) -> retval:
     """
     @brief Determines strong corners on an image.
 
@@ -1504,7 +1506,9 @@ def goodFeaturesToTrack(image, maxCorners, qualityLevel, minDistance, mask=..., 
     """
 
 @overload
-def goodFeaturesToTrack(image, maxCorners, qualityLevel, minDistance, mask=..., blockSize=..., useHarrisDetector=..., k=...) -> retval:
+def goodFeaturesToTrack(
+    image, maxCorners, qualityLevel, minDistance, mask=..., blockSize=..., useHarrisDetector=..., k=...
+) -> retval:
     """
     -   The corners with the minimal eigenvalue less than
         \f$\texttt{qualityLevel} \\cdot \\max_{x,y} qualityMeasureMap(x,y)\f$ are rejected.
@@ -1513,7 +1517,9 @@ def goodFeaturesToTrack(image, maxCorners, qualityLevel, minDistance, mask=..., 
     """
 
 @overload
-def goodFeaturesToTrack(image, maxCorners, qualityLevel, minDistance, mask=..., blockSize=..., useHarrisDetector=..., k=...) -> retval:
+def goodFeaturesToTrack(
+    image, maxCorners, qualityLevel, minDistance, mask=..., blockSize=..., useHarrisDetector=..., k=...
+) -> retval:
     r"""
 
     The function can be used to initialize a point-based tracker of an object.

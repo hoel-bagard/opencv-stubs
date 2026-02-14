@@ -40,7 +40,9 @@ class OCRBeamSearchDecoder(BaseOCR):
     def run(self, image, mask, min_confidence, component_level=...) -> retval:
         """"""
 
-    def create(self, classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., beam_size=...) -> retval:
+    def create(
+        self, classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., beam_size=...
+    ) -> retval:
         """
         @brief Creates an instance of the OCRBeamSearchDecoder class. Initializes HMMDecoder.
 
@@ -91,7 +93,9 @@ class OCRHMMDecoder(BaseOCR):
         """
 
     @overload
-    def create(self, filename, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., classifier=...) -> retval:
+    def create(
+        self, filename, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., classifier=...
+    ) -> retval:
         """
         @overload
             @brief Creates an instance of the OCRHMMDecoder class. Loads and initializes HMMDecoder from the specified path
@@ -163,7 +167,9 @@ class TextDetectorCNN(TextDetector):
         """
 
 @overload
-def OCRBeamSearchDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., beam_size=...) -> retval:
+def OCRBeamSearchDecoder_create(
+    classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., beam_size=...
+) -> retval:
     """
     @brief Creates an instance of the OCRBeamSearchDecoder class. Initializes HMMDecoder.
 
@@ -173,21 +179,27 @@ def OCRBeamSearchDecoder_create(classifier, vocabulary, transition_probabilities
     """
 
 @overload
-def OCRBeamSearchDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., beam_size=...) -> retval:
+def OCRBeamSearchDecoder_create(
+    classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., beam_size=...
+) -> retval:
     """
 
     @param transition_probabilities_table Table with transition probabilities between character
     """
 
 @overload
-def OCRBeamSearchDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., beam_size=...) -> retval:
+def OCRBeamSearchDecoder_create(
+    classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., beam_size=...
+) -> retval:
     """
 
     @param emission_probabilities_table Table with observation emission probabilities. cols ==
     """
 
 @overload
-def OCRBeamSearchDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., beam_size=...) -> retval:
+def OCRBeamSearchDecoder_create(
+    classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=..., beam_size=...
+) -> retval:
     """
 
     @param mode HMM Decoding algorithm. Only OCR_DECODER_VITERBI is available for the moment
@@ -197,7 +209,9 @@ def OCRBeamSearchDecoder_create(classifier, vocabulary, transition_probabilities
     """
 
 @overload
-def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=...) -> retval:
+def OCRHMMDecoder_create(
+    classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=...
+) -> retval:
     """
     @brief Creates an instance of the OCRHMMDecoder class. Initializes HMMDecoder.
 
@@ -207,21 +221,27 @@ def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table,
     """
 
 @overload
-def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=...) -> retval:
+def OCRHMMDecoder_create(
+    classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=...
+) -> retval:
     """
 
     @param transition_probabilities_table Table with transition probabilities between character
     """
 
 @overload
-def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=...) -> retval:
+def OCRHMMDecoder_create(
+    classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=...
+) -> retval:
     """
 
     @param emission_probabilities_table Table with observation emission probabilities. cols ==
     """
 
 @overload
-def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=...) -> retval:
+def OCRHMMDecoder_create(
+    classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=...
+) -> retval:
     """
 
     @param mode HMM Decoding algorithm. Only OCR_DECODER_VITERBI is available for the moment
@@ -229,7 +249,9 @@ def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table,
     """
 
 @overload
-def OCRHMMDecoder_create(classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=...) -> retval:
+def OCRHMMDecoder_create(
+    classifier, vocabulary, transition_probabilities_table, emission_probabilities_table, mode=...
+) -> retval:
     """
     @brief Creates an instance of the OCRHMMDecoder class. Loads and initializes HMMDecoder from the specified path
 
@@ -291,7 +313,9 @@ def computeNMChannels(_src, _channels=..., _mode=...) -> _channels:
     """
 
 @overload
-def createERFilterNM1(cb, thresholdDelta=..., minArea=..., maxArea=..., minProbability=..., nonMaxSuppression=..., minProbabilityDiff=...) -> retval:
+def createERFilterNM1(
+    cb, thresholdDelta=..., minArea=..., maxArea=..., minProbability=..., nonMaxSuppression=..., minProbabilityDiff=...
+) -> retval:
     """
     @brief Create an Extremal Region Filter for the 1st stage classifier of N&M algorithm @cite Neumann12.
 
@@ -315,13 +339,17 @@ def createERFilterNM1(cb, thresholdDelta=..., minArea=..., maxArea=..., minProba
     """
 
 @overload
-def createERFilterNM1(cb, thresholdDelta=..., minArea=..., maxArea=..., minProbability=..., nonMaxSuppression=..., minProbabilityDiff=...) -> retval:
+def createERFilterNM1(
+    cb, thresholdDelta=..., minArea=..., maxArea=..., minProbability=..., nonMaxSuppression=..., minProbabilityDiff=...
+) -> retval:
     """
     @brief Reads an Extremal Region Filter for the 1st stage classifier of N&M algorithm
     """
 
 @overload
-def createERFilterNM1(cb, thresholdDelta=..., minArea=..., maxArea=..., minProbability=..., nonMaxSuppression=..., minProbabilityDiff=...) -> retval:
+def createERFilterNM1(
+    cb, thresholdDelta=..., minArea=..., maxArea=..., minProbability=..., nonMaxSuppression=..., minProbabilityDiff=...
+) -> retval:
     """
 
     @overload

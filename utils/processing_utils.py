@@ -112,7 +112,11 @@ def process_class(name: str, stubs: list[str]) -> None:  # noqa: C901, PLR0912
             line_idx += 1
             # Add docstring.
             stubs.append('        """')
-            while line_idx < len(help_text_lines) and "(...)" not in help_text_lines[line_idx] and " |  --" not in help_text_lines[line_idx]:
+            while (
+                line_idx < len(help_text_lines)
+                and "(...)" not in help_text_lines[line_idx]
+                and " |  --" not in help_text_lines[line_idx]
+            ):
                 if "." in help_text_lines[line_idx]:
                     line = help_text_lines[line_idx].split(".", maxsplit=1)[1].lstrip()
                     if line == "@overload":

@@ -117,7 +117,9 @@ class DAISY(cv2.Feature2D):
     def setUseOrientation(self, use_orientation) -> None:
         """"""
 
-    def create(self, radius=..., q_radius=..., q_theta=..., q_hist=..., norm=..., H=..., interpolation=..., use_orientation=...) -> retval:
+    def create(
+        self, radius=..., q_radius=..., q_theta=..., q_hist=..., norm=..., H=..., interpolation=..., use_orientation=...
+    ) -> retval:
         """"""
 
 class FREAK(cv2.Feature2D):
@@ -313,7 +315,18 @@ class MSDDetector(cv2.Feature2D):
     def setThSaliency(self, th_saliency) -> None:
         """"""
 
-    def create(self, m_patch_radius=..., m_search_area_radius=..., m_nms_radius=..., m_nms_scale_radius=..., m_th_saliency=..., m_kNN=..., m_scale_factor=..., m_n_scales=..., m_compute_orientation=...) -> retval:
+    def create(
+        self,
+        m_patch_radius=...,
+        m_search_area_radius=...,
+        m_nms_radius=...,
+        m_nms_scale_radius=...,
+        m_th_saliency=...,
+        m_kNN=...,
+        m_scale_factor=...,
+        m_n_scales=...,
+        m_compute_orientation=...,
+    ) -> retval:
         """"""
 
 class PCTSignatures(cv2.Algorithm):
@@ -729,7 +742,9 @@ class StarDetector(cv2.Feature2D):
     def setSuppressNonmaxSize(self, _suppressNonmaxSize) -> None:
         """"""
 
-    def create(self, maxSize=..., responseThreshold=..., lineThresholdProjected=..., lineThresholdBinarized=..., suppressNonmaxSize=...) -> retval:
+    def create(
+        self, maxSize=..., responseThreshold=..., lineThresholdProjected=..., lineThresholdBinarized=..., suppressNonmaxSize=...
+    ) -> retval:
         """"""
 
 class TBMR(AffineFeature2D):
@@ -805,7 +820,9 @@ class VGG(cv2.Feature2D):
     def setUseScaleOrientation(self, use_scale_orientation) -> None:
         """"""
 
-    def create(self, desc=..., isigma=..., img_normalize=..., use_scale_orientation=..., scale_factor=..., dsc_normalize=...) -> retval:
+    def create(
+        self, desc=..., isigma=..., img_normalize=..., use_scale_orientation=..., scale_factor=..., dsc_normalize=...
+    ) -> retval:
         """"""
 
 def BEBLID_create(scale_factor, n_bits=...) -> retval:
@@ -830,7 +847,9 @@ def BriefDescriptorExtractor_create(bytes=..., use_orientation=...) -> retval:
     .
     """
 
-def DAISY_create(radius=..., q_radius=..., q_theta=..., q_hist=..., norm=..., H=..., interpolation=..., use_orientation=...) -> retval:
+def DAISY_create(
+    radius=..., q_radius=..., q_theta=..., q_hist=..., norm=..., H=..., interpolation=..., use_orientation=...
+) -> retval:
     """
     .
     """
@@ -844,7 +863,9 @@ def FREAK_create(orientationNormalized=..., scaleNormalized=..., patternScale=..
         @param selectedPairs (Optional) user defined selected pairs indexes,
     """
 
-def HarrisLaplaceFeatureDetector_create(numOctaves=..., corn_thresh=..., DOG_thresh=..., maxCorners=..., num_layers=...) -> retval:
+def HarrisLaplaceFeatureDetector_create(
+    numOctaves=..., corn_thresh=..., DOG_thresh=..., maxCorners=..., num_layers=...
+) -> retval:
     """
     * @brief Creates a new implementation instance.
          *
@@ -866,7 +887,17 @@ def LUCID_create(lucid_kernel=..., blur_kernel=...) -> retval:
          * @param blur_kernel kernel for blurring image prior to descriptor construction, where 1=3x3, 2=5x5, 3=7x7 and so forth
     """
 
-def MSDDetector_create(m_patch_radius=..., m_search_area_radius=..., m_nms_radius=..., m_nms_scale_radius=..., m_th_saliency=..., m_kNN=..., m_scale_factor=..., m_n_scales=..., m_compute_orientation=...) -> retval:
+def MSDDetector_create(
+    m_patch_radius=...,
+    m_search_area_radius=...,
+    m_nms_radius=...,
+    m_nms_scale_radius=...,
+    m_th_saliency=...,
+    m_kNN=...,
+    m_scale_factor=...,
+    m_n_scales=...,
+    m_compute_orientation=...,
+) -> retval:
     """
     .
     """
@@ -962,7 +993,9 @@ def SURF_create(hessianThreshold=..., nOctaves=..., nOctaveLayers=..., extended=
 def SURF_create(hessianThreshold=..., nOctaves=..., nOctaveLayers=..., extended=..., upright=...) -> retval:
     """ """
 
-def StarDetector_create(maxSize=..., responseThreshold=..., lineThresholdProjected=..., lineThresholdBinarized=..., suppressNonmaxSize=...) -> retval:
+def StarDetector_create(
+    maxSize=..., responseThreshold=..., lineThresholdProjected=..., lineThresholdBinarized=..., suppressNonmaxSize=...
+) -> retval:
     """
     .
     """
@@ -989,7 +1022,9 @@ def VGG_create(desc=..., isigma=..., img_normalize=..., use_scale_orientation=..
     .
     """
 
-def matchGMS(size1, size2, keypoints1, keypoints2, matches1to2, withRotation=..., withScale=..., thresholdFactor=...) -> matchesGMS:
+def matchGMS(
+    size1, size2, keypoints1, keypoints2, matches1to2, withRotation=..., withScale=..., thresholdFactor=...
+) -> matchesGMS:
     """
     @brief GMS (Grid-based Motion Statistics) feature matching strategy described in @cite Bian2017gms .
         @param size1 Input size of image1.

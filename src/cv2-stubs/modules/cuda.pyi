@@ -469,7 +469,9 @@ class SURF_CUDA:
         @param keypoints Detected keypoints.
         """
 
-    def detectWithDescriptors(self, img, mask, keypoints=..., descriptors=..., useProvidedKeypoints=...) -> tuple[keypoints, descriptors]:
+    def detectWithDescriptors(
+        self, img, mask, keypoints=..., descriptors=..., useProvidedKeypoints=...
+    ) -> tuple[keypoints, descriptors]:
         """
         @brief Finds the keypoints and computes their descriptors using fast hessian detector used in SURF
 
@@ -483,7 +485,9 @@ class SURF_CUDA:
     def downloadKeypoints(self, keypointsGPU) -> keypoints:
         """"""
 
-    def create(self, _hessianThreshold, _nOctaves=..., _nOctaveLayers=..., _extended=..., _keypointsRatio=..., _upright=...) -> retval:
+    def create(
+        self, _hessianThreshold, _nOctaves=..., _nOctaveLayers=..., _extended=..., _keypointsRatio=..., _upright=...
+    ) -> retval:
         """
         @param _hessianThreshold Threshold for hessian keypoint detector used in SURF.
         @param _nOctaves Number of pyramid octaves the keypoint detector will use.
@@ -569,7 +573,9 @@ def GpuMat_setDefaultAllocator(allocator) -> None:
     """
 
 @overload
-def SURF_CUDA_create(_hessianThreshold, _nOctaves=..., _nOctaveLayers=..., _extended=..., _keypointsRatio=..., _upright=...) -> retval:
+def SURF_CUDA_create(
+    _hessianThreshold, _nOctaves=..., _nOctaveLayers=..., _extended=..., _keypointsRatio=..., _upright=...
+) -> retval:
     """
     @param _hessianThreshold Threshold for hessian keypoint detector used in SURF.
         @param _nOctaves Number of pyramid octaves the keypoint detector will use.
@@ -581,7 +587,9 @@ def SURF_CUDA_create(_hessianThreshold, _nOctaves=..., _nOctaveLayers=..., _exte
     """
 
 @overload
-def SURF_CUDA_create(_hessianThreshold, _nOctaves=..., _nOctaveLayers=..., _extended=..., _keypointsRatio=..., _upright=...) -> retval:
+def SURF_CUDA_create(
+    _hessianThreshold, _nOctaves=..., _nOctaveLayers=..., _extended=..., _keypointsRatio=..., _upright=...
+) -> retval:
     """ """
 
 @overload

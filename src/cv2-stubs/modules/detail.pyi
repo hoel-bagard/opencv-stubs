@@ -28,7 +28,9 @@ class BestOf2NearestMatcher(FeaturesMatcher):
     def collectGarbage(self) -> None:
         """"""
 
-    def create(self, try_use_gpu=..., match_conf=..., num_matches_thresh1=..., num_matches_thresh2=..., matches_confindece_thresh=...) -> retval:
+    def create(
+        self, try_use_gpu=..., match_conf=..., num_matches_thresh1=..., num_matches_thresh2=..., matches_confindece_thresh=...
+    ) -> retval:
         """"""
 
 class BestOf2NearestRangeMatcher(BestOf2NearestMatcher): ...
@@ -381,7 +383,9 @@ class VoronoiSeamFinder(PairwiseSeamFinder):
     def find(self, src, corners, masks) -> masks:
         """"""
 
-def BestOf2NearestMatcher_create(try_use_gpu=..., match_conf=..., num_matches_thresh1=..., num_matches_thresh2=..., matches_confindece_thresh=...) -> retval:
+def BestOf2NearestMatcher_create(
+    try_use_gpu=..., match_conf=..., num_matches_thresh1=..., num_matches_thresh2=..., matches_confindece_thresh=...
+) -> retval:
     """
     .
     """
