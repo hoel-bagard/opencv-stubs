@@ -588,6 +588,7 @@ class BackgroundSubtractorKNN(BackgroundSubtractor):
         """
 
 class BackgroundSubtractorMOG2(BackgroundSubtractor):
+    @overload
     def apply(self, image, fgmask=..., learningRate=...) -> fgmask:
         """
         @brief Computes a foreground mask.
@@ -596,6 +597,10 @@ class BackgroundSubtractorMOG2(BackgroundSubtractor):
         @param fgmask The output foreground mask as an 8-bit binary image.
         @param learningRate The value between 0 and 1 that indicates how fast the background model is learnt. Negative parameter value makes the algorithm to use some automatically chosen learning rate. 0 means that the background model is not updated at all, 1 means that the background model is completely reinitialized from the last frame.
         """
+
+    @overload
+    def apply(self,image,knownForegroundMask,fgmask=..., learningRate=...) -> fgmask:
+        """"""
 
     def getBackgroundRatio(self) -> retval:
         r"""
@@ -753,10 +758,16 @@ class CLAHE(Algorithm):
     def collectGarbage(self) -> None:
         """"""
 
+    def getBitShift(self) -> retval:
+        """"""
+
     def getClipLimit(self) -> retval:
         """"""
 
     def getTilesGridSize(self) -> retval:
+        """"""
+
+    def setBitShift(self,bitShift) -> None:
         """"""
 
     def setClipLimit(self, clipLimit) -> None:
@@ -820,6 +831,14 @@ class CalibrateRobertson(CalibrateCRF):
         """"""
 
 class CascadeClassifier:
+    @overload
+    def __init__(self) -> None:
+        """"""
+    
+    @overload
+    def __init__(self, filename) -> None:
+        """"""
+
     def detectMultiScale(self, image, scaleFactor=..., minNeighbors=..., flags=..., minSize=..., maxSize=...) -> objects:
         """
         @brief Detects objects of different sizes in the input image. The detected objects are returned as a list
@@ -895,11 +914,11 @@ class CascadeClassifier:
         @note The file may contain a new cascade classifier (trained by the traincascade application) only.
         """
 
-    def convert(self, oldcascade, newcascade) -> retval:
+    @staticmethod
+    def convert(oldcascade, newcascade) -> retval:
         """"""
 
 class ChiHistogramCostExtractor(HistogramCostExtractor): ...
-class CirclesGridFinderParameters: ...
 
 class DISOpticalFlow(DenseOpticalFlow):
     def getFinestScale(self) -> retval:
@@ -1031,7 +1050,29 @@ class DISOpticalFlow(DenseOpticalFlow):
         @param preset one of PRESET_ULTRAFAST, PRESET_FAST and PRESET_MEDIUM
         """
 
-class DMatch: ...
+    def getCoarsestScale(self) -> retval:
+        """"""
+
+    def getVariationalRefinementEpsilon(self) -> retval:
+        """"""
+
+    def setCoarsestScale(self, val) -> None:
+        """"""
+
+    def setVariationalRefinementEpsilon(self,val) -> None:
+        """"""
+
+class DMatch: 
+    @overload
+    def __init__(self) -> None: ...
+
+    @overload
+    def __init__(self, _queryIdx, _trainIdx, _distance) -> None:
+        """"""
+
+    @overload
+    def __init__(self, _queryIdx, _trainIdx, _imgIdx, _distance ) -> None:
+        """"""
 
 class DenseOpticalFlow(Algorithm):
     def calc(self, I0, I1, flow) -> flow:
@@ -1260,7 +1301,9 @@ class FaceDetectorYN:
         * @param top_k the number of bounding boxes to preserve from top rank based on score
         """
 
-    def create(self, model, config, input_size, score_threshold=..., nms_threshold=..., top_k=..., backend_id=..., target_id=...) -> retval:
+    @overload
+    @staticmethod
+    def create(model, config, input_size, score_threshold=..., nms_threshold=..., top_k=..., backend_id=..., target_id=...) -> retval:
         """
         @brief Creates an instance of this class with given parameters
         *
@@ -1273,6 +1316,11 @@ class FaceDetectorYN:
         *  @param backend_id the id of backend
         *  @param target_id the id of target device
         """
+
+    @overload
+    @staticmethod
+    def create(framework, bufferModel, bufferConfig, input_size, score_threshold=..., nms_threshold=..., top_k=..., backend_id=..., target_id=...) -> retval:
+        """"""
 
 class FaceRecognizerSF:
     def alignCrop(self, src_img, face_box, aligned_img=...) -> aligned_img:
@@ -1298,7 +1346,9 @@ class FaceRecognizerSF:
         *  @param dis_type defining the similarity with optional values "FR_OSINE" or "FR_NORM_L2"
         """
 
-    def create(self, model, config, backend_id=..., target_id=...) -> retval:
+    @overload
+    @staticmethod
+    def create(model, config, backend_id=..., target_id=...) -> retval:
         """
         @brief Creates an instance of this class with given parameters
         *  @param model the path of the onnx model used for face recognition
@@ -1306,6 +1356,11 @@ class FaceRecognizerSF:
         *  @param backend_id the id of backend
         *  @param target_id the id of target device
         """
+
+    @overload
+    @staticmethod
+    def create(framework, bufferModel, bufferConfig, backend_id=..., target_id=...) -> retval:
+        """"""
 
 class FarnebackOpticalFlow(DenseOpticalFlow):
     def getFastPyramids(self) -> retval:
