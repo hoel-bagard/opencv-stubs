@@ -3,6 +3,7 @@ from typing import Any, overload, Sequence
 
 import numpy as np
 import numpy.typing as npt
+from cv2 import NORM_L2
 from cv2.modules import colored_kinfu, img_hash, large_kinfu, phase_unwrapping, structured_light, wechat_qrcode, ximgproc
 from typing_extensions import TypeAlias
 
@@ -339,8 +340,9 @@ class AsyncArray:
         """"""
 
 class BFMatcher(DescriptorMatcher):
+    def __init__(self, normType: int = NORM_L2, crossCheck: bool = False) -> None: ...
     @staticmethod
-    def create(normType=..., crossCheck=...) -> retval:
+    def create(normType: int = NORM_L2, crossCheck: bool = False) -> BFMatcher:
         """
         @brief Brute-force matcher create method.
         @param normType One of NORM_L1, NORM_L2, NORM_HAMMING, NORM_HAMMING2. L1 and L2 norms are preferable choices for SIFT and SURF descriptors, NORM_HAMMING should be used with ORB, BRISK and BRIEF, NORM_HAMMING2 should be used with ORB when WTA_K==3 or 4 (see ORB::ORB constructor description).
